@@ -11,18 +11,18 @@ import { User } from '../models/user.model.client';
 export class WebsiteService {
   // users are a group of json objects, here will be user(data structure)
   websites: Website[] = [
-    {"_id": "123", "name": "Facebook", "developerId": "456", "description": "Lorem"},
-    {"_id": "234", "name": "Tweeter", "developerId": "456", "description": "Lorem"},
-    {"_id": "456", "name": "Gizmodo", "developerId": "456", "description": "Lorem"},
-    {"_id": "890", "name": "Go", "developerId": "123", "description": "Lorem"},
-    {"_id": "567", "name": "Tic Tac Toe", "developerId": "123", "description": "Lorem"},
-    {"_id": "678", "name": "Checkers", "developerId": "123", "description": "Lorem"},
-    {"_id": "789", "name": "Chess", "developerId": "234", "description": "Lorem"}
+    {'_id': '123', 'name': 'Facebook', 'developerId': '456', 'description': 'Lorem'},
+    {'_id': '234', 'name': 'Tweeter', 'developerId': '456', 'description': 'Lorem'},
+    {'_id': '456', 'name': 'Gizmodo', 'developerId': '456', 'description': 'Lorem'},
+    {'_id': '890', 'name': 'Go', 'developerId': '123', 'description': 'Lorem'},
+    {'_id': '567', 'name': 'Tic Tac Toe', 'developerId': '123', 'description': 'Lorem'},
+    {'_id': '678', 'name': 'Checkers', 'developerId': '123', 'description': 'Lorem'},
+    {'_id': '789', 'name': 'Chess', 'developerId': '234', 'description': 'Lorem'}
   ];
 
-  //generate a number for website._id
-  newId(){
-    return (Number(this.websites[this.websites.length -1]._id) + 1).toString();
+  // generate a number for website._id
+  newId() {
+    return (Number(this.websites[this.websites.length - 1]._id) + 1).toString();
   }
 
   // adds the website parameter instance to the local websites array.
@@ -33,11 +33,11 @@ export class WebsiteService {
 
   }
 
-  //retrieves the websites in local websites array whose developerId matches the parameter userId
+  // retrieves the websites in local websites array whose developerId matches the parameter userId
 
   findWebsitesByUser(userId: String) {
-    //initiate the array
-    let webs: Website[] = [];
+    // initiate the array
+    const webs: Website[] = [];
 
     for (let x = 0; x < this.websites.length; x++) {
       if (this.websites[x].developerId === userId) {
@@ -52,7 +52,7 @@ export class WebsiteService {
 
   findWebsitesById(websiteId: String) {
     const webs = this.websites;
-    for (let x = 0; x < this.websites.length; x++){
+    for (let x = 0; x < this.websites.length; x++) {
       webs.pop();
     }
 
@@ -64,11 +64,11 @@ export class WebsiteService {
     return webs;
   }
 
-  //updates the website in local websites array whose _id matches the websiteId parameter
+  // updates the website in local websites array whose _id matches the websiteId parameter
 
-  updateWebsite(websiteId:String, website: Website) {
-    for (let x = 0; x < this.websites.length; x++){
-      if(this.websites[x]._id === websiteId){
+  updateWebsite(websiteId: String, website: Website) {
+    for (let x = 0; x < this.websites.length; x++) {
+      if (this.websites[x]._id === websiteId) {
         this.websites[x].name = website.name;
         this.websites[x].description = website.description;
         this.websites[x].developerId = website.developerId;
@@ -81,8 +81,8 @@ export class WebsiteService {
 
   deleteWebsite(websiteId) {
 
-    for(let x = 0; x < this.websites.length; x++){
-      if (this.websites[x]._id === websiteId){
+    for (let x = 0; x < this.websites.length; x++) {
+      if (this.websites[x]._id === websiteId) {
         this.websites.splice(x, 1);
       }
     }
@@ -90,11 +90,11 @@ export class WebsiteService {
 
   }
 
-  api = {
-    'createWebsite' : this.createWebsite,
-    'findWebsitesById': this.findWebsitesById,
-    'updateWebsites': this.updateWebsite
-  };
+  // api = {
+  //   'createWebsite' : this.createWebsite,
+  //   'findWebsitesById': this.findWebsitesById,
+  //   'updateWebsites': this.updateWebsite
+  // };
 
 
 }

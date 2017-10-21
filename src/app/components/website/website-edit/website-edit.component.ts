@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../../../services/user.service.client';
 import { User } from '../../../models/user.model.client';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
 import { WebsiteService} from '../../../services/website.service.client';
 import { NgForm } from '@angular/forms';
 import { Website} from '../../../models/website.model.client';
@@ -31,7 +31,7 @@ export class WebsiteEditComponent implements OnInit {
     private route: ActivatedRoute,
     private activatedRoute: ActivatedRoute) { }
 
-    update(name: String){
+    update(name: String) {
       const newWebsite: Website = {
         _id: this.wid,
         name: name,
@@ -42,7 +42,7 @@ export class WebsiteEditComponent implements OnInit {
       // updateWebsite
     }
 
-    deleteWebsite(id){
+    deleteWebsite(id) {
 
       this.websiteService.deleteWebsite(id);
 

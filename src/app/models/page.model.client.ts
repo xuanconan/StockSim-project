@@ -9,6 +9,6 @@ export class Page {
     this._id = _id;
     this.name = name;
     this.websiteId = developerId;
-    this.description = developerId;
+    this.description = description;
   }
 }

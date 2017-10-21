@@ -4,7 +4,7 @@ import { UserService } from '../../../services/user.service.client';
 import { User } from '../../../models/user.model.client';
 import { Router } from '@angular/router';
 import { WebsiteService} from '../../../services/website.service.client';
-import { Website } from "../../../models/website.model.client";
+import { Website } from '../../../models/website.model.client';
 import { NgForm } from '@angular/forms';
 import {Page} from '../../../models/page.model.client';
 import {PageService} from '../../../services/page.service.client';
@@ -32,10 +32,10 @@ export class PageEditComponent implements OnInit {
   constructor(
     private userService: UserService,
     private websiteService: WebsiteService,
-    private pageService:PageService,
+    private pageService: PageService,
     private route: ActivatedRoute) { }
 
-  update(name, title){
+  update(name, title) {
 
     const newPage: Page = {
       _id: this.pid,
@@ -47,8 +47,8 @@ export class PageEditComponent implements OnInit {
     this.pageService.updatePage(this.pid, newPage);
   }
 
-  deletePage(pageId){
-    this.pageService.deletePage(pageId)
+  deletePage(pageId) {
+    this.pageService.deletePage(pageId);
   }
 
 

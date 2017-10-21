@@ -36,19 +36,17 @@ export class RegisterComponent implements OnInit {
     if (this.userService.findUserByUsername(this.username)) {
       alert('Username "' + this.username + '" already exists');
       this.router.navigate (['/register']);
-    }
-
-    else if (this.password != this.passwordvalid) {
+    } else if (this.password !== this.passwordvalid) {
       alert('Please validate your password!');
       this.router.navigate(['/register']);
-    }else{
+    } else {
 
       const newUser: User = {
         _id: this.userService.newId(),
         username: this.username,
         password: this.password,
         firstName: '',
-        lastName:''
+        lastName: ''
       };
 
       this.userService.createUser(newUser);

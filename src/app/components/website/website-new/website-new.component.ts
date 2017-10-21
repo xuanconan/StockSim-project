@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../../../services/user.service.client';
 import { User } from '../../../models/user.model.client';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
 import { WebsiteService} from '../../../services/website.service.client';
 import { Website} from '../../../models/website.model.client';
 import { NgForm } from '@angular/forms';
@@ -32,7 +32,7 @@ export class WebsiteNewComponent implements OnInit {
     private activatedRoute: ActivatedRoute) { }
 
 
-  create(){
+  create() {
 
     this.websitename = this.createForm.value.websitename;
 

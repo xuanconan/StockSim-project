@@ -8,16 +8,16 @@ import {Injectable} from '@angular/core';
 export class UserService {
   // users are a group of json objects, here will be user(data structure)
   users: User[] = [
-    {_id: "123", username: "alice", password: "alice", firstName: "Alice", lastName: "Wonder" },
-    {_id: "234", username: "bob", password: "bob", firstName: "Bob", lastName: "Marley" },
-    {_id: "345", username: "charly", password: "charly", firstName: "Charly", lastName: "Garcia" },
-    {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose", lastName: "Annunzi" }
+    {_id: '123', username: 'alice', password: 'alice', firstName: 'Alice', lastName: 'Wonder' },
+    {_id: '234', username: 'bob', password: 'bob', firstName: 'Bob', lastName: 'Marley' },
+    {_id: '345', username: 'charly', password: 'charly', firstName: 'Charly', lastName: 'Garcia' },
+    {_id: '456', username: 'jannunzi', password: 'jannunzi', firstName: 'Jose', lastName: 'Annunzi' }
 
   ];
 
 
-  newId(){
-    return (Number(this.users[this.users.length -1]._id) + 1).toString();
+  newId() {
+    return (Number(this.users[this.users.length - 1]._id) + 1).toString();
   }
   // adds the user parameter instance to the local users array
   createUser(user: any) {
@@ -32,7 +32,7 @@ export class UserService {
   //   });
   // }
 
-//returns the user whose username and password match the username and password parameters
+// returns the user whose username and password match the username and password parameters
   findUserByCredentials(username, password) {
     for (let x = 0; x < this.users.length; x++) {
       if (this.users[x].username === username && this.users[x].password === password) {
@@ -91,18 +91,18 @@ export class UserService {
     // }
 
 
-    for(let x = 0; x < this.users.length; x++){
-      if (this.users[x]._id === userId){
+    for (let x = 0; x < this.users.length; x++) {
+      if (this.users[x]._id === userId) {
         this.users.splice(x, 1);
       }
     }
 
   }
 
-  api = {
-    'createUser' : this.createUser,
-    'findUserById': this.findUserById
-  };
+  // api = {
+  //   'createUser' : this.createUser,
+  //   'findUserById': this.findUserById
+  // };
 
 
 
