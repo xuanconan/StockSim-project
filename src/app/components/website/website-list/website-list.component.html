@@ -1,0 +1,52 @@
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+
+    <!--heading on the nav bar-->
+    <p class="navbar-text pull-left">
+      <a routerLink="/profile/{{ userId }}" class="white">
+        <span class="glyphicon glyphicon-chevron-left "></span>
+      </a>
+    </p>
+
+    <div class="navbar-brand pull-left">
+      <b class="white">Websites</b>
+    </div>
+
+    <!--tick mark-->
+    <div class="navbar-text pull-right">
+      <a routerLink="/profile/{{ userId }}/website/new" class="white">
+        <span class="glyphicon glyphicon-plus "></span>
+      </a>
+    </div>
+
+  </div>
+</nav>
+
+
+<div class="padding"></div>
+<div *ngFor = "let website of websites" class="container-fluid ">
+  <ul routerLink="/profile/{{ userId }}/website/{{ wid }}/page" class="list-group">
+    <li class="list-group-item blue borderless">
+
+      <a routerLink="/profile/{{ userId }}/website/{{ website._id }}/page">
+        {{ website.name }}
+      </a>
+
+      <a class="pull-right" routerLink="/profile/{{ userId }}/website/{{ website._id }}">
+        <span class="glyphicon glyphicon-cog"></span>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <p class="navbar-text pull-right">
+      <a routerLink="/profile/{{ userId }}" class="white">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+    </p>
+  </div>
+</nav>
+

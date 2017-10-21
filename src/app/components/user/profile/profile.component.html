@@ -1,0 +1,97 @@
+
+
+<!--<input value = "{{user.username}}"/>-->
+<!--<br/>-->
+
+<!--<input value = "{{user.firstName}}"/>-->
+
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+
+    <!--heading on the nav bar-->
+    <div class="navbar-brand pull-left">
+      <!--<a class="thick white nounderline " href="../page/page-list.html">-->
+      <b class="white">Profile</b>
+      <!--</a>-->
+    </div>
+
+    <div class="navbar-text pull-right">
+      <a (click)="update(username, firstName, lastName)" class="white "
+         routerLink="/profile/{{userId}}">
+        <span class="glyphicon glyphicon-ok "></span>
+      </a>
+    </div>
+
+    <!--tick mark-->
+
+  </div>
+</nav>
+
+
+
+
+<!--<form id="updateForm" (ngSubmit) = "update()" #f="ngForm">-->
+  <div class="container">
+
+      <div class="form-group padding">
+        <label>Username</label>
+        <input [(ngModel)] = "username"
+               name="username"
+               type="email" class="form-control"
+               placeholder="{{user.username}}"
+               required>
+      </div>
+
+
+      <div class="form-group">
+        <label>Email address</label>
+        <input [(ngModel)] = "email"
+               name="email"
+               type="email" class="form-control"
+               placeholder="{{user.firstName}}.{{user.lastName}}@unicorn.com"
+               required>
+      </div>
+
+
+      <div class="form-group">
+        <label>First Name</label>
+        <input [(ngModel)] = "firstName"
+               name="firstName"
+               type="text"
+               class="form-control"
+               placeholder="{{user.firstName}}"
+               required>
+      </div>
+
+
+
+      <div class="form-group">
+        <label>Last Name</label>
+        <input [(ngModel)] = "lastName"
+               name="lastName"
+               type="text"
+               class="form-control"
+               placeholder="{{user.lastName}}"
+               required>
+      </div>
+
+    <a class="btn btn-primary btn-block"
+       routerLink="website">Websites</a>
+    <a class="btn btn-danger btn-block "
+       routerLink="/login" >Logout</a>
+
+  </div>
+<!--</form>-->
+
+<!-- Footer -->
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <p class="navbar-text pull-right">
+      <a routerLink="/profile/{{userId}}" class="white">
+        <span class="glyphicon glyphicon-user "></span>
+      </a>
+    </p>
+
+  </div>
+</nav>

@@ -1,0 +1,108 @@
+
+<!--Top navbar -->
+<div class="container-fluid">
+  <nav class="navbar navbar-default navbar-fixed-top">
+
+    <div class="row">
+      <div class="col-sm-1">
+        <div class="navbar-text pull-left">
+          <a routerLink="/profile/{{ userId }}/website" class="white">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-sm-3 hidden-xs">
+        <div class="navbar-brand pull-left">
+          <!--<a href="../page/page-list.html" class="white">-->
+          <b class="white">Websites</b>
+          <!--</a>-->
+        </div>
+        <div  class="navbar-text pull-right white">
+          <span class="glyphicon glyphicon-plus"></span>
+        </div>
+        <!--</p>-->
+      </div>
+
+      <div class="col-sm-8">
+        <!--heading on the nav bar-->
+        <div class="navbar-brand pull-left">
+          <div class="thick white">
+            <b>New Website</b>
+          </div>
+        </div>
+        <!--tick mark-->
+        <div class="navbar-text pull-right">
+          <a (click)="create()" routerLink="/profile/{{ userId }}/website" class="white">
+            <span class="glyphicon glyphicon-ok "></span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </nav>
+</div>
+
+<div class="container-fluid">
+
+  <div class="row">
+
+    <div class="col-sm-4 hidden-xs">
+
+      <div class="padding"></div>
+      <ul *ngFor = "let website of websites"  class="list-group ">
+        <li class="list-group-item blue borderless">
+
+          <!--<a routerLink="/profile/{{ userId }}/website/{{ wid }}/page">-->
+          {{ website.name }}
+          <!--</a>-->
+
+          <a class="pull-right" >
+            <span class="glyphicon glyphicon-cog"></span>
+          </a>
+        </li>
+      </ul>
+
+    </div>
+
+
+    <div class="col-sm-8 padding">
+      <form (ngSubmit) = "create()" #f="ngForm">
+        <div class="container-fluid">
+
+            <b>Name</b>
+
+          <input ngModel
+                 placeholder="Website name"
+                 name="websitename"
+                 class="form-control"
+                 type="text"
+                 required
+                 #websitename = "ngModel"/>
+
+            <b>Description</b>
+
+          <textarea class="form-control" placeholder="Description" rows="6"></textarea>
+
+          <!--<button class="btn btn-primary btn-block"-->
+                  <!--type = "submit"-->
+                  <!--routerLink="/profile/{{ userId }}/website"-->
+                  <!--[disabled]="!f.valid"> test </button>-->
+
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <div class="navbar-text pull-right">
+      <a routerLink="/profile/{{ userId }}" class="white">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+    </div>
+  </div>
+</nav>
+

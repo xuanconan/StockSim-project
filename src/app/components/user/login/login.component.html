@@ -1,0 +1,70 @@
+
+<div class="container">
+
+
+  <h1>Login</h1>
+
+  <form (ngSubmit) = "login()" #f="ngForm">
+    <input ngModel
+           placeholder="username"
+           name="username"
+           class="form-control"
+           type="text"
+           required
+           #username = "ngModel"/>
+    <br/>
+
+    <input ngModel
+           placeholder="password"
+           name="password"
+           class="form-control"
+           type="password"
+           required
+           #password="ngModel"/>
+    <br/>
+
+    <button class="btn btn-primary btn-block form-control"
+            type="submit"
+            [disabled]="!f.valid"
+    >Login</button>
+    <!--(click)="login()"-->
+    <br/>
+
+    <button class="btn btn-success btn-block form-control"
+            routerLink="/register">Register</button>
+  </form>
+  <!--<form (ngSubmit) = "login()" #f="ngForm">-->
+  <!--<input placeholder="username"-->
+         <!--name="username"-->
+         <!--type="text"-->
+         <!--class="form-control"-->
+         <!--ngModel-->
+         <!--required-->
+         <!--#username="ngModel"/>-->
+  <!--<span class="help-block" *ngIf="!username.valid && username.touched">-->
+    <!--Please enter username!-->
+  <!--</span>-->
+
+    <!--<input .../>-->
+    <!--<span> ...</span>-->
+    <!--<button class="btn btn-primary btn-block"-->
+            <!--type="submit"-->
+            <!--[disabled]="!f.valid">Login</button>-->
+    <!--...-->
+  <!--</form>-->
+
+  <!--<input [(ngModel)] = "username"-->
+         <!--placeholder="username"-->
+         <!--type="text"-->
+         <!--class="form-control"/>-->
+
+  <!--<input [(ngModel)]="password"-->
+         <!--placeholder="password"-->
+         <!--type="password"-->
+         <!--class="form-control"/>-->
+
+  <!--&lt;!&ndash;invoke the funciton by clicking&ndash;&gt;-->
+  <!--<button class="btn btn-primary btn-block" (click)="login(username, password)">Login</button>-->
+  <!--<button class="btn btn-success btn-block" routerLink="/register">Register</button>-->
+
+</div>
