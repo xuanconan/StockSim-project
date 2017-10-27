@@ -45,14 +45,20 @@ export class WidgetService {
   }
 
   // retrieves the widgets in local widgets array whose pageId matches the parameter pageId
-  findWidgetsByPageId(pageId) {
-    const widgets: Widget[] = [];
-    for (let x = 0; x < this.widget.length; x++) {
-      if (this.widget[x].pageId === pageId) {
-        widgets.push(this.widget[x]);
-      }
-    }
-    return widgets;
+  findAllWidgetsForPageId(pageId) {
+    const url = 'http://localhost:3100/api/page/' + pageId + '/widget';
+
+    return this.http.get(url)
+      .map((response: Response) => {
+        return response.json();
+      });
+    // const widgets: Widget[] = [];
+    // for (let x = 0; x < this.widget.length; x++) {
+    //   if (this.widget[x].pageId === pageId) {
+    //     widgets.push(this.widget[x]);
+    //   }
+    // }
+    // return widgets;
   }
 
   // retrieves the widget in local widgets array whose _id matches the widgetId parameter

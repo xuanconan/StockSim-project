@@ -37,10 +37,10 @@
 
         <a routerLink="/profile/{{ userId }}/website/{{ wid }}/page/{{pid}}/widget">
 
-          <!--{{ widget.text }}-->
+          {{ widget.text }}
 
           <!--pass along a nested component, widget as an input tide to var widget-->
-          <app-widget-header [widget]="widget"></app-widget-header>
+          <!--<app-widget-header [widget]="widget"></app-widget-header>-->
 
         </a>
 

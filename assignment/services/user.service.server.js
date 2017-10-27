@@ -11,14 +11,16 @@ module.exports = function (app) {
   app.put("/api/user/:userId", updateUser);
 
 
-  var users = [
-    {_id: '123', username: 'alice', password: 'alice', firstName: 'AlicefromServer', lastName: 'Wonder' },
-    {_id: '234', username: 'bob', password: 'bob', firstName: 'Bob', lastName: 'Marley' },
-    {_id: '345', username: 'charly', password: 'charly', firstName: 'Charly', lastName: 'Garcia' },
-    {_id: '456', username: 'jannunzi', password: 'jannunzi', firstName: 'Jose', lastName: 'Annunzi' },
-    {_id: '567', username: 'test', password: 'test', firstName: 'Yeah', lastName: 'Baby' }
+  // var users = [
+  //   {_id: '123', username: 'alice', password: 'alice', firstName: 'AlicefromServer', lastName: 'Wonder' },
+  //   {_id: '234', username: 'bob', password: 'bob', firstName: 'Bob', lastName: 'Marley' },
+  //   {_id: '345', username: 'charly', password: 'charly', firstName: 'Charly', lastName: 'Garcia' },
+  //   {_id: '456', username: 'jannunzi', password: 'jannunzi', firstName: 'Jose', lastName: 'Annunzi' },
+  //   {_id: '567', username: 'test', password: 'test', firstName: 'Yeah', lastName: 'Baby' }
+  //
+  // ];
 
-  ];
+  var USERS = require("./user.mock.service");
 
   // function findAllUsers(req, res) {
   //
@@ -36,7 +38,7 @@ module.exports = function (app) {
     // if there is a username and password
     if (username && password) {
       // username and password verification function
-      var user = users.find(function (user){
+      var user = USERS.find(function (user){
         return user.username === username &&
                user.password === password;
       });
@@ -77,7 +79,7 @@ module.exports = function (app) {
     var userId = req.params["userId"];
     // var userId = req.query["userId"]
     // users refer to the array defined at the beginning of the file, function(user) works as a lambda
-    var user = users.find(function (user){
+    var user = USERS.find(function (user){
       return user._id === userId;
     });
     return res.json(user);
@@ -88,8 +90,8 @@ module.exports = function (app) {
     var userId = req.userId;
 
     for(var x = 0; x < users.length; x++) {
-      if (users[x]._id === userId) {
-        users[x] = user;
+      if (USERS[x]._id === userId) {
+        USERS[x] = user;
       }
     }
     return res.json(user);
@@ -97,7 +99,7 @@ module.exports = function (app) {
 
   function createUser(req, res) {
     var user = req.body;
-    users.push(user);
+    USERS.push(user);
     return res.json();
   }
 
