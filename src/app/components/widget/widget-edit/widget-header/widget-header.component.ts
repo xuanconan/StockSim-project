@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Widget} from '../../../../models/widget.model.client';
+import { NgModel} from '@angular/forms';
 
 @Component({
   selector: 'app-widget-header',
@@ -6,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./widget-header.component.css']
 })
 export class WidgetHeaderComponent implements OnInit {
+  // pass the widget as an input from outside
+  @Input()
+  widget: Widget;
 
   constructor() { }
 

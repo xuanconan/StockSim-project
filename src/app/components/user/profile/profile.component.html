@@ -17,7 +17,7 @@
     </div>
 
     <div class="navbar-text pull-right">
-      <a (click)="update(username, firstName, lastName)" class="white "
+      <a (click)= "update (username, firstName, lastName)" class="white "
          routerLink="/profile/{{userId}}">
         <span class="glyphicon glyphicon-ok "></span>
       </a>
@@ -34,12 +34,14 @@
 <!--<form id="updateForm" (ngSubmit) = "update()" #f="ngForm">-->
   <div class="container">
 
+
+
       <div class="form-group padding">
         <label>Username</label>
         <input [(ngModel)] = "username"
                name="username"
                type="email" class="form-control"
-               placeholder="{{user.username}}"
+               placeholder="alice"
                required>
       </div>
 
@@ -49,18 +51,18 @@
         <input [(ngModel)] = "email"
                name="email"
                type="email" class="form-control"
-               placeholder="{{user.firstName}}.{{user.lastName}}@unicorn.com"
+               placeholder="alice.wonderland@unicorn.com"
                required>
       </div>
 
 
       <div class="form-group">
-        <label>First Name</label>
+        <label>First Name </label>
         <input [(ngModel)] = "firstName"
                name="firstName"
                type="text"
                class="form-control"
-               placeholder="{{user.firstName}}"
+               placeholder = "Alice"
                required>
       </div>
 
@@ -72,7 +74,7 @@
                name="lastName"
                type="text"
                class="form-control"
-               placeholder="{{user.lastName}}"
+               placeholder = "Wonderland"
                required>
       </div>
 

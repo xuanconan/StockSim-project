@@ -24,6 +24,8 @@ export class PageEditComponent implements OnInit {
   userId: String;
   title: String;
   user: User;
+  pages: Page[];
+  page: Page;
   developerId: String;
   websites: Website[];
   description: String;
@@ -44,13 +46,22 @@ export class PageEditComponent implements OnInit {
       description: title,
     };
 
-    this.pageService.updatePage(this.pid, newPage);
+    this.pageService.updatePage(this.wid, this.pid, newPage)
+      .subscribe((pages) => {
+        this.pages = pages;
+      });
   }
 
-  deletePage(pageId) {
-    this.pageService.deletePage(pageId);
-  }
+  // deletePage(pageId) {
+  //   this.pageService.deletePage(pageId);
+  // }
 
+  deletePage(websiteId, pageId) {
+    this.pageService.deletePage(websiteId, pageId)
+      .subscribe((pages) => {
+        this.pages = pages;
+      });
+  }
 
   // notify the changes of the route
   ngOnInit() {
@@ -60,9 +71,16 @@ export class PageEditComponent implements OnInit {
       // this.user = this.userService.findUserById(this.userId);
       this.wid = params['wid'];
       this.pid = params['pid'];
-      // alert('userId: ' + this.userId);
-      this.websites = this.websiteService.findWebsitesByUser(this.userId);
-      console.log(this.websites);
+
+      this.pageService.findPageById(this.wid, this.pid)
+        .subscribe((page) => {
+          this.page = page;
+        });
+
+      this.pageService.findPageByWebsiteId(this.wid)
+        .subscribe((pages) => {
+          this.pages = pages;
+        });
     });
 
   }

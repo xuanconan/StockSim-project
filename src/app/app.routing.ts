@@ -11,12 +11,19 @@ import {PageEditComponent} from './components/page/page-edit/page-edit.component
 import {WidgetListComponent} from './components/widget/widget-list/widget-list.component';
 import {WidgetChooserComponent} from './components/widget/widget-chooser/widget-chooser.component';
 import {WidgetEditComponent} from './components/widget/widget-edit/widget-edit.component';
+import {HomeComponent} from './components/home/home.component';
+import {TestComponent} from './components/test/test.component';
+import {ModuleWithProviders} from '@angular/core';
 
 
 // config route default constants
 const appRoutes: Routes = [
+  {path: '', component : HomeComponent},
+  {path: 'test', component: TestComponent},
+
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
+  {path: 'widget', component: WidgetListComponent},
   // navigate pass certain userID 显示在地址栏上
   {path: 'profile/:userId', component: ProfileComponent},
   {path: 'profile/:userId/website', component: WebsiteListComponent},

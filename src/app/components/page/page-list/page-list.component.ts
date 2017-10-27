@@ -45,11 +45,20 @@ export class PageListComponent implements OnInit {
 
       this.pid = params['pid'];
 
-      // alert('userId: ' + this.userId);
-      this.websites = this.websiteService.findWebsitesByUser(this.userId);
-      // console.log(this.websites);
+      this.websiteService.findWebsitesByUser(this.userId)
+        .subscribe((websites) => {
+          this.websites = websites;
+        });
 
-      this.pages = this.pageService.findPageByWebsiteId(this.wid);
+      // alert('userId: ' + this.userId);
+      // this.websites = this.websiteService.findWebsitesByUser(this.userId);
+      // console.log(this.websites);
+      this.pageService.findPageByWebsiteId(this.wid)
+        .subscribe((pages) => {
+          this.pages = pages;
+        });
+
+      // this.pages = this.pageService.findPageByWebsiteId(this.wid);
 
     });
 

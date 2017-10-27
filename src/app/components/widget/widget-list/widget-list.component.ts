@@ -8,6 +8,8 @@ import { Website } from '../../../models/website.model.client';
 import { NgForm } from '@angular/forms';
 import {Page} from '../../../models/page.model.client';
 import {PageService} from '../../../services/page.service.client';
+import {Widget} from '../../../models/widget.model.client';
+import {WidgetService} from '../../../services/widget.service.client';
 
 @Component({
   selector: 'app-widget-list',
@@ -24,11 +26,13 @@ export class WidgetListComponent implements OnInit {
   pages: Page[];
   pid: String;
   description: String;
+  widgets: Widget[];
 
   // inject route info in constructor
   constructor(
     private userService: UserService,
     private websiteService: WebsiteService,
+    private widgetService: WidgetService,
     private pageService: PageService,
     private route: ActivatedRoute) { }
 
@@ -43,11 +47,14 @@ export class WidgetListComponent implements OnInit {
       this.pid = params['pid'];
 
       // alert('userId: ' + this.userId);
-      this.websites = this.websiteService.findWebsitesByUser(this.userId);
+      // this.websites = this.websiteService.findWebsitesByUser(this.userId);
       // console.log(this.websites);
-
-      this.pages = this.pageService.findPageByWebsiteId(this.wid);
-
+      // this.pages = this.pageService.findPageByWebsiteId(this.wid);
+      // this.widgets = this.widgetService.findWidgetsByPageId(this.pid);
+       this.widgetService.findAllWidgets()
+        .subscribe((widgets: Widget[]) => {
+        this.widgets = widgets;
+        });
     });
 
   }

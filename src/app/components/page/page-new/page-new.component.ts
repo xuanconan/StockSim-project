@@ -27,6 +27,7 @@ export class PageNewComponent implements OnInit {
   pid: String;
   pagename: String;
   title: String;
+  pages: Page[];
 
   // inject route info in constructor
   constructor(
@@ -44,7 +45,10 @@ export class PageNewComponent implements OnInit {
       description: title,
     };
 
-    this.pageService.createPage(this.userId, newPage);
+    this.pageService.createPage(this.userId, newPage).
+    subscribe((pages) => {
+      this.pages = pages;
+    });
   }
 
 
@@ -56,10 +60,7 @@ export class PageNewComponent implements OnInit {
       // this.user = this.userService.findUserById(this.userId);
       this.wid = params['wid'];
       // alert('userId: ' + this.userId);
-      this.websites = this.websiteService.findWebsitesByUser(this.userId);
-
-
-
+      // this.websites = this.websiteService.findWebsitesByUser(this.userId);
       console.log(this.websites);
     });
 

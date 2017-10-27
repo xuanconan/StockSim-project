@@ -17,7 +17,7 @@
 
     <!--tick mark-->
     <div class="navbar-text pull-right">
-      <a (click)="update(name,title)"
+      <a (click)="update(name, title)"
         routerLink="/profile/{{userId}}/website/{{wid}}/page" class="navbar-link black">
         <span class="glyphicon glyphicon-ok "></span>
       </a>
@@ -46,7 +46,7 @@
            placeholder="Title">
 
     <a class="btn btn-danger btn-block"
-       (click)="deletePage( pid )"
+       (click)="deletePage(this.wid, this.pid)"
        routerLink="/profile/{{userId}}/website/{{wid}}/page" >Delete</a>
 
 

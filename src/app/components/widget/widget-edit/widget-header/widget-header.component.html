@@ -4,7 +4,7 @@
 
     <!--heading on the nav bar-->
     <div class="navbar-text pull-left">
-      <a href="widget-list.html" class="black">
+      <a routerLink="/profile/{{userId}}/website/{{wid}}/page" class="black">
         <span class="glyphicon glyphicon-chevron-left "></span>
       </a>
     </div>
@@ -28,30 +28,40 @@
 
 
 <div class="container-fluid">
-  <ul class="list-group padding">
+  <!--{{widget.size}}-->
+  <div [ngSwitch]="widget.size">
+    <a *ngSwitchCase="1">{{widget.text}}</a>
+    <a *ngSwitchCase="2">{{widget.text}}</a>
 
-      Name
+    <a *ngSwitchCase="3">{{widget.text}}</a>
 
-    <input class="form-control"
-           type="text"
-           placeholder="Page Name">
+    <a *ngSwitchCase="0">{{widget.text}}</a>
+  </div>
+
+  <!--<ul class="list-group padding">-->
+
+      <!--Name-->
+
+    <!--<input class="form-control"-->
+           <!--type="text"-->
+           <!--placeholder="Page Name">-->
 
 
-      Text
+      <!--Text-->
 
-    <input class="form-control"
-           type="text"
-           placeholder="Text">
+    <!--<input class="form-control"-->
+           <!--type="text"-->
+           <!--placeholder="Text">-->
 
-      Size
-    <input class="form-control"
-           type="text"
-           placeholder="5">
+      <!--Size-->
+    <!--<input class="form-control"-->
+           <!--type="text"-->
+           <!--placeholder="5">-->
 
-    <a class="btn btn-danger btn-block"
-       href="widget-list.html" >Delete</a>
+    <!--<a class="btn btn-danger btn-block"-->
+       <!--href="widget-list.html" >Delete</a>-->
 
-  </ul>
+  <!--</ul>-->
 </div>
 
 

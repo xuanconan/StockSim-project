@@ -24,6 +24,7 @@ export class WebsiteEditComponent implements OnInit {
   developerId: String;
   websites: Website[];
   description: String;
+  website: Website;
 
   // inject route info in constructor
   constructor(
@@ -38,14 +39,18 @@ export class WebsiteEditComponent implements OnInit {
         developerId: this.userId,
         description: '',
       };
-      this.websiteService.updateWebsite(this.wid, newWebsite);
+      this.websiteService.updateWebsite(this.wid, newWebsite)
+        .subscribe((websites) => {
+          this.websites = websites;
+        });
       // updateWebsite
     }
 
-    deleteWebsite(id) {
-
-      this.websiteService.deleteWebsite(id);
-
+    deleteWebsite(userId, websiteId) {
+      this.websiteService.deleteWebsite(this.userId, websiteId)
+        .subscribe((websites) => {
+          this.websites = websites;
+        });
     }
 
 
@@ -56,8 +61,16 @@ export class WebsiteEditComponent implements OnInit {
       this.userId = params['userId'];
       this.wid = params['wid'];
       // alert('userId: ' + this.userId);
-      this.websites = this.websiteService.findWebsitesByUser(this.userId);
+      // this.websites = this.websiteService.findWebsitesByUser(this.userId);
+      this.websiteService.findWebsitesByUser(this.userId)
+        .subscribe((websites) => {
+          this.websites = websites;
+        });
 
+      this.websiteService.findWebsiteById(this.userId, this.wid)
+        .subscribe((website) => {
+          this.website = website;
+        });
     });
   }
 }

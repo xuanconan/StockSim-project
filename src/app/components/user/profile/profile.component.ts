@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../../../services/user.service.client';
 import { User } from '../../../models/user.model.client';
@@ -12,10 +12,12 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  @ViewChild('f') updateForm: NgForm;
 
-  userId: String;
+
+  @ViewChild('f') updateForm: NgForm;
   user: User;
+  userId: String;
+  // user: User;
   username: String;
   email: String;
   firstName: String;
@@ -24,11 +26,11 @@ export class ProfileComponent implements OnInit {
   // inject route info in constructor
   constructor(
           private userService: UserService,
-          private activatedRouter: ActivatedRoute) { }
+          private activatedRoute: ActivatedRoute) { }
 
   update(username, firstName, lastName) {
     // console.log(user);
-    // this.username = this.updateForm.value.username;
+    // this.ausername = this.updateForm.value.ausername;
     // this.firstName = this.updateForm.value.firstName;
     // this.lastName = this.updateForm.value.lastName;
     // this.email = this.updateForm.value.email;
@@ -42,20 +44,28 @@ export class ProfileComponent implements OnInit {
       // email: this.email,
 
     };
-    console.log(updatedUser);
-    this.userService.updateUser(this.userId, updatedUser);
-
+    // console.log(updatedUser);
+    this.userService.updateUser(this.userId, updatedUser).
+    subscribe((user) => {
+      this.user = user;
+    });
+    console.log(this.user);
   }
 
   // notify the changes of the route
   ngOnInit() {
     // invoke a function that can pass the value of the parameters
-    this.activatedRouter.params.subscribe(params => {
+    this.activatedRoute.params.subscribe((params) => {
       this.userId = params['userId'];
-      this.user = this.userService.findUserById(this.userId);
-      this.username = this.user.username;
-      // alert('userId: ' + this.userId);
     });
+
+    // this.user = this.userService.findUserById(this.userId);
+
+    this.userService.findUserById(this.userId).subscribe((user: User) => {
+        this.user = user;
+        console.log(this.user);
+    });
+    // alert('userId: ' + this.userId);
   }
 
 

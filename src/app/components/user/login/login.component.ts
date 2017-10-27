@@ -3,6 +3,8 @@ import {Route, Router} from '@angular/router';
 import {UserService} from '../../../services/user.service.client';
 import {User} from '../../../models/user.model.client';
 import {NgForm} from '@angular/forms';
+import {Response} from '@angular/http';
+
 
 // below is an angular component
 @Component({
@@ -27,23 +29,39 @@ export class LoginComponent implements OnInit {
   constructor(private userService: UserService,
               private router: Router) { }
 
+  // api function for login
   login() {
-    // console.log('login' + username);
-    // console.log(password);
     this.username = this.loginForm.value.username;
     this.password = this.loginForm.value.password;
-    const user: User = this.userService.findUserByCredentials(this.username, this.password);
-    if (user) {
-      // alert(user._id);
-      this.router.navigate(['/profile', user._id]);
-    } else {
-      this.errorFlag = true;
-      this.errorMsg = 'Error';
-      // alert('wrong username or password');
-    }
+    // calling and subscribe dynamic result from the http function located in user.service.client
+    this.userService.findUserByCredentials(this.username, this.password)
+      .subscribe((user: User) => {
+        if (user) {
+          // alert(user._id);
+          this.router.navigate(['/profile', user._id]);
+        } else {
+          this.errorFlag = true;
+          this.errorMsg = 'Error';
+          alert('wrong username or password');
+        }
+    });
   }
 
-
+  // login() {
+  //   // console.log('login' + username);
+  //   // console.log(password);
+  //   this.username = this.loginForm.value.username;
+  //   this.password = this.loginForm.value.password;
+  //   const user: User = this.userService.findUserByCredentials(this.username, this.password);
+  //   if (user) {
+  //     // alert(user._id);
+  //     this.router.navigate(['/profile', user._id]);
+  //   } else {
+  //     this.errorFlag = true;
+  //     this.errorMsg = 'Error';
+  //     // alert('wrong username or password');
+  //   }
+  // }
   // // function to be call from outside
   //
   // login(username: String, password: String) {

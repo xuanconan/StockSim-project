@@ -80,14 +80,14 @@
         <input [(ngModel)]="name"
                 class="form-control"
                 type="text"
-                placeholder="Website Name">
+                placeholder="name">
 
 
           <b>Website Description</b>
 
         <textarea class="form-control" placeholder="Description" rows="6"></textarea>
 
-        <a (click)="deleteWebsite(this.wid)"
+        <a (click)="deleteWebsite(this.userId, this.wid)"
           class="btn btn-danger btn-block " routerLink="/profile/{{userId}}/website" >
           Delete
         </a>

@@ -46,10 +46,10 @@ export class WidgetChooserComponent implements OnInit {
       this.pid = params['pid'];
 
       // alert('userId: ' + this.userId);
-      this.websites = this.websiteService.findWebsitesByUser(this.userId);
+      // this.websites = this.websiteService.findWebsitesByUser(this.userId);
       // console.log(this.websites);
 
-      this.pages = this.pageService.findPageByWebsiteId(this.wid);
+      // this.pages = this.pageService.findPageByWebsiteId(this.wid);
 
     });
 

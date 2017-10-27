@@ -2,6 +2,12 @@
 
 import {User} from '../models/user.model.client';
 import {Injectable} from '@angular/core';
+import { Http} from '@angular/http';
+import {parseHttpResponse} from 'selenium-webdriver/http';
+import { Response} from '@angular/http';
+import 'rxjs/Rx';
+import {environment} from '../../environments/environment';
+
 
 // make class usable for all components
 @Injectable()
@@ -14,83 +20,68 @@ export class UserService {
     {_id: '456', username: 'jannunzi', password: 'jannunzi', firstName: 'Jose', lastName: 'Annunzi' }
 
   ];
+  // inject http service into userService
+  constructor(private http: Http) {}
 
+  baseUrl = environment.baseUrl;
 
   newId() {
-    return (Number(this.users[this.users.length - 1]._id) + 1).toString();
-  }
-  // adds the user parameter instance to the local users array
-  createUser(user: any) {
-    this.users.push(user);
-    return user;
+    return (Number( Math.floor((Math.random()) * 10000))).toString();
+    // return (Number(this.users[this.users.length - 1]._id) + 1).toString();
   }
 
-  // define validating function
-  // findUserByCredentials(username, password) {
-  //   return this.users.find(function (user) {
-  //     return user.username === username && user.password === password;
-  //   });
-  // }
+  // adds the user parameter instance to the local users array
+  createUser(user: User) {
+    const url = 'http://localhost:3100/api/user';
+    return this.http.post(url, user).map((response: Response) => {
+      return response.json();
+    });
+    // this.users.push(user);
+    // return user;
+  }
 
 // returns the user whose username and password match the username and password parameters
   findUserByCredentials(username, password) {
-    for (let x = 0; x < this.users.length; x++) {
-      if (this.users[x].username === username && this.users[x].password === password) {
-        return this.users[x];
-      }
-    }
-    alert('Invalid username or password!');
+    const url = 'http://localhost:3100/api/user?username=' + username + '&password=' + password;
+    // using http to get the url and work upon that
+    return this.http.get(url).map((response: Response) => {
+      return response.json();
+    });
   }
-
 
   // returns the user in local users array whose _id matches the userId parameter
   findUserById(userId: String) {
-    for (let x = 0; x < this.users.length; x++) {
-      if (this.users[x]._id === userId) {
-        return this.users[x];
-      }
-    }
+    return this.http.get(this.baseUrl + '/api/user/' + userId)
+      .map((res: Response) => {
+          return res.json();
+        });
+    // const url = 'http://localhost:3100/api/user/' + userId;
+    // return this.http.get(url).map((response: Response) => {
+    //   return response.json();
+    // });
   }
 
 
   findUserByUsername(username: String) {
-    for (let x = 0; x < this.users.length; x++) {
-      if (this.users[x].username === username) {
-        return this.users[x];
-      }
-    }
+    const url = this.baseUrl + '/api/user?username=' + username;
+    return this.http.get(url)
+      .map((res: Response) => {
+        return res.json();
+      });
   }
 
   // updates the user in local users array whose _id matches the userId parameter
 
   updateUser(userId: String, user: User) {
-    for (let x = 0; x < this.users.length; x++) {
-      if (this.users[x]._id === user._id) {
-        this.users[x] = user;
-        // this.users[x].firstName = user.firstName;
-        // this.users[x].lastName = user.lastName;
-      }
-    }
+    const url = this.baseUrl + '/api/user/' + userId;
+    return this.http.put(url, user)
+      .map((res: Response) => {
+        return res.json();
+      });
   }
 
   // removes the user whose _id matches the userId parameter
-
   deleteUser(userId: String) {
-    // let users: User[]=[];
-    // for (let x = 0; x < this.users.length; x++) {
-    //     users.push(this.users[x]);
-    // }
-    // for (let x = 0; x < this.users.length; x++) {
-    //   this.users.pop();
-    // }
-    //
-    // for (let x = 0; x < this.users.length; x++) {
-    //     if(users[x]._id != userId){
-    //       this.users.push(users[x]);
-    //     }
-    // }
-
-
     for (let x = 0; x < this.users.length; x++) {
       if (this.users[x]._id === userId) {
         this.users.splice(x, 1);

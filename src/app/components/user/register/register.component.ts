@@ -13,6 +13,7 @@ import { NgForm } from '@angular/forms';
 
 export class RegisterComponent implements OnInit {
   @ViewChild('f') registerForm: NgForm;
+  user: User;
   username: String;
   password: String;
   passwordvalid: String;
@@ -22,9 +23,6 @@ export class RegisterComponent implements OnInit {
   constructor(private userService: UserService,
               private router: Router) { }
 
-
-
-
   // function to be call from register
   register() {
 
@@ -32,32 +30,39 @@ export class RegisterComponent implements OnInit {
     this.password = this.registerForm.value.password;
     this.passwordvalid = this.registerForm.value.passwordvalid;
 
-    // if there is a user, then navigator, will have userID passed too
-    if (this.userService.findUserByUsername(this.username)) {
-      alert('Username "' + this.username + '" already exists');
-      this.router.navigate (['/register']);
-    } else if (this.password !== this.passwordvalid) {
-      alert('Please validate your password!');
-      this.router.navigate(['/register']);
-    } else {
-
-      const newUser: User = {
-        _id: this.userService.newId(),
-        username: this.username,
-        password: this.password,
-        firstName: '',
-        lastName: ''
-      };
-
-      this.userService.createUser(newUser);
-      this.router.navigate(['profile', newUser._id]);
-    }
-
+    this.userService.findUserByUsername(this.username)
+      .subscribe((user: User) => {
+        if (user) {
+          alert('Username "' + this.username + '" already exists');
+          this.router.navigate (['/register']);
+        } else if (this.password !== this.passwordvalid) {
+          alert('Please validate your password!');
+          this.router.navigate(['/register']);
+        } else {
+          const newUser: User = {
+            _id: this.userService.newId(),
+            username: this.username,
+            password: this.password,
+            firstName: 'first name',
+            lastName: 'last name'
+          };
+          this.userService.createUser(newUser).subscribe((auser) => {
+            this.user = auser;
+          });
+          this.router.navigate(['profile', newUser._id]);
+        }
+      });
   }
 
   ngOnInit() {
     this.title = 'This is Register Page';
     this.disabledFlag = true;
+
+    // this.userService.findUserByUsername(this.username)
+    //   .subscribe((user) => {
+    //     this.user = user;
+    //   });
+
   }
 
 }

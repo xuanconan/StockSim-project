@@ -25,7 +25,11 @@ import {WebsiteService} from './services/website.service.client';
 import { UserService } from './services/user.service.client';
 import { PageService } from './services/page.service.client';
 import { WidgetService } from './services/widget.service.client';
-import {HttpModule} from "@angular/http";
+import {HomeComponent} from './components/home/home.component';
+import {TestComponent} from './components/test/test.component';
+import {TestService} from './services/test.service.client';
+import {HttpModule} from '@angular/http';
+
 
 @NgModule({
   declarations: [
@@ -44,10 +48,12 @@ import {HttpModule} from "@angular/http";
     WidgetEditComponent,
     WidgetHeaderComponent,
     WidgetImageComponent,
-    WidgetYoutubeComponent
+    WidgetYoutubeComponent,
+    HomeComponent,
+    TestComponent
   ],
   imports: [
-    BrowserModule, routing, FormsModule,HttpModule
+    BrowserModule, routing, FormsModule, HttpModule
   ],
 
   // inject it into any constructors
@@ -55,7 +61,8 @@ import {HttpModule} from "@angular/http";
     UserService,
     WebsiteService,
     PageService,
-    WidgetService
+    WidgetService,
+    TestService
   ],
   bootstrap: [AppComponent]
 })

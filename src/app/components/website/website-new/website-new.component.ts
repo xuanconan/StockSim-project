@@ -43,7 +43,10 @@ export class WebsiteNewComponent implements OnInit {
       description: '',
     };
 
-    this.websiteService.createWebsite(this.userId, newWebsite);
+    this.websiteService.createWebsite(this.userId, newWebsite)
+      .subscribe( (websites) => {
+        this.websites = websites;
+      });
   }
 
   // notify the changes of the route
@@ -53,9 +56,13 @@ export class WebsiteNewComponent implements OnInit {
       this.userId = params['userId'];
       this.wid = params['wid'];
       // alert('userId: ' + this.userId);
-      this.websites = this.websiteService.findWebsitesByUser(this.userId);
+      // this.websites = this.websiteService.findWebsitesByUser(this.userId);
 
     });
+    this.websiteService.findWebsitesByUser(this.userId)
+      .subscribe((websites) => {
+        this.websites = websites;
+      });
   }
 
 }
