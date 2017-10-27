@@ -1,3 +1,4 @@
+
 var USERS = [
   {_id: '123', username: 'alice', password: 'alice', firstName: 'AlicefromServer', lastName: 'Wonder' },
   {_id: '234', username: 'bob', password: 'bob', firstName: 'Bob', lastName: 'Marley' },

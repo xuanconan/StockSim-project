@@ -11,7 +11,7 @@ module.exports = function (app) {
   app.put("/api/user/:userId", updateUser);
 
 
-  // var users = [
+  // var USER = [
   //   {_id: '123', username: 'alice', password: 'alice', firstName: 'AlicefromServer', lastName: 'Wonder' },
   //   {_id: '234', username: 'bob', password: 'bob', firstName: 'Bob', lastName: 'Marley' },
   //   {_id: '345', username: 'charly', password: 'charly', firstName: 'Charly', lastName: 'Garcia' },
@@ -52,7 +52,7 @@ module.exports = function (app) {
       // if only username, return certain user
     }
     else if (username) {
-      var user = users.find(function (user){
+      var user = USERS.find(function (user){
         return user.username === username
       });
       if(user) {

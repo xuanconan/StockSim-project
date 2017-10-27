@@ -32,23 +32,43 @@
 
   <div *ngFor = "let widget of widgets" class="container-fluid ">
 
-    <ul routerLink="/profile/{{ userId }}/website/{{ wid }}/page/{{pid}}/widget" class="list-group">
-      <li class="list-group-item blue borderless">
+    <!--<ul routerLink="/profile/{{ userId }}/website/{{ wid }}/page/{{pid}}/widget" class="list-group">-->
+      <!--<li class="list-group-item blue borderless">-->
 
-        <a routerLink="/profile/{{ userId }}/website/{{ wid }}/page/{{pid}}/widget">
+        <!--<a routerLink="/profile/{{ userId }}/website/{{ wid }}/page/{{pid}}/widget">-->
 
-          {{ widget.text }}
+          <!--{{ widget.text }}-->
 
-          <!--pass along a nested component, widget as an input tide to var widget-->
-          <!--<app-widget-header [widget]="widget"></app-widget-header>-->
+          <!--&lt;!&ndash;pass along a nested component, widget as an input tide to var widget&ndash;&gt;-->
+          <!--&lt;!&ndash;<app-widget-header [widget]="widget"></app-widget-header>&ndash;&gt;-->
 
-        </a>
+        <!--</a>-->
 
-        <a class="pull-right" routerLink="/profile/{{ userId }}/website/{{ wid }}/page/{{pid}}/widget/{{wid}}">
-          <span class="glyphicon glyphicon-cog"></span>
-        </a>
-      </li>
-    </ul>
+        <!--<a class="pull-right" routerLink="/profile/{{ userId }}/website/{{ wid }}/page/{{pid}}/widget/{{wid}}">-->
+          <!--<span class="glyphicon glyphicon-cog"></span>-->
+        <!--</a>-->
+      <!--</li>-->
+    <!--</ul>-->
+    <div [ngSwitch] = "widget.widgetType">
+
+      <div *ngSwitchCase = "'HEADING'">
+        <app-widget-header [widget] = "widget"></app-widget-header>
+      </div>
+
+      <div *ngSwitchCase = "'IMAGE'">
+        <app-widget-image [widget] = "widget"></app-widget-image>
+      </div>
+
+      <div *ngSwitchCase = "'HTML'">
+        <app-widget-header [widget] = "widget"></app-widget-header>
+      </div>
+
+      <div *ngSwitchCase = "'YOUTUBE'">
+        <app-widget-youtube [widget] = "widget"></app-widget-youtube>
+      </div>
+
+
+    </div>
 
   </div>
 </div>
