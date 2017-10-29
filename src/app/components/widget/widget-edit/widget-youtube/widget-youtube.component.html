@@ -16,7 +16,8 @@
 
     <!--tick mark-->
     <div class="navbar-text pull-right">
-      <a href="widget-list.html" class="black">
+      <a (click)="updateYoutube(name, text, url, width)"
+         routerLink="/profile/{{ userId }}/website/{{ wid }}/page/{{pid}}/widget"  class="black">
         <span class="glyphicon glyphicon-ok"></span>
       </a>
     </div>
@@ -37,18 +38,18 @@
     <input [(ngModel)]="text"
            class="form-control"
            type="text"
-           placeholder="Name"/>
+           placeholder="{{this.widget.text}}"/>
       URL
     <input [(ngModel)]="url"
            class="form-control"
            type="text"
-           placeholder="https://www.youtube.com/watch?v=gQ5DlvD-T68">
+           placeholder="{{this.widget.url}}">
 
       Width
     <input [(ngModel)]="width"
            class="form-control"
            type="text"
-           placeholder="100%">
+           placeholder="{{this.widget.width}}">
 
 
   <a class="btn btn-danger btn-block"

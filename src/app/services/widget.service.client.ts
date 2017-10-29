@@ -77,17 +77,12 @@ export class WidgetService {
   }
 
   // updates the widget in local widgets array whose _id matches the widgetId parameter
-  updateWidget(widgetId, widget) {
-    // for (let x = 0; x < this.widget.length; x++) {
-    //   if (this.widget[x]._id === widgetId) {
-    //     this.widget[x].widgetType = widget.widgetType;
-    //     this.widget[x].pageId = widget.pageId;
-    //     this.widget[x].size = widget.size;
-    //     this.widget[x].text = widget.text;
-    //     this.widget[x].url = widget.url;
-    //   }
-    // }
-
+  updateWidget(pageId, widgetId, widget) {
+    const url = 'http://localhost:3100/api/page/' + pageId + '/widget/' + widgetId;
+    return this.http.put(url, widget)
+      .map((response: Response) => {
+        return response.json();
+      });
   }
 
   // removes the widget from local widgets array whose _id matches the widgetId parameter

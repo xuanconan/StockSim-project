@@ -41,7 +41,7 @@
         <input [(ngModel)] = "username"
                name="username"
                type="email" class="form-control"
-               placeholder="alice"
+               placeholder="{{this.user.username}}"
                required>
       </div>
 
@@ -51,7 +51,7 @@
         <input [(ngModel)] = "email"
                name="email"
                type="email" class="form-control"
-               placeholder="alice.wonderland@unicorn.com"
+               placeholder="{{this.user.firstName}}.{{this.user.lastName}}@unicorn.com"
                required>
       </div>
 
@@ -62,7 +62,7 @@
                name="firstName"
                type="text"
                class="form-control"
-               placeholder = "Alice"
+               placeholder = "{{this.user.firstName}}"
                required>
       </div>
 
@@ -74,7 +74,7 @@
                name="lastName"
                type="text"
                class="form-control"
-               placeholder = "Wonderland"
+               placeholder = "{{this.user.lastName}}"
                required>
       </div>
 

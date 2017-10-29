@@ -46,6 +46,23 @@ export class WidgetYoutubeComponent implements OnInit {
     private route: ActivatedRoute,
     private widgetService: WidgetService) { }
 
+  updateYoutube(name, text, url, width) {
+    const newWidget: Widget = {
+      _id: this.wgid,
+      widgetType: this.widget.widgetType,
+      pageId: this.pid,
+      size: this.widget.size,
+      text: text,
+      width: width,
+      url: url
+    };
+
+    this.widgetService.updateWidget(this.pid, this.wgid, newWidget)
+      .subscribe((widgets) => {
+        this.widgets = widgets;
+      });
+  }
+
   deleteWidget(pageId, widgetId) {
     this.widgetService.deleteWidget(pageId, widgetId)
       .subscribe((widgets) => {
@@ -65,6 +82,17 @@ export class WidgetYoutubeComponent implements OnInit {
 
       this.wgid = params['wgid'];
 
+      this.widgetService.findAllWidgetsForPageId(this.pid)
+        .subscribe((widgets: Widget[]) => {
+          this.widgets = widgets;
+        });
+
+      this.widgetService.findWidgetById(this.wgid)
+        .subscribe((widget) => {
+          this.widget = widget;
+        });
+
+      console.log(this.widget);
 
     });
 

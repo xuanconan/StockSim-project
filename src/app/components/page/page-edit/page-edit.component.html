@@ -36,14 +36,14 @@
     <input [(ngModel)]="name"
            class="form-control"
            type="text"
-           placeholder="Page Name">
+           placeholder="{{this.page.name}}">
 
       Title
 
     <input [(ngModel)]="title"
            class="form-control"
            type="text"
-           placeholder="Title">
+           placeholder="{{this.page.description}}">
 
     <a class="btn btn-danger btn-block"
        (click)="deletePage(this.wid, this.pid)"

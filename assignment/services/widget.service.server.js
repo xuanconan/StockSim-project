@@ -3,9 +3,25 @@ module.exports = function(app) {
   app.get('/api/page/:pageId/widget', findAllWidgetsForPageId);
   app.get('/api/widget/:wgid', findWidgetById);
   app.delete('/api/page/:pid/widget/:wgid', deleteWidget);
+  app.put('/api/page/:pid/widget/:wgid', updateWidget);
+
 
 
   var WIDGETS = require('./widget.mock.service');
+
+  function updateWidget(req, res) {
+    var widgetId = req.params['wgid'];
+    var pageId = req.params['pid'];
+    var newWidget = req.body;
+    for (var x = 0; x < WIDGETS.length; x++) {
+      if (WIDGETS[x]._id === widgetId) {
+        WIDGETS[x] = newWidget;
+        var widgets = getWidgetsForPageId(pageId);
+        res.json(widgets);
+        return;
+      }
+    }
+  }
 
 
   function deleteWidget(req, res) {

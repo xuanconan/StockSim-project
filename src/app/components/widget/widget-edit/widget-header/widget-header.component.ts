@@ -45,6 +45,26 @@ export class WidgetHeaderComponent implements OnInit {
     private widgetService: WidgetService) { }
 
 
+  updateHeader(name, text, size) {
+
+    const newWidget: Widget = {
+      _id: this.wgid,
+      widgetType: this.widget.widgetType,
+      pageId: this.pid,
+      size: size,
+      text: text,
+      width: this.widget.url,
+      url: this.widget.url
+    };
+
+    this.widgetService.updateWidget(this.pid, this.wgid, newWidget)
+      .subscribe((widgets) => {
+        this.widgets = widgets;
+      });
+  }
+
+
+
   deleteWidget(pageId, widgetId) {
     this.widgetService.deleteWidget(pageId, widgetId)
       .subscribe((widgets) => {
@@ -59,17 +79,19 @@ export class WidgetHeaderComponent implements OnInit {
       this.userId = params['userId'];
       // this.user = this.userService.findUserById(this.userId);
       this.wid = params['wid'];
-
       this.pid = params['pid'];
-
       this.wgid = params['wgid'];
 
 
-      // alert('userId: ' + this.userId);
-      // this.websites = this.websiteService.findWebsitesByUser(this.userId);
-      // console.log(this.websites);
+      this.widgetService.findAllWidgetsForPageId(this.pid)
+        .subscribe((widgets: Widget[]) => {
+          this.widgets = widgets;
+        });
 
-      // this.pages = this.pageService.findPageByWebsiteId(this.wid);
+      this.widgetService.findWidgetById(this.wgid)
+        .subscribe((widget) => {
+          this.widget = widget;
+        });
 
     });
 
