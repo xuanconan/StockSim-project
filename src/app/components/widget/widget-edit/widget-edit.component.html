@@ -17,7 +17,7 @@
 
     <!--tick mark-->
     <div class="navbar-text pull-right">
-      <a routerLink="/profile/{{userId}}/website/{{wid}}/page" class="black">
+      <a routerLink="/profile/{{userId}}/website/{{wid}}/page/{{pid}}/widget" class="black">
         <span class="glyphicon glyphicon-ok"></span>
       </a>
     </div>
@@ -26,33 +26,31 @@
 </nav>
 
 
+<div class="container-fluid ">
 
-<div class="container-fluid">
-  <ul class="list-group padding">
-      Name
-    <input class="form-control"
-           type="text"
-           placeholder="Page Name">
+  <div [ngSwitch] = "widget.widgetType">
 
-      Text
-    <input class="form-control"
-           type="text"
-           placeholder="Text">
+    <div *ngSwitchCase = "'HEADING'">
+      <!--{{widget.text}}-->
+      <app-widget-header></app-widget-header>
+    </div>
 
-      URL
-    <input class="form-control"
-           type="text"
-           placeholder="https://youtu.be/6EyvcFOck0E">
+    <div *ngSwitchCase = "'IMAGE'">
+      <!--{{widget.size}}-->
+      <app-widget-image></app-widget-image>
+    </div>
 
-      Width
-    <input class="form-control"
-           type="text"
-           placeholder="100%">
+    <div *ngSwitchCase = "'HTML'">
+      <app-widget-header></app-widget-header>
+    </div>
 
-    <a class="btn btn-danger btn-block"
-       href="widget-list.html" >Delete</a>
+    <div *ngSwitchCase = "'YOUTUBE'">
+      <!--{{widget.url}}-->
+      <app-widget-youtube></app-widget-youtube>
+    </div>
 
-  </ul>
+
+  </div>
 </div>
 
 

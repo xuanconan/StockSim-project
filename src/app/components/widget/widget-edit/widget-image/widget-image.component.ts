@@ -11,6 +11,7 @@ import { PageService} from '../../../../services/page.service.client';
 import { NgSwitch } from '@angular/common';
 import {Input} from '@angular/core';
 import {Widget} from '../../../../models/widget.model.client';
+import {WidgetService} from '../../../../services/widget.service.client';
 
 
 @Component({
@@ -24,6 +25,10 @@ export class WidgetImageComponent implements OnInit {
   @Input()
   widget: Widget;
 
+  name: String;
+  text: String;
+  url: String;
+  width: String;
   wid: String;
   userId: String;
   user: User;
@@ -32,13 +37,24 @@ export class WidgetImageComponent implements OnInit {
   pages: Page[];
   pid: String;
   description: String;
+  widgets: Widget[];
+  wgid: String;
 
   // inject route info in constructor
   constructor(
     private userService: UserService,
     private websiteService: WebsiteService,
     private pageService: PageService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private widgetService: WidgetService) { }
+
+
+  deleteWidget(pageId, widgetId) {
+    this.widgetService.deleteWidget(pageId, widgetId)
+      .subscribe((widgets) => {
+        this.widgets = widgets;
+      });
+  }
 
   // notify the changes of the route
   ngOnInit() {
@@ -47,8 +63,8 @@ export class WidgetImageComponent implements OnInit {
       this.userId = params['userId'];
       // this.user = this.userService.findUserById(this.userId);
       this.wid = params['wid'];
-
       this.pid = params['pid'];
+      this.wgid = params['wgid'];
 
       // alert('userId: ' + this.userId);
       // this.websites = this.websiteService.findWebsitesByUser(this.userId);

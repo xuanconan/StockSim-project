@@ -28,48 +28,67 @@
 
 
 
-<div class="container-fluid padding" >
+<div class="container-fluid padding-b" >
 
-  <div *ngFor = "let widget of widgets" class="container-fluid ">
+  <div *ngFor = "let widget of widgets" class="container-fluid">
 
-    <!--<ul routerLink="/profile/{{ userId }}/website/{{ wid }}/page/{{pid}}/widget" class="list-group">-->
-      <!--<li class="list-group-item blue borderless">-->
-
-        <!--<a routerLink="/profile/{{ userId }}/website/{{ wid }}/page/{{pid}}/widget">-->
-
-          <!--{{ widget.text }}-->
-
-          <!--&lt;!&ndash;pass along a nested component, widget as an input tide to var widget&ndash;&gt;-->
-          <!--&lt;!&ndash;<app-widget-header [widget]="widget"></app-widget-header>&ndash;&gt;-->
-
-        <!--</a>-->
-
-        <!--<a class="pull-right" routerLink="/profile/{{ userId }}/website/{{ wid }}/page/{{pid}}/widget/{{wid}}">-->
-          <!--<span class="glyphicon glyphicon-cog"></span>-->
-        <!--</a>-->
-      <!--</li>-->
-    <!--</ul>-->
-    <div [ngSwitch] = "widget.widgetType">
-
-      <div *ngSwitchCase = "'HEADING'">
-        <app-widget-header [widget] = "widget"></app-widget-header>
+    <div class="jpa-widget">
+      <div class="jpa-toolbar">
+        <div>
+          <span class="glyphicon glyphicon-menu-hamburger black pull-right"></span>
+          <a class="blue" routerLink="/profile/{{ userId }}/website/{{ wid }}/page/{{pid}}/widget/{{widget._id}}" >
+            <span class="glyphicon glyphicon-cog  pull-right"></span>
+          </a>
+        </div>
       </div>
 
-      <div *ngSwitchCase = "'IMAGE'">
-        <app-widget-image [widget] = "widget"></app-widget-image>
-      </div>
+        <!--<ul routerLink="/profile/{{ userId }}/website/{{ wid }}/page/{{pid}}/widget" class="list-group">-->
+          <!--<li class="list-group-item blue borderless">-->
 
-      <div *ngSwitchCase = "'HTML'">
-        <app-widget-header [widget] = "widget"></app-widget-header>
-      </div>
+            <a class="blue">
 
-      <div *ngSwitchCase = "'YOUTUBE'">
-        <app-widget-youtube [widget] = "widget"></app-widget-youtube>
-      </div>
+              <!--{{ widget.text }}-->
 
+              <!--{{ widget.widgetType }}-->
+
+              <div [ngSwitch] = "widget.widgetType">
+
+                <div *ngSwitchCase = "'HEADING'">
+                  <h1>{{widget.text}}</h1>
+                  <br/>
+                </div>
+
+                <div *ngSwitchCase = "'IMAGE'">
+                  <img width="100%" src="{{widget.url}}"/>
+                  <br/>
+                </div>
+
+                <div *ngSwitchCase = "'HTML'">
+                  <!--<a href="{{widget.url}}" class> <div>{{widget.text}}</div> </a>-->
+                  <h2>{{widget.text}}</h2>
+                  <br/>
+                </div>
+
+                <div *ngSwitchCase = "'YOUTUBE'">
+                  <div class="videoWrapper">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/qdA32j7_U6U" frameborder="0" allowfullscreen></iframe>
+                    <br/>
+                  </div>
+                </div>
+
+              </div>
+
+            </a>
+
+      <!--{{widget.text}}-->
+
+            <!--<a class="pull-right" routerLink="/profile/{{ userId }}/website/{{ wid }}/page/{{pid}}/widget/{{widget._id}}">-->
+              <!--<span class="glyphicon glyphicon-cog"></span>-->
+            <!--</a>-->
+          <!--</li>-->
+        <!--</ul>-->
 
     </div>
-
   </div>
 </div>
 

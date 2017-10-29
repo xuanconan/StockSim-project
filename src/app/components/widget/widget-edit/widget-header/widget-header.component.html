@@ -27,41 +27,34 @@
 
 
 
-<div class="container-fluid">
-  <!--{{widget.size}}-->
-  <div [ngSwitch]="widget.size">
-    <a *ngSwitchCase="1">{{widget.text}}</a>
-    <a *ngSwitchCase="2">{{widget.text}}</a>
-
-    <a *ngSwitchCase="3">{{widget.text}}</a>
-
-    <a *ngSwitchCase="0">{{widget.text}}</a>
-  </div>
-
-  <!--<ul class="list-group padding">-->
-
-      <!--Name-->
-
-    <!--<input class="form-control"-->
-           <!--type="text"-->
-           <!--placeholder="Page Name">-->
+<div class="container-fluid padding">
 
 
-      <!--Text-->
 
-    <!--<input class="form-control"-->
-           <!--type="text"-->
-           <!--placeholder="Text">-->
 
-      <!--Size-->
-    <!--<input class="form-control"-->
-           <!--type="text"-->
-           <!--placeholder="5">-->
+      Name
+      <input [(ngModel)]="name"
+             class="form-control"
+             type="text"
+             placeholder="Name"/>
 
-    <!--<a class="btn btn-danger btn-block"-->
-       <!--href="widget-list.html" >Delete</a>-->
+     Text
+      <input [(ngModel)]="text"
+             class="form-control"
+             type="text"
+             placeholder="Text"/>
 
-  <!--</ul>-->
+      Size
+      <input [(ngModel)]="size"
+             class="form-control"
+             type="Number"
+             placeholder="5"/>
+
+
+    <a class="btn btn-danger btn-block"
+       (click)="deleteWidget(this.pid, this.wgid)"
+       routerLink="/profile/{{ userId }}/website/{{ wid }}/page/{{pid}}/widget" >Delete</a>
+
 </div>
 
 

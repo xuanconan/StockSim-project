@@ -11,6 +11,7 @@ import { PageService} from '../../../../services/page.service.client';
 import { NgSwitch } from '@angular/common';
 import {Input} from '@angular/core';
 import {Widget} from '../../../../models/widget.model.client';
+import {WidgetService} from '../../../../services/widget.service.client';
 
 @Component({
   selector: 'app-widget-youtube',
@@ -30,13 +31,27 @@ export class WidgetYoutubeComponent implements OnInit {
   pages: Page[];
   pid: String;
   description: String;
+  name: String;
+  url: String;
+  wgid: String;
+  text: String;
+  widgets: Widget[];
+  width: String;
 
   // inject route info in constructor
   constructor(
     private userService: UserService,
     private websiteService: WebsiteService,
     private pageService: PageService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private widgetService: WidgetService) { }
+
+  deleteWidget(pageId, widgetId) {
+    this.widgetService.deleteWidget(pageId, widgetId)
+      .subscribe((widgets) => {
+        this.widgets = widgets;
+      });
+  }
 
   // notify the changes of the route
   ngOnInit() {
@@ -48,11 +63,8 @@ export class WidgetYoutubeComponent implements OnInit {
 
       this.pid = params['pid'];
 
-      // alert('userId: ' + this.userId);
-      // this.websites = this.websiteService.findWebsitesByUser(this.userId);
-      // console.log(this.websites);
+      this.wgid = params['wgid'];
 
-      // this.pages = this.pageService.findPageByWebsiteId(this.wid);
 
     });
 

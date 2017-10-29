@@ -11,6 +11,7 @@ import { PageService} from '../../../../services/page.service.client';
 import { NgSwitch } from '@angular/common';
 import {Input} from '@angular/core';
 import {Widget} from '../../../../models/widget.model.client';
+import {WidgetService} from '../../../../services/widget.service.client';
 
 @Component({
   selector: 'app-widget-header',
@@ -26,17 +27,30 @@ export class WidgetHeaderComponent implements OnInit {
   userId: String;
   user: User;
   developerId: String;
-  websites: Website[];
+  widgets: Widget[];
   pages: Page[];
   pid: String;
   description: String;
+  name: String;
+  text: String;
+  size: Number;
+  wgid: String;
 
   // inject route info in constructor
   constructor(
     private userService: UserService,
     private websiteService: WebsiteService,
     private pageService: PageService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private widgetService: WidgetService) { }
+
+
+  deleteWidget(pageId, widgetId) {
+    this.widgetService.deleteWidget(pageId, widgetId)
+      .subscribe((widgets) => {
+        this.widgets = widgets;
+      });
+  }
 
   // notify the changes of the route
   ngOnInit() {
@@ -47,6 +61,8 @@ export class WidgetHeaderComponent implements OnInit {
       this.wid = params['wid'];
 
       this.pid = params['pid'];
+
+      this.wgid = params['wgid'];
 
 
       // alert('userId: ' + this.userId);

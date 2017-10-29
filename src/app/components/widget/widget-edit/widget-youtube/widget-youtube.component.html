@@ -26,48 +26,35 @@
 
 
 
-<div class="container-fluid">
-  <ul class="list-group padding">
+<div class="container-fluid padding">
+
       Name
-
-    <input class="form-control"
+    <input [(ngModel)]="name"
+           class="form-control"
            type="text"
-           placeholder="Page Name">
-
-
+           placeholder="Name"/>
       Text
-
-    <input class="form-control"
+    <input [(ngModel)]="text"
+           class="form-control"
            type="text"
-           placeholder="Text">
-
-
+           placeholder="Name"/>
       URL
-
-    <input class="form-control"
+    <input [(ngModel)]="url"
+           class="form-control"
            type="text"
-           placeholder="http://lorempixel.com/800/400/sports">
-
+           placeholder="https://www.youtube.com/watch?v=gQ5DlvD-T68">
 
       Width
-
-    <input class="form-control"
+    <input [(ngModel)]="width"
+           class="form-control"
            type="text"
            placeholder="100%">
 
 
-      Upload
+  <a class="btn btn-danger btn-block"
+     (click)="deleteWidget(this.pid, this.wgid)"
+     routerLink="/profile/{{ userId }}/website/{{ wid }}/page/{{pid}}/widget" >Delete</a>
 
-    <input class="form-control"
-           type="file">
-
-    <div class="btn btn-primary btn-block"
-    >Upload Image</div>
-
-    <a class="btn btn-danger btn-block"
-       href="widget-list.html" >Delete</a>
-
-  </ul>
 </div>
 
 

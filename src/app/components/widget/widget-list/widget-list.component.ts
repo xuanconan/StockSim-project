@@ -10,6 +10,8 @@ import {Page} from '../../../models/page.model.client';
 import {PageService} from '../../../services/page.service.client';
 import {Widget} from '../../../models/widget.model.client';
 import {WidgetService} from '../../../services/widget.service.client';
+import {WidgetEditComponent} from '../widget-edit/widget-edit.component';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-widget-list',
@@ -34,7 +36,8 @@ export class WidgetListComponent implements OnInit {
     private websiteService: WebsiteService,
     private widgetService: WidgetService,
     private pageService: PageService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    public sanitizer: DomSanitizer) { }
 
   // notify the changes of the route
   ngOnInit() {

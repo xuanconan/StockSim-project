@@ -8,8 +8,10 @@ import { Website } from '../../../models/website.model.client';
 import { NgForm } from '@angular/forms';
 import {Page} from '../../../models/page.model.client';
 import {PageService} from '../../../services/page.service.client';
-import {Widget} from '../../../models/widget.model.client';
 import {WidgetService} from '../../../services/widget.service.client';
+import {Input} from '@angular/core';
+import {Widget} from '../../../models/widget.model.client';
+import {WidgetListComponent} from '../widget-list/widget-list.component';
 
 @Component({
   selector: 'app-widget-edit',
@@ -17,6 +19,9 @@ import {WidgetService} from '../../../services/widget.service.client';
   styleUrls: ['./widget-edit.component.css']
 })
 export class WidgetEditComponent implements OnInit {
+
+  // @Input()
+  widget: Widget;
 
   wid: String;
   userId: String;
@@ -27,6 +32,8 @@ export class WidgetEditComponent implements OnInit {
   pid: String;
   description: String;
   widgets: Widget[];
+  wgid: String;
+
 
   constructor(
     private userService: UserService,
@@ -44,6 +51,8 @@ export class WidgetEditComponent implements OnInit {
 
       this.pid = params['pid'];
 
+      this.wgid = params['wgid'];
+
       // alert('userId: ' + this.userId);
       // this.websites = this.websiteService.findWebsitesByUser(this.userId);
       // console.log(this.websites);
@@ -52,6 +61,11 @@ export class WidgetEditComponent implements OnInit {
       this.widgetService.findAllWidgets()
         .subscribe((widgets: Widget[]) => {
           this.widgets = widgets;
+        });
+
+      this.widgetService.findWidgetById(this.wgid)
+        .subscribe((widget) => {
+          this.widget = widget;
         });
     });
 
