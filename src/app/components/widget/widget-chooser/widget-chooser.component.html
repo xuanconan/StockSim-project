@@ -30,9 +30,10 @@
 <div class="container-fluid">
   <ul class="list-group padding ">
 
-    <div class="list-group-item blue nounderline borderless">
-      <a href="widget-heading.html">Header</a>
-    </div>
+    <li class="list-group-item blue nounderline borderless">
+      <a (click)="createHeader(this.pid)">Header</a>
+    </li>
+
 
     <li class="list-group-item blue nounderline borderless">
       Lable
@@ -55,12 +56,11 @@
     </li>
 
     <li class="list-group-item blue nounderline borderless">
-      <a href="widget-image.html">Image</a>
+      <a (click)="createImage(this.pid)">Image</a>
     </li>
 
     <li class="list-group-item blue nounderline borderless">
-      <a href="widget-youtube.html">YouTube</a>
-
+      <a (click)="createYoutube(this.pid)">Youtube</a>
     </li>
 
     <li class="list-group-item blue nounderline borderless">

@@ -26,6 +26,7 @@ export class WidgetService {
     return (Number( Math.floor((Math.random()) * 10000))).toString();
   }
 
+
   findAllWidgets() {
     // return this.widget;
   //  user http service to return all widgets on the server, dont' forget to change the components
@@ -33,13 +34,16 @@ export class WidgetService {
       .map((response: Response) => {
       return response.json();
     });
-
   }
 
   // adds the widget parameter instance to the local widgets array. The
   // new widget's pageId is set to the pageId parameter
-  createWidget(pageId, widget) {
-      // this.widget.push(widget);
+  createWidget(pageId, newWidget) {
+    const url = 'http://localhost:3100/api/page/' + pageId + '/widget';
+    return this.http.post(url, newWidget)
+      .map((response: Response) => {
+        return response.json();
+      });
   }
 
   // retrieves the widgets in local widgets array whose pageId matches the parameter pageId
@@ -50,13 +54,6 @@ export class WidgetService {
       .map((response: Response) => {
         return response.json();
       });
-    // const widgets: Widget[] = [];
-    // for (let x = 0; x < this.widget.length; x++) {
-    //   if (this.widget[x].pageId === pageId) {
-    //     widgets.push(this.widget[x]);
-    //   }
-    // }
-    // return widgets;
   }
 
   // retrieves the widget in local widgets array whose _id matches the widgetId parameter
@@ -67,13 +64,7 @@ export class WidgetService {
       .map((response: Response) => {
         return response.json();
       });
-    // const widgets: Widget[] = [];
-    // for (let x = 0; x < this.widget.length; x++) {
-    //   if (this.widget[x]._id === widgetId) {
-    //     widgets.push(this.widget[x]);
-    //   }
-    // }
-    // return widgets;
+
   }
 
   // updates the widget in local widgets array whose _id matches the widgetId parameter

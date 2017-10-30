@@ -9,7 +9,8 @@ import { NgForm } from '@angular/forms';
 import {Page} from '../../../models/page.model.client';
 import {PageService} from '../../../services/page.service.client';
 import { NgSwitch } from '@angular/common';
-
+import { Widget} from '../../../models/widget.model.client';
+import { WidgetService} from '../../../services/widget.service.client';
 
 @Component({
   selector: 'app-widget-chooser',
@@ -21,20 +22,86 @@ export class WidgetChooserComponent implements OnInit {
 
   wid: String;
   userId: String;
-  user: User;
+  text: String;
   developerId: String;
   websites: Website[];
   pages: Page[];
   pid: String;
   description: String;
+  width: String;
+  url: String;
+  widgets: Widget[];
+  widget: Widget;
 
   // inject route info in constructor
   constructor(
     private userService: UserService,
     private websiteService: WebsiteService,
     private pageService: PageService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private router: Router,
+    private widgetService: WidgetService) { }
 
+  createHeader(pageId) {
+    const newWidget: Widget = {
+      _id: this.widgetService.newId(),
+      widgetType: 'HEADING',
+      pageId: this.pid,
+      size: 0,
+      text: 'text',
+      width: '100%',
+      url: 'url'
+    };
+
+    this.widgetService.createWidget(pageId, newWidget)
+      .subscribe( (widgets) => {
+        this.widgets = widgets;
+      });
+
+    this.router.navigate(['profile/' + this.userId + '/website/' + this.wid + '/page/' + this.pid + '/widget/' + newWidget._id]);
+  }
+
+
+  createImage(pageId) {
+    const newWidget: Widget = {
+      _id: this.widgetService.newId(),
+      widgetType: 'IMAGE',
+      pageId: this.pid,
+      size: 0,
+      text: 'text',
+      width: '100%',
+      url: 'url'
+    };
+
+    this.widgetService.createWidget(pageId, newWidget)
+      .subscribe( (widgets) => {
+        this.widgets = widgets;
+      });
+    this.router.navigate(['profile/' + this.userId + '/website/' + this.wid + '/page/' + this.pid + '/widget/' + newWidget._id]);
+
+  }
+
+  createYoutube(pageId) {
+    const newWidget: Widget = {
+      _id: this.widgetService.newId(),
+      widgetType: 'YOUTUBE',
+      pageId: this.pid,
+      size: 0,
+      text: 'text',
+      width: '100%',
+      url: 'undefined'
+    };
+
+    this.widget = newWidget;
+
+    this.widgetService.createWidget(pageId, newWidget)
+      .subscribe( (widgets) => {
+        this.widgets = widgets;
+      });
+
+    this.router.navigate(['profile/' + this.userId + '/website/' + this.wid + '/page/' + this.pid + '/widget/' + newWidget._id]);
+
+  }
   // notify the changes of the route
   ngOnInit() {
     // invoke a function that can pass the value of the parameters
@@ -45,11 +112,16 @@ export class WidgetChooserComponent implements OnInit {
 
       this.pid = params['pid'];
 
-      // alert('userId: ' + this.userId);
-      // this.websites = this.websiteService.findWebsitesByUser(this.userId);
-      // console.log(this.websites);
+      this.widgetService.findAllWidgetsForPageId(this.pid)
+        .subscribe((widgets: Widget[]) => {
+          this.widgets = widgets;
+        });
 
-      // this.pages = this.pageService.findPageByWebsiteId(this.wid);
+      // this.widgetService.findWidgetById(this.wgid)
+      //   .subscribe((widget) => {
+      //     this.widget = widget;
+      //   });
+
 
     });
 

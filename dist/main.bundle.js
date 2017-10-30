@@ -1410,7 +1410,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/widget/widget-chooser/widget-chooser.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<nav class=\"navbar navbar-light2 navbar-fixed-top\">\n  <div class=\"container-fluid\">\n\n    <!--heading on the nav bar-->\n    <div class=\"navbar-text pull-left\">\n      <a routerLink=\"/profile/{{userId}}/website/{{wid}}/page/{{pid}}/widget/\" class=\"black\">\n        <span class=\"glyphicon glyphicon-chevron-left\"></span>\n      </a>\n    </div>\n\n    <div class=\"navbar-brand pull-left\">\n      <div class=\"thick grey\">\n        <b>Choose Widget</b>\n      </div>\n    </div>\n\n    <!--&lt;!&ndash;tick mark&ndash;&gt;-->\n    <!--<div class=\"navbar-text pull-right\">-->\n    <!--<a href=\"website-new.html\" class=\"navbar-link\">-->\n    <!--<span class=\"glyphicon glyphicon-plus black\"></span>-->\n    <!--</a>-->\n    <!--</div>-->\n\n  </div>\n</nav>\n\n\n\n<div class=\"container-fluid\">\n  <ul class=\"list-group padding \">\n\n    <div class=\"list-group-item blue nounderline borderless\">\n      <a href=\"widget-heading.html\">Header</a>\n    </div>\n\n    <li class=\"list-group-item blue nounderline borderless\">\n      Lable\n    </li>\n\n    <li class=\"list-group-item blue nounderline borderless\">\n      HTML\n    </li>\n\n    <li class=\"list-group-item blue nounderline borderless\">\n      Text Input\n    </li>\n\n    <li class=\"list-group-item blue nounderline borderless\">\n      Link\n    </li>\n\n    <li class=\"list-group-item blue nounderline borderless\">\n      Button\n    </li>\n\n    <li class=\"list-group-item blue nounderline borderless\">\n      <a href=\"widget-image.html\">Image</a>\n    </li>\n\n    <li class=\"list-group-item blue nounderline borderless\">\n      <a href=\"widget-youtube.html\">YouTube</a>\n\n    </li>\n\n    <li class=\"list-group-item blue nounderline borderless\">\n      Data Table\n    </li>\n\n    <li class=\"list-group-item blue nounderline borderless\">\n      Repeater\n    </li>\n\n\n\n  </ul>\n</div>\n\n\n\n<nav class=\"navbar navbar-light2 navbar-fixed-bottom\">\n  <div class=\"container-fluid\">\n    <div class=\"navbar-text pull-right\">\n      <!--<a href=\"profile.view.client.html\">-->\n      <span class=\"glyphicon glyphicon-user blue\"></span>\n      <!--</a>-->\n    </div>\n  </div>\n</nav>\n\n"
+module.exports = "\n<nav class=\"navbar navbar-light2 navbar-fixed-top\">\n  <div class=\"container-fluid\">\n\n    <!--heading on the nav bar-->\n    <div class=\"navbar-text pull-left\">\n      <a routerLink=\"/profile/{{userId}}/website/{{wid}}/page/{{pid}}/widget/\" class=\"black\">\n        <span class=\"glyphicon glyphicon-chevron-left\"></span>\n      </a>\n    </div>\n\n    <div class=\"navbar-brand pull-left\">\n      <div class=\"thick grey\">\n        <b>Choose Widget</b>\n      </div>\n    </div>\n\n    <!--&lt;!&ndash;tick mark&ndash;&gt;-->\n    <!--<div class=\"navbar-text pull-right\">-->\n    <!--<a href=\"website-new.html\" class=\"navbar-link\">-->\n    <!--<span class=\"glyphicon glyphicon-plus black\"></span>-->\n    <!--</a>-->\n    <!--</div>-->\n\n  </div>\n</nav>\n\n\n\n<div class=\"container-fluid\">\n  <ul class=\"list-group padding \">\n\n    <li class=\"list-group-item blue nounderline borderless\">\n      <a (click)=\"createHeader(this.pid)\">Header</a>\n    </li>\n\n\n    <li class=\"list-group-item blue nounderline borderless\">\n      Lable\n    </li>\n\n    <li class=\"list-group-item blue nounderline borderless\">\n      HTML\n    </li>\n\n    <li class=\"list-group-item blue nounderline borderless\">\n      Text Input\n    </li>\n\n    <li class=\"list-group-item blue nounderline borderless\">\n      Link\n    </li>\n\n    <li class=\"list-group-item blue nounderline borderless\">\n      Button\n    </li>\n\n    <li class=\"list-group-item blue nounderline borderless\">\n      <a (click)=\"createImage(this.pid)\">Image</a>\n    </li>\n\n    <li class=\"list-group-item blue nounderline borderless\">\n      <a (click)=\"createYoutube(this.pid)\">Youtube</a>\n    </li>\n\n    <li class=\"list-group-item blue nounderline borderless\">\n      Data Table\n    </li>\n\n    <li class=\"list-group-item blue nounderline borderless\">\n      Repeater\n    </li>\n\n\n\n  </ul>\n</div>\n\n\n\n<nav class=\"navbar navbar-light2 navbar-fixed-bottom\">\n  <div class=\"container-fluid\">\n    <div class=\"navbar-text pull-right\">\n      <!--<a href=\"profile.view.client.html\">-->\n      <span class=\"glyphicon glyphicon-user blue\"></span>\n      <!--</a>-->\n    </div>\n  </div>\n</nav>\n\n"
 
 /***/ }),
 
@@ -1424,6 +1424,7 @@ module.exports = "\n<nav class=\"navbar navbar-light2 navbar-fixed-top\">\n  <di
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_user_service_client__ = __webpack_require__("../../../../../src/app/services/user.service.client.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_website_service_client__ = __webpack_require__("../../../../../src/app/services/website.service.client.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_page_service_client__ = __webpack_require__("../../../../../src/app/services/page.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_widget_service_client__ = __webpack_require__("../../../../../src/app/services/widget.service.client.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1438,14 +1439,70 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 var WidgetChooserComponent = (function () {
     // inject route info in constructor
-    function WidgetChooserComponent(userService, websiteService, pageService, route) {
+    function WidgetChooserComponent(userService, websiteService, pageService, route, router, widgetService) {
         this.userService = userService;
         this.websiteService = websiteService;
         this.pageService = pageService;
         this.route = route;
+        this.router = router;
+        this.widgetService = widgetService;
     }
+    WidgetChooserComponent.prototype.createHeader = function (pageId) {
+        var _this = this;
+        var newWidget = {
+            _id: this.widgetService.newId(),
+            widgetType: 'HEADING',
+            pageId: this.pid,
+            size: 0,
+            text: 'text',
+            width: '100%',
+            url: 'url'
+        };
+        this.widgetService.createWidget(pageId, newWidget)
+            .subscribe(function (widgets) {
+            _this.widgets = widgets;
+        });
+        this.router.navigate(['profile/' + this.userId + '/website/' + this.wid + '/page/' + this.pid + '/widget/' + newWidget._id]);
+    };
+    WidgetChooserComponent.prototype.createImage = function (pageId) {
+        var _this = this;
+        var newWidget = {
+            _id: this.widgetService.newId(),
+            widgetType: 'IMAGE',
+            pageId: this.pid,
+            size: 0,
+            text: 'text',
+            width: '100%',
+            url: 'url'
+        };
+        this.widgetService.createWidget(pageId, newWidget)
+            .subscribe(function (widgets) {
+            _this.widgets = widgets;
+        });
+        this.router.navigate(['profile/' + this.userId + '/website/' + this.wid + '/page/' + this.pid + '/widget/' + newWidget._id]);
+    };
+    WidgetChooserComponent.prototype.createYoutube = function (pageId) {
+        var _this = this;
+        var newWidget = {
+            _id: this.widgetService.newId(),
+            widgetType: 'YOUTUBE',
+            pageId: this.pid,
+            size: 0,
+            text: 'text',
+            width: '100%',
+            url: 'undefined'
+        };
+        this.widget = newWidget;
+        this.widgetService.createWidget(pageId, newWidget)
+            .subscribe(function (widgets) {
+            _this.widgets = widgets;
+        });
+        this.router.navigate(['profile/' + this.userId + '/website/' + this.wid + '/page/' + this.pid + '/widget/' + newWidget._id]);
+    };
     // notify the changes of the route
     WidgetChooserComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -1455,10 +1512,14 @@ var WidgetChooserComponent = (function () {
             // this.user = this.userService.findUserById(this.userId);
             _this.wid = params['wid'];
             _this.pid = params['pid'];
-            // alert('userId: ' + this.userId);
-            // this.websites = this.websiteService.findWebsitesByUser(this.userId);
-            // console.log(this.websites);
-            // this.pages = this.pageService.findPageByWebsiteId(this.wid);
+            _this.widgetService.findAllWidgetsForPageId(_this.pid)
+                .subscribe(function (widgets) {
+                _this.widgets = widgets;
+            });
+            // this.widgetService.findWidgetById(this.wgid)
+            //   .subscribe((widget) => {
+            //     this.widget = widget;
+            //   });
         });
     };
     return WidgetChooserComponent;
@@ -1469,10 +1530,10 @@ WidgetChooserComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/components/widget/widget-chooser/widget-chooser.component.html"),
         styles: [__webpack_require__("../../../../../src/app/components/widget/widget-chooser/widget-chooser.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_user_service_client__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_user_service_client__["a" /* UserService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__services_website_service_client__["a" /* WebsiteService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_website_service_client__["a" /* WebsiteService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__services_page_service_client__["a" /* PageService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_page_service_client__["a" /* PageService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _d || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_user_service_client__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_user_service_client__["a" /* UserService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__services_website_service_client__["a" /* WebsiteService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_website_service_client__["a" /* WebsiteService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__services_page_service_client__["a" /* PageService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_page_service_client__["a" /* PageService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_5__services_widget_service_client__["a" /* WidgetService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__services_widget_service_client__["a" /* WidgetService */]) === "function" && _f || Object])
 ], WidgetChooserComponent);
 
-var _a, _b, _c, _d;
+var _a, _b, _c, _d, _e, _f;
 //# sourceMappingURL=widget-chooser.component.js.map
 
 /***/ }),
@@ -1976,7 +2037,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/widget/widget-list/widget-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<nav class=\"navbar navbar-light2 navbar-fixed-top\">\n  <div class=\"container-fluid\">\n\n    <!--heading on the nav bar-->\n    <div class=\"navbar-text pull-left\">\n      <a routerLink=\"/profile/{{userId}}/website/{{wid}}/page\" class=\"black\">\n        <span class=\"glyphicon glyphicon-chevron-left \"></span>\n      </a>\n    </div>\n\n    <div class=\"navbar-brand pull-left\">\n      <div class=\"thick grey\">\n        <b>Widgets</b>\n      </div>\n    </div>\n\n    <!--tick mark-->\n    <div class=\"navbar-text pull-right\">\n      <a routerLink=\"/profile/{{userId}}/website/{{wid}}/page/{{pid}}/widget/new\"\n         class=\"black\">\n        <span class=\"glyphicon glyphicon-plus\"></span>\n      </a>\n    </div>\n\n  </div>\n</nav>\n\n\n\n<div class=\"container-fluid padding-b\" >\n\n  <div *ngFor = \"let widget of widgets\" class=\"container-fluid\">\n\n    <div class=\"jpa-widget\">\n      <div class=\"jpa-toolbar\">\n        <div>\n          <span class=\"glyphicon glyphicon-menu-hamburger black pull-right\"></span>\n          <a class=\"blue\" routerLink=\"/profile/{{ userId }}/website/{{ wid }}/page/{{pid}}/widget/{{widget._id}}\" >\n            <span class=\"glyphicon glyphicon-cog  pull-right\"></span>\n          </a>\n        </div>\n      </div>\n\n        <!--<ul routerLink=\"/profile/{{ userId }}/website/{{ wid }}/page/{{pid}}/widget\" class=\"list-group\">-->\n          <!--<li class=\"list-group-item blue borderless\">-->\n\n            <a class=\"blue\">\n\n              <!--{{ widget.text }}-->\n\n              <!--{{ widget.widgetType }}-->\n\n              <div [ngSwitch] = \"widget.widgetType\">\n\n                <div *ngSwitchCase = \"'HEADING'\">\n                  <h1>{{widget.text}}</h1>\n                  <br/>\n                </div>\n\n                <div *ngSwitchCase = \"'IMAGE'\">\n                  <img width=\"100%\" src=\"{{widget.url}}\"/>\n                  <br/>\n                </div>\n\n                <div *ngSwitchCase = \"'HTML'\">\n                  <!--<a href=\"{{widget.url}}\" class> <div>{{widget.text}}</div> </a>-->\n                  <h2>{{widget.text}}</h2>\n                  <br/>\n                </div>\n\n                <div *ngSwitchCase = \"'YOUTUBE'\">\n                  <div class=\"videoWrapper\">\n                    <iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/qdA32j7_U6U\" frameborder=\"0\" allowfullscreen></iframe>\n                    <br/>\n                  </div>\n                </div>\n\n              </div>\n\n            </a>\n\n      <!--{{widget.text}}-->\n\n            <!--<a class=\"pull-right\" routerLink=\"/profile/{{ userId }}/website/{{ wid }}/page/{{pid}}/widget/{{widget._id}}\">-->\n              <!--<span class=\"glyphicon glyphicon-cog\"></span>-->\n            <!--</a>-->\n          <!--</li>-->\n        <!--</ul>-->\n\n    </div>\n  </div>\n</div>\n\n\n\n\n\n<nav class=\"navbar navbar-light2 navbar-fixed-bottom\">\n  <div class=\"container-fluid\">\n\n    <div class=\"navbar-text pull-left\">\n\n      <span class=\"glyphicon glyphicon-play black\"></span>\n\n    </div>\n\n    <div class=\"navbar-text pull-left\">\n\n      <span class=\"glyphicon glyphicon-eye-open black\"></span>\n\n    </div>\n\n    <div class=\"navbar-text pull-right\">\n      <a routerLink=\"/profile/{{userId}}\" class=\"blue\">\n        <span class=\"glyphicon glyphicon-user \"></span>\n      </a>\n    </div>\n  </div>\n</nav>\n"
+module.exports = "\n<nav class=\"navbar navbar-light2 navbar-fixed-top\">\n  <div class=\"container-fluid\">\n\n    <!--heading on the nav bar-->\n    <div class=\"navbar-text pull-left\">\n      <a routerLink=\"/profile/{{userId}}/website/{{wid}}/page\" class=\"black\">\n        <span class=\"glyphicon glyphicon-chevron-left \"></span>\n      </a>\n    </div>\n\n    <div class=\"navbar-brand pull-left\">\n      <div class=\"thick grey\">\n        <b>Widgets</b>\n      </div>\n    </div>\n\n    <!--tick mark-->\n    <div class=\"navbar-text pull-right\">\n      <a routerLink=\"/profile/{{userId}}/website/{{wid}}/page/{{pid}}/widget/new\"\n         class=\"black\">\n        <span class=\"glyphicon glyphicon-plus\"></span>\n      </a>\n    </div>\n\n  </div>\n</nav>\n\n\n\n<div class=\"container-fluid padding-b\" >\n\n  <div *ngFor = \"let widget of widgets\" class=\"container-fluid\">\n\n    <div class=\"jpa-widget\">\n      <div class=\"jpa-toolbar\">\n        <div>\n          <span class=\"glyphicon glyphicon-menu-hamburger black pull-right\"></span>\n          <a class=\"blue\" routerLink=\"/profile/{{ userId }}/website/{{ wid }}/page/{{pid}}/widget/{{this.widget._id}}\" >\n            <span class=\"glyphicon glyphicon-cog  pull-right\"></span>\n          </a>\n        </div>\n      </div>\n\n        <!--<ul routerLink=\"/profile/{{ userId }}/website/{{ wid }}/page/{{pid}}/widget\" class=\"list-group\">-->\n          <!--<li class=\"list-group-item blue borderless\">-->\n\n            <a class=\"blue\">\n\n              <!--{{ widget.text }}-->\n\n              <!--{{ widget.widgetType }}-->\n\n              <div [ngSwitch] = \"widget.widgetType\">\n\n                <div *ngSwitchCase = \"'HEADING'\">\n                  <h1>{{widget.text}}</h1>\n                  <br/>\n                </div>\n\n                <div *ngSwitchCase = \"'IMAGE'\">\n                  <img width=\"100%\" src=\"{{widget.url}}\"/>\n                  <br/>\n                </div>\n\n                <div *ngSwitchCase = \"'HTML'\">\n                  <!--<a href=\"{{widget.url}}\" class> <div>{{widget.text}}</div> </a>-->\n                  <h2>{{widget.text}}</h2>\n                  <br/>\n                </div>\n\n                <div *ngSwitchCase = \"'YOUTUBE'\">\n                  <div class=\"videoWrapper\">\n                    <iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/qdA32j7_U6U\" frameborder=\"0\" allowfullscreen></iframe>\n                    <br/>\n                  </div>\n                </div>\n\n              </div>\n\n            </a>\n\n      <!--{{widget.text}}-->\n\n            <!--<a class=\"pull-right\" routerLink=\"/profile/{{ userId }}/website/{{ wid }}/page/{{pid}}/widget/{{widget._id}}\">-->\n              <!--<span class=\"glyphicon glyphicon-cog\"></span>-->\n            <!--</a>-->\n          <!--</li>-->\n        <!--</ul>-->\n\n    </div>\n  </div>\n</div>\n\n\n\n\n\n<nav class=\"navbar navbar-light2 navbar-fixed-bottom\">\n  <div class=\"container-fluid\">\n\n    <div class=\"navbar-text pull-left\">\n\n      <span class=\"glyphicon glyphicon-play black\"></span>\n\n    </div>\n\n    <div class=\"navbar-text pull-left\">\n\n      <span class=\"glyphicon glyphicon-eye-open black\"></span>\n\n    </div>\n\n    <div class=\"navbar-text pull-right\">\n      <a routerLink=\"/profile/{{userId}}\" class=\"blue\">\n        <span class=\"glyphicon glyphicon-user \"></span>\n      </a>\n    </div>\n  </div>\n</nav>\n"
 
 /***/ }),
 
@@ -2018,6 +2079,22 @@ var WidgetListComponent = (function () {
         this.route = route;
         this.sanitizer = sanitizer;
     }
+    WidgetListComponent.prototype.createWidget = function (pageId) {
+        var _this = this;
+        var newWidget = {
+            _id: this.widgetService.newId(),
+            widgetType: '',
+            pageId: this.pid,
+            size: 0,
+            text: '',
+            width: '',
+            url: ''
+        };
+        this.widgetService.createWidget(pageId, newWidget)
+            .subscribe(function (widgets) {
+            _this.widgets = widgets;
+        });
+    };
     // notify the changes of the route
     WidgetListComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -2035,6 +2112,7 @@ var WidgetListComponent = (function () {
             _this.widgetService.findAllWidgetsForPageId(_this.pid)
                 .subscribe(function (widgets) {
                 _this.widgets = widgets;
+                console.log(_this.widgets);
             });
         });
     };
@@ -2490,8 +2568,12 @@ var WidgetService = (function () {
     };
     // adds the widget parameter instance to the local widgets array. The
     // new widget's pageId is set to the pageId parameter
-    WidgetService.prototype.createWidget = function (pageId, widget) {
-        // this.widget.push(widget);
+    WidgetService.prototype.createWidget = function (pageId, newWidget) {
+        var url = 'http://localhost:3100/api/page/' + pageId + '/widget';
+        return this.http.post(url, newWidget)
+            .map(function (response) {
+            return response.json();
+        });
     };
     // retrieves the widgets in local widgets array whose pageId matches the parameter pageId
     WidgetService.prototype.findAllWidgetsForPageId = function (pageId) {
@@ -2500,13 +2582,6 @@ var WidgetService = (function () {
             .map(function (response) {
             return response.json();
         });
-        // const widgets: Widget[] = [];
-        // for (let x = 0; x < this.widget.length; x++) {
-        //   if (this.widget[x].pageId === pageId) {
-        //     widgets.push(this.widget[x]);
-        //   }
-        // }
-        // return widgets;
     };
     // retrieves the widget in local widgets array whose _id matches the widgetId parameter
     WidgetService.prototype.findWidgetById = function (widgetId) {
@@ -2515,13 +2590,6 @@ var WidgetService = (function () {
             .map(function (response) {
             return response.json();
         });
-        // const widgets: Widget[] = [];
-        // for (let x = 0; x < this.widget.length; x++) {
-        //   if (this.widget[x]._id === widgetId) {
-        //     widgets.push(this.widget[x]);
-        //   }
-        // }
-        // return widgets;
     };
     // updates the widget in local widgets array whose _id matches the widgetId parameter
     WidgetService.prototype.updateWidget = function (pageId, widgetId, widget) {

@@ -29,6 +29,7 @@ export class WidgetListComponent implements OnInit {
   pid: String;
   description: String;
   widgets: Widget[];
+  aWidgetId: String;
 
   // inject route info in constructor
   constructor(
@@ -38,6 +39,22 @@ export class WidgetListComponent implements OnInit {
     private pageService: PageService,
     private route: ActivatedRoute,
     public sanitizer: DomSanitizer) { }
+
+  createWidget(pageId) {
+    const newWidget: Widget = {
+      _id: this.widgetService.newId(),
+      widgetType: '',
+      pageId: this.pid,
+      size: 0,
+      text: '',
+      width: '',
+      url: ''
+    };
+    this.widgetService.createWidget(pageId, newWidget)
+      .subscribe( (widgets) => {
+        this.widgets = widgets;
+      });
+  }
 
   // notify the changes of the route
   ngOnInit() {
@@ -57,6 +74,8 @@ export class WidgetListComponent implements OnInit {
        this.widgetService.findAllWidgetsForPageId(this.pid)
         .subscribe((widgets: Widget[]) => {
         this.widgets = widgets;
+        console.log(this.widgets);
+
         });
 
     });
