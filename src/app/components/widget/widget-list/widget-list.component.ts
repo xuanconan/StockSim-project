@@ -11,7 +11,7 @@ import {PageService} from '../../../services/page.service.client';
 import {Widget} from '../../../models/widget.model.client';
 import {WidgetService} from '../../../services/widget.service.client';
 import {WidgetEditComponent} from '../widget-edit/widget-edit.component';
-import { DomSanitizer } from '@angular/platform-browser';
+import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-widget-list',
@@ -30,6 +30,7 @@ export class WidgetListComponent implements OnInit {
   description: String;
   widgets: Widget[];
   aWidgetId: String;
+  youtubeUrl: SafeResourceUrl;
 
   // inject route info in constructor
   constructor(
@@ -55,6 +56,13 @@ export class WidgetListComponent implements OnInit {
         this.widgets = widgets;
       });
   }
+
+  // sanitizer youtuber url
+  updateVideoUrl(url: string) {
+    // const aurl = 'https://www.youtube.com/embed/qdA32j7_U6U';
+    return this.youtubeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+
 
   // notify the changes of the route
   ngOnInit() {

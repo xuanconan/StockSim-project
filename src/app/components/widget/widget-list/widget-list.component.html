@@ -59,7 +59,7 @@
                 </div>
 
                 <div *ngSwitchCase = "'IMAGE'">
-                  <img width="100%" src="{{widget.url}}"/>
+                  <img class="e2e-trusted-url" width="100%" src="{{widget.url}}"/>
                   <br/>
                 </div>
 
@@ -71,7 +71,8 @@
 
                 <div *ngSwitchCase = "'YOUTUBE'">
                   <div class="videoWrapper">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/qdA32j7_U6U" frameborder="0" allowfullscreen></iframe>
+                    <iframe  class="e2e-iframe-trusted-src" width="560" height="315"
+                             [src] = updateVideoUrl(widget.url) frameborder="0" allowfullscreen></iframe>
                     <br/>
                   </div>
                 </div>
