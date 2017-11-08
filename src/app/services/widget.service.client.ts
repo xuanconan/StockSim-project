@@ -4,6 +4,7 @@ import {Widget} from '../models/widget.model.client';
 import {Injectable} from '@angular/core';
 import { Http, Response} from '@angular/http';
 import 'rxjs/Rx';
+import {environment} from '../../environments/environment';
 
 // make class usable for all components
 @Injectable()
@@ -18,7 +19,7 @@ export class WidgetService {
   //   { _id: '678', widgetType: 'YOUTUBE', pageId: '321', size: 0, text: 'a', width: '100%', url: 'https://youtu.be/AM2Ivdi9c4E'},
   //   { _id: '789', widgetType: 'HTML', pageId: '321', size: 0, text: '<p>Lorem ipsum</p>', width: '', url: ''}
   // ];
-
+  baseUrl = environment.baseUrl;
   // inject http service
   constructor(private http: Http) {}
 
@@ -64,7 +65,6 @@ export class WidgetService {
       .map((response: Response) => {
         return response.json();
       });
-
   }
 
   // updates the widget in local widgets array whose _id matches the widgetId parameter

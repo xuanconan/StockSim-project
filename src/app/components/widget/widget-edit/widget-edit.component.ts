@@ -21,18 +21,12 @@ import {WidgetListComponent} from '../widget-list/widget-list.component';
 export class WidgetEditComponent implements OnInit {
 
   // @Input()
-  widget: Widget;
-
   wid: String;
   userId: String;
-  user: User;
-  developerId: String;
-  websites: Website[];
-  pages: Page[];
   pid: String;
-  description: String;
-  widgets: Widget[];
   wgid: String;
+  widgetType: String;
+  widget: Widget;
 
 
   constructor(
@@ -53,19 +47,10 @@ export class WidgetEditComponent implements OnInit {
 
       this.wgid = params['wgid'];
 
-      // alert('userId: ' + this.userId);
-      // this.websites = this.websiteService.findWebsitesByUser(this.userId);
-      // console.log(this.websites);
-      // this.pages = this.pageService.findPageByWebsiteId(this.wid);
-      // this.widgets = this.widgetService.findWidgetsByPageId(this.pid);
-      this.widgetService.findAllWidgets()
-        .subscribe((widgets: Widget[]) => {
-          this.widgets = widgets;
-        });
-
       this.widgetService.findWidgetById(this.wgid)
-        .subscribe((widget) => {
+        .subscribe((widget: any) => {
           this.widget = widget;
+          // this.widget.widgetType = widget.widgetType;
         });
     });
 

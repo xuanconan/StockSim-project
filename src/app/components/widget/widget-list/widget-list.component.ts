@@ -83,7 +83,6 @@ export class WidgetListComponent implements OnInit {
         .subscribe((widgets: Widget[]) => {
         this.widgets = widgets;
         console.log(this.widgets);
-
         });
 
     });

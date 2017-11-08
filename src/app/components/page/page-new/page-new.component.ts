@@ -41,11 +41,11 @@ export class PageNewComponent implements OnInit {
     const newPage: Page = {
       _id: this.websiteService.newId(),
       name: name,
-      websiteId: this.userId,
+      websiteId: this.wid,
       description: title,
     };
 
-    this.pageService.createPage(this.userId, newPage).
+    this.pageService.createPage(this.wid, newPage).
     subscribe((pages) => {
       this.pages = pages;
     });

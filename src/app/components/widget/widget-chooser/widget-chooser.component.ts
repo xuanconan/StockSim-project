@@ -32,6 +32,7 @@ export class WidgetChooserComponent implements OnInit {
   url: String;
   widgets: Widget[];
   widget: Widget;
+  widgetType: String;
 
   // inject route info in constructor
   constructor(
@@ -42,8 +43,40 @@ export class WidgetChooserComponent implements OnInit {
     private router: Router,
     private widgetService: WidgetService) { }
 
+  defaultWidgetValues =
+    {
+      'HEADING': {
+        _id: this.widgetService.newId(),
+        widgetType: 'HEADING',
+        pageId: this.pid,
+        size: 0,
+        text: 'text',
+        width: '100%',
+        url: 'url'
+      },
+      'IMAGE': {
+        _id: this.widgetService.newId(),
+        widgetType: 'IMAGE',
+        pageId: this.pid,
+        size: 0,
+        text: 'text',
+        width: '100%',
+        url: 'url'
+      },
+      'YOUTUBE': {
+        _id: this.widgetService.newId(),
+        widgetType: 'YOUTUBE',
+        pageId: this.pid,
+        size: 0,
+        text: 'text',
+        width: '100%',
+        url: 'undefined'
+      },
+    };
+
+
   createHeader(pageId) {
-    const newWidget: Widget = {
+    const newWidget = {
       _id: this.widgetService.newId(),
       widgetType: 'HEADING',
       pageId: this.pid,
@@ -102,6 +135,19 @@ export class WidgetChooserComponent implements OnInit {
     this.router.navigate(['profile/' + this.userId + '/website/' + this.wid + '/page/' + this.pid + '/widget/' + newWidget._id]);
 
   }
+
+  createWidget(widgetType) {
+    this.widget = this.defaultWidgetValues[widgetType];
+    this.widgetService.createWidget(this.pid, this.widget)
+      .subscribe(
+        (newWidgets: any) => {
+          this.wid = newWidgets;
+          this.router.navigate(['profile/' + this.userId + '/website/' + this.wid + '/page/' + this.pid + '/widget/' + this.widget._id]);
+        },
+        (error: any) => console.log(error)
+      );
+  }
+
   // notify the changes of the route
   ngOnInit() {
     // invoke a function that can pass the value of the parameters
@@ -112,19 +158,19 @@ export class WidgetChooserComponent implements OnInit {
 
       this.pid = params['pid'];
 
-      this.widgetService.findAllWidgetsForPageId(this.pid)
-        .subscribe((widgets: Widget[]) => {
-          this.widgets = widgets;
-        });
+      // this.widgetService.findAllWidgetsForPageId(this.pid)
+      //   .subscribe((widgets: Widget[]) => {
+      //     this.widgets = widgets;
+      //   });
 
       // this.widgetService.findWidgetById(this.wgid)
       //   .subscribe((widget) => {
       //     this.widget = widget;
       //   });
-
-
     });
 
   }
+
+
 
 }

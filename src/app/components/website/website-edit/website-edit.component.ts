@@ -40,10 +40,10 @@ export class WebsiteEditComponent implements OnInit {
         description: '',
       };
       this.websiteService.updateWebsite(this.wid, newWebsite)
-        .subscribe((websites) => {
-          this.websites = websites;
+        .subscribe((status) => {
+          // this.websites = websites;
+          console.log(status);
         });
-      // updateWebsite
     }
 
     deleteWebsite(userId, websiteId) {

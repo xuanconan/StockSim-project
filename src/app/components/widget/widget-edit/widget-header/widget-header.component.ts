@@ -22,13 +22,9 @@ export class WidgetHeaderComponent implements OnInit {
   // pass the widget as an input from outside
   @Input()
   widget: Widget;
-
   wid: String;
   userId: String;
-  user: User;
-  developerId: String;
   widgets: Widget[];
-  pages: Page[];
   pid: String;
   description: String;
   name: String;
@@ -83,14 +79,15 @@ export class WidgetHeaderComponent implements OnInit {
       this.wgid = params['wgid'];
 
 
-      this.widgetService.findAllWidgetsForPageId(this.pid)
-        .subscribe((widgets: Widget[]) => {
-          this.widgets = widgets;
-        });
+      // this.widgetService.findAllWidgetsForPageId(this.pid)
+      //   .subscribe((widgets: Widget[]) => {
+      //     this.widgets = widgets;
+      //   });
 
       this.widgetService.findWidgetById(this.wgid)
         .subscribe((widget) => {
           this.widget = widget;
+          // this.wgid = widget._id;
         });
 
     });

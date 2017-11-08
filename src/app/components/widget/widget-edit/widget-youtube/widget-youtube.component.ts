@@ -77,19 +77,13 @@ export class WidgetYoutubeComponent implements OnInit {
       this.userId = params['userId'];
       // this.user = this.userService.findUserById(this.userId);
       this.wid = params['wid'];
-
       this.pid = params['pid'];
-
       this.wgid = params['wgid'];
-
-      this.widgetService.findAllWidgetsForPageId(this.pid)
-        .subscribe((widgets: Widget[]) => {
-          this.widgets = widgets;
-        });
 
       this.widgetService.findWidgetById(this.wgid)
         .subscribe((widget) => {
           this.widget = widget;
+          // this.wgid = widget._id;
         });
 
       console.log(this.widget);

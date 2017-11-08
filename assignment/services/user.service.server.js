@@ -1,6 +1,8 @@
 // expose this as a module
 module.exports = function (app) {
 
+  var userModel = require("../models/user/user.model.server");
+
   // url match the pattern by order, once fit, won't continue
   // app.get("/api/user", findAllUsers);
   app.get("/api/user/hello", helloUser);
@@ -9,66 +11,54 @@ module.exports = function (app) {
   app.post("/api/user", createUser);
   app.get("/api/user/:userId", findUserById);
   app.put("/api/user/:userId", updateUser);
+  app.delete("/api/user/:userId", deleteUser);
 
-
-  // var USER = [
-  //   {_id: '123', username: 'alice', password: 'alice', firstName: 'AlicefromServer', lastName: 'Wonder' },
-  //   {_id: '234', username: 'bob', password: 'bob', firstName: 'Bob', lastName: 'Marley' },
-  //   {_id: '345', username: 'charly', password: 'charly', firstName: 'Charly', lastName: 'Garcia' },
-  //   {_id: '456', username: 'jannunzi', password: 'jannunzi', firstName: 'Jose', lastName: 'Annunzi' },
-  //   {_id: '567', username: 'test', password: 'test', firstName: 'Yeah', lastName: 'Baby' }
-  //
-  // ];
 
   var USERS = require("./user.mock.service");
 
-  // function findAllUsers(req, res) {
-  //
-  //   // send will send back all data types, so we'll json as a dedicated function
-  //   // without ambiguity
-  //   res.json(users);
-  //
-  // }
+  function deleteUser (req, res) {
+    var userId = req.params.userId;
+    return userModel.deleteUser(userId).then(function(user){
+      res.json(user);
+    });
+  }
 
-  // call the function by passing in query
   function findUserByCredentials(req, res) {
     // local variables to get the query param from url
     var username = req.query["username"];
     var password = req.query["password"];
     // if there is a username and password
     if (username && password) {
-      // username and password verification function
-      var user = USERS.find(function (user){
-        return user.username === username &&
-               user.password === password;
-      });
-
-      if (user) {
+      var promise = userModel.findUserByCredentials(username, password);
+      // promise object will register a function for the result
+      promise.then(function(user){
         res.json(user);
-      } else {
-        res.json({});
-      }
+        console.log(result);
+      });
       return;
-      // if only username, return certain user
     }
     else if (username) {
-      var user = USERS.find(function (user){
-        return user.username === username
-      });
-      if(user) {
+      userModel
+        .findUserByUsername(username)
+        .then(function(user){
         res.json(user);
-      } else {
-        res.json(null);
-      }
+      });
       return;
     }
     // if nothing, return all users
     res.json(users);
   }
 
+  function updateUser(req, res) {
+    var user = req.body;
+    var userId = req.params['userId'];
+
+    return userModel.updateUser(userId, user).then(function(user) {
+      res.json(user);
+    });
+  }
 
     // all data will be start with user here
-
   function helloUser(req, res){
     res.send("Hello from userService");
   }
@@ -77,30 +67,21 @@ module.exports = function (app) {
   function findUserById(req, res) {
     // req is from param
     var userId = req.params["userId"];
-    // var userId = req.query["userId"]
-    // users refer to the array defined at the beginning of the file, function(user) works as a lambda
-    var user = USERS.find(function (user){
-      return user._id === userId;
+    var promise = userModel.findUserById(userId);
+    promise.then(function(user){
+      res.json(user);
+      console.log(result);
     });
-    return res.json(user);
   }
 
-  function updateUser(req, res) {
-    var user = req.body;
-    var userId = req.userId;
 
-    for(var x = 0; x < users.length; x++) {
-      if (USERS[x]._id === userId) {
-        USERS[x] = user;
-      }
-    }
-    return res.json(user);
-  }
 
   function createUser(req, res) {
     var user = req.body;
-    USERS.push(user);
-    return res.json();
+    delete user._id;
+    userModel.createUser(user).then(function(user){
+      res.json(user);
+    });
   }
 
 };

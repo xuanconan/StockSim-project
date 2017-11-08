@@ -43,13 +43,15 @@ export class RegisterComponent implements OnInit {
             _id: this.userService.newId(),
             username: this.username,
             password: this.password,
-            firstName: 'first name',
-            lastName: 'last name'
+            firstName: '',
+            lastName: ''
           };
           this.userService.createUser(newUser).subscribe((auser) => {
             this.user = auser;
+            console.log(this.user);
+            this.router.navigate(['profile', this.user._id]);
           });
-          this.router.navigate(['profile', newUser._id]);
+          // this.router.navigate(['profile', this.user._id]);
         }
       });
   }
@@ -64,5 +66,7 @@ export class RegisterComponent implements OnInit {
     //   });
 
   }
+
+
 
 }

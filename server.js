@@ -19,6 +19,7 @@ const app = express();
 // initialize parser for json
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(express.static(path.join(__dirname, 'public')));
 
 // Point static path to dist -- For building -- REMOVE
 app.use(express.static(path.join(__dirname, 'dist')));
@@ -40,6 +41,8 @@ app.set('port', port);
 
 // Create HTTP server
 const server = http.createServer(app);
+
+var mongoose = require('mongoose'); // import it
 
 
 // load hello, hello is defined in hello.js, which is the anonymous function defined

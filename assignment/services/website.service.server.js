@@ -6,35 +6,42 @@ module.exports = function (app) {
   app.put("/api/user/:userId/website/:websiteId", updateWebsite);
 
 
+  var websiteModel = require('../models/website/website.model.server');
   var WEBSITES = require("./website.mock.service");
 
   function createWebsite(req, res) {
     var userId = req.params['userId'];
     var website = req.body;
-    WEBSITES.push(website);
-
-    var websites = getWebsitesForUserId(userId);
-    res.json(websites);
-
+    // WEBSITES.push(website);
+    delete website._id;
+    website._user = userId;
+    return websiteModel
+      .createWebsite(website)
+      .then(function(website){
+        websiteModel
+          .findAllWebsitesForUser(userId)
+          .then(function (websites){
+        res.json(websites);
+      });
+    });
   }
 
   function findWebsitesByUser(req, res) {
     var userId = req.params['userId'];
-    var websites = getWebsitesForUserId(userId);
-    res.json(websites);
+    return websiteModel.findAllWebsitesForUser(userId).then(function (websites){
+      res.json(websites);
+    });
+
+    // res.json(websites);
   }
 
   function deleteWebsite(req, res) {
     var websiteId = req.params['websiteId'];
     var userId = req.params['userId'];
-    for (var x = 0; x < WEBSITES.length; x++) {
-      if (WEBSITES[x]._id === websiteId) {
-        WEBSITES.splice(x, 1);
-        var websites = getWebsitesForUserId(userId);
-        res.json(websites);
-        return;
-      }
-    }
+
+    return websiteModel.deleteWebsite(websiteId).then(function(website) {
+      res.json(website);
+    });
     // var websites = getWebsitesForUserId(userId);
     // return res.json(websites);
   }
@@ -43,16 +50,12 @@ module.exports = function (app) {
     var websiteId = req.params['websiteId'];
     var userId = req.params['userId'];
     var newWebsite = req.body;
-    for (var x = 0; x < WEBSITES.length; x++) {
-      if (WEBSITES[x]._id === websiteId) {
-        WEBSITES[x] = newWebsite;
-        var websites = getWebsitesForUserId(userId);
-        res.json(websites);
-        return;
-      }
-    }
-  }
 
+    return websiteModel.updateWebsite(websiteId, newWebsite).then(function(website) {
+      res.json(website);
+    });
+
+  }
 
   function findWebsiteById (req, res) {
     var websiteId = req.params['websiteId'];

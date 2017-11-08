@@ -36,7 +36,6 @@ const appRoutes: Routes = [
   {path: 'profile/:userId/website/:wid/page/:pid/widget/new', component: WidgetChooserComponent},
   {path: 'profile/:userId/website/:wid/page/:pid/widget/:wgid', component: WidgetEditComponent},
   // {path: 'user/:uid/website WebsiteComponent'}
-
 ];
 
 

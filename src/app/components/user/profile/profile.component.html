@@ -17,8 +17,7 @@
     </div>
 
     <div class="navbar-text pull-right">
-      <a (click)= "update (username,firstName,lastName)" class="white "
-         routerLink="/profile/{{userId}}">
+      <a (click)= "update ()" class="white ">
         <span class="glyphicon glyphicon-ok "></span>
       </a>
     </div>
@@ -29,59 +28,61 @@
 </nav>
 
 
-
-
 <!--<form id="updateForm" (ngSubmit) = "update()" #f="ngForm">-->
   <div class="container">
 
+    <form #f="ngForm">
+
+        <div class="form-group padding">
+          <label>Username</label>
+          <input [(ngModel)] = "username"
+                 name="username"
+                 type="email" class="form-control"
+                 placeholder="alice"
+                 required>
+        </div>
 
 
-      <div class="form-group padding">
-        <label>Username</label>
-        <input [(ngModel)] = "username"
-               name="username"
-               type="email" class="form-control"
-               placeholder="{{this.user.username}}"
-               required>
-      </div>
+        <div class="form-group">
+          <label>Email address</label>
+          <input [(ngModel)] = "email"
+                 name="email"
+                 type="email" class="form-control"
+                 placeholder="a@unicorn.com"
+                 required>
+        </div>
 
 
-      <div class="form-group">
-        <label>Email address</label>
-        <input [(ngModel)] = "email"
-               name="email"
-               type="email" class="form-control"
-               placeholder="{{this.user.firstName}}.{{this.user.lastName}}@unicorn.com"
-               required>
-      </div>
-
-
-      <div class="form-group">
-        <label>First Name </label>
-        <input [(ngModel)] = "firstName"
-               name="firstName"
-               type="text"
-               class="form-control"
-               placeholder = "{{this.user.firstName}}"
-               required>
-      </div>
+        <div class="form-group">
+          <label>First Name </label>
+          <input [(ngModel)] = "firstName"
+                 name="firstName"
+                 type="text"
+                 class="form-control"
+                 placeholder = "firstName"
+                 required>
+        </div>
 
 
 
-      <div class="form-group">
-        <label>Last Name</label>
-        <input [(ngModel)] = "lastName"
-               name="lastName"
-               type="text"
-               class="form-control"
-               placeholder = "{{this.user.lastName}}"
-               required>
-      </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input [(ngModel)] = "lastName"
+                 name="lastName"
+                 type="text"
+                 class="form-control"
+                 placeholder = "lastName"
+                 required>
+        </div>
+    </form>
 
     <a class="btn btn-primary btn-block"
        routerLink="website">Websites</a>
     <a class="btn btn-danger btn-block "
        routerLink="/login" >Logout</a>
+
+    <a (click)="deleteUser()"
+      class="btn btn-danger btn-block " routerLink="/login" >Delete User</a>
 
   </div>
 <!--</form>-->
@@ -91,7 +92,7 @@
   <div class="container-fluid">
     <p class="navbar-text pull-right">
       <a routerLink="/profile/{{userId}}" class="white">
-        <span class="glyphicon glyphicon-user "></span>
+        <span class="glyphicon glyphicon-user"></span>
       </a>
     </p>
 

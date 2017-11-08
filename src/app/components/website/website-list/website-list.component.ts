@@ -8,6 +8,7 @@ import { Website } from '../../../models/website.model.client';
 import { NgForm } from '@angular/forms';
 
 
+
 @Component({
   selector: 'app-website-list',
   templateUrl: './website-list.component.html',
@@ -16,7 +17,6 @@ import { NgForm } from '@angular/forms';
 
 export class WebsiteListComponent implements OnInit {
   // @ViewChild('f') updateForm: NgForm;
-
   wid: String;
   userId: String;
   user: User;
@@ -27,21 +27,21 @@ export class WebsiteListComponent implements OnInit {
 
   // inject route info in constructor
   constructor(
-    private userService: UserService,
     private websiteService: WebsiteService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private userService: UserService) { }
 
   // notify the changes of the route
   ngOnInit() {
     // invoke a function that can pass the value of the parameters
     this.route.params.subscribe((params: any) => {
       this.userId = params['userId'];
-      // this.user = this.userService.findUserById(this.userId);
       this.wid = params['wid'];
       // alert('userId: ' + this.userId);
       this.websiteService.findWebsitesByUser(this.userId)
         .subscribe((websites) => {
           this.websites = websites;
+          console.log(websites);
         });
       // console.log(this.websites);
     });

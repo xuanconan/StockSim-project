@@ -55,13 +55,26 @@
            placeholder="{{this.widget.width}}"/>
 
 
+    <!--Upload-->
+    <!--<input class="form-control"-->
+           <!--type="file">-->
+
+    <!--<div class="btn btn-primary btn-block">Upload Image</div>-->
+
+
     Upload
-    <input class="form-control"
-           type="file">
+    <form ngNoForm action="{{baseUrl}}/api/upload" method="post" enctype="multipart/form-data">
+      <input  name="myFile"   type="file" class="form-control"/>
+      <input  name="widgetId" value="{{wgid}}"   style="display: none"/>
+      <input  name="websiteId" value="{{wid}}"   style="display: none"/>
+      <input  name="pageId" value="{{pid}}"   style="display: none"/>
+      <input  name="userId" value="{{userId}}"   style="display: none"/>
+      <button type="submit" class="btn btn-block btn-primary">Upload Image</button>
+      <br/>
+    </form>
 
-    <div class="btn btn-primary btn-block">Upload Image</div>
 
-    <a class="btn btn-danger btn-block"
+  <a class="btn btn-danger btn-block"
      (click)="deleteWidget(this.pid, this.wgid)"
      routerLink="/profile/{{ userId }}/website/{{ wid }}/page/{{pid}}/widget" >Delete</a>
 

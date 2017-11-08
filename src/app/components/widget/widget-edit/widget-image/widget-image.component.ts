@@ -12,6 +12,9 @@ import { NgSwitch } from '@angular/common';
 import {Input} from '@angular/core';
 import {Widget} from '../../../../models/widget.model.client';
 import {WidgetService} from '../../../../services/widget.service.client';
+import { Http, Response} from '@angular/http';
+import 'rxjs/Rx';
+import {environment} from '../../../../../environments/environment';
 
 
 @Component({
@@ -24,10 +27,10 @@ export class WidgetImageComponent implements OnInit {
   // pass the widget as an input from outside
   @Input()
   widget: Widget;
-
   name: String;
   text: String;
   url: String;
+  baseUrl: String;
   width: String;
   wid: String;
   userId: String;
@@ -39,6 +42,7 @@ export class WidgetImageComponent implements OnInit {
   description: String;
   widgets: Widget[];
   wgid: String;
+  images: String[] = [];
 
   // inject route info in constructor
   constructor(
@@ -46,7 +50,8 @@ export class WidgetImageComponent implements OnInit {
     private websiteService: WebsiteService,
     private pageService: PageService,
     private route: ActivatedRoute,
-    private widgetService: WidgetService) { }
+    private widgetService: WidgetService,
+    private http: Http) { }
 
 
   updateImage(name, text, url, width) {
@@ -76,6 +81,7 @@ export class WidgetImageComponent implements OnInit {
 
   // notify the changes of the route
   ngOnInit() {
+    this.baseUrl = environment.baseUrl;
     // invoke a function that can pass the value of the parameters
     this.route.params.subscribe((params: any) => {
       this.userId = params['userId'];
@@ -84,17 +90,24 @@ export class WidgetImageComponent implements OnInit {
       this.pid = params['pid'];
       this.wgid = params['wgid'];
 
-      this.widgetService.findAllWidgetsForPageId(this.pid)
-        .subscribe((widgets: Widget[]) => {
-          this.widgets = widgets;
-        });
+      // this.widgetService.findAllWidgetsForPageId(this.pid)
+      //   .subscribe((widgets: Widget[]) => {
+      //     this.widgets = widgets;
+      //   });
 
       this.widgetService.findWidgetById(this.wgid)
         .subscribe((widget) => {
           this.widget = widget;
+          // this.wgid = widget._id;
         });
 
-
+      this.http.get('http://localhost:3100/api/upload')
+        .map((response: Response) => {
+          return response.json();
+        })
+        .subscribe((images) => {
+          this.images = images;
+        });
     });
 
   }

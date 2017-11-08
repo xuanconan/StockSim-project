@@ -24,7 +24,7 @@ export class PageListComponent implements OnInit {
   user: User;
   developerId: String;
   websites: Website[];
-  pages: Page[];
+  pages: [{}];
   pid: String;
   description: String;
 
@@ -40,24 +40,20 @@ export class PageListComponent implements OnInit {
     // invoke a function that can pass the value of the parameters
     this.route.params.subscribe((params: any) => {
       this.userId = params['userId'];
-      // this.user = this.userService.findUserById(this.userId);
-      this.wid = params['wid'];
 
-      this.pid = params['pid'];
+      this.wid = params['wid'];
 
       this.websiteService.findWebsitesByUser(this.userId)
         .subscribe((websites) => {
           this.websites = websites;
+          console.log(websites);
         });
 
-      // alert('userId: ' + this.userId);
-      // this.websites = this.websiteService.findWebsitesByUser(this.userId);
-      // console.log(this.websites);
-      this.pageService.findPageByWebsiteId(this.wid)
-        .subscribe((pages) => {
-          this.pages = pages;
+      this.pageService.findPagesByWebsiteId(this.wid)
+        .subscribe((data: any) => {
+          this.pages = data;
+          console.log(data);
         });
-
       // this.pages = this.pageService.findPageByWebsiteId(this.wid);
 
     });

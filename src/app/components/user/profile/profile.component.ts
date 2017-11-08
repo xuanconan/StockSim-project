@@ -5,6 +5,7 @@ import { User } from '../../../models/user.model.client';
 import { Router } from '@angular/router';
 import { WebsiteService } from '../../../services/website.service.client';
 import { NgForm } from '@angular/forms';
+import {environment} from '../../../../environments/environment';
 
 @Component({
   selector: 'app-profile',
@@ -13,11 +14,10 @@ import { NgForm } from '@angular/forms';
 })
 export class ProfileComponent implements OnInit {
 
-
   @ViewChild('f') updateForm: NgForm;
+  baseUrl = environment.baseUrl;
   user: User;
   userId: String;
-  // user: User;
   username: String;
   email: String;
   firstName: String;
@@ -28,28 +28,36 @@ export class ProfileComponent implements OnInit {
           private userService: UserService,
           private activatedRoute: ActivatedRoute) { }
 
-  update(username, firstName, lastName) {
+  update() {
     // console.log(user);
-    // this.ausername = this.updateForm.value.ausername;
-    // this.firstName = this.updateForm.value.firstName;
-    // this.lastName = this.updateForm.value.lastName;
-    // this.email = this.updateForm.value.email;
+    this.username = this.updateForm.value.username;
+    this.firstName = this.updateForm.value.firstName;
+    this.lastName = this.updateForm.value.lastName;
+    this.email = this.updateForm.value.email;
 
     const updatedUser: User = {
       _id: this.userId,
-      username: username,
+      username: this.username,
       password: this.user.password,
-      firstName: firstName,
-      lastName: lastName
+      firstName: this.firstName,
+      lastName: this.lastName
       // email: this.email,
-
     };
-    // console.log(updatedUser);
+
+    console.log(updatedUser);
+
     this.userService.updateUser(this.userId, updatedUser).
-    subscribe((user) => {
-      this.user = user;
+    subscribe((newuser) => {
+      // console.log(status);
+      this.user = newuser;
+      console.log(this.user);
     });
-    console.log(this.user);
+  }
+
+  deleteUser() {
+    this.userService.deleteUser(this.userId).subscribe((status) => {
+      console.log(status);
+    });
   }
 
   // notify the changes of the route
@@ -60,7 +68,6 @@ export class ProfileComponent implements OnInit {
     });
 
     // this.user = this.userService.findUserById(this.userId);
-
     this.userService.findUserById(this.userId).subscribe((user: User) => {
         this.user = user;
         console.log(this.user);
