@@ -44,10 +44,12 @@ export class WidgetYoutubeComponent implements OnInit {
     private websiteService: WebsiteService,
     private pageService: PageService,
     private route: ActivatedRoute,
+    private router: Router,
     private widgetService: WidgetService) { }
 
   updateYoutube(name, text, url, width) {
     const newWidget: Widget = {
+      name: name,
       _id: this.wgid,
       widgetType: this.widget.widgetType,
       pageId: this.pid,
@@ -59,14 +61,14 @@ export class WidgetYoutubeComponent implements OnInit {
 
     this.widgetService.updateWidget(this.pid, this.wgid, newWidget)
       .subscribe((widgets) => {
-        this.widgets = widgets;
+        this.router.navigate(['profile/' + this.userId + '/website/' + this.wid + '/page/' + this.pid + '/widget/']);
       });
   }
 
   deleteWidget(pageId, widgetId) {
     this.widgetService.deleteWidget(pageId, widgetId)
       .subscribe((widgets) => {
-        this.widgets = widgets;
+        this.router.navigate(['profile/' + this.userId + '/website/' + this.wid + '/page/' + this.pid + '/widget/']);
       });
   }
 
@@ -83,7 +85,7 @@ export class WidgetYoutubeComponent implements OnInit {
       this.widgetService.findWidgetById(this.wgid)
         .subscribe((widget) => {
           this.widget = widget;
-          // this.wgid = widget._id;
+          console.log(widget);
         });
 
       console.log(this.widget);

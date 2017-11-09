@@ -43,9 +43,10 @@ export class WebsiteService {
 
   // retrieves the website in local websites array whose _id matches the websiteId parameter
 
-  findWebsiteById(userId: String, websiteId: String) {
+  findWebsiteById(userId, websiteId) {
     const url = 'http://localhost:3100/api/user/' + userId + '/website/' + websiteId;
-    return this.http.get(url).map((response: Response) => {
+    return this.http.get(url)
+      .map((response: Response) => {
       return response.json();
     });
   }

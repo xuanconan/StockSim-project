@@ -29,7 +29,7 @@ export class WebsiteNewComponent implements OnInit {
   constructor(
     private websiteService: WebsiteService,
     private route: ActivatedRoute,
-    private activatedRoute: ActivatedRoute) { }
+    private router: Router) { }
 
 
   create() {
@@ -45,7 +45,8 @@ export class WebsiteNewComponent implements OnInit {
 
     this.websiteService.createWebsite(this.userId, newWebsite)
       .subscribe( (websites) => {
-        this.websites = websites;
+        // this.websites = websites;
+        this.router.navigate(['profile', this.userId, 'website']);
       });
   }
 

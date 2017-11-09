@@ -30,7 +30,7 @@
     <li class="list-group-item blue borderless">
 
       <a routerLink="/profile/{{ userId }}/website/{{ website._id }}/page">
-        {{ website.name }}         ( {{ website._user.username}} )
+        {{ website.name }}         (username: {{ website._user.username}} )
       </a>
 
       <a class="pull-right" routerLink="/profile/{{ userId }}/website/{{ website._id }}">

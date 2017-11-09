@@ -17,8 +17,7 @@
 
     <!--tick mark-->
     <div class="navbar-text pull-right">
-      <a (click)="updateHeader(name, text, size)"
-          routerLink="/profile/{{ userId }}/website/{{ wid }}/page/{{pid}}/widget" class="black">
+      <a (click)="updateHeader(name, text, size)" class="black">
         <span class="glyphicon glyphicon-ok "></span>
       </a>
     </div>
@@ -40,18 +39,17 @@
       <input [(ngModel)]="text"
              class="form-control"
              type="text"
-             placeholder="{{this.widget.text}}"/>
+             placeholder="Text"/>
 
       Size
       <input [(ngModel)]="size"
              class="form-control"
              type="Number"
-             placeholder="{{this.widget.size}}"/>
+             placeholder="Size"/>
 
 
     <a class="btn btn-danger btn-block"
-       (click)="deleteWidget(this.pid, this.wgid)"
-       routerLink="/profile/{{ userId }}/website/{{ wid }}/page/{{pid}}/widget" >Delete</a>
+       (click)="deleteWidget(this.pid, this.wgid)">Delete</a>
 
 </div>
 

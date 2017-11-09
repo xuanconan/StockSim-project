@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
       .subscribe((user: User) => {
         if (user) {
           // alert(user._id);
-          this.router.navigate(['/profile', user._id]);
+          this.router.navigate(['/profile/', user._id]);
         } else {
           this.errorFlag = true;
           this.errorMsg = 'Error';

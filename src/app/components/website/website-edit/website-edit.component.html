@@ -41,8 +41,7 @@
         </div>
         <!--tick mark-->
         <div class="navbar-text pull-right">
-          <a (click)="update(name)"
-            routerLink= "/profile/{{userId}}/website" class="white">
+          <a (click)="update(name)" class="white">
             <span class="glyphicon glyphicon-ok "></span>
           </a>
         </div>
@@ -87,8 +86,8 @@
 
         <textarea class="form-control" placeholder="Description" rows="6"></textarea>
 
-        <a (click)="deleteWebsite(this.userId, this.wid)"
-          class="btn btn-danger btn-block " routerLink="/profile/{{userId}}/website" >
+        <a (click)="deleteWebsite()"
+          class="btn btn-danger btn-block" >
           Delete
         </a>
 

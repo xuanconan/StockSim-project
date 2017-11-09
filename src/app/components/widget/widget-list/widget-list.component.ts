@@ -25,12 +25,13 @@ export class WidgetListComponent implements OnInit {
   user: User;
   developerId: String;
   websites: Website[];
-  pages: Page[];
   pid: String;
   description: String;
-  widgets: Widget[];
-  aWidgetId: String;
+  widgets: [{}];
   youtubeUrl: SafeResourceUrl;
+  type: String;
+  widget: any;
+
 
   // inject route info in constructor
   constructor(
@@ -41,21 +42,21 @@ export class WidgetListComponent implements OnInit {
     private route: ActivatedRoute,
     public sanitizer: DomSanitizer) { }
 
-  createWidget(pageId) {
-    const newWidget: Widget = {
-      _id: this.widgetService.newId(),
-      widgetType: '',
-      pageId: this.pid,
-      size: 0,
-      text: '',
-      width: '',
-      url: ''
-    };
-    this.widgetService.createWidget(pageId, newWidget)
-      .subscribe( (widgets) => {
-        this.widgets = widgets;
-      });
-  }
+  // createWidget(pageId) {
+  //   const newWidget: Widget = {
+  //     _id: this.widgetService.newId(),
+  //     widgetType: '',
+  //     pageId: this.pid,
+  //     size: 0,
+  //     text: '',
+  //     width: '',
+  //     url: ''
+  //   };
+  //   this.widgetService.createWidget(pageId, newWidget)
+  //     .subscribe( (widgets) => {
+  //       this.widgets = widgets;
+  //     });
+  // }
 
   // sanitizer youtuber url
   updateVideoUrl(url: string) {
@@ -79,14 +80,12 @@ export class WidgetListComponent implements OnInit {
       // console.log(this.websites);
       // this.pages = this.pageService.findPageByWebsiteId(this.wid);
       // this.widgets = this.widgetService.findWidgetsByPageId(this.pid);
-       this.widgetService.findAllWidgetsForPageId(this.pid)
-        .subscribe((widgets: Widget[]) => {
-        this.widgets = widgets;
-        console.log(this.widgets);
-        });
-
+     this.widgetService.findAllWidgetsForPageId(this.pid)
+      .subscribe((widgets: any) => {
+      this.widgets = widgets;
+      console.log(this.widgets);
+      });
     });
-
   }
 
 }

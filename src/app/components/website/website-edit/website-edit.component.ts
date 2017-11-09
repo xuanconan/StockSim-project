@@ -30,6 +30,7 @@ export class WebsiteEditComponent implements OnInit {
   constructor(
     private websiteService: WebsiteService,
     private route: ActivatedRoute,
+    private router: Router,
     private activatedRoute: ActivatedRoute) { }
 
     update(name: String) {
@@ -41,18 +42,17 @@ export class WebsiteEditComponent implements OnInit {
       };
       this.websiteService.updateWebsite(this.wid, newWebsite)
         .subscribe((status) => {
-          // this.websites = websites;
+          this.router.navigate(['profile', this.userId, 'website']);
           console.log(status);
         });
     }
 
-    deleteWebsite(userId, websiteId) {
-      this.websiteService.deleteWebsite(this.userId, websiteId)
-        .subscribe((websites) => {
-          this.websites = websites;
+    deleteWebsite() {
+      this.websiteService.deleteWebsite(this.userId, this.wid)
+        .subscribe((websites: any) => {
+          this.router.navigate(['profile', this.userId, 'website']);
         });
     }
-
 
   // notify the changes of the route
   ngOnInit() {

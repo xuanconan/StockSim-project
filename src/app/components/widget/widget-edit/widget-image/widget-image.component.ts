@@ -50,12 +50,14 @@ export class WidgetImageComponent implements OnInit {
     private websiteService: WebsiteService,
     private pageService: PageService,
     private route: ActivatedRoute,
+    private router: Router,
     private widgetService: WidgetService,
     private http: Http) { }
 
 
   updateImage(name, text, url, width) {
     const newWidget: Widget = {
+      name: name,
       _id: this.wgid,
       widgetType: this.widget.widgetType,
       pageId: this.pid,
@@ -67,7 +69,7 @@ export class WidgetImageComponent implements OnInit {
 
     this.widgetService.updateWidget(this.pid, this.wgid, newWidget)
       .subscribe((widgets) => {
-        this.widgets = widgets;
+        this.router.navigate(['profile/' + this.userId + '/website/' + this.wid + '/page/' + this.pid + '/widget/']);
       });
   }
 
@@ -75,13 +77,14 @@ export class WidgetImageComponent implements OnInit {
   deleteWidget(pageId, widgetId) {
     this.widgetService.deleteWidget(pageId, widgetId)
       .subscribe((widgets) => {
-        this.widgets = widgets;
+        this.router.navigate(['profile/' + this.userId + '/website/' + this.wid + '/page/' + this.pid + '/widget/']);
       });
   }
 
   // notify the changes of the route
   ngOnInit() {
     this.baseUrl = environment.baseUrl;
+
     // invoke a function that can pass the value of the parameters
     this.route.params.subscribe((params: any) => {
       this.userId = params['userId'];
@@ -107,6 +110,8 @@ export class WidgetImageComponent implements OnInit {
         })
         .subscribe((images) => {
           this.images = images;
+          console.log(images);
+
         });
     });
 

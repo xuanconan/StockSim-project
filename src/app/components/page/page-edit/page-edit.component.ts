@@ -35,6 +35,7 @@ export class PageEditComponent implements OnInit {
     private userService: UserService,
     private websiteService: WebsiteService,
     private pageService: PageService,
+    private router: Router,
     private route: ActivatedRoute) { }
 
   update(name, title) {
@@ -48,7 +49,8 @@ export class PageEditComponent implements OnInit {
 
     this.pageService.updatePage(this.wid, this.pid, newPage)
       .subscribe((pages) => {
-        this.pages = pages;
+        // this.pages = pages;
+        this.router.navigate(['profile', this.userId, 'website', this.wid, 'page']);
       });
   }
 

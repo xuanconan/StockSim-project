@@ -11,8 +11,22 @@ PageModel.findPageById = findPageById;
 PageModel.updatePage = updatePage;
 PageModel.deletePage = deletePage;
 
-function deletePage(pageId){
-  return PageModel.remove({_id: pageId});
+function deletePage(websiteId, pageId){
+  // return PageModel.remove({_id: pageId});
+  return PageModel
+    .remove({_id: pageId});
+    // .then(function(pageId){
+    //   return WebsiteModel
+    //     .findWebsiteById(websiteId)
+    //     .then(function (website){
+    //       for(var x = 0; x < website.pages.length; x++){
+    //         if(website.pages[x] === pageId){
+    //           website.pages.splice(x,1);
+    //           return website;
+    //         }
+    //       }
+    //     });
+    // });
 }
 
 
@@ -35,12 +49,12 @@ function createPage(page) {
     // put the page in the website array
     .then(function(page){
       newPage = page;
-      WebsiteModel
+      return WebsiteModel
         .findWebsiteById(newPage._website)
         .then(function(website){
           website.pages.push(newPage);
           //return the saved website
-          return website.save();
+          return website;
         });
     });
 }

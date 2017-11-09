@@ -38,12 +38,14 @@ export class WidgetHeaderComponent implements OnInit {
     private websiteService: WebsiteService,
     private pageService: PageService,
     private route: ActivatedRoute,
-    private widgetService: WidgetService) { }
+    private widgetService: WidgetService,
+    private router: Router) { }
 
 
   updateHeader(name, text, size) {
 
     const newWidget: Widget = {
+      name: name,
       _id: this.wgid,
       widgetType: this.widget.widgetType,
       pageId: this.pid,
@@ -55,7 +57,7 @@ export class WidgetHeaderComponent implements OnInit {
 
     this.widgetService.updateWidget(this.pid, this.wgid, newWidget)
       .subscribe((widgets) => {
-        this.widgets = widgets;
+      this.router.navigate(['profile/' + this.userId + '/website/' + this.wid + '/page/' + this.pid + '/widget/']);
       });
   }
 
@@ -64,7 +66,7 @@ export class WidgetHeaderComponent implements OnInit {
   deleteWidget(pageId, widgetId) {
     this.widgetService.deleteWidget(pageId, widgetId)
       .subscribe((widgets) => {
-        this.widgets = widgets;
+        this.router.navigate(['profile/' + this.userId + '/website/' + this.wid + '/page/' + this.pid + '/widget/']);
       });
   }
 
@@ -87,7 +89,7 @@ export class WidgetHeaderComponent implements OnInit {
       this.widgetService.findWidgetById(this.wgid)
         .subscribe((widget) => {
           this.widget = widget;
-          // this.wgid = widget._id;
+          console.log(widget);
         });
 
     });

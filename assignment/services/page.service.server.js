@@ -1,6 +1,6 @@
 module.exports = function (app) {
 
-  app.get("/api/website/:websiteId/page", findPagesByWebsiteId);
+  app.get("/api/website/:websiteId/page", findAllPagesForWebsite);
   app.post("/api/website/:websiteId/page", createPage);
   app.delete("/api/website/:websiteId/page/:pageId", deletePage);
   app.get("/api/website/:websiteId/page/:pageId", findPageById);
@@ -16,16 +16,16 @@ module.exports = function (app) {
     page._website = websiteId;
     return pageModel
       .createPage(page)
-      .then(function(page) {
+      .then(function(website) {
         pageModel
-          .findAllPagesForWebsite(websiteId)
+          .findAllPagesForWebsite(website._id)
           .then(function (pages) {
             res.json(pages);
           });
       });
   }
 
-  function findPagesByWebsiteId(req, res) {
+  function findAllPagesForWebsite(req, res) {
     var websiteId = req.params['websiteId'];
     return pageModel.findAllPagesForWebsite(websiteId).then(function (pages) {
       res.json(pages);
@@ -44,7 +44,7 @@ module.exports = function (app) {
   function deletePage (req, res) {
     var pageId = req.params['pageId'];
     var websiteId = req.params['websiteId'];
-    return pageModel.deletePage(pageId).then(function(page){
+    return pageModel.deletePage(websiteId, pageId).then(function(page){
       res.json(page);
     });
   }
@@ -52,7 +52,9 @@ module.exports = function (app) {
 
   function findPageById (req, res) {
     var pageId = req.params['pageId'];
-    res.json(getPageForPageId(pageId));
+    return pageModel.findPageById(pageId).then(function (page){
+      res.json(page);
+    });
   }
 
 

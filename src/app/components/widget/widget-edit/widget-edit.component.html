@@ -28,29 +28,30 @@
 
 <div class="container-fluid ">
 
-  <div [ngSwitch] = "widget.widgetType">
+  <!--<div [ngSwitch] = "widget.widgetType">-->
 
-    <div *ngSwitchCase = "'HEADING'">
+    <!--<div *ngSwitchCase = "'HEADING'">-->
       <!--{{widget.text}}-->
-      <app-widget-header></app-widget-header>
-    </div>
+      <app-widget-header *ngIf="widget.type ==='HEADING'"></app-widget-header>
+    <!--</div>-->
 
-    <div *ngSwitchCase = "'IMAGE'">
+    <!--<div *ngSwitchCase = "'IMAGE'">-->
       <!--{{widget.size}}-->
-      <app-widget-image></app-widget-image>
-    </div>
+      <app-widget-image *ngIf="widget.type ==='IMAGE'"></app-widget-image>
+    <!--</div>-->
 
-    <div *ngSwitchCase = "'HTML'">
-      <app-widget-header></app-widget-header>
-    </div>
+    <!--<div *ngSwitchCase = "'HTML'">-->
+      <app-widget-header *ngIf="widget.type ==='HTML'"></app-widget-header>
+    <!--</div>-->
 
-    <div *ngSwitchCase = "'YOUTUBE'">
+    <!--<div *ngSwitchCase = "'YOUTUBE'">-->
       <!--{{widget.url}}-->
-      <app-widget-youtube></app-widget-youtube>
-    </div>
+      <app-widget-youtube *ngIf="widget.type ==='YOUTUBE'"></app-widget-youtube>
+    <!--</div>-->
 
 
-  </div>
+
+  <!--</div>-->
 </div>
 
 

@@ -11,8 +11,39 @@ WebsiteModel.findWebsiteById = findWebsiteById;
 WebsiteModel.updateWebsite = updateWebsite;
 WebsiteModel.deleteWebsite = deleteWebsite;
 
-function deleteWebsite(websiteId){
-  return WebsiteModel.remove({_id: websiteId});
+function createWebsite(website) {
+  var newWebsite = null;
+  return WebsiteModel
+    .create(website)
+    // put the website in the user array
+    .then(function(website){
+      newWebsite = website;
+      return UserModel
+        .findUserById(newWebsite._user)
+        .then(function(user){
+          user.websites.push(newWebsite);
+          //return the saved user
+          return user;
+        })
+    });
+}
+
+function deleteWebsite(userId, websiteId){
+  // return WebsiteModel.remove({_id: websiteId});
+  return WebsiteModel
+    .remove({_id: websiteId});
+    // .then(function (websiteId) {
+    //   return UserModel
+    //     .findUserById(userId)
+    //     .then(function (user){
+    //       for(var x = 0; x < user.websites.length; x++){
+    //         if (user.websites[x].id === websiteId){
+    //           user.websites.splice(x,1);
+    //           return user;
+    //         }
+    //       }
+    //     });
+    // });
 }
 
 function updateWebsite(websiteId, newWebsite) {
@@ -23,23 +54,6 @@ function updateWebsite(websiteId, newWebsite) {
       name: website.name
     }
   });
-}
-
-function createWebsite(website) {
-  var newWebsite = null;
-  return WebsiteModel
-    .create(website)
-    // put the website in the user array
-    .then(function(website){
-      newWebsite = website;
-      UserModel
-        .findUserById(newWebsite._user)
-        .then(function(user){
-          user.websites.push(newWebsite);
-          //return the saved user
-          return user.save();
-        });
-    });
 }
 
 function findWebsiteById (websiteId) {

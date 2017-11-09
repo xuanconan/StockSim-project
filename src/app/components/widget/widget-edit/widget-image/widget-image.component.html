@@ -17,8 +17,7 @@
 
     <!--tick mark-->
     <div class="navbar-text pull-right">
-      <a (click)="updateImage(name, text, url, width)"
-         routerLink="/profile/{{ userId }}/website/{{ wid }}/page/{{pid}}/widget"  class="black">
+      <a (click)="updateImage(name, text, url, width)" class="black">
         <span class="glyphicon glyphicon-ok"></span>
       </a>
     </div>
@@ -40,19 +39,19 @@
     <input [(ngModel)]="text"
            class="form-control"
            type="text"
-           placeholder="{{this.widget.text}}"/>
+           placeholder="text"/>
 
     URL
     <input [(ngModel)]="url"
            class="form-control"
            type="text"
-           placeholder="{{this.widget.url}}">
+           placeholder="url">
 
     Width
     <input [(ngModel)]="width"
            class="form-control"
            type="text"
-           placeholder="{{this.widget.width}}"/>
+           placeholder="100%"/>
 
 
     <!--Upload-->
@@ -75,8 +74,7 @@
 
 
   <a class="btn btn-danger btn-block"
-     (click)="deleteWidget(this.pid, this.wgid)"
-     routerLink="/profile/{{ userId }}/website/{{ wid }}/page/{{pid}}/widget" >Delete</a>
+     (click)="deleteWidget(this.pid, this.wgid)">Delete</a>
 
 </div>
 

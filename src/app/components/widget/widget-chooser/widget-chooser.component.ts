@@ -30,22 +30,15 @@ export class WidgetChooserComponent implements OnInit {
   description: String;
   width: String;
   url: String;
-  widgets: Widget[];
+  widgets: [{}];
   widget: Widget;
   widgetType: String;
-
-  // inject route info in constructor
-  constructor(
-    private userService: UserService,
-    private websiteService: WebsiteService,
-    private pageService: PageService,
-    private route: ActivatedRoute,
-    private router: Router,
-    private widgetService: WidgetService) { }
+  type: String;
 
   defaultWidgetValues =
     {
       'HEADING': {
+        name: '',
         _id: this.widgetService.newId(),
         widgetType: 'HEADING',
         pageId: this.pid,
@@ -55,6 +48,7 @@ export class WidgetChooserComponent implements OnInit {
         url: 'url'
       },
       'IMAGE': {
+        name: '',
         _id: this.widgetService.newId(),
         widgetType: 'IMAGE',
         pageId: this.pid,
@@ -64,6 +58,7 @@ export class WidgetChooserComponent implements OnInit {
         url: 'url'
       },
       'YOUTUBE': {
+        name: '',
         _id: this.widgetService.newId(),
         widgetType: 'YOUTUBE',
         pageId: this.pid,
@@ -74,9 +69,19 @@ export class WidgetChooserComponent implements OnInit {
       },
     };
 
+  // inject route info in constructor
+  constructor(
+    private userService: UserService,
+    private websiteService: WebsiteService,
+    private pageService: PageService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private widgetService: WidgetService) { }
+
 
   createHeader(pageId) {
     const newWidget = {
+      name: '',
       _id: this.widgetService.newId(),
       widgetType: 'HEADING',
       pageId: this.pid,
@@ -89,14 +94,15 @@ export class WidgetChooserComponent implements OnInit {
     this.widgetService.createWidget(pageId, newWidget)
       .subscribe( (widgets) => {
         this.widgets = widgets;
+        this.router.navigate(['profile/' + this.userId + '/website/' + this.wid + '/page/' + this.pid + '/widget/' + newWidget._id]);
       });
 
-    this.router.navigate(['profile/' + this.userId + '/website/' + this.wid + '/page/' + this.pid + '/widget/' + newWidget._id]);
   }
 
 
   createImage(pageId) {
     const newWidget: Widget = {
+      name: '',
       _id: this.widgetService.newId(),
       widgetType: 'IMAGE',
       pageId: this.pid,
@@ -108,14 +114,14 @@ export class WidgetChooserComponent implements OnInit {
 
     this.widgetService.createWidget(pageId, newWidget)
       .subscribe( (widgets) => {
-        this.widgets = widgets;
+        this.router.navigate(['profile/' + this.userId + '/website/' + this.wid + '/page/' + this.pid + '/widget/' + newWidget._id]);
       });
-    this.router.navigate(['profile/' + this.userId + '/website/' + this.wid + '/page/' + this.pid + '/widget/' + newWidget._id]);
 
   }
 
   createYoutube(pageId) {
     const newWidget: Widget = {
+      name: '',
       _id: this.widgetService.newId(),
       widgetType: 'YOUTUBE',
       pageId: this.pid,
@@ -129,19 +135,16 @@ export class WidgetChooserComponent implements OnInit {
 
     this.widgetService.createWidget(pageId, newWidget)
       .subscribe( (widgets) => {
-        this.widgets = widgets;
+        this.router.navigate(['profile/' + this.userId + '/website/' + this.wid + '/page/' + this.pid + '/widget/' + newWidget._id]);
       });
-
-    this.router.navigate(['profile/' + this.userId + '/website/' + this.wid + '/page/' + this.pid + '/widget/' + newWidget._id]);
-
   }
 
   createWidget(widgetType) {
     this.widget = this.defaultWidgetValues[widgetType];
     this.widgetService.createWidget(this.pid, this.widget)
       .subscribe(
-        (newWidgets: any) => {
-          this.wid = newWidgets;
+        (newWidget: any) => {
+          this.widget = newWidget;
           this.router.navigate(['profile/' + this.userId + '/website/' + this.wid + '/page/' + this.pid + '/widget/' + this.widget._id]);
         },
         (error: any) => console.log(error)

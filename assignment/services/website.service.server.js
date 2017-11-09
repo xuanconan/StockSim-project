@@ -12,16 +12,15 @@ module.exports = function (app) {
   function createWebsite(req, res) {
     var userId = req.params['userId'];
     var website = req.body;
-    // WEBSITES.push(website);
     delete website._id;
     website._user = userId;
-    return websiteModel
+     websiteModel
       .createWebsite(website)
-      .then(function(website){
+      .then(function(user){
         websiteModel
           .findAllWebsitesForUser(userId)
           .then(function (websites){
-        res.json(websites);
+            res.json(websites);
       });
     });
   }
@@ -31,19 +30,16 @@ module.exports = function (app) {
     return websiteModel.findAllWebsitesForUser(userId).then(function (websites){
       res.json(websites);
     });
-
-    // res.json(websites);
   }
 
   function deleteWebsite(req, res) {
     var websiteId = req.params['websiteId'];
     var userId = req.params['userId'];
-
-    return websiteModel.deleteWebsite(websiteId).then(function(website) {
+    return websiteModel.deleteWebsite(userId, websiteId).then(function(website) {
+      console.log(website);
       res.json(website);
+
     });
-    // var websites = getWebsitesForUserId(userId);
-    // return res.json(websites);
   }
 
   function updateWebsite(req, res) {
@@ -54,14 +50,14 @@ module.exports = function (app) {
     return websiteModel.updateWebsite(websiteId, newWebsite).then(function(website) {
       res.json(website);
     });
-
   }
 
   function findWebsiteById (req, res) {
     var websiteId = req.params['websiteId'];
     var userId = req.params['userId'];
-    res.json(getWebsiteById(websiteId));
-
+    websiteModel.findWebsiteById(websiteId).then(function (website) {
+      res.json(website);
+    });
   }
 
   // utility function for get websites by userId

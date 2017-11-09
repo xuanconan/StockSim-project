@@ -26,7 +26,9 @@ export class WidgetEditComponent implements OnInit {
   pid: String;
   wgid: String;
   widgetType: String;
-  widget: Widget;
+  widget: any;
+  type: String;
+
 
 
   constructor(
@@ -50,7 +52,7 @@ export class WidgetEditComponent implements OnInit {
       this.widgetService.findWidgetById(this.wgid)
         .subscribe((widget: any) => {
           this.widget = widget;
-          // this.widget.widgetType = widget.widgetType;
+          console.log(widget);
         });
     });
 

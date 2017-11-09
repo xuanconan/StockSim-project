@@ -51,7 +51,7 @@
 
               <!--{{ widget.widgetType }}-->
 
-              <div [ngSwitch] = "widget.widgetType">
+              <div [ngSwitch] = "widget.type">
 
                 <div *ngSwitchCase = "'HEADING'">
                   <h1>{{widget.text}}</h1>
@@ -60,6 +60,7 @@
 
                 <div *ngSwitchCase = "'IMAGE'">
                   <img class="e2e-trusted-url padding-b" width="100%" src="{{ widget.url }}"/>
+                  {{ widget.url }}
                   <br/>
                 </div>
 
@@ -71,14 +72,12 @@
 
                 <div *ngSwitchCase = "'YOUTUBE'">
                   <div class="videoWrapper">
-                    <iframe  class="e2e-iframe-trusted-src" width="560" height="315"
+                    <iframe  class="e2e-iframe-trusted-src padding-b" width="560" height="315"
                              [src] = updateVideoUrl(widget.url) frameborder="0" allowfullscreen></iframe>
                     <br/>
                   </div>
                 </div>
-
               </div>
-
             </a>
 
       <!--{{widget.text}}-->

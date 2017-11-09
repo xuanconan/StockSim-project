@@ -34,7 +34,8 @@ export class PageNewComponent implements OnInit {
     private userService: UserService,
     private websiteService: WebsiteService,
     private pageService: PageService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   create(name, title) {
 
@@ -48,6 +49,7 @@ export class PageNewComponent implements OnInit {
     this.pageService.createPage(this.wid, newPage).
     subscribe((pages) => {
       this.pages = pages;
+      this.router.navigate(['profile', this.userId, 'website', this.wid, 'page']);
     });
   }
 
@@ -63,6 +65,5 @@ export class PageNewComponent implements OnInit {
       // this.websites = this.websiteService.findWebsitesByUser(this.userId);
       console.log(this.websites);
     });
-
   }
 }

@@ -50,7 +50,6 @@ export class WidgetService {
   // retrieves the widgets in local widgets array whose pageId matches the parameter pageId
   findAllWidgetsForPageId(pageId) {
     const url = 'http://localhost:3100/api/page/' + pageId + '/widget';
-
     return this.http.get(url)
       .map((response: Response) => {
         return response.json();

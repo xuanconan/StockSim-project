@@ -1,5 +1,6 @@
 // define widget class field and export for global use
 export class Widget {
+  name: String;
   _id: String;
   widgetType: String;
   pageId: String;
@@ -8,7 +9,8 @@ export class Widget {
   width: String;
   url: String;
 
-  constructor (_id, widgetType, pageId, size, text, width, url) {
+  constructor (name, _id, widgetType, pageId, size, text, width, url) {
+    this.name = name;
     this._id = _id;
     this.widgetType = widgetType;
     this.pageId = pageId;
