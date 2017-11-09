@@ -59,8 +59,9 @@
                 </div>
 
                 <div *ngSwitchCase = "'IMAGE'">
+                  Image url:  {{ widget.url }}
                   <img class="e2e-trusted-url padding-b" width="100%" src="{{ widget.url }}"/>
-                  {{ widget.url }}
+
                   <br/>
                 </div>
 

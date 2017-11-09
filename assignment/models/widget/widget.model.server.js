@@ -10,6 +10,21 @@ WidgetModel.findAllWidgetsForPage = findAllWidgetsForPage;
 WidgetModel.findWidgetById = findWidgetById;
 WidgetModel.updateWidget = updateWidget;
 WidgetModel.deleteWidget = deleteWidget;
+WidgetModel.updateImage = updateImage;
+
+function updateImage(widgetId, image) {
+  var widgetId = widgetId;
+  var image = image;
+  return WidgetModel.update({_id: widgetId},{
+    $set:{
+      name: image.name,
+      size: image.size,
+      width: image.width,
+      url: image.url
+    }
+  });
+}
+
 
 function deleteWidget(pageId, widgetId){
   // return PageModel.remove({_id: pageId});

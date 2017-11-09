@@ -35,12 +35,22 @@ module.exports = function(app) {
 
     // var widget = { url : "assets/uploads/" + filename };
 
-    var widget = widgetModel.findWidgetById(widgetId);
-    widget.url = 'assets/uploads/'+filename;
-    widget.size = size;
-    widget.name = filename;
 
-    widgetModel.updateWidget(widgetId, widget);
+    var image = {
+      name: filename,
+      widgetType: 'IMAGE',
+      pageId: userId,
+      size: size,
+      width: width,
+      url: 'assets/uploads/' + filename
+    };
+
+    // widget.url = 'assets/uploads/'+filename;
+    // widget.size = size;
+    // widget.name = filename;
+
+    widgetModel.updateImage(widgetId, image).then(function(widget){
+      res.json(widget);});
 
     var callbackUrl = "http://localhost:4200/profile/" + userId + "/website/"
                       + websiteId + '/page/' + pageId + '/widget/' + widgetId;
