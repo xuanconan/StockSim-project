@@ -39,7 +39,7 @@ module.exports = function(app) {
     var image = {
       name: filename,
       widgetType: 'IMAGE',
-      pageId: userId,
+      pageId: pageId,
       size: size,
       width: width,
       url: 'assets/uploads/' + filename

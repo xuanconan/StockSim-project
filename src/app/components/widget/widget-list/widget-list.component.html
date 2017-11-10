@@ -71,6 +71,25 @@
                   <br/>
                 </div>
 
+                <!--<div *ngSwitchCase = "'INPUT'">-->
+                  <!--&lt;!&ndash;<a href="{{widget.url}}" class> <div>{{widget.text}}</div> </a>&ndash;&gt;-->
+                  <!--<h2>{{widget.text}}</h2>-->
+                  <!--<br/>-->
+                <!--</div>-->
+
+                <div *ngSwitchCase="'INPUT'">
+                  <div *ngIf="widget.formatted">
+                    <quill-editor [(ngModel)]="widget.text" name="text"></quill-editor>
+                  </div>
+                  <input *ngIf="!widget.formatted && (!widget.rows || widget.rows===1)"
+                         placeholder="{{widget.placeholder}}" class="form-control"/>
+
+                  <textarea *ngIf="!widget.formatted && (widget.rows > 1)"
+                            rows="{{widget.rows}}" placeholder="{{widget.placeholder}}"
+                            class="form-control">{{widget.text}}</textarea>
+                </div>
+
+
                 <div *ngSwitchCase = "'YOUTUBE'">
                   <div class="videoWrapper">
                     <iframe  class="e2e-iframe-trusted-src padding-b" width="560" height="315"

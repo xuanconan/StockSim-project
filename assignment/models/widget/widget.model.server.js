@@ -44,8 +44,6 @@ function deleteWidget(pageId, widgetId){
   // });
 }
 
-
-
 function updateWidget(widgetId, widget) {
   var widgetId = widgetId;
   var newWidget = widget;
@@ -59,7 +57,6 @@ function updateWidget(widgetId, widget) {
     }
   });
 }
-
 
 function createWidget(widget) {
   var newPage = null;

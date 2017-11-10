@@ -73,7 +73,17 @@ export class WidgetChooserComponent implements OnInit {
         widgetType: 'HTML',
         pageId: this.pid,
         size: 0,
-        text: 'text',
+        text: 'HTML',
+        width: '100%',
+        url: 'undefined'
+      },
+      'INPUT': {
+        name: '',
+        _id: this.widgetService.newId(),
+        widgetType: 'INPUT',
+        pageId: this.pid,
+        size: 0,
+        text: 'INPUT',
         width: '100%',
         url: 'undefined'
       }

@@ -32,12 +32,36 @@ export class WidgetHtmlComponent implements OnInit {
   size: Number;
   wgid: String;
 
+  public editor;
+  public editorContent = `<h3>I am Example content</h3>`;
+  public editorOptions = {
+    placeholder: 'insert content...'
+  };
+
   constructor(    private userService: UserService,
                   private websiteService: WebsiteService,
                   private pageService: PageService,
                   private route: ActivatedRoute,
                   private widgetService: WidgetService,
                   private router: Router) { }
+
+  onEditorBlured(quill) {
+    console.log('editor blur!', quill);
+  }
+
+  onEditorFocused(quill) {
+    console.log('editor focus!', quill);
+  }
+
+  onEditorCreated(quill) {
+    this.editor = quill;
+    console.log('quill is ready! this is current quill instance object', quill);
+  }
+
+  onContentChanged({ quill, html, text }) {
+    console.log('quill content is changed!', quill, html, text);
+  }
+
 
 
   deleteWidget(pageId, widgetId) {
