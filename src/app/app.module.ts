@@ -30,7 +30,10 @@ import {TestComponent} from './components/test/test.component';
 import {TestService} from './services/test.service.client';
 import {HttpModule} from '@angular/http';
 import { FlickrImageSearchComponent } from './components/widget/widget-edit/widget-image/flickr-image-search/flickr-image-search.component';
-import {FlickrService} from "./services/flickr.service.clients";
+import {FlickrService} from './services/flickr.service.clients';
+import { WidgetHtmlComponent } from './components/widget/widget-edit/widget-html/widget-html.component';
+import { WidgetTextComponent } from './components/widget/widget-edit/widget-text/widget-text.component';
+import { QuillEditorModule } from 'ngx-quill-editor';
 
 
 @NgModule({
@@ -53,10 +56,12 @@ import {FlickrService} from "./services/flickr.service.clients";
     WidgetYoutubeComponent,
     HomeComponent,
     TestComponent,
-    FlickrImageSearchComponent
+    FlickrImageSearchComponent,
+    WidgetHtmlComponent,
+    WidgetTextComponent
   ],
   imports: [
-    BrowserModule, routing, FormsModule, HttpModule
+    BrowserModule, routing, FormsModule, HttpModule, QuillEditorModule
   ],
 
   // inject it into any constructors

@@ -45,7 +45,7 @@ export class WidgetChooserComponent implements OnInit {
         size: 0,
         text: 'text',
         width: '100%',
-        url: 'url'
+        url: 'undefined'
       },
       'IMAGE': {
         name: '',
@@ -55,7 +55,7 @@ export class WidgetChooserComponent implements OnInit {
         size: 0,
         text: 'text',
         width: '100%',
-        url: 'url'
+        url: 'undefined'
       },
       'YOUTUBE': {
         name: '',
@@ -67,6 +67,16 @@ export class WidgetChooserComponent implements OnInit {
         width: '100%',
         url: 'undefined'
       },
+      'HTML': {
+        name: '',
+        _id: this.widgetService.newId(),
+        widgetType: 'HTML',
+        pageId: this.pid,
+        size: 0,
+        text: 'text',
+        width: '100%',
+        url: 'undefined'
+      }
     };
 
   // inject route info in constructor
