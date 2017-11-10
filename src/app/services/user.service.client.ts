@@ -8,7 +8,6 @@ import { Response} from '@angular/http';
 import 'rxjs/Rx';
 import {environment} from '../../environments/environment';
 
-
 // make class usable for all components
 @Injectable()
 export class UserService {

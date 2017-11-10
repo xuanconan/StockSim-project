@@ -29,6 +29,8 @@ import {HomeComponent} from './components/home/home.component';
 import {TestComponent} from './components/test/test.component';
 import {TestService} from './services/test.service.client';
 import {HttpModule} from '@angular/http';
+import { FlickrImageSearchComponent } from './components/widget/widget-edit/widget-image/flickr-image-search/flickr-image-search.component';
+import {FlickrService} from "./services/flickr.service.clients";
 
 
 @NgModule({
@@ -50,7 +52,8 @@ import {HttpModule} from '@angular/http';
     WidgetImageComponent,
     WidgetYoutubeComponent,
     HomeComponent,
-    TestComponent
+    TestComponent,
+    FlickrImageSearchComponent
   ],
   imports: [
     BrowserModule, routing, FormsModule, HttpModule
@@ -62,7 +65,8 @@ import {HttpModule} from '@angular/http';
     WebsiteService,
     PageService,
     WidgetService,
-    TestService
+    TestService,
+    FlickrService
   ],
   bootstrap: [AppComponent]
 })

@@ -14,7 +14,7 @@ import {WidgetEditComponent} from './components/widget/widget-edit/widget-edit.c
 import {HomeComponent} from './components/home/home.component';
 import {TestComponent} from './components/test/test.component';
 import {ModuleWithProviders} from '@angular/core';
-
+import {FlickrImageSearchComponent} from './components/widget/widget-edit/widget-image/flickr-image-search/flickr-image-search.component';
 
 // config route default constants
 const appRoutes: Routes = [
@@ -35,6 +35,8 @@ const appRoutes: Routes = [
   {path: 'profile/:userId/website/:wid/page/:pid/widget', component: WidgetListComponent},
   {path: 'profile/:userId/website/:wid/page/:pid/widget/new', component: WidgetChooserComponent},
   {path: 'profile/:userId/website/:wid/page/:pid/widget/:wgid', component: WidgetEditComponent},
+  {path: 'profile/:userId/website/:wid/page/:pid/widget/:wgid/flickr', component: FlickrImageSearchComponent},
+
   // {path: 'user/:uid/website WebsiteComponent'}
 ];
 
