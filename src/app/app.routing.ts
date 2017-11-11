@@ -43,4 +43,4 @@ const appRoutes: Routes = [
 
 // use appRoutes to config router module and export it as an constant variable that
 // that can be imported else where
-export const routing = RouterModule.forRoot(appRoutes);
+export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
