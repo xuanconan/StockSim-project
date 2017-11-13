@@ -61,7 +61,7 @@ import { QuillEditorModule } from 'ngx-quill-editor';
     WidgetTextComponent
   ],
   imports: [
-    BrowserModule, routing, FormsModule, HttpModule, QuillEditorModule
+    BrowserModule, routing, FormsModule, HttpModule, QuillEditorModule, 
   ],
 
   // inject it into any constructors

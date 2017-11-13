@@ -183,7 +183,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_31__components_widget_widget_edit_widget_text_widget_text_component__["a" /* WidgetTextComponent */]
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */], __WEBPACK_IMPORTED_MODULE_6__app_routing__["a" /* routing */], __WEBPACK_IMPORTED_MODULE_5__angular_forms__["a" /* FormsModule */], __WEBPACK_IMPORTED_MODULE_27__angular_http__["b" /* HttpModule */], __WEBPACK_IMPORTED_MODULE_32_ngx_quill_editor__["a" /* QuillEditorModule */]
+            __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */], __WEBPACK_IMPORTED_MODULE_6__app_routing__["a" /* routing */], __WEBPACK_IMPORTED_MODULE_5__angular_forms__["a" /* FormsModule */], __WEBPACK_IMPORTED_MODULE_27__angular_http__["b" /* HttpModule */], __WEBPACK_IMPORTED_MODULE_32_ngx_quill_editor__["a" /* QuillEditorModule */],
         ],
         // inject it into any constructors
         providers: [
