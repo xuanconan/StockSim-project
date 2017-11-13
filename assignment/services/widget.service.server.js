@@ -104,7 +104,8 @@ module.exports = function(app) {
     // res.json(getWidgetsForPageId(pageId));
     return widgetModel.findAllWidgetsForPage(pageId).then(function(widgets) {
       res.json(widgets);
-    });
+    },      function (err) {
+      res.sendStatus(404).send(err);});
   }
 
   function findWidgetById(req, res) {
