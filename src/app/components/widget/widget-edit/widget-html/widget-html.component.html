@@ -3,7 +3,7 @@
 
     <!--heading on the nav bar-->
     <div class="navbar-text pull-left">
-      <a routerLink="/profile/{{userId}}/website/{{wid}}/page/{{pid}}/widget" class="black">
+      <a routerLink="/user/website/{{wid}}/page/{{pid}}/widget" class="black">
         <span class="glyphicon glyphicon-chevron-left "></span>
       </a>
     </div>
@@ -16,7 +16,7 @@
 
     <!--tick mark-->
     <div class="navbar-text pull-right">
-      <a (click)="updateHeader(name, text, size)" class="black">
+      <a (click)="updateWidget()" class="black">
         <span class="glyphicon glyphicon-ok "></span>
       </a>
     </div>
@@ -27,14 +27,27 @@
 
 <div class="container-fluid padding">
 
-  <quill-editor [(ngModel)]="editorContent"
-                [options]="editorOptions"
-                (blur)="onEditorBlured($event)"
-                (focus)="onEditorFocused($event)"
-                (ready)="onEditorCreated($event)"
-                (change)="onContentChanged($event)"></quill-editor>
+  <div class="form-group">
+    <label for="Name">Name</label>
+    <input [(ngModel)]="widget.name"
+           type="text"
+           class="form-control"
+           id="Name"
+           name="widname"
+           placeholder="Enter the name"
+           required>
+    <span class="alert-class"
+          *ngIf="flag">{{alert}}</span>
+  </div>
 
+  <quill-editor [(ngModel)]="widget.text" name="text"></quill-editor>
 
+  <!--<quill-editor [(ngModel)]="editorContent"-->
+                <!--[options]="editorOptions"-->
+                <!--(blur)="onEditorBlured($event)"-->
+                <!--(focus)="onEditorFocused($event)"-->
+                <!--(ready)="onEditorCreated($event)"-->
+                <!--(change)="onContentChanged($event)"></quill-editor>-->
   <br/>
 
   <a class="btn btn-danger btn-block"

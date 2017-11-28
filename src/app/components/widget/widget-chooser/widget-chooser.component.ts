@@ -45,7 +45,10 @@ export class WidgetChooserComponent implements OnInit {
         size: 0,
         text: 'text',
         width: '100%',
-        url: 'undefined'
+        url: 'undefined',
+        placeholder: '',
+        rows: 0,
+        fomatted: false
       },
       'IMAGE': {
         name: '',
@@ -55,7 +58,10 @@ export class WidgetChooserComponent implements OnInit {
         size: 0,
         text: 'text',
         width: '100%',
-        url: 'undefined'
+        url: 'undefined',
+        placeholder: '',
+        rows: 0,
+        fomatted: false
       },
       'YOUTUBE': {
         name: '',
@@ -65,7 +71,10 @@ export class WidgetChooserComponent implements OnInit {
         size: 0,
         text: 'text',
         width: '100%',
-        url: 'undefined'
+        url: 'undefined',
+        placeholder: '',
+        rows: 0,
+        fomatted: false
       },
       'HTML': {
         name: '',
@@ -75,7 +84,10 @@ export class WidgetChooserComponent implements OnInit {
         size: 0,
         text: 'HTML',
         width: '100%',
-        url: 'undefined'
+        url: 'undefined',
+        placeholder: '',
+        rows: 0,
+        fomatted: false
       },
       'INPUT': {
         name: '',
@@ -85,7 +97,10 @@ export class WidgetChooserComponent implements OnInit {
         size: 0,
         text: 'INPUT',
         width: '100%',
-        url: 'undefined'
+        url: 'undefined',
+        placeholder: '',
+        rows: 0,
+        formatted: false
       }
     };
 
@@ -114,7 +129,7 @@ export class WidgetChooserComponent implements OnInit {
     this.widgetService.createWidget(pageId, newWidget)
       .subscribe( (widgets) => {
         this.widgets = widgets;
-        this.router.navigate(['profile/' + this.userId + '/website/' + this.wid + '/page/' + this.pid + '/widget/' + newWidget._id]);
+        this.router.navigate(['user' + '/website/' + this.wid + '/page/' + this.pid + '/widget/' + newWidget._id]);
       });
 
   }
@@ -134,7 +149,7 @@ export class WidgetChooserComponent implements OnInit {
 
     this.widgetService.createWidget(pageId, newWidget)
       .subscribe( (widgets) => {
-        this.router.navigate(['profile/' + this.userId + '/website/' + this.wid + '/page/' + this.pid + '/widget/' + newWidget._id]);
+        this.router.navigate(['user' + '/website/' + this.wid + '/page/' + this.pid + '/widget/' + newWidget._id]);
       });
 
   }
@@ -155,7 +170,7 @@ export class WidgetChooserComponent implements OnInit {
 
     this.widgetService.createWidget(pageId, newWidget)
       .subscribe( (widgets) => {
-        this.router.navigate(['profile/' + this.userId + '/website/' + this.wid + '/page/' + this.pid + '/widget/' + newWidget._id]);
+        this.router.navigate(['user' + '/website/' + this.wid + '/page/' + this.pid + '/widget/' + newWidget._id]);
       });
   }
 
@@ -165,7 +180,7 @@ export class WidgetChooserComponent implements OnInit {
       .subscribe(
         (newWidget: any) => {
           this.widget = newWidget;
-          this.router.navigate(['profile/' + this.userId + '/website/' + this.wid + '/page/' + this.pid + '/widget/' + this.widget._id]);
+          this.router.navigate(['user' + '/website/' + this.wid + '/page/' + this.pid + '/widget/' + this.widget._id]);
         },
         (error: any) => console.log(error)
       );

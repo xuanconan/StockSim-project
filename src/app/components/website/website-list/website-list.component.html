@@ -4,7 +4,7 @@
 
     <!--heading on the nav bar-->
     <p class="navbar-text pull-left">
-      <a routerLink="/profile/{{ userId }}" class="white">
+      <a routerLink="/profile" class="white">
         <span class="glyphicon glyphicon-chevron-left "></span>
       </a>
     </p>
@@ -15,7 +15,7 @@
 
     <!--tick mark-->
     <div class="navbar-text pull-right">
-      <a routerLink="/profile/{{ userId }}/website/new" class="white">
+      <a routerLink="/user/website/new" class="white">
         <span class="glyphicon glyphicon-plus "></span>
       </a>
     </div>
@@ -26,14 +26,14 @@
 
 <div class="padding"></div>
 <div *ngFor = "let website of websites" class="container-fluid ">
-  <ul routerLink="/profile/{{ userId }}/website/{{ wid }}/page" class="list-group">
+  <ul  class="list-group">
     <li class="list-group-item blue borderless">
 
-      <a routerLink="/profile/{{ userId }}/website/{{ website._id }}/page">
+      <a routerLink="/user/website/{{ website._id }}/page">
         {{ website.name }}         (username: {{ website._user.username}} )
       </a>
 
-      <a class="pull-right" routerLink="/profile/{{ userId }}/website/{{ website._id }}">
+      <a class="pull-right" routerLink="/user/website/{{ website._id }}">
         <span class="glyphicon glyphicon-cog"></span>
       </a>
     </li>
@@ -43,7 +43,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-text pull-right">
-      <a routerLink="/profile/{{ userId }}" class="white">
+      <a routerLink="/profile" class="white">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </p>

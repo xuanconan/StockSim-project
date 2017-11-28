@@ -7,6 +7,7 @@ import { WebsiteService} from '../../../services/website.service.client';
 import { NgForm } from '@angular/forms';
 import { Website} from '../../../models/website.model.client';
 import { ViewChild } from '@angular/core';
+import {SharedService} from '../../../services/shared.service.client';
 
 @Component({
   selector: 'app-website-edit',
@@ -19,7 +20,7 @@ export class WebsiteEditComponent implements OnInit {
 
   wid: String;
   userId: String;
-  user: User;
+  user: any;
   name: String;
   developerId: String;
   websites: Website[];
@@ -31,7 +32,14 @@ export class WebsiteEditComponent implements OnInit {
     private websiteService: WebsiteService,
     private route: ActivatedRoute,
     private router: Router,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute,
+    private sharedService: SharedService) { }
+
+    getUser() {
+      // this.user = JSON.parse(localStorage.getItem("user"));
+      this.user = this.sharedService.user;
+      this.userId = this.user['_id'];
+    }
 
     update(name: String) {
       const newWebsite: Website = {
@@ -42,7 +50,7 @@ export class WebsiteEditComponent implements OnInit {
       };
       this.websiteService.updateWebsite(this.wid, newWebsite)
         .subscribe((status) => {
-          this.router.navigate(['profile', this.userId, 'website']);
+          this.router.navigate(['user', 'website']);
           console.log(status);
         });
     }
@@ -50,7 +58,7 @@ export class WebsiteEditComponent implements OnInit {
     deleteWebsite() {
       this.websiteService.deleteWebsite(this.userId, this.wid)
         .subscribe((websites: any) => {
-          this.router.navigate(['profile', this.userId, 'website']);
+          this.router.navigate(['user', 'website']);
         });
     }
 
@@ -58,19 +66,23 @@ export class WebsiteEditComponent implements OnInit {
   ngOnInit() {
     // invoke a function that can pass the value of the parameters
     this.route.params.subscribe((params: any) => {
-      this.userId = params['userId'];
       this.wid = params['wid'];
-      // alert('userId: ' + this.userId);
-      // this.websites = this.websiteService.findWebsitesByUser(this.userId);
-      this.websiteService.findWebsitesByUser(this.userId)
-        .subscribe((websites) => {
-          this.websites = websites;
-        });
-
-      this.websiteService.findWebsiteById(this.userId, this.wid)
-        .subscribe((website) => {
-          this.website = website;
-        });
     });
+
+    this.getUser();
+
+    this.user = this.sharedService.user;
+
+    this.userId = this.user['_id'];
+
+    this.websiteService.findWebsitesByUser(this.userId)
+      .subscribe((websites) => {
+        this.websites = websites;
+      });
+
+    this.websiteService.findWebsiteById(this.userId, this.wid)
+      .subscribe((website) => {
+        this.website = website;
+      });
   }
 }

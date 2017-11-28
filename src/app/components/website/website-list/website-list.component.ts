@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { WebsiteService} from '../../../services/website.service.client';
 import { Website } from '../../../models/website.model.client';
 import { NgForm } from '@angular/forms';
-
+import {SharedService} from '../../../services/shared.service.client';
 
 
 @Component({
@@ -19,7 +19,7 @@ export class WebsiteListComponent implements OnInit {
   // @ViewChild('f') updateForm: NgForm;
   wid: String;
   userId: String;
-  user: User;
+  user: any;
   developerId: String;
   websites: Website[];
   description: String;
@@ -29,23 +29,30 @@ export class WebsiteListComponent implements OnInit {
   constructor(
     private websiteService: WebsiteService,
     private route: ActivatedRoute,
-    private userService: UserService) { }
+    private userService: UserService,
+    private sharedService: SharedService) { }
+
+  getUser() {
+    // this.user = JSON.parse(localStorage.getItem("user"));
+    this.user = this.sharedService.user;
+    this.userId = this.user['_id'];
+  }
 
   // notify the changes of the route
   ngOnInit() {
-    // invoke a function that can pass the value of the parameters
-    this.route.params.subscribe((params: any) => {
-      this.userId = params['userId'];
-      this.wid = params['wid'];
-      // alert('userId: ' + this.userId);
+
+      this.getUser();
+
+      this.user = this.sharedService.user;
+
+      this.userId = this.user['_id'];
+
       this.websiteService.findWebsitesByUser(this.userId)
         .subscribe((websites) => {
           this.websites = websites;
           console.log(websites);
         });
       // console.log(this.websites);
-    });
-
   }
 
 

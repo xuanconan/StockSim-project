@@ -8,6 +8,7 @@ import { Website } from '../../../models/website.model.client';
 import { NgForm } from '@angular/forms';
 import {Page} from '../../../models/page.model.client';
 import {PageService} from '../../../services/page.service.client';
+import { SharedService } from '../../../services/shared.service.client';
 
 
 @Component({
@@ -21,7 +22,7 @@ export class PageListComponent implements OnInit {
 
   wid: String;
   userId: String;
-  user: User;
+  user: any;
   developerId: String;
   websites: Website[];
   pages: [{}];
@@ -33,15 +34,27 @@ export class PageListComponent implements OnInit {
     private userService: UserService,
     private websiteService: WebsiteService,
     private pageService: PageService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private sharedService: SharedService) { }
+
+  getUser() {
+    // this.user = JSON.parse(localStorage.getItem("user"));
+    this.user = this.sharedService.user;
+    this.userId = this.user['_id'];
+  }
 
   // notify the changes of the route
   ngOnInit() {
     // invoke a function that can pass the value of the parameters
     this.route.params.subscribe((params: any) => {
-      this.userId = params['userId'];
-
       this.wid = params['wid'];
+    });
+
+    this.getUser();
+
+    this.user = this.sharedService.user;
+
+    this.userId = this.user['_id'];
 
       this.websiteService.findWebsitesByUser(this.userId)
         .subscribe((websites) => {
@@ -56,7 +69,7 @@ export class PageListComponent implements OnInit {
         });
       // this.pages = this.pageService.findPageByWebsiteId(this.wid);
 
-    });
+
 
   }
 }

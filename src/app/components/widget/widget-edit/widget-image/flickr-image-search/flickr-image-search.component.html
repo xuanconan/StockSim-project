@@ -2,7 +2,7 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <p class="navbar-text pull-left">
-      <a routerLink="/profile/{{userId}}/website/{{wid}}/page/{{pid}}/widget/{{wgid}}" class="white">
+      <a routerLink="/user/website/{{wid}}/page/{{pid}}/widget/{{wgid}}" class="white">
         <span class="glyphicon glyphicon-chevron-left "></span>
       </a>
     </p>
@@ -34,13 +34,10 @@
          class="col-xs-4">
       <img    (click)="selectPhoto(pic)"
               width="100%"
-              [src] = "['https://farm' + pic.farm + '.staticflickr.com/' + pic.server + '/' +   pic.id + '_' + pic.secret + '_s.jpg']"/>
-
+              [src] = "['https://farm' + pic.farm + '.staticflickr.com/' + pic.server + '/' + pic.id + '_' + pic.secret + '_s.jpg']"/>
       <p></p>
     </div>
   </div>
-
-
 
 </div>
 
@@ -48,7 +45,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-text pull-right">
-      <a routerLink="/profile/{{ userId }}" class="white">
+      <a routerLink="/profile" class="white">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </p>

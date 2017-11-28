@@ -3,24 +3,6 @@
 <div class="container">
   <h1>Register</h1>
 
-
-  <!--<input [(ngModel)] = "username"-->
-         <!--placeholder="username"-->
-         <!--type="text"-->
-         <!--class="form-control"/>-->
-  <!--<input [(ngModel)]="password"-->
-          <!--placeholder="password"-->
-         <!--type="password"-->
-         <!--class="form-control"/>-->
-  <!--<input [(ngModel)]="passwordvalid"-->
-          <!--placeholder="verify password"-->
-         <!--type="password"-->
-         <!--class="form-control"/>-->
-  <!--<a class="btn btn-primary btn-block" (click)="register(username, password, passwordvalid)">Register</a>-->
-  <!--<a class="btn btn-danger btn-block" routerLink="/login">Cancel</a>-->
-
-
-
   <form (ngSubmit) = "register()" #f="ngForm">
     <input ngModel
            placeholder="username"
@@ -30,7 +12,6 @@
            required
            #username = "ngModel"/>
 
-
     <input ngModel
            placeholder="password"
            name="password"
@@ -38,7 +19,6 @@
            type="password"
            required
            #password="ngModel"/>
-
 
     <input ngModel
            placeholder="verify password"
@@ -48,8 +28,6 @@
            required
            #passwordvalid="ngModel"/>
 
-
-
     <button class="btn btn-primary btn-block"
             type = "submit"
             [disabled]="!f.valid">Register</button>
@@ -57,10 +35,5 @@
     <button class="btn btn-danger btn-block" routerLink="/login">Cancel</button>
 
   </form>
-
-
-
-
-
 
 </div>

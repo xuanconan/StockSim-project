@@ -15,7 +15,7 @@ import {HomeComponent} from './components/home/home.component';
 import {TestComponent} from './components/test/test.component';
 import {ModuleWithProviders} from '@angular/core';
 import {FlickrImageSearchComponent} from './components/widget/widget-edit/widget-image/flickr-image-search/flickr-image-search.component';
-
+import {AuthenticationService} from './services/authentication.service.client';
 // config route default constants
 const appRoutes: Routes = [
   {path: '', component : HomeComponent},
@@ -26,20 +26,21 @@ const appRoutes: Routes = [
   {path: 'widget', component: WidgetListComponent},
   // navigate pass certain userID 显示在地址栏上
   {path: 'profile/:userId', component: ProfileComponent},
-  {path: 'profile/:userId/website', component: WebsiteListComponent},
-  {path: 'profile/:userId/website/new', component: WebsiteNewComponent},
-  {path: 'profile/:userId/website/:wid', component: WebsiteEditComponent},
-  {path: 'profile/:userId/website/:wid/page', component: PageListComponent},
-  {path: 'profile/:userId/website/:wid/page/new', component: PageNewComponent},
-  {path: 'profile/:userId/website/:wid/page/:pid', component: PageEditComponent},
-  {path: 'profile/:userId/website/:wid/page/:pid/widget', component: WidgetListComponent},
-  {path: 'profile/:userId/website/:wid/page/:pid/widget/new', component: WidgetChooserComponent},
-  {path: 'profile/:userId/website/:wid/page/:pid/widget/:wgid', component: WidgetEditComponent},
-  {path: 'profile/:userId/website/:wid/page/:pid/widget/:wgid/flickr', component: FlickrImageSearchComponent},
+  // go to profile if canActivate
+  {path: 'profile', component: ProfileComponent, canActivate: [AuthenticationService]},
 
-  // {path: 'user/:uid/website WebsiteComponent'}
+  {path: 'user/website', component: WebsiteListComponent, canActivate: [AuthenticationService]},
+  {path: 'user/website/new', component: WebsiteNewComponent, canActivate: [AuthenticationService]},
+  {path: 'user/website/:wid', component: WebsiteEditComponent, canActivate: [AuthenticationService]},
+  {path: 'user/website/:wid/page', component: PageListComponent, canActivate: [AuthenticationService]},
+  {path: 'user/website/:wid/page/new', component: PageNewComponent, canActivate: [AuthenticationService]},
+  {path: 'user/website/:wid/page/:pid', component: PageEditComponent, canActivate: [AuthenticationService]},
+  {path: 'user/website/:wid/page/:pid/widget', component: WidgetListComponent, canActivate: [AuthenticationService]},
+  {path: 'user/website/:wid/page/:pid/widget/new', component: WidgetChooserComponent, canActivate: [AuthenticationService]},
+  {path: 'user/website/:wid/page/:pid/widget/:wgid', component: WidgetEditComponent, canActivate: [AuthenticationService]},
+  {path: 'user/website/:wid/page/:pid/widget/:wgid/flickr', component: FlickrImageSearchComponent, canActivate: [AuthenticationService]},
+
 ];
-
 
 // use appRoutes to config router module and export it as an constant variable that
 // that can be imported else where

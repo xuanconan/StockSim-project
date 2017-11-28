@@ -34,6 +34,10 @@ import {FlickrService} from './services/flickr.service.clients';
 import { WidgetHtmlComponent } from './components/widget/widget-edit/widget-html/widget-html.component';
 import { WidgetTextComponent } from './components/widget/widget-edit/widget-text/widget-text.component';
 import { QuillEditorModule } from 'ngx-quill-editor';
+import {SharedService} from './services/shared.service.client';
+import {AuthenticationService} from './services/authentication.service.client';
+import {SortableDirective} from './components/widget/widget-list/sortable.directive';
+import { OrderByPipe } from './components/widget/widget-list/order-by-pipe.pipe';
 
 
 @NgModule({
@@ -58,10 +62,12 @@ import { QuillEditorModule } from 'ngx-quill-editor';
     TestComponent,
     FlickrImageSearchComponent,
     WidgetHtmlComponent,
-    WidgetTextComponent
+    WidgetTextComponent,
+    SortableDirective,
+    OrderByPipe
   ],
   imports: [
-    BrowserModule, routing, FormsModule, HttpModule, QuillEditorModule, 
+    BrowserModule, routing, FormsModule, HttpModule, QuillEditorModule
   ],
 
   // inject it into any constructors
@@ -71,7 +77,9 @@ import { QuillEditorModule } from 'ngx-quill-editor';
     PageService,
     WidgetService,
     TestService,
-    FlickrService
+    FlickrService,
+    SharedService,
+    AuthenticationService
   ],
   bootstrap: [AppComponent]
 })

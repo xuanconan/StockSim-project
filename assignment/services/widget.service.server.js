@@ -12,6 +12,8 @@ module.exports = function(app) {
   app.put('/api/page/:pid/widget/:wgid', updateWidget);
   app.post('/api/page/:pid/widget', createWidget);
   app.post ("/api/upload", upload.single('myFile'), uploadImage);
+  app.put("/api/page/:pid/widget",reorderWidgets);
+
 
   var widgetModel = require('../models/widget/widget.model.server');
 
@@ -33,31 +35,36 @@ module.exports = function(app) {
     var size          = myFile.size;
     var mimetype      = myFile.mimetype;
 
-    // var widget = { url : "assets/uploads/" + filename };
-
-
     var image = {
       name: filename,
       widgetType: 'IMAGE',
       pageId: pageId,
       size: size,
       width: width,
-      url: 'assets/uploads/' + filename
+      url: '/assets/uploads/' + filename
     };
-
-    // widget.url = 'assets/uploads/'+filename;
-    // widget.size = size;
-    // widget.name = filename;
 
     widgetModel.updateImage(widgetId, image).then(function(widget){
       res.json(widget);});
 
-    var callbackUrl = "http://localhost:4200/profile/" + userId + "/website/"
-                      + websiteId + '/page/' + pageId + '/widget/' + widgetId;
+    var callbackUrl = "http://localhost:4200/user/website/"
+                      + websiteId + '/page/' + pageId + '/widget/' ;
 
     res.redirect(callbackUrl);
   }
 
+  function reorderWidgets(req,res) {
+    var pageId = req.params.pid;
+    var startIndex = parseInt(req.query.start);
+    var endIndex = parseInt(req.query.end);
+    widgetModel
+      .reorderWidgets(pageId, startIndex, endIndex)
+      .then(function (stats) {
+        res.send(200);
+      }, function (err) {
+        res.sendStatus(400).send(err);
+      });
+  }
 
   function updateWidget(req, res) {
     var widgetId = req.params['wgid'];
@@ -95,10 +102,6 @@ module.exports = function(app) {
 
   }
 
-  // function findAllWidgets(req, res) {
-  //   res.json(WIDGETS);
-  // }
-
   function findAllWidgetsForPage (req, res) {
     var pageId = req.params['pid'];
     // res.json(getWidgetsForPageId(pageId));
@@ -134,10 +137,5 @@ module.exports = function(app) {
     }
 
   }
-
-  // function newId() {
-  //   return (Number( Math.floor((Math.random()) * 10000))).toString();
-  // }
-
 
 };

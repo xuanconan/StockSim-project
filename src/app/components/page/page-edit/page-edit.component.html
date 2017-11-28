@@ -4,7 +4,7 @@
 
     <!--heading on the nav bar-->
     <div class="navbar-text pull-left">
-      <a routerLink="/profile/{{userId}}/website/{{wid}}/page" class="navbar-link black">
+      <a routerLink="/user/website/{{wid}}/page" class="navbar-link black">
         <span class="glyphicon glyphicon-chevron-left "></span>
       </a>
     </div>
@@ -46,7 +46,7 @@
 
     <a class="btn btn-danger btn-block"
        (click)="deletePage(this.wid, this.pid)"
-       routerLink="/profile/{{userId}}/website/{{wid}}/page" >Delete</a>
+       routerLink="/user/website/{{wid}}/page" >Delete</a>
 
 
 </div>
@@ -57,7 +57,7 @@
   <div class="container-fluid">
     <p class="navbar-text pull-right">
       <a
-        routerLink="/profile/{{userId}}" class="blue">
+        routerLink="/profile" class="blue">
         <span class="glyphicon glyphicon-user "></span>
       </a>
     </p>

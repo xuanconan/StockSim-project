@@ -8,6 +8,7 @@ import { Website } from '../../../models/website.model.client';
 import { NgForm } from '@angular/forms';
 import {Page} from '../../../models/page.model.client';
 import {PageService} from '../../../services/page.service.client';
+import {SharedService} from '../../../services/shared.service.client';
 
 @Component({
   selector: 'app-page-new',
@@ -20,7 +21,7 @@ export class PageNewComponent implements OnInit {
 
   wid: String;
   userId: String;
-  user: User;
+  user: any;
   developerId: String;
   websites: Website[];
   description: String;
@@ -35,7 +36,14 @@ export class PageNewComponent implements OnInit {
     private websiteService: WebsiteService,
     private pageService: PageService,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private sharedService: SharedService) { }
+
+  getUser() {
+    // this.user = JSON.parse(localStorage.getItem("user"));
+    this.user = this.sharedService.user;
+    this.userId = this.user['_id'];
+  }
 
   create(name, title) {
 
@@ -49,7 +57,7 @@ export class PageNewComponent implements OnInit {
     this.pageService.createPage(this.wid, newPage).
     subscribe((pages) => {
       this.pages = pages;
-      this.router.navigate(['profile', this.userId, 'website', this.wid, 'page']);
+      this.router.navigate(['user', 'website', this.wid, 'page']);
     });
   }
 
@@ -58,12 +66,17 @@ export class PageNewComponent implements OnInit {
   ngOnInit() {
     // invoke a function that can pass the value of the parameters
     this.route.params.subscribe((params: any) => {
-      this.userId = params['userId'];
       // this.user = this.userService.findUserById(this.userId);
       this.wid = params['wid'];
       // alert('userId: ' + this.userId);
       // this.websites = this.websiteService.findWebsitesByUser(this.userId);
       console.log(this.websites);
     });
+
+    this.getUser();
+
+    this.user = this.sharedService.user;
+
+    this.userId = this.user['_id'];
   }
 }

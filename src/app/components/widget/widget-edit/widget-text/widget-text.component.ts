@@ -22,7 +22,7 @@ export class WidgetTextComponent implements OnInit {
 
   @Input()
 
-  widget: any;
+  widget: {placeholder: '', };
   wid: String;
   userId: String;
   widgets: Widget[];
@@ -32,6 +32,7 @@ export class WidgetTextComponent implements OnInit {
   text: String;
   size: Number;
   wgid: String;
+  flag = false;
 
   constructor(private userService: UserService,
               private websiteService: WebsiteService,
@@ -40,11 +41,22 @@ export class WidgetTextComponent implements OnInit {
               private widgetService: WidgetService,
               private router: Router) { }
 
+  updateWidget() {
+    if (this.widget['name'] === undefined) {
+      this.flag = true;
+    } else {
+      this.widgetService.updateWidget(this.pid, this.wgid, this.widget)
+        .subscribe(
+          (data: any) => this.router.navigate(['/user', 'website', this.wid, 'page', this.pid, 'widget']),
+          (error: any) => console.log(error)
+        );
+    }
+  }
 
   deleteWidget(pageId, widgetId) {
     this.widgetService.deleteWidget(pageId, widgetId)
       .subscribe((widgets) => {
-        this.router.navigate(['profile/' + this.userId + '/website/' + this.wid + '/page/' + this.pid + '/widget/']);
+        this.router.navigate(['user' + '/website/' + this.wid + '/page/' + this.pid + '/widget/']);
       });
   }
 
@@ -52,17 +64,16 @@ export class WidgetTextComponent implements OnInit {
   ngOnInit() {
 
     this.route.params.subscribe((params: any) => {
-      this.userId = params['userId'];
       this.wid = params['wid'];
       this.pid = params['pid'];
       this.wgid = params['wgid'];
-
-      this.widgetService.findWidgetById(this.wgid)
-        .subscribe((widget) => {
-          this.widget = widget;
-          console.log(widget);
-        });
     });
+
+    this.widgetService.findWidgetById(this.wgid)
+      .subscribe((widget) => {
+        this.widget = widget;
+        console.log(widget);
+      });
   }
 
 }

@@ -4,7 +4,8 @@ import {UserService} from '../../../services/user.service.client';
 import {User} from '../../../models/user.model.client';
 import {NgForm} from '@angular/forms';
 import {Response} from '@angular/http';
-
+import { SharedService} from '../../../services/shared.service.client';
+import {environment} from '../../../../environments/environment';
 
 // below is an angular component
 @Component({
@@ -23,28 +24,45 @@ export class LoginComponent implements OnInit {
   disabledFlag: boolean;
   errorFlag: boolean;
   errorMsg = 'Invalid user name or password！';
+  baseUrl = environment.baseUrl;
 
 
   // privately declared variable
   constructor(private userService: UserService,
-              private router: Router) { }
+              private router: Router,
+              private sharedService: SharedService) { }
 
   // api function for login
   login() {
     this.username = this.loginForm.value.username;
     this.password = this.loginForm.value.password;
-    // calling and subscribe dynamic result from the http function located in user.service.client
-    this.userService.findUserByCredentials(this.username, this.password)
-      .subscribe((user: User) => {
-        if (user) {
-          // alert(user._id);
-          this.router.navigate(['/profile/', user._id]);
-        } else {
-          this.errorFlag = true;
-          this.errorMsg = 'Error';
-          alert('wrong username or password');
+
+    console.log('data', this.username);
+    // calling client side userservice to send login information
+    this.userService
+      .login(this.username, this.password)
+      .subscribe(
+        (data: any) => {
+      // store current logged in user in SharedService
+        this.sharedService.user = data;
+        this.router.navigate(['/profile']); },
+        (error: any) => {
+      console.log(error);
         }
-    });
+      );
+
+    // calling and subscribe dynamic result from the http function located in user.service.client
+    // this.userService.findUserByCredentials(this.username, this.password)
+    //   .subscribe((user: User) => {
+    //     if (user) {
+    //       // alert(user._id);
+    //       this.router.navigate(['/profile/', user._id]);
+    //     } else {
+    //       this.errorFlag = true;
+    //       this.errorMsg = 'Error';
+    //       alert('wrong username or password');
+    //     }
+    // });
   }
 
 

@@ -44,7 +44,7 @@ export class WidgetHeaderComponent implements OnInit {
 
   updateHeader(name, text, size) {
 
-    const newWidget: Widget = {
+    const newWidget = {
       name: name,
       _id: this.wgid,
       widgetType: this.widget.widgetType,
@@ -52,12 +52,15 @@ export class WidgetHeaderComponent implements OnInit {
       size: size,
       text: text,
       width: this.widget.url,
-      url: this.widget.url
+      url: this.widget.url,
+      placeholder: '',
+      rows: 0,
+      formatted: false
     };
 
     this.widgetService.updateWidget(this.pid, this.wgid, newWidget)
       .subscribe((widgets) => {
-      this.router.navigate(['profile/' + this.userId + '/website/' + this.wid + '/page/' + this.pid + '/widget/']);
+      this.router.navigate(['user' + '/website/' + this.wid + '/page/' + this.pid + '/widget/']);
       });
   }
 
@@ -66,7 +69,7 @@ export class WidgetHeaderComponent implements OnInit {
   deleteWidget(pageId, widgetId) {
     this.widgetService.deleteWidget(pageId, widgetId)
       .subscribe((widgets) => {
-        this.router.navigate(['profile/' + this.userId + '/website/' + this.wid + '/page/' + this.pid + '/widget/']);
+        this.router.navigate(['user' + '/website/' + this.wid + '/page/' + this.pid + '/widget/']);
       });
   }
 
@@ -74,7 +77,6 @@ export class WidgetHeaderComponent implements OnInit {
   ngOnInit() {
     // invoke a function that can pass the value of the parameters
     this.route.params.subscribe((params: any) => {
-      this.userId = params['userId'];
       // this.user = this.userService.findUserById(this.userId);
       this.wid = params['wid'];
       this.pid = params['pid'];

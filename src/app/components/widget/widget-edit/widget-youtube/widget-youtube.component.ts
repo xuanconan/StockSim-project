@@ -48,7 +48,7 @@ export class WidgetYoutubeComponent implements OnInit {
     private widgetService: WidgetService) { }
 
   updateYoutube(name, text, url, width) {
-    const newWidget: Widget = {
+    const newWidget = {
       name: name,
       _id: this.wgid,
       widgetType: this.widget.widgetType,
@@ -56,19 +56,22 @@ export class WidgetYoutubeComponent implements OnInit {
       size: this.widget.size,
       text: text,
       width: width,
-      url: url
+      url: url,
+      rows: 0,
+      formatted: false,
+      placeholder: ''
     };
 
     this.widgetService.updateWidget(this.pid, this.wgid, newWidget)
       .subscribe((widgets) => {
-        this.router.navigate(['profile/' + this.userId + '/website/' + this.wid + '/page/' + this.pid + '/widget/']);
+        this.router.navigate(['user' + '/website/' + this.wid + '/page/' + this.pid + '/widget/']);
       });
   }
 
   deleteWidget(pageId, widgetId) {
     this.widgetService.deleteWidget(pageId, widgetId)
       .subscribe((widgets) => {
-        this.router.navigate(['profile/' + this.userId + '/website/' + this.wid + '/page/' + this.pid + '/widget/']);
+        this.router.navigate(['user' + '/website/' + this.wid + '/page/' + this.pid + '/widget/']);
       });
   }
 
@@ -76,7 +79,6 @@ export class WidgetYoutubeComponent implements OnInit {
   ngOnInit() {
     // invoke a function that can pass the value of the parameters
     this.route.params.subscribe((params: any) => {
-      this.userId = params['userId'];
       // this.user = this.userService.findUserById(this.userId);
       this.wid = params['wid'];
       this.pid = params['pid'];

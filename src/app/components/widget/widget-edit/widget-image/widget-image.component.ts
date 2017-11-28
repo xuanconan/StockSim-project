@@ -30,7 +30,6 @@ export class WidgetImageComponent implements OnInit {
   name: String;
   text: String;
   url: String;
-  baseUrl: String;
   width: String;
   wid: String;
   userId: String;
@@ -43,6 +42,7 @@ export class WidgetImageComponent implements OnInit {
   widgets: Widget[];
   wgid: String;
   images: String[] = [];
+  baseUrl = environment.baseUrl;
 
   // inject route info in constructor
   constructor(
@@ -56,7 +56,7 @@ export class WidgetImageComponent implements OnInit {
 
 
   updateImage(name, text, url, width) {
-    const newWidget: Widget = {
+    const newWidget = {
       name: name,
       _id: this.wgid,
       widgetType: this.widget.widgetType,
@@ -64,12 +64,15 @@ export class WidgetImageComponent implements OnInit {
       size: this.widget.size,
       text: text,
       width: width,
-      url: url
+      url: url,
+      placeholder: '',
+      rows: 0,
+      formatted: false
     };
 
     this.widgetService.updateWidget(this.pid, this.wgid, newWidget)
       .subscribe((widgets) => {
-        this.router.navigate(['profile/' + this.userId + '/website/' + this.wid + '/page/' + this.pid + '/widget/']);
+        this.router.navigate(['user' + '/website/' + this.wid + '/page/' + this.pid + '/widget/']);
       });
   }
 
@@ -77,7 +80,7 @@ export class WidgetImageComponent implements OnInit {
   deleteWidget(pageId, widgetId) {
     this.widgetService.deleteWidget(pageId, widgetId)
       .subscribe((widgets) => {
-        this.router.navigate(['profile/' + this.userId + '/website/' + this.wid + '/page/' + this.pid + '/widget/']);
+        this.router.navigate(['user' + '/website/' + this.wid + '/page/' + this.pid + '/widget/']);
       });
   }
 
@@ -87,7 +90,6 @@ export class WidgetImageComponent implements OnInit {
 
     // invoke a function that can pass the value of the parameters
     this.route.params.subscribe((params: any) => {
-      this.userId = params['userId'];
       // this.user = this.userService.findUserById(this.userId);
       this.wid = params['wid'];
       this.pid = params['pid'];
@@ -104,7 +106,7 @@ export class WidgetImageComponent implements OnInit {
           // this.wgid = widget._id;
         });
 
-      this.http.get('http://localhost:3100/api/upload')
+      this.http.get(this.baseUrl + '/api/upload')
         .map((response: Response) => {
           return response.json();
         })

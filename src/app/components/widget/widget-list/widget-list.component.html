@@ -4,7 +4,7 @@
 
     <!--heading on the nav bar-->
     <div class="navbar-text pull-left">
-      <a routerLink="/profile/{{userId}}/website/{{wid}}/page" class="black">
+      <a routerLink="/user/website/{{wid}}/page" class="black">
         <span class="glyphicon glyphicon-chevron-left "></span>
       </a>
     </div>
@@ -17,7 +17,7 @@
 
     <!--tick mark-->
     <div class="navbar-text pull-right">
-      <a routerLink="/profile/{{userId}}/website/{{wid}}/page/{{pid}}/widget/new"
+      <a routerLink="/user/website/{{wid}}/page/{{pid}}/widget/new"
          class="black">
         <span class="glyphicon glyphicon-plus"></span>
       </a>
@@ -28,108 +28,88 @@
 
 
 
-<div class="container-fluid padding-b" >
+<div class="container-fluid padding padding-b " >
+  <div class="widget-list" appSortable (newIndexes)="reorderWidgets($event)">
 
   <div *ngFor = "let widget of widgets" class="container-fluid">
 
-    <div class="jpa-widget">
+    <div class="jga-widget">
       <div class="jpa-toolbar">
         <div>
           <span class="glyphicon glyphicon-menu-hamburger black pull-right"></span>
-          <a class="blue" routerLink="/profile/{{ userId }}/website/{{ wid }}/page/{{pid}}/widget/{{widget._id}}" >
+          <a class="blue" routerLink="/user/website/{{ wid }}/page/{{pid}}/widget/{{widget._id}}" >
             <span class="glyphicon glyphicon-cog  pull-right"></span>
           </a>
         </div>
       </div>
 
-        <!--<ul routerLink="/profile/{{ userId }}/website/{{ wid }}/page/{{pid}}/widget" class="list-group">-->
-          <!--<li class="list-group-item blue borderless">-->
-
             <a class="blue">
-
-              <!--{{ widget.text }}-->
-
-              <!--{{ widget.widgetType }}-->
 
               <div [ngSwitch] = "widget.type">
 
-                <div *ngSwitchCase = "'HEADING'">
-                  <h1>{{widget.text}}</h1>
-                  <br/>
-                </div>
 
-                <div *ngSwitchCase = "'IMAGE'">
-                  Image url:  {{ widget.url }}
-                  <img class="e2e-trusted-url padding-b" width="100%" src="{{ widget.url }}"/>
-
-                  <br/>
-                </div>
-
-                <div *ngSwitchCase = "'HTML'">
-                  <!--<a href="{{widget.url}}" class> <div>{{widget.text}}</div> </a>-->
-                  <h2>{{widget.text}}</h2>
-                  <br/>
-                </div>
-
-                <!--<div *ngSwitchCase = "'INPUT'">-->
-                  <!--&lt;!&ndash;<a href="{{widget.url}}" class> <div>{{widget.text}}</div> </a>&ndash;&gt;-->
-                  <!--<h2>{{widget.text}}</h2>-->
-                  <!--<br/>-->
-                <!--</div>-->
-
-                <div *ngSwitchCase="'INPUT'">
-                  <div *ngIf="widget.formatted">
-                    <quill-editor [(ngModel)]="widget.text" name="text"></quill-editor>
+                  <div *ngSwitchCase="'HEADING'" class="padding-b">
+                    <div [ngSwitch]="widget.size">
+                      <h1 *ngSwitchCase="1">{{widget.text}}</h1>
+                      <h2 *ngSwitchCase="2">{{widget.text}}</h2>
+                      <h3 *ngSwitchCase="3">{{widget.text}}</h3>
+                      <h4 *ngSwitchCase="4">{{widget.text}}</h4>
+                      <h5 *ngSwitchCase="5">{{widget.text}}</h5>
+                      <h6 *ngSwitchCase="6">{{widget.text}}</h6>
+                    </div>
                   </div>
-                  <input *ngIf="!widget.formatted && (!widget.rows || widget.rows===1)"
-                         placeholder="{{widget.placeholder}}" class="form-control"/>
 
-                  <textarea *ngIf="!widget.formatted && (widget.rows > 1)"
-                            rows="{{widget.rows}}" placeholder="{{widget.placeholder}}"
-                            class="form-control">{{widget.text}}</textarea>
-                </div>
-
-
-                <div *ngSwitchCase = "'YOUTUBE'">
-                  <div class="videoWrapper">
-                    <iframe  class="e2e-iframe-trusted-src padding-b" width="560" height="315"
-                             [src] = updateVideoUrl(widget.url) frameborder="0" allowfullscreen></iframe>
+                  <div *ngSwitchCase = "'IMAGE'">
+                    Image url:  {{ widget.url }}
+                    <img class="e2e-trusted-url padding-b" width="100%" src= "{{widget.url}}"/>
                     <br/>
                   </div>
+
+                  <div *ngSwitchCase = "'HTML'" [innerHTML]="widget.text" class="padding-b"> </div>
+                    <!--<a href="{{widget.url}}" class> <div>{{widget.text}}</div> </a>-->
+
+                  <div *ngSwitchCase="'INPUT'" class="padding-b">
+                    <div *ngIf="widget.formatted">
+                      <quill-editor [(ngModel)]="widget.text" name="text"></quill-editor>
+                    </div>
+                    <input *ngIf="!widget.formatted && (!widget.rows || widget.rows===1)"
+                           placeholder="{{widget.placeholder}}" class="form-control"/>
+
+                    <textarea *ngIf="!widget.formatted && (widget.rows > 1)"
+                              rows="{{widget.rows}}" placeholder="{{widget.placeholder}}"
+                              class="form-control">{{widget.text}}</textarea>
+                  </div>
+
+
+                  <div *ngSwitchCase = "'YOUTUBE'" class="padding-b">
+                    <div class="videoWrapper">
+                      <iframe  class="e2e-iframe-trusted-src" width="560" height="315"
+                               [src] = updateVideoUrl(widget.url) frameborder="0" allowfullscreen></iframe>
+                      <br/>
+                    </div>
+                  </div>
+
                 </div>
-              </div>
+
             </a>
-
-      <!--{{widget.text}}-->
-
-            <!--<a class="pull-right" routerLink="/profile/{{ userId }}/website/{{ wid }}/page/{{pid}}/widget/{{widget._id}}">-->
-              <!--<span class="glyphicon glyphicon-cog"></span>-->
-            <!--</a>-->
-          <!--</li>-->
-        <!--</ul>-->
-
     </div>
+
   </div>
 </div>
-
 
 <nav class="navbar navbar-light2 navbar-fixed-bottom">
   <div class="container-fluid">
 
     <div class="navbar-text pull-left">
-
       <span class="glyphicon glyphicon-play black"></span>
-
     </div>
 
     <div class="navbar-text pull-left">
-
       <span class="glyphicon glyphicon-eye-open black"></span>
-
     </div>
 
     <div class="navbar-text pull-right">
-      <a routerLink="/profile/{{userId}}" class="blue">
+      <a routerLink="/profile" class="blue">
         <span class="glyphicon glyphicon-user "></span>
       </a>
     </div>

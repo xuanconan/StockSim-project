@@ -77,9 +77,10 @@
     </form>
 
     <a class="btn btn-primary btn-block"
-       routerLink="website">Websites</a>
+       [routerLink]="['/user', 'website']">Websites</a>
+
     <a class="btn btn-danger btn-block "
-       routerLink="/login" >Logout</a>
+       (click)="logout()" >Logout</a>
 
     <a (click)="deleteUser()"
       class="btn btn-danger btn-block " routerLink="/login" >Delete User</a>
@@ -91,7 +92,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-text pull-right">
-      <a routerLink="/profile/{{userId}}" class="white">
+      <a routerLink="/profile" class="white">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </p>

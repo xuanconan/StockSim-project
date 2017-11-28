@@ -22,6 +22,8 @@ export class FlickrImageSearchComponent implements OnInit {
   searchText: String;
   photos: any;
   pic: any;
+  error: string;
+  photo: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -54,13 +56,29 @@ export class FlickrImageSearchComponent implements OnInit {
     const widget = {
       websiteId: this.wid,
       pageId: this.pid,
-      url: url
+      url: url,
+      size: 1,
+      name: 'Flickr',
+      rows: 0,
+      placeholder: '',
+      formatted: false
     };
+
+    this.widgetService
+      .updateWidget(this.pid, this.wgid, widget)
+      .subscribe(
+        (data: any) => {
+          const result = data;
+          if (result) { this.router.navigate(['/user/' + '/website/' + this.wid + '/page/' + this.pid + '/widget/'] );
+          } else {
+            this.error = 'failed!';
+          }
+        }
+      );
   }
 
     ngOnInit() {
     this.route.params.subscribe((params: any) => {
-      this.userId = params['userId'];
       this.wid = params['wid'];
       this.pid = params['pid'];
       this.wgid = params['wgid'];

@@ -29,8 +29,6 @@ export class WidgetEditComponent implements OnInit {
   widget: any;
   type: String;
 
-
-
   constructor(
     private userService: UserService,
     private websiteService: WebsiteService,

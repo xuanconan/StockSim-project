@@ -6,15 +6,23 @@
   // express library: easy to make a server, loading module express
 const express = require('express');
 const path = require('path');
-
-// allow us to create http servers
 const http = require('http');
-
-// parse incoming data from json
 const bodyParser = require('body-parser');
-
-// app: instance of the express library
 const app = express();
+
+const cookieParser = require('cookie-parser');
+const session      = require('express-session');
+const passport = require('passport');
+
+app.use(cookieParser());
+// session make sure the cookie is encrypted
+// app.use(session({ secret: process.env.SESSION_SECRET }));
+app.use(session({ secret: "asdfasdf"}));
+
+
+// set up passport after cookie and session
+app.use(passport.initialize());
+app.use(passport.session());
 
 // initialize parser for json
 app.use(bodyParser.json());
@@ -24,18 +32,22 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Point static path to dist -- For building -- REMOVE
 app.use(express.static(path.join(__dirname, 'dist')));
 
-
 // CORS  Cross Origin Request: allows browsers access servers to connect to other websites
 // we need API supporting CORS
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
+  // give permission to domain 4200 to authenticate with security
+  res.header("Access-Control-Allow-Origin", "http://localhost:4200");
+  // res.header("Access-Control-Allow-Origin", "*"); // * is fine for Heroku as it's the same domain
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+
+  // turn on security credentials
+  res.header("Access-Control-Allow-Credentials", "true");
   next();
 });
 
 
-const port = process.env.PORT || '3100';
+const port = process.env.PORT || '9000';
 app.set('port', port);
 
 

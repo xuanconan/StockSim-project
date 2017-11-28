@@ -2,28 +2,86 @@
 
 import {User} from '../models/user.model.client';
 import {Injectable} from '@angular/core';
-import { Http} from '@angular/http';
+import { Http, RequestOptions} from '@angular/http';
 import {parseHttpResponse} from 'selenium-webdriver/http';
 import { Response} from '@angular/http';
 import 'rxjs/Rx';
 import {environment} from '../../environments/environment';
+import {SharedService} from './shared.service.client';
+import {Router} from '@angular/router';
 
 // make class usable for all components
 @Injectable()
 export class UserService {
-  // users are a group of json objects, here will be user(data structure)
-  // users: User[] = [
-  //   {_id: '123', username: 'alice', password: 'alice', firstName: 'Alice', lastName: 'Wonder' },
-  //   {_id: '234', username: 'bob', password: 'bob', firstName: 'Bob', lastName: 'Marley' },
-  //   {_id: '345', username: 'charly', password: 'charly', firstName: 'Charly', lastName: 'Garcia' },
-  //   {_id: '456', username: 'jannunzi', password: 'jannunzi', firstName: 'Jose', lastName: 'Annunzi' }
-  //
-  // ];
-  // inject http service into userService
 
-  constructor(private http: Http) {}
+  constructor(private http: Http,
+              private sharedService: SharedService,
+              private router: Router) {}
 
   baseUrl = environment.baseUrl;
+
+  // Creates a request options object to be optionally provided when instantiating a Request
+  options: RequestOptions = new RequestOptions();
+
+  // used by authentication service to verify loggedin user
+  loggedIn() {
+    const url = this.baseUrl + '/api/loggedIn';
+    this.options.withCredentials = true;
+    return this.http.post(url, '', this.options)
+      .map((res: Response) => {
+        const user = res.json();
+        if (user !== 0) {
+          this.sharedService.user = user; // setting user so as to share with all components
+          return true;
+        } else {
+          this.router.navigate(['/login']);
+          alert('Please login first');
+          return false;
+        }
+      });
+  }
+
+  // add a logout API to post a logout request to the server. The API should return an observable
+  // for the component to register a callback and receive a server response.
+  logout() {
+    const url = this.baseUrl + '/api/logout';
+    this.options.withCredentials = true;
+    return this.http.post(url, {}, this.options)
+      .map((response: Response) => {
+        return response; // not return a json object
+      });
+  }
+
+  // posting a register request to the server.
+  register (username, password) {
+    const url = this.baseUrl + '/api/register';
+    // create an object to keep track of the username and password
+    const credentials = {
+      username: username,
+      password: password
+    };
+    // turn on credentials to make sure the communication is secure
+    this.options.withCredentials = true;
+    // post the url and other staff to passport and convert back with json object
+    return this.http.post(url, credentials, this.options)
+      .map((response: Response) => {
+        return response.json();
+      });
+  }
+
+  login(username, password) {
+    const url = this.baseUrl + '/api/login';
+    const credentials = {
+      username: username,
+      password: password
+    };
+    this.options.withCredentials = true;
+    // post the body encrypted
+    return this.http.post(url, credentials, this.options)
+      .map((response: Response) => {
+        return response.json();
+      });
+  }
 
   newId() {
     return (Number( Math.floor((Math.random()) * 10000))).toString();
@@ -32,7 +90,7 @@ export class UserService {
 
   // adds the user parameter instance to the local users array
   createUser(user) {
-    const url = 'http://localhost:3100/api/user';
+    const url = this.baseUrl + '/api/user';
     return this.http.post(url, user).map((response: Response) => {
       return response.json();
     });
@@ -40,7 +98,7 @@ export class UserService {
 
   // updates the user in local users array whose _id matches the userId parameter
   updateUser(userId, user) {
-    const url = 'http://localhost:3100/api/user/' + userId;
+    const url = this.baseUrl + '/api/user/' + userId;
     return this.http.put(url, user).map((res: Response) => {
         return res.json();
       });
@@ -48,7 +106,7 @@ export class UserService {
 
 // returns the user whose username and password match the username and password parameters
   findUserByCredentials(username, password) {
-    const url = 'http://localhost:3100/api/user?username=' + username + '&password=' + password;
+    const url = this.baseUrl + '/api/user?username=' + username + '&password=' + password;
     // using http to get the url and work upon that
     return this.http.get(url).map((response: Response) => {
       return response.json();
@@ -73,18 +131,11 @@ export class UserService {
 
   // removes the user whose _id matches the userId parameter
   deleteUser(userId: String) {
-    const url = 'http://localhost:3100/api/user/' + userId;
+    const url = this.baseUrl + '/api/user/' + userId;
     return this.http.delete(url)
       .map((response: Response) => {
         return response.json();
       });
   }
-
-  // api = {
-  //   'createUser' : this.createUser,
-  //   'findUserById': this.findUserById
-  // };
-
-
 
 }

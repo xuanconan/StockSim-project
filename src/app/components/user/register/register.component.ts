@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import {UserService} from '../../../services/user.service.client';
 import {User} from '../../../models/user.model.client';
 import { NgForm } from '@angular/forms';
+import { SharedService} from '../../../services/shared.service.client';
+import {environment} from '../../../../environments/environment';
 
 
 @Component({
@@ -19,9 +21,11 @@ export class RegisterComponent implements OnInit {
   passwordvalid: String;
   title: string;
   disabledFlag: boolean;
+  error: any;
 
   constructor(private userService: UserService,
-              private router: Router) { }
+              private router: Router,
+              private sharedService: SharedService ) { }
 
   // function to be call from register
   register() {
@@ -46,12 +50,22 @@ export class RegisterComponent implements OnInit {
             firstName: '',
             lastName: ''
           };
-          this.userService.createUser(newUser).subscribe((auser) => {
-            this.user = auser;
-            console.log(this.user);
-            this.router.navigate(['profile', this.user._id]);
-          });
-          // this.router.navigate(['profile', this.user._id]);
+          // this.userService.createUser(newUser).subscribe((auser) => {
+          //   this.user = auser;
+          //   console.log(this.user);
+          //   this.router.navigate(['profile', this.user._id]);
+          // });
+          this.userService
+            .register(this.username, this.password)
+            .subscribe((auser) => {
+              this.sharedService.user = auser;
+              // passport will save user information so no need to include userId in router
+              this.router.navigate(['/profile']);
+              console.log(auser);
+            },
+              (error: any) => {
+            this.error = error._body;
+              });
         }
       });
   }

@@ -12,6 +12,7 @@ import {Widget} from '../../../models/widget.model.client';
 import {WidgetService} from '../../../services/widget.service.client';
 import {WidgetEditComponent} from '../widget-edit/widget-edit.component';
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
+import {environment} from '../../../../environments/environment';
 
 @Component({
   selector: 'app-widget-list',
@@ -31,7 +32,7 @@ export class WidgetListComponent implements OnInit {
   youtubeUrl: SafeResourceUrl;
   type: String;
   widget: any;
-
+  baseUrl: String;
 
   // inject route info in constructor
   constructor(
@@ -64,12 +65,19 @@ export class WidgetListComponent implements OnInit {
     return this.youtubeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
+  reorderWidgets(indexes) {
+    this.widgetService.reorderWidgets(indexes.startIndex, indexes.endIndex, this.pid)
+      .subscribe(
+        (data) => console.log(data)
+      );
+  }
+
 
   // notify the changes of the route
   ngOnInit() {
+    this.baseUrl = environment.baseUrl;
     // invoke a function that can pass the value of the parameters
     this.route.params.subscribe((params: any) => {
-      this.userId = params['userId'];
       // this.user = this.userService.findUserById(this.userId);
       this.wid = params['wid'];
 

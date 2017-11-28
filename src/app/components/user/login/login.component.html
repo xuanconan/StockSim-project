@@ -28,7 +28,14 @@
             [disabled]="!f.valid"
     >Login</button>
     <!--(click)="login()"-->
-    <br/>
+
+
+    <button  [routerLink]="['/login']" class="btn btn-primary btn-block">
+      <!--<button class="btn btn-primary btn-block" [routerLink]="['/login']" type="button">-->
+      <span class="fa fa-facebook"></span>
+      Facebook
+    </button>
+
 
     <button class="btn btn-success btn-block form-control"
             routerLink="/register">Register</button>

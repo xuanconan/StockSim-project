@@ -11,6 +11,43 @@ WidgetModel.findWidgetById = findWidgetById;
 WidgetModel.updateWidget = updateWidget;
 WidgetModel.deleteWidget = deleteWidget;
 WidgetModel.updateImage = updateImage;
+WidgetModel.reorderWidgets = reorderWidgets;
+// WidgetModel.updatePosition = updatePosition;
+
+// function updatePosition (pageId, position) {
+//   return Widget.find({_page: pageId}, function (err, widgets) {
+//     widgets.forEach (function (widget) {
+//       if(widget.position > position){
+//         widget.position--;
+//         widget.save();
+//       }
+//     })
+//   })
+// }
+
+function reorderWidgets(pageId, startIndex, endIndex) {
+  return Widget.find({_page:pageId}, function (err,widgets) {
+    widgets.forEach (function (widget) {
+      if(startIndex < endIndex){
+        if(widget.position === startIndex){
+          widget.position = endIndex;
+          widget.save();
+        }else if (widget.position > startIndex && widget.position <= endIndex) {
+          widget.position --;
+          widget.save();
+        }else {
+          if(widget.position === startIndex){
+            widget.position = endIndex;
+            widget.save();
+          } else if(widget.position < startIndex && widget.position >= endIndex) {
+            widget.position ++;
+            widget.save();
+          }
+        }
+      }
+    })
+  })
+}
 
 function updateImage(widgetId, image) {
   var widgetId = widgetId;
@@ -25,23 +62,10 @@ function updateImage(widgetId, image) {
   });
 }
 
-
 function deleteWidget(pageId, widgetId){
   // return PageModel.remove({_id: pageId});
   return WidgetModel
     .remove({_id: widgetId});
-  // .then(function(pageId){
-  //   return WebsiteModel
-  //     .findWebsiteById(websiteId)
-  //     .then(function (website){
-  //       for(var x = 0; x < website.pages.length; x++){
-  //         if(website.pages[x] === pageId){
-  //           website.pages.splice(x,1);
-  //           return website;
-  //         }
-  //       }
-  //     });
-  // });
 }
 
 function updateWidget(widgetId, widget) {
@@ -53,7 +77,10 @@ function updateWidget(widgetId, widget) {
       text: newWidget.text,
       size: newWidget.size,
       width: newWidget.width,
-      url: newWidget.url
+      url: newWidget.url,
+      placeholder: newWidget.placeholder,
+      rows: newWidget.rows,
+      formatted: newWidget.formatted
     }
   });
 }

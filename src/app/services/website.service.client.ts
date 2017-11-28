@@ -6,13 +6,15 @@ import { User } from '../models/user.model.client';
 import { Http } from '@angular/http';
 import 'rxjs/Rx';
 import {Response} from '@angular/http';
-
+import {environment} from '../../environments/environment';
 
 // make class usable for all components
 @Injectable()
 export class WebsiteService {
 
   constructor(private http: Http) {}
+
+  baseUrl = environment.baseUrl;
 
   // generate a number for website._id
   newId() {
@@ -23,7 +25,7 @@ export class WebsiteService {
   // The new website's developerId is set to the userId parameter
 
   createWebsite(userId: String, website: Website) {
-    const url = 'http://localhost:3100/api/user/' + userId + '/website';
+    const url = this.baseUrl + '/api/user/' + userId + '/website';
     return this.http.post(url, website)
       .map((response: Response) => {
         return response.json();
@@ -35,7 +37,7 @@ export class WebsiteService {
   findWebsitesByUser(userId: String) {
     // initiate the array
     // const webs: Website[] = [];
-    const url = 'http://localhost:3100/api/user/' + userId + '/website';
+    const url = this.baseUrl + '/api/user/' + userId + '/website';
     return this.http.get(url).map((response: Response) => {
       return response.json();
     });
@@ -44,7 +46,7 @@ export class WebsiteService {
   // retrieves the website in local websites array whose _id matches the websiteId parameter
 
   findWebsiteById(userId, websiteId) {
-    const url = 'http://localhost:3100/api/user/' + userId + '/website/' + websiteId;
+    const url = this.baseUrl + '/api/user/' + userId + '/website/' + websiteId;
     return this.http.get(url)
       .map((response: Response) => {
       return response.json();
@@ -54,7 +56,7 @@ export class WebsiteService {
   // updates the website in local websites array whose _id matches the websiteId parameter
 
   updateWebsite(websiteId, website) {
-    const url = 'http://localhost:3100/api/user/' + website._user + '/website/' + websiteId;
+    const url = this.baseUrl + '/api/user/' + website._user + '/website/' + websiteId;
     return this.http.put(url, website)
       .map((response: Response) => {
         return response.json();
@@ -64,7 +66,7 @@ export class WebsiteService {
   // removes the website from local websites array whose _id matches thewebsiteId parameter
 
   deleteWebsite(userId, websiteId) {
-    const url = 'http://localhost:3100/api/user/' + userId + '/website/' + websiteId;
+    const url = this.baseUrl + '/api/user/' + userId + '/website/' + websiteId;
     return this.http.delete(url)
       .map((response: Response) => {
         return response.json();

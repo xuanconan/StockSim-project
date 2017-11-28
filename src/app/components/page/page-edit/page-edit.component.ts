@@ -8,6 +8,7 @@ import { Website } from '../../../models/website.model.client';
 import { NgForm } from '@angular/forms';
 import {Page} from '../../../models/page.model.client';
 import {PageService} from '../../../services/page.service.client';
+import {SharedService} from '../../../services/shared.service.client';
 
 @Component({
   selector: 'app-page-edit',
@@ -23,7 +24,7 @@ export class PageEditComponent implements OnInit {
   name: String;
   userId: String;
   title: String;
-  user: User;
+  user: any;
   pages: Page[];
   page: Page;
   developerId: String;
@@ -36,7 +37,14 @@ export class PageEditComponent implements OnInit {
     private websiteService: WebsiteService,
     private pageService: PageService,
     private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private sharedService: SharedService) { }
+
+  getUser() {
+    // this.user = JSON.parse(localStorage.getItem("user"));
+    this.user = this.sharedService.user;
+    this.userId = this.user['_id'];
+  }
 
   update(name, title) {
 
@@ -50,7 +58,7 @@ export class PageEditComponent implements OnInit {
     this.pageService.updatePage(this.wid, this.pid, newPage)
       .subscribe((pages) => {
         // this.pages = pages;
-        this.router.navigate(['profile', this.userId, 'website', this.wid, 'page']);
+        this.router.navigate(['user', 'website', this.wid, 'page']);
       });
   }
 
@@ -69,21 +77,26 @@ export class PageEditComponent implements OnInit {
   ngOnInit() {
     // invoke a function that can pass the value of the parameters
     this.route.params.subscribe((params: any) => {
-      this.userId = params['userId'];
       // this.user = this.userService.findUserById(this.userId);
       this.wid = params['wid'];
       this.pid = params['pid'];
-
-      this.pageService.findPageById(this.wid, this.pid)
-        .subscribe((page) => {
-          this.page = page;
-        });
-
-      this.pageService.findPagesByWebsiteId(this.wid)
-        .subscribe((pages) => {
-          this.pages = pages;
-        });
     });
+
+    this.pageService.findPageById(this.wid, this.pid)
+      .subscribe((page) => {
+        this.page = page;
+      });
+
+    this.pageService.findPagesByWebsiteId(this.wid)
+      .subscribe((pages) => {
+        this.pages = pages;
+      });
+
+    this.getUser();
+
+    this.user = this.sharedService.user;
+
+    this.userId = this.user['_id'];
 
   }
 }

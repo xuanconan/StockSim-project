@@ -21,6 +21,7 @@ import {WidgetService} from '../../../../services/widget.service.client';
 export class WidgetHtmlComponent implements OnInit {
 
   @Input()
+  widgetNew = {name: '', text: ''};
   widget: Widget;
   wid: String;
   userId: String;
@@ -31,6 +32,10 @@ export class WidgetHtmlComponent implements OnInit {
   text: String;
   size: Number;
   wgid: String;
+  flag = false;
+  error: String;
+  alert: String;
+
 
   public editor;
   public editorContent = `<h3>I am Example content</h3>`;
@@ -62,29 +67,53 @@ export class WidgetHtmlComponent implements OnInit {
     console.log('quill content is changed!', quill, html, text);
   }
 
+  updateWidget() {
 
+    // if name field is undefined then set error 'flag' to true making 'error' and 'alert' message visible
+    if (this.widget['name'] === '') {
+      this.flag = true;
+    } else {
+      this.widgetService.updateWidget(this.pid, this.wgid, this.widget)
+        .subscribe(
+          (data: any) => this.router.navigate(['/user', 'website', this.wid, 'page', this.pid, 'widget']),
+          (error: any) => console.log(error)
+        );
+    }
+  }
 
   deleteWidget(pageId, widgetId) {
     this.widgetService.deleteWidget(pageId, widgetId)
       .subscribe((widgets) => {
-        this.router.navigate(['profile/' + this.userId + '/website/' + this.wid + '/page/' + this.pid + '/widget/']);
+        this.router.navigate(['user' + '/website/' + this.wid + '/page/' + this.pid + '/widget/']);
       });
   }
 
   ngOnInit() {
+    this.error = 'Enter the name of the widget';
+    this.alert = '* Enter the widget name';
+
     this.route.params.subscribe((params: any) => {
-      this.userId = params['userId'];
       // this.user = this.userService.findUserById(this.userId);
       this.wid = params['wid'];
       this.pid = params['pid'];
       this.wgid = params['wgid'];
-
-      this.widgetService.findWidgetById(this.wgid)
-        .subscribe((widget) => {
-          this.widget = widget;
-          console.log(widget);
-        });
     });
+    // this.widgetService.findWidgetById(this.wgid)
+    //   .subscribe((widget) => {
+    //     this.widget = widget;
+    //     console.log(widget);
+    //   });
+
+    this.widgetService.findWidgetById(this.wgid)
+      .subscribe(
+        (data: any) => {
+          this.widget = data;
+          this.widget = {...this.widgetNew, ...this.widget};
+          console.log(this.widget); } ,
+        (error: any) => console.log(error)
+      );
+
+    this.name = this.widget.name;
   }
 
 }
