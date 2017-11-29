@@ -26,28 +26,29 @@
 
 
 <div class="container-fluid padding">
-
-  <div class="form-group">
-    <label for="Name">Name</label>
-    <input [(ngModel)]="widget.name"
-           type="text"
-           class="form-control"
-           id="Name"
-           name="widname"
-           placeholder="Enter the name"
-           required>
-    <span class="alert-class"
-          *ngIf="flag">{{alert}}</span>
+  <div *ngIf="flag"
+       class="alert alert-danger">
+    {{error}}
   </div>
 
-  <quill-editor [(ngModel)]="widget.text" name="text"></quill-editor>
 
-  <!--<quill-editor [(ngModel)]="editorContent"-->
-                <!--[options]="editorOptions"-->
-                <!--(blur)="onEditorBlured($event)"-->
-                <!--(focus)="onEditorFocused($event)"-->
-                <!--(ready)="onEditorCreated($event)"-->
-                <!--(change)="onContentChanged($event)"></quill-editor>-->
+  <div class="form-group">
+    <form>
+      <label for="widgetText">Name</label>
+      <input [(ngModel)] = "widgetname"
+             name = "widgetText"
+             placeholder="name"
+             type="text"
+             id="widgetText"
+             class="form-control"/>
+    </form>
+  </div>
+
+  <div class="form-group">
+    <quill-editor [(ngModel)]="widgettext" name="text"></quill-editor>
+  </div>
+
+
   <br/>
 
   <a class="btn btn-danger btn-block"

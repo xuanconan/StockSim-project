@@ -29,49 +29,14 @@
     >Login</button>
     <!--(click)="login()"-->
 
+    <button class="btn btn-success btn-block form-control"
+            routerLink="/register">Register</button>
 
-    <button  [routerLink]="['/login']" class="btn btn-primary btn-block">
+    <button  href="/facebook/login" class="btn btn-primary btn-block">
       <!--<button class="btn btn-primary btn-block" [routerLink]="['/login']" type="button">-->
       <span class="fa fa-facebook"></span>
       Facebook
     </button>
-
-
-    <button class="btn btn-success btn-block form-control"
-            routerLink="/register">Register</button>
   </form>
-  <!--<form (ngSubmit) = "login()" #f="ngForm">-->
-  <!--<input placeholder="username"-->
-         <!--name="username"-->
-         <!--type="text"-->
-         <!--class="form-control"-->
-         <!--ngModel-->
-         <!--required-->
-         <!--#username="ngModel"/>-->
-  <!--<span class="help-block" *ngIf="!username.valid && username.touched">-->
-    <!--Please enter username!-->
-  <!--</span>-->
-
-    <!--<input .../>-->
-    <!--<span> ...</span>-->
-    <!--<button class="btn btn-primary btn-block"-->
-            <!--type="submit"-->
-            <!--[disabled]="!f.valid">Login</button>-->
-    <!--...-->
-  <!--</form>-->
-
-  <!--<input [(ngModel)] = "username"-->
-         <!--placeholder="username"-->
-         <!--type="text"-->
-         <!--class="form-control"/>-->
-
-  <!--<input [(ngModel)]="password"-->
-         <!--placeholder="password"-->
-         <!--type="password"-->
-         <!--class="form-control"/>-->
-
-  <!--&lt;!&ndash;invoke the funciton by clicking&ndash;&gt;-->
-  <!--<button class="btn btn-primary btn-block" (click)="login(username, password)">Login</button>-->
-  <!--<button class="btn btn-success btn-block" routerLink="/register">Register</button>-->
 
 </div>

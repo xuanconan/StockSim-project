@@ -12,6 +12,7 @@ import { NgSwitch } from '@angular/common';
 import {Input} from '@angular/core';
 import {Widget} from '../../../../models/widget.model.client';
 import {WidgetService} from '../../../../services/widget.service.client';
+import { QuillEditorModule } from 'ngx-quill-editor';
 
 @Component({
   selector: 'app-widget-html',
@@ -35,7 +36,8 @@ export class WidgetHtmlComponent implements OnInit {
   flag = false;
   error: String;
   alert: String;
-
+  widgettext: String;
+  widgetname: String;
 
   public editor;
   public editorContent = `<h3>I am Example content</h3>`;
@@ -68,17 +70,26 @@ export class WidgetHtmlComponent implements OnInit {
   }
 
   updateWidget() {
-
-    // if name field is undefined then set error 'flag' to true making 'error' and 'alert' message visible
-    if (this.widget['name'] === '') {
-      this.flag = true;
-    } else {
+    this.widget.text = this.widgettext;
+    this.widget.name = this.widgetname;
+      // const newWidget = {
+      //   name: this.widgetname,
+      //   _id: this.wgid,
+      //   widgetType: this.widget.widgetType,
+      //   pageId: this.pid,
+      //   size: 0,
+      //   text: this.widgettext,
+      //   width: '',
+      //   url: '',
+      //   placeholder: '',
+      //   rows: 0,
+      //   formatted: false
+      // };
       this.widgetService.updateWidget(this.pid, this.wgid, this.widget)
         .subscribe(
           (data: any) => this.router.navigate(['/user', 'website', this.wid, 'page', this.pid, 'widget']),
           (error: any) => console.log(error)
         );
-    }
   }
 
   deleteWidget(pageId, widgetId) {
@@ -98,22 +109,15 @@ export class WidgetHtmlComponent implements OnInit {
       this.pid = params['pid'];
       this.wgid = params['wgid'];
     });
-    // this.widgetService.findWidgetById(this.wgid)
-    //   .subscribe((widget) => {
-    //     this.widget = widget;
-    //     console.log(widget);
-    //   });
-
     this.widgetService.findWidgetById(this.wgid)
-      .subscribe(
-        (data: any) => {
-          this.widget = data;
-          this.widget = {...this.widgetNew, ...this.widget};
-          console.log(this.widget); } ,
-        (error: any) => console.log(error)
-      );
+      .subscribe((widget) => {
+        this.widget = widget;
+        this.name = this.widget.name;
+        this.widgettext = this.widget.text;
+        this.widgetname = this.widget.name;
+        console.log(widget);
+      });
 
-    this.name = this.widget.name;
   }
 
 }
