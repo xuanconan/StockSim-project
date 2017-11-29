@@ -24,7 +24,6 @@ module.exports = function(app) {
     var width         = req.body.width;
     var myFile        = req.file;
 
-    var userId = req.body.userId;
     var websiteId = req.body.websiteId;
     var pageId = req.body.pageId;
 
@@ -35,6 +34,19 @@ module.exports = function(app) {
     var size          = myFile.size;
     var mimetype      = myFile.mimetype;
 
+    // var callbackUrl = "http://localhost:4200/user/website/"
+    //   + websiteId + '/page/' + pageId + '/widget/' ;
+
+    var callbackUrl = "https://webdev-conan-xuan.herokuapp.com/user/website/"
+      + websiteId + '/page/' + pageId + '/widget/' ;
+
+    if(myFile === null) {
+      // res.redirect("https://webdev-conan-xuan.herokuapp.com/user/website/"
+      //   + websiteId + '/page/' + pageId + '/widget/');
+      res.redirect(callbackUrl);
+      return;
+    }
+
     var image = {
       name: filename,
       widgetType: 'IMAGE',
@@ -44,11 +56,13 @@ module.exports = function(app) {
       url: '/assets/uploads/' + filename
     };
 
-    widgetModel.updateImage(widgetId, image).then(function(widget){
-      res.json(widget);});
-
-    var callbackUrl = "http://localhost:4200/user/website/"
-                      + websiteId + '/page/' + pageId + '/widget/' ;
+    widgetModel.updateImage(widgetId, image).then(function(status){
+        console.log(stats);
+        res.send(200);
+      },
+      function (err) {
+        res.sendStatus(404).send(err);
+      });
 
     res.redirect(callbackUrl);
   }
