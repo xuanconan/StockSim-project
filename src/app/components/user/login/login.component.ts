@@ -47,7 +47,8 @@ export class LoginComponent implements OnInit {
         this.sharedService.user = data;
         this.router.navigate(['/profile']); },
         (error: any) => {
-      console.log(error);
+          console.log(error);
+          alert('Invalid username or password');
         }
       );
 

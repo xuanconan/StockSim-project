@@ -27,6 +27,10 @@ app.use(passport.session());
 // initialize parser for json
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use('/static', express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Point static path to dist -- For building -- REMOVE
@@ -37,8 +41,11 @@ app.use(express.static(path.join(__dirname, 'dist')));
 app.use(function(req, res, next) {
   // give permission to domain 4200 to authenticate with security
   res.header("Access-Control-Allow-Origin", "http://localhost:4200");
+
   // res.header("Access-Control-Allow-Origin", "*"); // * is fine for Heroku as it's the same domain
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+
+  //methods allowed by the service
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
 
   // turn on security credentials

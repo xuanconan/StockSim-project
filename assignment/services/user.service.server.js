@@ -9,9 +9,11 @@ module.exports = function (app) {
   var FacebookStrategy = require('passport-facebook').Strategy;
 
   var facebookConfig = {
-    clientID     : 'process.env.FB_CLIENT_ID',
-    clientSecret : 'process.env.FB_CLIENT_SECRET',
-    callbackURL  : 'process.env.FB_CALL_BACK_URL'
+    clientID     : '1539275026193788',
+    clientSecret : '98c2926e0b0a8a375978377e9fe550b9',
+    callbackURL  : 'http://localhost:9000/auth/facebook/callback'
+    // callbackURL  : 'http://webdev-conan-xuan.herokuapp.com/auth/facebook/callback'
+
   };
   var bcrypt = require('bcrypt-nodejs');
 
@@ -36,8 +38,10 @@ module.exports = function (app) {
   // Facebook will call back to a URL configured at their developer website, e.g.,
   app.get('/auth/facebook/callback',
     passport.authenticate('facebook', {
-      successRedirect: '/assignment/#/profile',
-      failureRedirect: '/assignment/#/login'
+      // successRedirect: 'http://localhost:4200/profile',
+      // failureRedirect: 'http://localhost:4200/login'
+      successRedirect: 'http://webdev-conan-xuan.herokuapp.com/profile',
+      failureRedirect: 'http://webdev-conan-xuan.herokuapp.com/login'
     }));
 
   // Create a Web service that uses passport.authenticate() to delegate authentication to facebook
@@ -60,15 +64,15 @@ module.exports = function (app) {
       .then(
         function(user) {
           if(user) {
-            return done(null, user);
-          } else {
+            return done(null, user);  // already in db
+          } else {    // if not, insert into db using profile info
             var names = profile.displayName.split(" ");
             var newFacebookUser = {
               lastName:  names[1],
               firstName: names[0],
               email:     profile.emails ? profile.emails[0].value:"",
               facebook: {
-                id:    profile.id,
+                id: profile.id,
                 token: token
               }
             };
@@ -229,8 +233,6 @@ module.exports = function (app) {
       console.log(result);
     });
   }
-
-
 
   function createUser(req, res) {
     var user = req.body;

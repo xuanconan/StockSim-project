@@ -10,23 +10,36 @@ PageModel.findAllPagesForWebsite =findAllPagesForWebsite;
 PageModel.findPageById = findPageById;
 PageModel.updatePage = updatePage;
 PageModel.deletePage = deletePage;
+PageModel.reorderWidgets = reorderWidgets;
+
+function reorderWidgets(pageId, startIndex, endIndex) {
+  return Widget.find({_page:pageId}, function (err,widgets) {
+    widgets.forEach (function (widget) {
+      if(startIndex < endIndex){
+        if(widget.position === startIndex){
+          widget.position = endIndex;
+          widget.save();
+        }else if (widget.position > startIndex && widget.position <= endIndex) {
+          widget.position --;
+          widget.save();
+        }else {
+          if(widget.position === startIndex){
+            widget.position = endIndex;
+            widget.save();
+          } else if(widget.position < startIndex && widget.position >= endIndex) {
+            widget.position ++;
+            widget.save();
+          }
+        }
+      }
+    })
+  })
+}
 
 function deletePage(websiteId, pageId){
   // return PageModel.remove({_id: pageId});
   return PageModel
     .remove({_id: pageId});
-    // .then(function(pageId){
-    //   return WebsiteModel
-    //     .findWebsiteById(websiteId)
-    //     .then(function (website){
-    //       for(var x = 0; x < website.pages.length; x++){
-    //         if(website.pages[x] === pageId){
-    //           website.pages.splice(x,1);
-    //           return website;
-    //         }
-    //       }
-    //     });
-    // });
 }
 
 

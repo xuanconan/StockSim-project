@@ -12,30 +12,26 @@ WidgetModel.updateWidget = updateWidget;
 WidgetModel.deleteWidget = deleteWidget;
 WidgetModel.updateImage = updateImage;
 WidgetModel.reorderWidgets = reorderWidgets;
-// WidgetModel.updatePosition = updatePosition;
 
-// function updatePosition (pageId, position) {
-//   return Widget.find({_page: pageId}, function (err, widgets) {
-//     widgets.forEach (function (widget) {
-//       if(widget.position > position){
-//         widget.position--;
-//         widget.save();
-//       }
-//     })
-//   })
-// }
 
 function reorderWidgets(pageId, startIndex, endIndex) {
-  return Widget.find({_page:pageId}, function (err,widgets) {
-    widgets.forEach (function (widget) {
+  return WidgetModel
+    .find({_page:pageId})
+    .then (function (widgets) {
+     widgets.forEach(function (widget) {
+      console.log(widget.position);
       if(startIndex < endIndex){
         if(widget.position === startIndex){
           widget.position = endIndex;
+          console.log(widget.position);
           widget.save();
-        }else if (widget.position > startIndex && widget.position <= endIndex) {
+          console.log(widget.position);
+        } else if (widget.position > startIndex && widget.position <= endIndex) {
           widget.position --;
           widget.save();
-        }else {
+          console.log(widget.text, widget.position);
+        }
+      } else {
           if(widget.position === startIndex){
             widget.position = endIndex;
             widget.save();
@@ -44,21 +40,14 @@ function reorderWidgets(pageId, startIndex, endIndex) {
             widget.save();
           }
         }
-      }
     })
-  })
+  });
 }
 
 function updateImage(widgetId, image) {
-  var widgetId = widgetId;
-  var image = image;
+  delete image._id;
   return WidgetModel.update({_id: widgetId},{
-    $set:{
-      name: image.name,
-      size: image.size,
-      width: image.width,
-      url: image.url
-    }
+    $set: image
   });
 }
 
@@ -87,11 +76,24 @@ function updateWidget(widgetId, widget) {
 
 function createWidget(widget) {
   var newPage = null;
+  var aWidget = widget;
+  var pageId = aWidget._page;
+  var amt;
+
+  WidgetModel
+    .find({_page: pageId})
+    .then(function (widgets){
+      amt = widgets.length;
+      aWidget.position = amt;
+    });
+
   return WidgetModel
-    .create(widget)
+    .create(aWidget)
     // put the page in the website array
     .then(function(widget){
       var newWidget = widget;
+      newWidget.position = amt;
+      newWidget.save();
       return PageModel
         .findPageById(newWidget._page)
         .then(function(page){
@@ -108,9 +110,9 @@ function findWidgetById(widgetId){
 
 function findAllWidgetsForPage(pageId) {
   return WidgetModel
-    .find({_page: pageId})
-    .populate('_page','name')
-    .exec();
+    .find({_page: pageId});
+    // .populate('_page','name')
+    // .exec();
 }
 
 

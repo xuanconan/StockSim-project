@@ -25,9 +25,10 @@ export class WidgetEditComponent implements OnInit {
   userId: String;
   pid: String;
   wgid: String;
-  widgetType: String;
   widget: any;
   type: String;
+  HEADING = 'HEADING'; YOUTUBE = 'YOUTUBE'; TEXT = 'TEXT'; HTML = 'HTML'; IMAGE = 'IMAGE';
+
 
   constructor(
     private userService: UserService,
@@ -39,8 +40,7 @@ export class WidgetEditComponent implements OnInit {
   ngOnInit() {
     // invoke a function that can pass the value of the parameters
     this.route.params.subscribe((params: any) => {
-      this.userId = params['userId'];
-      // this.user = this.userService.findUserById(this.userId);
+
       this.wid = params['wid'];
 
       this.pid = params['pid'];
@@ -50,7 +50,10 @@ export class WidgetEditComponent implements OnInit {
       this.widgetService.findWidgetById(this.wgid)
         .subscribe((widget: any) => {
           this.widget = widget;
+          this.widget.type = widget.type;
           console.log(widget);
+          console.log(widget.type);
+
         });
     });
 

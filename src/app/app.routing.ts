@@ -20,15 +20,12 @@ import {AuthenticationService} from './services/authentication.service.client';
 const appRoutes: Routes = [
   {path: '', component : HomeComponent},
   {path: 'test', component: TestComponent},
-
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'widget', component: WidgetListComponent},
-  // navigate pass certain userID 显示在地址栏上
   {path: 'profile/:userId', component: ProfileComponent},
   // go to profile if canActivate
   {path: 'profile', component: ProfileComponent, canActivate: [AuthenticationService]},
-
   {path: 'user/website', component: WebsiteListComponent, canActivate: [AuthenticationService]},
   {path: 'user/website/new', component: WebsiteNewComponent, canActivate: [AuthenticationService]},
   {path: 'user/website/:wid', component: WebsiteEditComponent, canActivate: [AuthenticationService]},
@@ -39,7 +36,6 @@ const appRoutes: Routes = [
   {path: 'user/website/:wid/page/:pid/widget/new', component: WidgetChooserComponent, canActivate: [AuthenticationService]},
   {path: 'user/website/:wid/page/:pid/widget/:wgid', component: WidgetEditComponent, canActivate: [AuthenticationService]},
   {path: 'user/website/:wid/page/:pid/widget/:wgid/flickr', component: FlickrImageSearchComponent, canActivate: [AuthenticationService]},
-
 ];
 
 // use appRoutes to config router module and export it as an constant variable that

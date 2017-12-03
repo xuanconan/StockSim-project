@@ -17,7 +17,7 @@
 
     <!--tick mark-->
     <div class="navbar-text pull-right">
-      <a (click)="updateImage(name, text, url, width)" class="black">
+      <a (click)="updateImage() " class="black">
         <span class="glyphicon glyphicon-ok"></span>
       </a>
     </div>
@@ -30,36 +30,28 @@
 <div class="container-fluid padding">
 
     Name
-    <input [(ngModel)]="name"
+    <input [(ngModel)]="widget.name"
            class="form-control"
            type="text"
            placeholder="Name"/>
 
     Text
-    <input [(ngModel)]="text"
+    <input [(ngModel)]="widget.text"
            class="form-control"
            type="text"
            placeholder="text"/>
 
     URL
-    <input [(ngModel)]="url"
+    <input [(ngModel)]="widget.url"
            class="form-control"
            type="text"
            placeholder="url">
 
-    Width
-    <input [(ngModel)]="width"
+    Width%
+    <input [(ngModel)]="widget.width"
            class="form-control"
            type="text"
-           placeholder="100%"/>
-
-
-    <!--Upload-->
-    <!--<input class="form-control"-->
-           <!--type="file">-->
-
-    <!--<div class="btn btn-primary btn-block">Upload Image</div>-->
-
+           placeholder="100"/>
 
     Upload
     <form ngNoForm action="{{baseUrl}}/api/upload" method="post" enctype="multipart/form-data">
@@ -68,18 +60,27 @@
       <input  name="websiteId" value="{{wid}}"   style="display: none"/>
       <input  name="pageId" value="{{pid}}"   style="display: none"/>
       <input  name="userId" value="{{userId}}"   style="display: none"/>
-      <button type="submit" class="btn btn-block btn-primary">Upload Image</button>
+      <button type="submit" class="btn btn-primary btn-block ">Upload Image</button>
       <br/>
     </form>
 
 
+
   <a class="btn btn-danger btn-block"
      (click)="deleteWidget(this.pid, this.wgid)">Delete</a>
-
   <br/>
 
   <a class="btn btn-success btn-block"
      routerLink="/user/website/{{wid}}/page/{{pid}}/widget/{{wgid}}/flickr">Search</a>
+
+
+  <br/>
+  <div class="padding-b">
+    <b class="blue">Page preview</b>
+      <img [attr.src]= "widget.url"  [style.width] =  "widget.width" />
+    <br/>
+    <br/>
+  </div>
 
 </div>
 

@@ -13,6 +13,8 @@ import {WidgetService} from '../../../services/widget.service.client';
 import {WidgetEditComponent} from '../widget-edit/widget-edit.component';
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 import {environment} from '../../../../environments/environment';
+import {OrderByPipe} from './order-by-pipe.pipe';
+import { SortableDirective} from './sortable.directive';
 
 @Component({
   selector: 'app-widget-list',
@@ -28,11 +30,15 @@ export class WidgetListComponent implements OnInit {
   websites: Website[];
   pid: String;
   description: String;
-  widgets: [{}];
+  widgets = [];
   youtubeUrl: SafeResourceUrl;
   type: String;
-  widget: any;
+  widget = {type: '', width: ''};
+  width: String;
   baseUrl: String;
+  url: String;
+  imageFileStream: String;
+  // testwidth: String;
 
   // inject route info in constructor
   constructor(
@@ -43,57 +49,43 @@ export class WidgetListComponent implements OnInit {
     private route: ActivatedRoute,
     public sanitizer: DomSanitizer) { }
 
-  // createWidget(pageId) {
-  //   const newWidget: Widget = {
-  //     _id: this.widgetService.newId(),
-  //     widgetType: '',
-  //     pageId: this.pid,
-  //     size: 0,
-  //     text: '',
-  //     width: '',
-  //     url: ''
-  //   };
-  //   this.widgetService.createWidget(pageId, newWidget)
-  //     .subscribe( (widgets) => {
-  //       this.widgets = widgets;
-  //     });
-  // }
-
   // sanitizer youtuber url
   updateVideoUrl(url: string) {
     // const aurl = 'https://www.youtube.com/embed/qdA32j7_U6U';
     return this.youtubeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
+  updateImageUrl(string) {
+     this.imageFileStream = string;
+    return this.imageFileStream;
+  }
+
   reorderWidgets(indexes) {
     this.widgetService.reorderWidgets(indexes.startIndex, indexes.endIndex, this.pid)
       .subscribe(
         (data) => console.log(data)
+        // console.log(this.widgets);
       );
+    console.log(this.widgets);
   }
-
 
   // notify the changes of the route
   ngOnInit() {
+    // width = str.substring(0, str.length - 1);
+    // this.testwidth = '80%';
     this.baseUrl = environment.baseUrl;
     // invoke a function that can pass the value of the parameters
     this.route.params.subscribe((params: any) => {
       // this.user = this.userService.findUserById(this.userId);
       this.wid = params['wid'];
-
       this.pid = params['pid'];
-
-      // alert('userId: ' + this.userId);
-      // this.websites = this.websiteService.findWebsitesByUser(this.userId);
-      // console.log(this.websites);
-      // this.pages = this.pageService.findPageByWebsiteId(this.wid);
-      // this.widgets = this.widgetService.findWidgetsByPageId(this.pid);
-     this.widgetService.findAllWidgetsForPageId(this.pid)
-      .subscribe((widgets: any) => {
-      this.widgets = widgets;
-      console.log(this.widgets);
-      });
     });
+
+    this.widgetService.findAllWidgetsForPageId(this.pid)
+      .subscribe((data: any) => {
+        this.widgets = data;
+        console.log(this.widgets);
+      });
   }
 
 }

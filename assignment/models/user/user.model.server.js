@@ -6,7 +6,6 @@ var UserModel = mongoose.model("UserModel", UserSchema);
 // var api = {findUserByFacebookId: findUserByFacebookId };
 // return api;
 
-
 // tide all funciotns with usermodel
 UserModel.findUserById = findUserById;
 UserModel.createUser = createUser;

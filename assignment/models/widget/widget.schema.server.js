@@ -15,6 +15,7 @@ var WidgetSchema = mongoose.Schema({
   icon : String,
   deletable: Boolean,
   formatted: Boolean,
+  position: Number,
   dateCreated : {type: Date, default : Date.now}
 }, {collection: 'widget'});
 

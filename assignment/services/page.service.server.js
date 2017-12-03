@@ -5,9 +5,24 @@ module.exports = function (app) {
   app.delete("/api/website/:websiteId/page/:pageId", deletePage);
   app.get("/api/website/:websiteId/page/:pageId", findPageById);
   app.put("/api/website/:websiteId/page/:pageId", updatePage);
+  // app.put("/api/page/:pid/widget",reorderWidgets);
+
 
   var PAGES = require("./page.mock.service");
   var pageModel = require('../models/page/page.model.server');
+
+  // function reorderWidgets(req,res) {
+  //   var pageId = req.params.pid;
+  //   var startIndex = parseInt(req.query.start);
+  //   var endIndex = parseInt(req.query.end);
+  //   widgetModel
+  //     .reorderWidgets(pageId, startIndex, endIndex)
+  //     .then(function (stats) {
+  //       res.send(200);
+  //     }, function (err) {
+  //       res.sendStatus(400).send(err);
+  //     });
+  // }
 
   function createPage(req, res) {
     var websiteId = req.params['websiteId'];

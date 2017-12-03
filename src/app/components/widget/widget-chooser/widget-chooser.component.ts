@@ -32,72 +32,71 @@ export class WidgetChooserComponent implements OnInit {
   url: String;
   widgets: [{}];
   widget: Widget;
-  widgetType: String;
   type: String;
 
   defaultWidgetValues =
     {
       'HEADING': {
-        name: '',
+        name: 'HEADING',
         _id: this.widgetService.newId(),
-        widgetType: 'HEADING',
+        type: 'HEADING',
         pageId: this.pid,
         size: 0,
-        text: 'text',
+        text: '',
         width: '100%',
-        url: 'undefined',
+        url: '',
         placeholder: '',
         rows: 0,
         fomatted: false
       },
       'IMAGE': {
-        name: '',
+        name: 'IMAGE',
         _id: this.widgetService.newId(),
-        widgetType: 'IMAGE',
+        type: 'IMAGE',
         pageId: this.pid,
         size: 0,
-        text: 'text',
+        text: '',
         width: '100%',
-        url: 'undefined',
+        url: '',
         placeholder: '',
         rows: 0,
         fomatted: false
       },
       'YOUTUBE': {
-        name: '',
+        name: 'YOUTUBE',
         _id: this.widgetService.newId(),
-        widgetType: 'YOUTUBE',
+        type: 'YOUTUBE',
         pageId: this.pid,
         size: 0,
-        text: 'text',
+        text: '',
         width: '100%',
-        url: 'undefined',
+        url: '',
         placeholder: '',
         rows: 0,
         fomatted: false
       },
       'HTML': {
-        name: '',
+        name: 'HTML',
         _id: this.widgetService.newId(),
-        widgetType: 'HTML',
+        type: 'HTML',
         pageId: this.pid,
         size: 0,
-        text: 'HTML',
+        text: '',
         width: '100%',
-        url: 'undefined',
+        url: '',
         placeholder: '',
         rows: 0,
         fomatted: false
       },
       'INPUT': {
-        name: '',
+        name: 'TEXT INPUT',
         _id: this.widgetService.newId(),
-        widgetType: 'INPUT',
+        type: 'INPUT',
         pageId: this.pid,
         size: 0,
-        text: 'INPUT',
+        text: '',
         width: '100%',
-        url: 'undefined',
+        url: '',
         placeholder: '',
         rows: 0,
         formatted: false
@@ -118,7 +117,7 @@ export class WidgetChooserComponent implements OnInit {
     const newWidget = {
       name: '',
       _id: this.widgetService.newId(),
-      widgetType: 'HEADING',
+      type: 'HEADING',
       pageId: this.pid,
       size: 0,
       text: 'text',
@@ -139,7 +138,7 @@ export class WidgetChooserComponent implements OnInit {
     const newWidget: Widget = {
       name: '',
       _id: this.widgetService.newId(),
-      widgetType: 'IMAGE',
+      type: 'IMAGE',
       pageId: this.pid,
       size: 0,
       text: 'text',
@@ -151,14 +150,13 @@ export class WidgetChooserComponent implements OnInit {
       .subscribe( (widgets) => {
         this.router.navigate(['user' + '/website/' + this.wid + '/page/' + this.pid + '/widget/' + newWidget._id]);
       });
-
   }
 
   createYoutube(pageId) {
     const newWidget: Widget = {
       name: '',
       _id: this.widgetService.newId(),
-      widgetType: 'YOUTUBE',
+      type: 'YOUTUBE',
       pageId: this.pid,
       size: 0,
       text: 'text',
@@ -174,13 +172,14 @@ export class WidgetChooserComponent implements OnInit {
       });
   }
 
-  createWidget(widgetType) {
-    this.widget = this.defaultWidgetValues[widgetType];
+  createWidget(type) {
+    this.widget = this.defaultWidgetValues[type];
     this.widgetService.createWidget(this.pid, this.widget)
       .subscribe(
         (newWidget: any) => {
           this.widget = newWidget;
-          this.router.navigate(['user' + '/website/' + this.wid + '/page/' + this.pid + '/widget/' + this.widget._id]);
+          this.wid = newWidget._id;
+          this.router.navigate(['user' + '/website/' + this.wid + '/page/' + this.pid + '/widget/' + this.wid]);
         },
         (error: any) => console.log(error)
       );
@@ -196,19 +195,7 @@ export class WidgetChooserComponent implements OnInit {
 
       this.pid = params['pid'];
 
-      // this.widgetService.findAllWidgetsForPageId(this.pid)
-      //   .subscribe((widgets: Widget[]) => {
-      //     this.widgets = widgets;
-      //   });
-
-      // this.widgetService.findWidgetById(this.wgid)
-      //   .subscribe((widget) => {
-      //     this.widget = widget;
-      //   });
     });
 
   }
-
-
-
 }

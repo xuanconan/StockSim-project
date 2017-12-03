@@ -29,7 +29,7 @@ export class WidgetImageComponent implements OnInit {
   widget: Widget;
   name: String;
   text: String;
-  url: String;
+  url: '';
   width: String;
   wid: String;
   userId: String;
@@ -55,16 +55,16 @@ export class WidgetImageComponent implements OnInit {
     private http: Http) { }
 
 
-  updateImage(name, text, url, width) {
+  updateImage() {
     const newWidget = {
-      name: name,
+      name: this.widget.name,
       _id: this.wgid,
-      widgetType: this.widget.widgetType,
+      type: this.widget.type,
       pageId: this.pid,
       size: this.widget.size,
-      text: text,
-      width: width,
-      url: url,
+      text: this.widget.text,
+      width: this.widget.width,
+      url: this.widget.url,
       placeholder: '',
       rows: 0,
       formatted: false
@@ -99,23 +99,22 @@ export class WidgetImageComponent implements OnInit {
       //   .subscribe((widgets: Widget[]) => {
       //     this.widgets = widgets;
       //   });
-
-      this.widgetService.findWidgetById(this.wgid)
-        .subscribe((widget) => {
-          this.widget = widget;
-          // this.wgid = widget._id;
-        });
-
-      this.http.get(this.baseUrl + '/api/upload')
-        .map((response: Response) => {
-          return response.json();
-        })
-        .subscribe((images) => {
-          this.images = images;
-          console.log(images);
-
-        });
     });
+
+    this.widgetService.findWidgetById(this.wgid)
+      .subscribe((widget) => {
+        this.widget = widget;
+        // this.url = widget.url;
+      });
+
+    // this.http.get(this.baseUrl + '/api/upload')
+    //   .map((response: Response) => {
+    //     return response.json();
+    //   })
+    //   .subscribe((images) => {
+    //     this.images = images;
+    //     console.log(images);
+    //   });
 
   }
 

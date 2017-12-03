@@ -47,16 +47,16 @@ export class WidgetYoutubeComponent implements OnInit {
     private router: Router,
     private widgetService: WidgetService) { }
 
-  updateYoutube(name, text, url, width) {
+  updateYoutube() {
     const newWidget = {
-      name: name,
+      name: this.widget.name,
       _id: this.wgid,
-      widgetType: this.widget.widgetType,
+      type: this.widget.type,
       pageId: this.pid,
       size: this.widget.size,
-      text: text,
-      width: width,
-      url: url,
+      text: this.widget.text,
+      width: this.widget.width,
+      url: this.widget.url,
       rows: 0,
       formatted: false,
       placeholder: ''

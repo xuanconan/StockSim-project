@@ -17,7 +17,7 @@
 
     <!--tick mark-->
     <div class="navbar-text pull-right">
-      <a (click)="updateHeader(name, text, size)" class="black">
+      <a (click)="updateHeader()" class="black">
         <span class="glyphicon glyphicon-ok "></span>
       </a>
     </div>
@@ -30,19 +30,19 @@
 <div class="container-fluid padding">
 
       Name
-      <input [(ngModel)]="name"
+      <input [(ngModel)]="widget.name"
              class="form-control"
              type="text"
              placeholder="Name"/>
 
      Text
-      <input [(ngModel)]="text"
+      <input [(ngModel)]="widget.text"
              class="form-control"
              type="text"
              placeholder="Text"/>
 
       Size
-      <input [(ngModel)]="size"
+      <input [(ngModel)]="widget.size"
              class="form-control"
              type="Number"
              placeholder="Size"/>

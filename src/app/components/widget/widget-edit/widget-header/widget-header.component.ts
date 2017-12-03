@@ -42,15 +42,15 @@ export class WidgetHeaderComponent implements OnInit {
     private router: Router) { }
 
 
-  updateHeader(name, text, size) {
+  updateHeader() {
 
     const newWidget = {
-      name: name,
+      name: this.widget.name,
       _id: this.wgid,
-      widgetType: this.widget.widgetType,
+      type: this.widget.type,
       pageId: this.pid,
-      size: size,
-      text: text,
+      size: this.widget.size,
+      text: this.widget.text,
       width: this.widget.url,
       url: this.widget.url,
       placeholder: '',

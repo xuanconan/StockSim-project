@@ -16,7 +16,7 @@
 
     <!--tick mark-->
     <div class="navbar-text pull-right">
-      <a (click)="updateYoutube(name, text, url, width)" class="black">
+      <a (click)="updateYoutube()" class="black">
         <span class="glyphicon glyphicon-ok"></span>
       </a>
     </div>
@@ -29,26 +29,26 @@
 <div class="container-fluid padding">
 
       Name
-    <input [(ngModel)]="name"
+    <input [(ngModel)]="widget.name"
            class="form-control"
            type="text"
            placeholder="Name"/>
       Text
-    <input [(ngModel)]="text"
+    <input [(ngModel)]="widget.text"
            class="form-control"
            type="text"
            placeholder="Text"/>
       URL
-    <input [(ngModel)]="url"
+    <input [(ngModel)]="widget.url"
            class="form-control"
            type="text"
            placeholder="Please user embeded url">
 
       Width
-    <input [(ngModel)]="width"
+    <input [(ngModel)]="widget.width"
            class="form-control"
            type="text"
-           placeholder="100%">
+           placeholder="100">
 
 
   <a class="btn btn-danger btn-block"

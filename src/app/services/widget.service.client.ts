@@ -74,8 +74,8 @@ export class WidgetService {
       });
   }
 
-  reorderWidgets(initialIndex, finalIndex, pageId) {
-    const url = this.baseUrl + '/api/page/' + pageId + '/widget?start=' + initialIndex + '&end=' + finalIndex;
+  reorderWidgets(startIndex, endIndex, pageId) {
+    const url = this.baseUrl + '/api/page/' + pageId + '/widget?start=' + startIndex + '&end=' + endIndex;
     return this.http.put(url, '')
       .map((res: Response) => {
          return res.json();

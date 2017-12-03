@@ -31,66 +31,69 @@
 <div class="container-fluid padding padding-b " >
   <div class="widget-list" appSortable (newIndexes)="reorderWidgets($event)">
 
-  <div *ngFor = "let widget of widgets" class="container-fluid">
+    <div *ngFor = "let widget of widgets | orderBy" >
 
-    <div class="jga-widget">
-      <div class="jpa-toolbar">
-        <div>
-          <span class="glyphicon glyphicon-menu-hamburger black pull-right"></span>
-          <a class="blue" routerLink="/user/website/{{ wid }}/page/{{pid}}/widget/{{widget._id}}" >
-            <span class="glyphicon glyphicon-cog  pull-right"></span>
-          </a>
+      <div [ngSwitch] = "widget.type" >
+
+        <div class="jga-widget ">
+
+          <div class="jpa-toolbar">
+            <div>
+              <span class="glyphicon glyphicon-menu-hamburger black pull-right"></span>
+              <a class="blue" routerLink="/user/website/{{ wid }}/page/{{pid}}/widget/{{widget._id}}" >
+                <span class="glyphicon glyphicon-cog  pull-right"></span>
+              </a>
+            </div>
+          </div>
+
+          <div *ngSwitchCase="'HEADING'" class="padding-b">
+            <div [ngSwitch]="widget.size">
+              <h1 *ngSwitchCase="1">{{widget.text}}</h1>
+              <h2 *ngSwitchCase="2">{{widget.text}}</h2>
+              <h3 *ngSwitchCase="3">{{widget.text}}</h3>
+              <h4 *ngSwitchCase="4">{{widget.text}}</h4>
+              <h5 *ngSwitchCase="5">{{widget.text}}</h5>
+              <h6 *ngSwitchCase="6">{{widget.text}}</h6>
+            </div>
+          </div>
+
+          <div *ngSwitchCase = "'IMAGE'" class="padding-b">
+            Image url: "{{widget.url}}"
+            <br/>
+            <img class="img-responsive" [src] = updateImageUrl(widget.url) [style.width] =  "widget.width" />
+            <br/>
+          </div>
+
+          <div *ngSwitchCase = "'HTML'" [innerHTML]="widget.text" class="padding-b"> </div>
+            <!--<a href="{{widget.url}}" class> <div>{{widget.text}}</div> </a>-->
+
+          <div *ngSwitchCase="'INPUT'" class="padding-b" >
+            Text Input Name: {{widget.name}}
+            <div *ngIf="widget.formatted">
+              <quill-editor [(ngModel)]="widget.text" name="text"></quill-editor>
+            </div>
+            <input *ngIf="!widget.formatted && (!widget.rows || widget.rows===1)"
+                   placeholder="{{widget.placeholder}}" class="form-control"/>
+
+            <textarea *ngIf="!widget.formatted && (widget.rows > 1)"
+                      rows="{{widget.rows}}" placeholder="{{widget.placeholder}}"
+                      class="form-control">{{widget.text}}</textarea>
+          </div>
+
+          <div *ngSwitchCase = "'YOUTUBE'" class="padding-b">
+            Video Name: {{widget.name}}
+            <div class="videoWrapper">
+              <iframe  class="e2e-iframe-trusted-src" width="560" height="315"
+                       [src] = updateVideoUrl(widget.url) frameborder="0" allowfullscreen></iframe>
+              <br/>
+            </div>
+          </div>
+
         </div>
+
       </div>
 
-              <div [ngSwitch] = "widget.type">
-
-
-                  <div *ngSwitchCase="'HEADING'" class="padding-b">
-                    <div [ngSwitch]="widget.size">
-                      <h1 *ngSwitchCase="1">{{widget.text}}</h1>
-                      <h2 *ngSwitchCase="2">{{widget.text}}</h2>
-                      <h3 *ngSwitchCase="3">{{widget.text}}</h3>
-                      <h4 *ngSwitchCase="4">{{widget.text}}</h4>
-                      <h5 *ngSwitchCase="5">{{widget.text}}</h5>
-                      <h6 *ngSwitchCase="6">{{widget.text}}</h6>
-                    </div>
-                  </div>
-
-                  <div *ngSwitchCase = "'IMAGE'">
-                    Image url:  {{ widget.url }}
-                    <img class="e2e-trusted-url padding-b" width="100%" src= "{{widget.url}}"/>
-                    <br/>
-                  </div>
-
-                  <div *ngSwitchCase = "'HTML'" [innerHTML]="widget.text" class="padding-b"> </div>
-                    <!--<a href="{{widget.url}}" class> <div>{{widget.text}}</div> </a>-->
-
-                  <div *ngSwitchCase="'INPUT'" class="padding-b">
-                    <div *ngIf="widget.formatted">
-                      <quill-editor [(ngModel)]="widget.text" name="text"></quill-editor>
-                    </div>
-                    <input *ngIf="!widget.formatted && (!widget.rows || widget.rows===1)"
-                           placeholder="{{widget.placeholder}}" class="form-control"/>
-
-                    <textarea *ngIf="!widget.formatted && (widget.rows > 1)"
-                              rows="{{widget.rows}}" placeholder="{{widget.placeholder}}"
-                              class="form-control">{{widget.text}}</textarea>
-                  </div>
-
-
-                  <div *ngSwitchCase = "'YOUTUBE'" class="padding-b">
-                    <div class="videoWrapper">
-                      <iframe  class="e2e-iframe-trusted-src" width="560" height="315"
-                               [src] = updateVideoUrl(widget.url) frameborder="0" allowfullscreen></iframe>
-                      <br/>
-                    </div>
-                  </div>
-
-                </div>
-
     </div>
-
   </div>
 </div>
 

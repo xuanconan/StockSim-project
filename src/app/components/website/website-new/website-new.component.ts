@@ -55,6 +55,7 @@ export class WebsiteNewComponent implements OnInit {
         // this.websites = websites;
         this.router.navigate(['user', 'website']);
       });
+    console.log(newWebsite);
   }
 
   // notify the changes of the route
