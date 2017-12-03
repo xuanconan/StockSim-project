@@ -12,7 +12,7 @@ module.exports = function (app) {
     clientID     : '1539275026193788',
     clientSecret : '98c2926e0b0a8a375978377e9fe550b9',
     // callbackURL  : 'http://localhost:9000/auth/facebook/callback'
-    callbackURL  : 'http://webdev-conan-xuan.herokuapp.com/auth/facebook/callback'
+    callbackURL  : 'https://webdev-conan-xuan.herokuapp.com/auth/facebook/callback'
 
   };
   var bcrypt = require('bcrypt-nodejs');
@@ -40,8 +40,8 @@ module.exports = function (app) {
     passport.authenticate('facebook', {
       // successRedirect: 'http://localhost:4200/profile',
       // failureRedirect: 'http://localhost:4200/login'
-      successRedirect: 'http://webdev-conan-xuan.herokuapp.com/profile',
-      failureRedirect: 'http://webdev-conan-xuan.herokuapp.com/login'
+      successRedirect: 'https://webdev-conan-xuan.herokuapp.com/profile',
+      failureRedirect: 'https://webdev-conan-xuan.herokuapp.com/login'
     }));
 
   // Create a Web service that uses passport.authenticate() to delegate authentication to facebook
