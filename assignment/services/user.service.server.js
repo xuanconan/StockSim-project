@@ -11,8 +11,8 @@ module.exports = function (app) {
   var facebookConfig = {
     clientID     : '1539275026193788',
     clientSecret : '98c2926e0b0a8a375978377e9fe550b9',
-    callbackURL  : 'http://localhost:9000/auth/facebook/callback'
-    // callbackURL  : 'http://webdev-conan-xuan.herokuapp.com/auth/facebook/callback'
+    // callbackURL  : 'http://localhost:9000/auth/facebook/callback'
+    callbackURL  : 'http://webdev-conan-xuan.herokuapp.com/auth/facebook/callback'
 
   };
   var bcrypt = require('bcrypt-nodejs');
