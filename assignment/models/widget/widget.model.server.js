@@ -12,6 +12,8 @@ WidgetModel.updateWidget = updateWidget;
 WidgetModel.deleteWidget = deleteWidget;
 WidgetModel.updateImage = updateImage;
 WidgetModel.reorderWidgets = reorderWidgets;
+WidgetModel.updatePosition = updatePosition;
+
 
 
 function reorderWidgets(pageId, startIndex, endIndex) {
@@ -52,9 +54,15 @@ function updateImage(widgetId, image) {
 }
 
 function deleteWidget(pageId, widgetId){
-  // return PageModel.remove({_id: pageId});
-  return WidgetModel
-    .remove({_id: widgetId});
+ return  WidgetModel.findOne({_id: widgetId})
+    .then (function (widget) {
+      var deletedPosition = widget.position;
+      console.log(deletedPosition);
+      updatePosition(pageId, deletedPosition);
+      return WidgetModel.remove({_id: widgetId});
+    });
+
+  // return WidgetModel.remove({_id: widgetId});
 }
 
 function updateWidget(widgetId, widget) {
@@ -116,3 +124,13 @@ function findAllWidgetsForPage(pageId) {
 }
 
 
+function updatePosition (pageId, position) {
+   return WidgetModel.find({_page:pageId}, function (err, widgets) {
+    widgets.forEach (function (widget) {
+      if(widget.position > position){
+        widget.position--;
+        widget.save();
+      }
+    })
+  });
+}
