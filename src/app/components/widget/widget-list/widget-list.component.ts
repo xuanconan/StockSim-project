@@ -56,8 +56,13 @@ export class WidgetListComponent implements OnInit {
   }
 
   updateImageUrl(string) {
-     this.imageFileStream = string;
-    return this.imageFileStream;
+    let newurl = '';
+    if (string.substring(1, 4) === 'ass') {
+       newurl = this.baseUrl + string;
+    } else {
+      newurl = string;
+    }
+    return newurl;
   }
 
   reorderWidgets(indexes) {

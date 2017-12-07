@@ -11,8 +11,8 @@ module.exports = function(app) {
   app.delete('/api/page/:pid/widget/:wgid', deleteWidget);
   app.put('/api/page/:pid/widget/:wgid', updateWidget);
   app.post('/api/page/:pid/widget', createWidget);
-  app.post ("/api/upload", upload.single('myFile'), uploadImage);
-  app.put("/api/page/:pid/widget",reorderWidgets);
+  app.post ('/api/upload', upload.single('myFile'), uploadImage);
+  app.put('/api/page/:pid/widget',reorderWidgets);
 
 
   var widgetModel = require('../models/widget/widget.model.server');
@@ -55,12 +55,10 @@ module.exports = function(app) {
       + websiteId + '/page/' + pageId + '/widget/' ;
 
     if(myFile === null) {
-      // res.redirect("https://webdev-conan-xuan.herokuapp.com/user/website/"
-      //   + websiteId + '/page/' + pageId + '/widget/');
       res.redirect(callbackUrl);
       return;
     }
-    var url = '/dist/assets/uploads/' + filename;
+    var url = '/assets/uploads/' + filename;
 
     var image = {
       url: url,

@@ -54,6 +54,15 @@ export class WidgetImageComponent implements OnInit {
     private widgetService: WidgetService,
     private http: Http) { }
 
+  updateImageUrl(string) {
+    let newurl = '';
+    if (string.substring(1, 4) === 'ass') {
+      newurl = this.baseUrl + string;
+    } else {
+      newurl = string;
+    }
+    return newurl;
+  }
 
   updateImage() {
     const newWidget = {

@@ -2256,7 +2256,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/widget/widget-edit/widget-image/widget-image.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<nav class=\"navbar navbar-light2 navbar-fixed-top\">\n  <div class=\"container-fluid\">\n\n    <!--heading on the nav bar-->\n    <div class=\"navbar-text pull-left\">\n      <a routerLink=\"/user/website/{{wid}}/page/{{pid}}/widget\" class=\"black\">\n        <span class=\"glyphicon glyphicon-chevron-left \"></span>\n      </a>\n    </div>\n\n    <div class=\"navbar-brand pull-left\">\n      <div class=\"thick grey\">\n        <b>Widget Edit</b>\n      </div>\n    </div>\n\n    <!--tick mark-->\n    <div class=\"navbar-text pull-right\">\n      <a (click)=\"updateImage() \" class=\"black\">\n        <span class=\"glyphicon glyphicon-ok\"></span>\n      </a>\n    </div>\n\n  </div>\n</nav>\n\n\n\n<div class=\"container-fluid padding\">\n\n    Name\n    <input [(ngModel)]=\"widget.name\"\n           class=\"form-control\"\n           type=\"text\"\n           placeholder=\"Name\"/>\n\n    Text\n    <input [(ngModel)]=\"widget.text\"\n           class=\"form-control\"\n           type=\"text\"\n           placeholder=\"text\"/>\n\n    URL\n    <input [(ngModel)]=\"widget.url\"\n           class=\"form-control\"\n           type=\"text\"\n           placeholder=\"url\">\n\n    Width%\n    <input [(ngModel)]=\"widget.width\"\n           class=\"form-control\"\n           type=\"text\"\n           placeholder=\"100\"/>\n\n    Upload\n    <form ngNoForm action=\"{{baseUrl}}/api/upload\" method=\"post\" enctype=\"multipart/form-data\">\n      <input  name=\"myFile\"   type=\"file\" class=\"form-control\"/>\n      <input  name=\"widgetId\" value=\"{{wgid}}\"   style=\"display: none\"/>\n      <input  name=\"websiteId\" value=\"{{wid}}\"   style=\"display: none\"/>\n      <input  name=\"pageId\" value=\"{{pid}}\"   style=\"display: none\"/>\n      <input  name=\"userId\" value=\"{{userId}}\"   style=\"display: none\"/>\n      <button type=\"submit\" class=\"btn btn-primary btn-block \">Upload Image</button>\n      <br/>\n    </form>\n\n\n\n  <a class=\"btn btn-danger btn-block\"\n     (click)=\"deleteWidget(this.pid, this.wgid)\">Delete</a>\n  <br/>\n\n  <a class=\"btn btn-success btn-block\"\n     routerLink=\"/user/website/{{wid}}/page/{{pid}}/widget/{{wgid}}/flickr\">Search</a>\n\n\n  <br/>\n  <div class=\"padding-b\">\n    <b class=\"blue\">Page preview</b>\n      <img [attr.src]= \"widget.url\"  [style.width] =  \"widget.width\" />\n    <br/>\n    <br/>\n  </div>\n\n</div>\n\n\n\n<nav class=\"navbar navbar-light2 navbar-fixed-bottom\">\n  <div class=\"container-fluid\">\n    <div class=\"navbar-text pull-right\">\n      <!--<a href=\"../user/profile.view.client.html\">-->\n      <span class=\"glyphicon glyphicon-user blue\"></span>\n      <!--</a>-->\n    </div>\n  </div>\n</nav>\n\n"
+module.exports = "\n<nav class=\"navbar navbar-light2 navbar-fixed-top\">\n  <div class=\"container-fluid\">\n\n    <!--heading on the nav bar-->\n    <div class=\"navbar-text pull-left\">\n      <a routerLink=\"/user/website/{{wid}}/page/{{pid}}/widget\" class=\"black\">\n        <span class=\"glyphicon glyphicon-chevron-left \"></span>\n      </a>\n    </div>\n\n    <div class=\"navbar-brand pull-left\">\n      <div class=\"thick grey\">\n        <b>Widget Edit</b>\n      </div>\n    </div>\n\n    <!--tick mark-->\n    <div class=\"navbar-text pull-right\">\n      <a (click)=\"updateImage() \" class=\"black\">\n        <span class=\"glyphicon glyphicon-ok\"></span>\n      </a>\n    </div>\n\n  </div>\n</nav>\n\n\n\n<div class=\"container-fluid padding\">\n\n    Name\n    <input [(ngModel)]=\"widget.name\"\n           class=\"form-control\"\n           type=\"text\"\n           placeholder=\"Name\"/>\n\n    Text\n    <input [(ngModel)]=\"widget.text\"\n           class=\"form-control\"\n           type=\"text\"\n           placeholder=\"text\"/>\n\n    URL\n    <input [(ngModel)]=\"widget.url\"\n           class=\"form-control\"\n           type=\"text\"\n           placeholder=\"url\">\n\n    Width%\n    <input [(ngModel)]=\"widget.width\"\n           class=\"form-control\"\n           type=\"text\"\n           placeholder=\"100\"/>\n\n    Upload\n    <form ngNoForm action=\"{{baseUrl}}/api/upload\" method=\"post\" enctype=\"multipart/form-data\">\n      <input  name=\"myFile\"   type=\"file\" class=\"form-control\"/>\n      <input  name=\"widgetId\" value=\"{{wgid}}\"   style=\"display: none\"/>\n      <input  name=\"websiteId\" value=\"{{wid}}\"   style=\"display: none\"/>\n      <input  name=\"pageId\" value=\"{{pid}}\"   style=\"display: none\"/>\n      <input  name=\"userId\" value=\"{{userId}}\"   style=\"display: none\"/>\n      <button type=\"submit\" class=\"btn btn-primary btn-block \">Upload Image</button>\n      <br/>\n    </form>\n\n\n\n  <a class=\"btn btn-danger btn-block\"\n     (click)=\"deleteWidget(this.pid, this.wgid)\">Delete</a>\n  <br/>\n\n  <a class=\"btn btn-success btn-block\"\n     routerLink=\"/user/website/{{wid}}/page/{{pid}}/widget/{{wgid}}/flickr\">Search</a>\n\n\n  <br/>\n  <div class=\"padding-b\">\n    <b class=\"blue\">Page preview</b>\n      <img [attr.src]= updateImageUrl(widget.url)  [style.width] =  \"widget.width\" />\n    <br/>\n    <br/>\n  </div>\n\n</div>\n\n\n\n<nav class=\"navbar navbar-light2 navbar-fixed-bottom\">\n  <div class=\"container-fluid\">\n    <div class=\"navbar-text pull-right\">\n      <!--<a href=\"../user/profile.view.client.html\">-->\n      <span class=\"glyphicon glyphicon-user blue\"></span>\n      <!--</a>-->\n    </div>\n  </div>\n</nav>\n\n"
 
 /***/ }),
 
@@ -2310,6 +2310,16 @@ var WidgetImageComponent = (function () {
         this.images = [];
         this.baseUrl = __WEBPACK_IMPORTED_MODULE_9__environments_environment__["a" /* environment */].baseUrl;
     }
+    WidgetImageComponent.prototype.updateImageUrl = function (string) {
+        var newurl = '';
+        if (string.substring(1, 4) === 'ass') {
+            newurl = this.baseUrl + string;
+        }
+        else {
+            newurl = string;
+        }
+        return newurl;
+    };
     WidgetImageComponent.prototype.updateImage = function () {
         var _this = this;
         var newWidget = {
@@ -2802,8 +2812,14 @@ var WidgetListComponent = (function () {
         return this.youtubeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
     };
     WidgetListComponent.prototype.updateImageUrl = function (string) {
-        this.imageFileStream = string;
-        return this.imageFileStream;
+        var newurl = '';
+        if (string.substring(1, 4) === 'ass') {
+            newurl = this.baseUrl + string;
+        }
+        else {
+            newurl = string;
+        }
+        return newurl;
     };
     WidgetListComponent.prototype.reorderWidgets = function (indexes) {
         this.widgetService.reorderWidgets(indexes.startIndex, indexes.endIndex, this.pid)
