@@ -2,7 +2,7 @@ module.exports = function(app) {
   // app.post('/api/upload', uploadFile);
   var WIDGETS = require('./widget.mock.service');
   var multer = require('multer');
-  var upload = multer({ dest: __dirname + '/../../src/assets/uploads'});
+  var upload = multer({ dest: __dirname + '/../../dist/assets/uploads'});
 
 
   // app.get('/api/widget', findAllWidgets);
@@ -48,11 +48,11 @@ module.exports = function(app) {
     var size          = myFile.size;
     var mimetype      = myFile.mimetype;
 
-    var callbackUrl = "http://localhost:4200/user/website/"
-      + websiteId + '/page/' + pageId + '/widget/' + widgetId ;
+    // var callbackUrl = "http://localhost:4200/user/website/"
+    //   + websiteId + '/page/' + pageId + '/widget/' + widgetId ;
 
-    // var callbackUrl = "https://webdev-conan-xuan.herokuapp.com/user/website/"
-    //   + websiteId + '/page/' + pageId + '/widget/' ;
+    var callbackUrl = "https://webdev-conan-xuan.herokuapp.com/user/website/"
+      + websiteId + '/page/' + pageId + '/widget/' ;
 
     if(myFile === null) {
       // res.redirect("https://webdev-conan-xuan.herokuapp.com/user/website/"
@@ -60,10 +60,10 @@ module.exports = function(app) {
       res.redirect(callbackUrl);
       return;
     }
-    var url = '/src/assets/uploads/' + filename;
+    var url = '/dist/assets/uploads/' + filename;
 
     var image = {
-      url: '/assets/uploads/' + filename,
+      url: url,
       name: filename
       // url: path
     };
