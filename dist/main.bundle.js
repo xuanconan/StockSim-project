@@ -2613,23 +2613,28 @@ var WidgetYoutubeComponent = (function () {
     }
     WidgetYoutubeComponent.prototype.updateYoutube = function () {
         var _this = this;
-        var newWidget = {
-            name: this.widget.name,
-            _id: this.wgid,
-            type: this.widget.type,
-            pageId: this.pid,
-            size: this.widget.size,
-            text: this.widget.text,
-            width: this.widget.width,
-            url: this.widget.url,
-            rows: 0,
-            formatted: false,
-            placeholder: ''
-        };
-        this.widgetService.updateWidget(this.pid, this.wgid, newWidget)
-            .subscribe(function (widgets) {
-            _this.router.navigate(['user' + '/website/' + _this.wid + '/page/' + _this.pid + '/widget/']);
-        });
+        if (!this.widget.name) {
+            alert('Please input widget name');
+        }
+        else {
+            var newWidget = {
+                name: this.widget.name,
+                _id: this.wgid,
+                type: this.widget.type,
+                pageId: this.pid,
+                size: this.widget.size,
+                text: this.widget.text,
+                width: this.widget.width,
+                url: this.widget.url,
+                rows: 0,
+                formatted: false,
+                placeholder: ''
+            };
+            this.widgetService.updateWidget(this.pid, this.wgid, newWidget)
+                .subscribe(function (widgets) {
+                _this.router.navigate(['user' + '/website/' + _this.wid + '/page/' + _this.pid + '/widget/']);
+            });
+        }
     };
     WidgetYoutubeComponent.prototype.deleteWidget = function (pageId, widgetId) {
         var _this = this;

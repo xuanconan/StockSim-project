@@ -48,24 +48,28 @@ export class WidgetYoutubeComponent implements OnInit {
     private widgetService: WidgetService) { }
 
   updateYoutube() {
-    const newWidget = {
-      name: this.widget.name,
-      _id: this.wgid,
-      type: this.widget.type,
-      pageId: this.pid,
-      size: this.widget.size,
-      text: this.widget.text,
-      width: this.widget.width,
-      url: this.widget.url,
-      rows: 0,
-      formatted: false,
-      placeholder: ''
-    };
+    if (!this.widget.name) {
+      alert ('Please input widget name');
+    } else {
+      const newWidget = {
+        name: this.widget.name,
+        _id: this.wgid,
+        type: this.widget.type,
+        pageId: this.pid,
+        size: this.widget.size,
+        text: this.widget.text,
+        width: this.widget.width,
+        url: this.widget.url,
+        rows: 0,
+        formatted: false,
+        placeholder: ''
+      };
 
-    this.widgetService.updateWidget(this.pid, this.wgid, newWidget)
-      .subscribe((widgets) => {
-        this.router.navigate(['user' + '/website/' + this.wid + '/page/' + this.pid + '/widget/']);
-      });
+      this.widgetService.updateWidget(this.pid, this.wgid, newWidget)
+        .subscribe((widgets) => {
+          this.router.navigate(['user' + '/website/' + this.wid + '/page/' + this.pid + '/widget/']);
+        });
+    }
   }
 
   deleteWidget(pageId, widgetId) {
