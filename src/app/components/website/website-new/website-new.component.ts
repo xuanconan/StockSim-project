@@ -42,20 +42,23 @@ export class WebsiteNewComponent implements OnInit {
   create() {
 
     this.websitename = this.createForm.value.websitename;
+    if (this.websitename === "") {
+      alert('Please input website name');
+    } else {
+      const newWebsite: Website = {
+        _id: this.websiteService.newId(),
+        name: this.websitename,
+        developerId: this.userId,
+        description: '',
+      };
 
-    const newWebsite: Website = {
-      _id: this.websiteService.newId(),
-      name: this.websitename,
-      developerId: this.userId,
-      description: '',
-    };
-
-    this.websiteService.createWebsite(this.userId, newWebsite)
-      .subscribe( (websites) => {
-        // this.websites = websites;
-        this.router.navigate(['user', 'website']);
-      });
-    console.log(newWebsite);
+      this.websiteService.createWebsite(this.userId, newWebsite)
+        .subscribe((websites) => {
+          // this.websites = websites;
+          this.router.navigate(['user', 'website']);
+        });
+      console.log(newWebsite);
+    }
   }
 
   // notify the changes of the route

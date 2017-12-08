@@ -26,6 +26,7 @@ export class WebsiteEditComponent implements OnInit {
   websites: Website[];
   description: String;
   website: Website;
+  websitename: String;
 
   // inject route info in constructor
   constructor(
@@ -41,18 +42,23 @@ export class WebsiteEditComponent implements OnInit {
       this.userId = this.user['_id'];
     }
 
-    update(name: String) {
-      const newWebsite: Website = {
-        _id: this.wid,
-        name: name,
-        developerId: this.userId,
-        description: '',
-      };
-      this.websiteService.updateWebsite(this.wid, newWebsite)
-        .subscribe((status) => {
-          this.router.navigate(['user', 'website']);
-          console.log(status);
-        });
+    update() {
+      console.log();
+      if (!this.websitename) {
+        alert ('Please input webiste name');
+      } else {
+        const newWebsite: Website = {
+          _id: this.wid,
+          name: this.websitename,
+          developerId: this.userId,
+          description: '',
+        };
+        this.websiteService.updateWebsite(this.wid, newWebsite)
+          .subscribe((status) => {
+            this.router.navigate(['user', 'website']);
+            console.log(status);
+          });
+      }
     }
 
     deleteWebsite() {

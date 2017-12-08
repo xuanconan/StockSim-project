@@ -65,24 +65,28 @@ export class WidgetImageComponent implements OnInit {
   }
 
   updateImage() {
-    const newWidget = {
-      name: this.widget.name,
-      _id: this.wgid,
-      type: this.widget.type,
-      pageId: this.pid,
-      size: this.widget.size,
-      text: this.widget.text,
-      width: this.widget.width,
-      url: this.widget.url,
-      placeholder: '',
-      rows: 0,
-      formatted: false
-    };
+    if (!this.widget.name) {
+      alert('Please input widget name');
+    } else {
+      const newWidget = {
+        name: this.widget.name,
+        _id: this.wgid,
+        type: this.widget.type,
+        pageId: this.pid,
+        size: this.widget.size,
+        text: this.widget.text,
+        width: this.widget.width,
+        url: this.widget.url,
+        placeholder: '',
+        rows: 0,
+        formatted: false
+      };
 
-    this.widgetService.updateWidget(this.pid, this.wgid, newWidget)
-      .subscribe((widgets) => {
-        this.router.navigate(['user' + '/website/' + this.wid + '/page/' + this.pid + '/widget/']);
-      });
+      this.widgetService.updateWidget(this.pid, this.wgid, newWidget)
+        .subscribe((widgets) => {
+          this.router.navigate(['user' + '/website/' + this.wid + '/page/' + this.pid + '/widget/']);
+        });
+    }
   }
 
 

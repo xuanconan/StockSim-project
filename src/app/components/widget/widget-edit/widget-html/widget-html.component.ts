@@ -70,8 +70,11 @@ export class WidgetHtmlComponent implements OnInit {
   }
 
   updateWidget() {
-    this.widget.text = this.widgettext;
-    this.widget.name = this.widgetname;
+    if (!this.widgetname) {
+      alert('Please input widget name');
+    } else {
+      this.widget.text = this.widgettext;
+      this.widget.name = this.widgetname;
       // const newWidget = {
       //   name: this.widgetname,
       //   _id: this.wgid,
@@ -90,6 +93,7 @@ export class WidgetHtmlComponent implements OnInit {
           (data: any) => this.router.navigate(['/user', 'website', this.wid, 'page', this.pid, 'widget']),
           (error: any) => console.log(error)
         );
+    }
   }
 
   deleteWidget(pageId, widgetId) {

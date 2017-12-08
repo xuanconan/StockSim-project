@@ -22,7 +22,7 @@ export class WidgetTextComponent implements OnInit {
 
   @Input()
 
-  widget: {placeholder: '', };
+  widget: any;
   wid: String;
   userId: String;
   widgets: Widget[];
@@ -42,8 +42,10 @@ export class WidgetTextComponent implements OnInit {
               private router: Router) { }
 
   updateWidget() {
-    if (this.widget['name'] === undefined) {
-      this.flag = true;
+    console.log(this.widget.name);
+    if (!this.widget.name) {
+      // this.flag = true;
+      alert('Please input widget name');
     } else {
       this.widgetService.updateWidget(this.pid, this.wgid, this.widget)
         .subscribe(

@@ -46,19 +46,21 @@ export class PageNewComponent implements OnInit {
   }
 
   create(name, title) {
+    if (!name) {
+      alert('Please input page name');
+    } else {
+      const newPage: Page = {
+        _id: this.websiteService.newId(),
+        name: name,
+        websiteId: this.wid,
+        description: title,
+      };
 
-    const newPage: Page = {
-      _id: this.websiteService.newId(),
-      name: name,
-      websiteId: this.wid,
-      description: title,
-    };
-
-    this.pageService.createPage(this.wid, newPage).
-    subscribe((pages) => {
-      this.pages = pages;
-      this.router.navigate(['user', 'website', this.wid, 'page']);
-    });
+      this.pageService.createPage(this.wid, newPage).subscribe((pages) => {
+        this.pages = pages;
+        this.router.navigate(['user', 'website', this.wid, 'page']);
+      });
+    }
   }
 
 

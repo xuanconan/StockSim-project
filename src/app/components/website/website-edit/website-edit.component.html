@@ -41,7 +41,7 @@
         </div>
         <!--tick mark-->
         <div class="navbar-text pull-right">
-          <a (click)="update(name)" class="white">
+          <a (click)="update()" class="white">
             <span class="glyphicon glyphicon-ok "></span>
           </a>
         </div>
@@ -76,11 +76,10 @@
 
           <b>Website Name</b>
 
-        <input [(ngModel)]="name"
+        <input [(ngModel)]="websitename"
                 class="form-control"
                 type="text"
                 placeholder="website name">
-
 
           <b>Website Description</b>
 

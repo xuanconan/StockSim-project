@@ -37,7 +37,7 @@ export class WidgetChooserComponent implements OnInit {
   defaultWidgetValues =
     {
       'HEADING': {
-        name: 'HEADING',
+        name: '',
         _id: this.widgetService.newId(),
         type: 'HEADING',
         pageId: this.pid,
@@ -50,7 +50,7 @@ export class WidgetChooserComponent implements OnInit {
         fomatted: false
       },
       'IMAGE': {
-        name: 'IMAGE',
+        name: '',
         _id: this.widgetService.newId(),
         type: 'IMAGE',
         pageId: this.pid,
@@ -63,7 +63,7 @@ export class WidgetChooserComponent implements OnInit {
         fomatted: false
       },
       'YOUTUBE': {
-        name: 'YOUTUBE',
+        name: '',
         _id: this.widgetService.newId(),
         type: 'YOUTUBE',
         pageId: this.pid,
@@ -76,7 +76,7 @@ export class WidgetChooserComponent implements OnInit {
         fomatted: false
       },
       'HTML': {
-        name: 'HTML',
+        name: '',
         _id: this.widgetService.newId(),
         type: 'HTML',
         pageId: this.pid,
@@ -89,7 +89,7 @@ export class WidgetChooserComponent implements OnInit {
         fomatted: false
       },
       'INPUT': {
-        name: 'TEXT INPUT',
+        name: '',
         _id: this.widgetService.newId(),
         type: 'INPUT',
         pageId: this.pid,

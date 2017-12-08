@@ -47,19 +47,23 @@ export class PageEditComponent implements OnInit {
   }
 
   update(name, title) {
+    if (!name) {
+      alert ('Please input page name');
+    } else {
 
-    const newPage: Page = {
-      _id: this.pid,
-      name: name,
-      websiteId: this.userId,
-      description: title,
-    };
+      const newPage: Page = {
+        _id: this.pid,
+        name: name,
+        websiteId: this.userId,
+        description: title,
+      };
 
-    this.pageService.updatePage(this.wid, this.pid, newPage)
-      .subscribe((pages) => {
-        // this.pages = pages;
-        this.router.navigate(['user', 'website', this.wid, 'page']);
-      });
+      this.pageService.updatePage(this.wid, this.pid, newPage)
+        .subscribe((pages) => {
+          // this.pages = pages;
+          this.router.navigate(['user', 'website', this.wid, 'page']);
+        });
+    }
   }
 
   // deletePage(pageId) {

@@ -413,17 +413,22 @@ var PageEditComponent = (function () {
     };
     PageEditComponent.prototype.update = function (name, title) {
         var _this = this;
-        var newPage = {
-            _id: this.pid,
-            name: name,
-            websiteId: this.userId,
-            description: title,
-        };
-        this.pageService.updatePage(this.wid, this.pid, newPage)
-            .subscribe(function (pages) {
-            // this.pages = pages;
-            _this.router.navigate(['user', 'website', _this.wid, 'page']);
-        });
+        if (!name) {
+            alert('Please input page name');
+        }
+        else {
+            var newPage = {
+                _id: this.pid,
+                name: name,
+                websiteId: this.userId,
+                description: title,
+            };
+            this.pageService.updatePage(this.wid, this.pid, newPage)
+                .subscribe(function (pages) {
+                // this.pages = pages;
+                _this.router.navigate(['user', 'website', _this.wid, 'page']);
+            });
+        }
     };
     // deletePage(pageId) {
     //   this.pageService.deletePage(pageId);
@@ -656,17 +661,21 @@ var PageNewComponent = (function () {
     };
     PageNewComponent.prototype.create = function (name, title) {
         var _this = this;
-        var newPage = {
-            _id: this.websiteService.newId(),
-            name: name,
-            websiteId: this.wid,
-            description: title,
-        };
-        this.pageService.createPage(this.wid, newPage).
-            subscribe(function (pages) {
-            _this.pages = pages;
-            _this.router.navigate(['user', 'website', _this.wid, 'page']);
-        });
+        if (!name) {
+            alert('Please input page name');
+        }
+        else {
+            var newPage = {
+                _id: this.websiteService.newId(),
+                name: name,
+                websiteId: this.wid,
+                description: title,
+            };
+            this.pageService.createPage(this.wid, newPage).subscribe(function (pages) {
+                _this.pages = pages;
+                _this.router.navigate(['user', 'website', _this.wid, 'page']);
+            });
+        }
     };
     // notify the changes of the route
     PageNewComponent.prototype.ngOnInit = function () {
@@ -1201,7 +1210,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/website/website-edit/website-edit.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<!--Top navbar -->\n<div class=\"container-fluid\">\n  <nav class=\"navbar navbar-default navbar-fixed-top\">\n\n    <!--<div class=\"navbar-text pull-left\">-->\n    <!--<span class=\"glyphicon glyphicon-chevron-left white pull-left\"></span>-->\n    <!--</div>-->\n\n    <div class=\"row\">\n      <div class=\"col-sm-1\">\n        <div class=\"navbar-text pull-left\">\n          <a routerLink=\"/user/website\" class=\"white\">\n            <span class=\"glyphicon glyphicon-chevron-left\"></span>\n          </a>\n        </div>\n      </div>\n\n      <div class=\"col-sm-3 hidden-xs\">\n\n        <div class=\"navbar-brand pull-left\">\n          <!--<a href=\"website-new.html\" class=\"white\">-->\n          <b class=\"white\">Websites</b>\n          <!--</a>-->\n        </div>\n\n        <div class=\"navbar-text pull-right\">\n          <span class=\"glyphicon glyphicon-plus white \"></span>\n        </div>\n        <!--</p>-->\n\n      </div>\n\n      <div class=\"col-sm-8\">\n\n        <!--heading on the nav bar-->\n        <div class=\"navbar-brand pull-left\">\n          <div class=\"thick white\">\n            <b>Edit Website</b>\n          </div>\n        </div>\n        <!--tick mark-->\n        <div class=\"navbar-text pull-right\">\n          <a (click)=\"update(name)\" class=\"white\">\n            <span class=\"glyphicon glyphicon-ok \"></span>\n          </a>\n        </div>\n\n      </div>\n\n    </div>\n  </nav>\n</div>\n\n<div class=\"container-fluid\">\n  <div class=\"row\">\n\n    <div class=\"col-sm-4 hidden-xs\">\n      <div class=\"padding\"></div>\n      <ul *ngFor = \"let website of websites\"  class=\"list-group \">\n        <li class=\"list-group-item blue borderless\">\n\n          <!--<a routerLink=\"/profile/{{ userId }}/website/{{ wid }}/page\">-->\n          {{ website.name }}\n          <!--</a>-->\n\n          <a class=\"pull-right\" >\n            <span class=\"glyphicon glyphicon-cog\"></span>\n          </a>\n        </li>\n      </ul>\n    </div>\n\n    <div class=\"col-sm-8 padding\">\n      <div class=\"container-fluid\">\n\n          <b>Website Name</b>\n\n        <input [(ngModel)]=\"name\"\n                class=\"form-control\"\n                type=\"text\"\n                placeholder=\"website name\">\n\n\n          <b>Website Description</b>\n\n        <textarea class=\"form-control\" placeholder=\"Description\" rows=\"6\"></textarea>\n\n        <a (click)=\"deleteWebsite()\"\n          class=\"btn btn-danger btn-block\" >\n          Delete\n        </a>\n\n\n      </div>\n    </div>\n  </div>\n\n</div>\n\n<nav class=\"navbar navbar-default navbar-fixed-bottom\">\n  <div class=\"container-fluid\">\n    <div class=\"navbar-text pull-right\">\n      <a routerLink=\"/profile\" class=\"white\">\n        <span class=\"glyphicon glyphicon-user \"></span>\n      </a>\n    </div>\n  </div>\n</nav>\n"
+module.exports = "\n<!--Top navbar -->\n<div class=\"container-fluid\">\n  <nav class=\"navbar navbar-default navbar-fixed-top\">\n\n    <!--<div class=\"navbar-text pull-left\">-->\n    <!--<span class=\"glyphicon glyphicon-chevron-left white pull-left\"></span>-->\n    <!--</div>-->\n\n    <div class=\"row\">\n      <div class=\"col-sm-1\">\n        <div class=\"navbar-text pull-left\">\n          <a routerLink=\"/user/website\" class=\"white\">\n            <span class=\"glyphicon glyphicon-chevron-left\"></span>\n          </a>\n        </div>\n      </div>\n\n      <div class=\"col-sm-3 hidden-xs\">\n\n        <div class=\"navbar-brand pull-left\">\n          <!--<a href=\"website-new.html\" class=\"white\">-->\n          <b class=\"white\">Websites</b>\n          <!--</a>-->\n        </div>\n\n        <div class=\"navbar-text pull-right\">\n          <span class=\"glyphicon glyphicon-plus white \"></span>\n        </div>\n        <!--</p>-->\n\n      </div>\n\n      <div class=\"col-sm-8\">\n\n        <!--heading on the nav bar-->\n        <div class=\"navbar-brand pull-left\">\n          <div class=\"thick white\">\n            <b>Edit Website</b>\n          </div>\n        </div>\n        <!--tick mark-->\n        <div class=\"navbar-text pull-right\">\n          <a (click)=\"update()\" class=\"white\">\n            <span class=\"glyphicon glyphicon-ok \"></span>\n          </a>\n        </div>\n\n      </div>\n\n    </div>\n  </nav>\n</div>\n\n<div class=\"container-fluid\">\n  <div class=\"row\">\n\n    <div class=\"col-sm-4 hidden-xs\">\n      <div class=\"padding\"></div>\n      <ul *ngFor = \"let website of websites\"  class=\"list-group \">\n        <li class=\"list-group-item blue borderless\">\n\n          <!--<a routerLink=\"/profile/{{ userId }}/website/{{ wid }}/page\">-->\n          {{ website.name }}\n          <!--</a>-->\n\n          <a class=\"pull-right\" >\n            <span class=\"glyphicon glyphicon-cog\"></span>\n          </a>\n        </li>\n      </ul>\n    </div>\n\n    <div class=\"col-sm-8 padding\">\n      <div class=\"container-fluid\">\n\n          <b>Website Name</b>\n\n        <input [(ngModel)]=\"websitename\"\n                class=\"form-control\"\n                type=\"text\"\n                placeholder=\"website name\">\n\n          <b>Website Description</b>\n\n        <textarea class=\"form-control\" placeholder=\"Description\" rows=\"6\"></textarea>\n\n        <a (click)=\"deleteWebsite()\"\n          class=\"btn btn-danger btn-block\" >\n          Delete\n        </a>\n\n\n      </div>\n    </div>\n  </div>\n\n</div>\n\n<nav class=\"navbar navbar-default navbar-fixed-bottom\">\n  <div class=\"container-fluid\">\n    <div class=\"navbar-text pull-right\">\n      <a routerLink=\"/profile\" class=\"white\">\n        <span class=\"glyphicon glyphicon-user \"></span>\n      </a>\n    </div>\n  </div>\n</nav>\n"
 
 /***/ }),
 
@@ -1245,19 +1254,25 @@ var WebsiteEditComponent = (function () {
         this.user = this.sharedService.user;
         this.userId = this.user['_id'];
     };
-    WebsiteEditComponent.prototype.update = function (name) {
+    WebsiteEditComponent.prototype.update = function () {
         var _this = this;
-        var newWebsite = {
-            _id: this.wid,
-            name: name,
-            developerId: this.userId,
-            description: '',
-        };
-        this.websiteService.updateWebsite(this.wid, newWebsite)
-            .subscribe(function (status) {
-            _this.router.navigate(['user', 'website']);
-            console.log(status);
-        });
+        console.log();
+        if (!this.websitename) {
+            alert('Please input webiste name');
+        }
+        else {
+            var newWebsite = {
+                _id: this.wid,
+                name: this.websitename,
+                developerId: this.userId,
+                description: '',
+            };
+            this.websiteService.updateWebsite(this.wid, newWebsite)
+                .subscribe(function (status) {
+                _this.router.navigate(['user', 'website']);
+                console.log(status);
+            });
+        }
     };
     WebsiteEditComponent.prototype.deleteWebsite = function () {
         var _this = this;
@@ -1462,18 +1477,23 @@ var WebsiteNewComponent = (function () {
     WebsiteNewComponent.prototype.create = function () {
         var _this = this;
         this.websitename = this.createForm.value.websitename;
-        var newWebsite = {
-            _id: this.websiteService.newId(),
-            name: this.websitename,
-            developerId: this.userId,
-            description: '',
-        };
-        this.websiteService.createWebsite(this.userId, newWebsite)
-            .subscribe(function (websites) {
-            // this.websites = websites;
-            _this.router.navigate(['user', 'website']);
-        });
-        console.log(newWebsite);
+        if (this.websitename === "") {
+            alert('Please input website name');
+        }
+        else {
+            var newWebsite = {
+                _id: this.websiteService.newId(),
+                name: this.websitename,
+                developerId: this.userId,
+                description: '',
+            };
+            this.websiteService.createWebsite(this.userId, newWebsite)
+                .subscribe(function (websites) {
+                // this.websites = websites;
+                _this.router.navigate(['user', 'website']);
+            });
+            console.log(newWebsite);
+        }
     };
     // notify the changes of the route
     WebsiteNewComponent.prototype.ngOnInit = function () {
@@ -1573,7 +1593,7 @@ var WidgetChooserComponent = (function () {
         this.widgetService = widgetService;
         this.defaultWidgetValues = {
             'HEADING': {
-                name: 'HEADING',
+                name: '',
                 _id: this.widgetService.newId(),
                 type: 'HEADING',
                 pageId: this.pid,
@@ -1586,7 +1606,7 @@ var WidgetChooserComponent = (function () {
                 fomatted: false
             },
             'IMAGE': {
-                name: 'IMAGE',
+                name: '',
                 _id: this.widgetService.newId(),
                 type: 'IMAGE',
                 pageId: this.pid,
@@ -1599,7 +1619,7 @@ var WidgetChooserComponent = (function () {
                 fomatted: false
             },
             'YOUTUBE': {
-                name: 'YOUTUBE',
+                name: '',
                 _id: this.widgetService.newId(),
                 type: 'YOUTUBE',
                 pageId: this.pid,
@@ -1612,7 +1632,7 @@ var WidgetChooserComponent = (function () {
                 fomatted: false
             },
             'HTML': {
-                name: 'HTML',
+                name: '',
                 _id: this.widgetService.newId(),
                 type: 'HTML',
                 pageId: this.pid,
@@ -1625,7 +1645,7 @@ var WidgetChooserComponent = (function () {
                 fomatted: false
             },
             'INPUT': {
-                name: 'TEXT INPUT',
+                name: '',
                 _id: this.widgetService.newId(),
                 type: 'INPUT',
                 pageId: this.pid,
@@ -1892,23 +1912,28 @@ var WidgetHeaderComponent = (function () {
     }
     WidgetHeaderComponent.prototype.updateHeader = function () {
         var _this = this;
-        var newWidget = {
-            name: this.widget.name,
-            _id: this.wgid,
-            type: this.widget.type,
-            pageId: this.pid,
-            size: this.widget.size,
-            text: this.widget.text,
-            width: this.widget.url,
-            url: this.widget.url,
-            placeholder: '',
-            rows: 0,
-            formatted: false
-        };
-        this.widgetService.updateWidget(this.pid, this.wgid, newWidget)
-            .subscribe(function (widgets) {
-            _this.router.navigate(['user' + '/website/' + _this.wid + '/page/' + _this.pid + '/widget/']);
-        });
+        if (!this.widget.name) {
+            alert('Please input widget name');
+        }
+        else {
+            var newWidget = {
+                name: this.widget.name,
+                _id: this.wgid,
+                type: this.widget.type,
+                pageId: this.pid,
+                size: this.widget.size,
+                text: this.widget.text,
+                width: this.widget.url,
+                url: this.widget.url,
+                placeholder: '',
+                rows: 0,
+                formatted: false
+            };
+            this.widgetService.updateWidget(this.pid, this.wgid, newWidget)
+                .subscribe(function (widgets) {
+                _this.router.navigate(['user' + '/website/' + _this.wid + '/page/' + _this.pid + '/widget/']);
+            });
+        }
     };
     WidgetHeaderComponent.prototype.deleteWidget = function (pageId, widgetId) {
         var _this = this;
@@ -2041,23 +2066,28 @@ var WidgetHtmlComponent = (function () {
     };
     WidgetHtmlComponent.prototype.updateWidget = function () {
         var _this = this;
-        this.widget.text = this.widgettext;
-        this.widget.name = this.widgetname;
-        // const newWidget = {
-        //   name: this.widgetname,
-        //   _id: this.wgid,
-        //   widgetType: this.widget.widgetType,
-        //   pageId: this.pid,
-        //   size: 0,
-        //   text: this.widgettext,
-        //   width: '',
-        //   url: '',
-        //   placeholder: '',
-        //   rows: 0,
-        //   formatted: false
-        // };
-        this.widgetService.updateWidget(this.pid, this.wgid, this.widget)
-            .subscribe(function (data) { return _this.router.navigate(['/user', 'website', _this.wid, 'page', _this.pid, 'widget']); }, function (error) { return console.log(error); });
+        if (!this.widgetname) {
+            alert('Please input widget name');
+        }
+        else {
+            this.widget.text = this.widgettext;
+            this.widget.name = this.widgetname;
+            // const newWidget = {
+            //   name: this.widgetname,
+            //   _id: this.wgid,
+            //   widgetType: this.widget.widgetType,
+            //   pageId: this.pid,
+            //   size: 0,
+            //   text: this.widgettext,
+            //   width: '',
+            //   url: '',
+            //   placeholder: '',
+            //   rows: 0,
+            //   formatted: false
+            // };
+            this.widgetService.updateWidget(this.pid, this.wgid, this.widget)
+                .subscribe(function (data) { return _this.router.navigate(['/user', 'website', _this.wid, 'page', _this.pid, 'widget']); }, function (error) { return console.log(error); });
+        }
     };
     WidgetHtmlComponent.prototype.deleteWidget = function (pageId, widgetId) {
         var _this = this;
@@ -2322,23 +2352,28 @@ var WidgetImageComponent = (function () {
     };
     WidgetImageComponent.prototype.updateImage = function () {
         var _this = this;
-        var newWidget = {
-            name: this.widget.name,
-            _id: this.wgid,
-            type: this.widget.type,
-            pageId: this.pid,
-            size: this.widget.size,
-            text: this.widget.text,
-            width: this.widget.width,
-            url: this.widget.url,
-            placeholder: '',
-            rows: 0,
-            formatted: false
-        };
-        this.widgetService.updateWidget(this.pid, this.wgid, newWidget)
-            .subscribe(function (widgets) {
-            _this.router.navigate(['user' + '/website/' + _this.wid + '/page/' + _this.pid + '/widget/']);
-        });
+        if (!this.widget.name) {
+            alert('Please input widget name');
+        }
+        else {
+            var newWidget = {
+                name: this.widget.name,
+                _id: this.wgid,
+                type: this.widget.type,
+                pageId: this.pid,
+                size: this.widget.size,
+                text: this.widget.text,
+                width: this.widget.width,
+                url: this.widget.url,
+                placeholder: '',
+                rows: 0,
+                formatted: false
+            };
+            this.widgetService.updateWidget(this.pid, this.wgid, newWidget)
+                .subscribe(function (widgets) {
+                _this.router.navigate(['user' + '/website/' + _this.wid + '/page/' + _this.pid + '/widget/']);
+            });
+        }
     };
     WidgetImageComponent.prototype.deleteWidget = function (pageId, widgetId) {
         var _this = this;
@@ -2461,8 +2496,10 @@ var WidgetTextComponent = (function () {
     }
     WidgetTextComponent.prototype.updateWidget = function () {
         var _this = this;
-        if (this.widget['name'] === undefined) {
-            this.flag = true;
+        console.log(this.widget.name);
+        if (!this.widget.name) {
+            // this.flag = true;
+            alert('Please input widget name');
         }
         else {
             this.widgetService.updateWidget(this.pid, this.wgid, this.widget)
