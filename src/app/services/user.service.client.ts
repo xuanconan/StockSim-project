@@ -53,12 +53,13 @@ export class UserService {
   }
 
   // posting a register request to the server.
-  register (username, password) {
+  register (username, password, role) {
     const url = this.baseUrl + '/api/register';
     // create an object to keep track of the username and password
     const credentials = {
       username: username,
-      password: password
+      password: password,
+      role: role
     };
     // turn on credentials to make sure the communication is secure
     this.options.withCredentials = true;

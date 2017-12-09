@@ -1,7 +1,18 @@
+<nav class="navbar navbar-tiffany navbar-fixed-top">
+  <div class="container-fluid">
+
+    <!--heading on the nav bar-->
+    <div class="navbar-brand pull-left">
+      <!--<a class="thick white nounderline " href="../page/page-list.html">-->
+      <b class="white">Register</b>
+      <!--</a>-->
+    </div>
+
+  </div>
+</nav>
 
 
-<div class="container">
-  <h1>Register</h1>
+<div class="container padding">
 
   <form (ngSubmit) = "register()" #f="ngForm">
     <input ngModel
@@ -27,6 +38,12 @@
            type="password"
            required
            #passwordvalid="ngModel"/>
+
+      Pick your role:
+      <input [(ngModel)]="role" type="radio" name = "role" value="ADMIN"  required class="form-control">Admin
+      <input [(ngModel)]="role" type="radio" name = "role" value="PROFESSOR" required class="form-control">Professor
+      <input [(ngModel)]="role" type="radio" name = "role" value="STUDENT" required class="form-control">Student
+
 
     <button class="btn btn-primary btn-block"
             type = "submit"

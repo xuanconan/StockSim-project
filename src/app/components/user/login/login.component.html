@@ -1,46 +1,88 @@
 
-<div class="container">
+<nav class="navbar navbar-tiffany navbar-fixed-top">
+  <div class="container-fluid">
+
+    <div class="navbar-brand pull-left">
+      <b class="white">StockSim</b>
+    </div>
+
+  </div>
+</nav>
+
+<div class="container padding">
+
+  <div class="row">
+
+    <div class="col-sm-8 hidden-xs">
+
+      <h1>Finance World Today</h1>
+
+      <!--<div class="padding"></div>-->
+      <!--<ul *ngFor = "let website of websites"  class="list-group ">-->
+        <!--<li class="list-group-item blue borderless">-->
+
+          <!--&lt;!&ndash;<a routerLink="/profile/{{ userId }}/website/{{ wid }}/page">&ndash;&gt;-->
+          <!--{{ website.name }}-->
+          <!--&lt;!&ndash;</a>&ndash;&gt;-->
+
+          <!--<a class="pull-right" >-->
+            <!--<span class="glyphicon glyphicon-cog"></span>-->
+          <!--</a>-->
+        <!--</li>-->
+      <!--</ul>-->
+
+    </div>
+
+    <div class="col-sm-4">
+      <div class="container-fluid">
+        <form (ngSubmit) = "login()" #f="ngForm">
+          <input ngModel
+                 placeholder="username"
+                 name="username"
+                 class="form-control"
+                 type="text"
+                 required
+                 #username = "ngModel"/>
+
+          <input ngModel
+                 placeholder="password"
+                 name="password"
+                 class="form-control"
+                 type="password"
+                 required
+                 #password="ngModel"/>
+
+          <button class="btn btn-primary btn-block form-control"
+                  type="submit"
+                  [disabled]="!f.valid"
+          >Login</button>
+          <!--(click)="login()"-->
+
+          <button class="btn btn-success btn-block form-control"
+                  routerLink="/register">Register</button>
+
+          <a  href="https://webdev-conan-xuan.herokuapp.com/facebook/login" class="btn btn-primary btn-block">
+            <!--<a  href="http://localhost:9000/facebook/login" class="btn btn-primary btn-block">-->
+            <!--<button class="btn btn-primary btn-block" [routerLink]="['/login']" type="button">-->
+            <span class="fa fa-facebook"></span>
+            Facebook Login
+          </a>
+        </form>
 
 
-  <h1>Login</h1>
 
-  <form (ngSubmit) = "login()" #f="ngForm">
-    <input ngModel
-           placeholder="username"
-           name="username"
-           class="form-control"
-           type="text"
-           required
-           #username = "ngModel"/>
-    <br/>
-
-    <input ngModel
-           placeholder="password"
-           name="password"
-           class="form-control"
-           type="password"
-           required
-           #password="ngModel"/>
-    <br/>
-
-    <button class="btn btn-primary btn-block form-control"
-            type="submit"
-            [disabled]="!f.valid"
-    >Login</button>
-    <!--(click)="login()"-->
-
-    <button class="btn btn-success btn-block form-control"
-            routerLink="/register">Register</button>
-
-    <a  href="https://webdev-conan-xuan.herokuapp.com/facebook/login" class="btn btn-primary btn-block">
-      <!--<a  href="http://localhost:9000/facebook/login" class="btn btn-primary btn-block">-->
-      <!--<button class="btn btn-primary btn-block" [routerLink]="['/login']" type="button">-->
-      <span class="fa fa-facebook"></span>
-      Facebook
-    </a>
-  </form>
-
+      </div>
+    </div>
+  </div>
 
 
 
 </div>
+
+<nav class="navbar navbar-tiffany navbar-fixed-bottom">
+  <div class="container-fluid">
+    <b class="navbar-text pull-right white">
+        Join and start your trading simulation now!
+    </b>
+  </div>
+</nav>

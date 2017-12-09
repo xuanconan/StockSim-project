@@ -16,8 +16,8 @@ var UserSchema = mongoose.Schema ({
   facebook: {
     id:    String,
     token: String
-  }
-
+  },
+  role: {type: String, enum: ['ADMIN', 'PROFESSOR', 'STUDENT']}
 }, {collection: 'user'});
 
 module.exports = UserSchema;

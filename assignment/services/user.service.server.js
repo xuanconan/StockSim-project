@@ -74,7 +74,8 @@ module.exports = function (app) {
               facebook: {
                 id: profile.id,
                 token: token
-              }
+              },
+              role: 'STUDENT'
             };
             return userModel.createUser(newFacebookUser);
           }

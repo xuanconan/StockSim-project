@@ -30,7 +30,16 @@ export class WebsiteListComponent implements OnInit {
     private websiteService: WebsiteService,
     private route: ActivatedRoute,
     private userService: UserService,
-    private sharedService: SharedService) { }
+    private sharedService: SharedService,
+    private router: Router) { }
+
+  addclass() {
+    if (this.user.role !== 'STUDENT') {
+      this.router.navigate(['user', 'website', 'new']);
+    } else {
+      alert('Student cannot create classes');
+    }
+  }
 
   getUser() {
     // this.user = JSON.parse(localStorage.getItem("user"));
@@ -48,10 +57,16 @@ export class WebsiteListComponent implements OnInit {
       this.userId = this.user['_id'];
 
       this.websiteService.findWebsitesByUser(this.userId)
-        .subscribe((websites) => {
-          this.websites = websites;
-          console.log(websites);
-        });
+      .subscribe((websites) => {
+        this.websites = websites;
+        console.log(websites);
+      });
+
+      // this.websiteService.findAllClasses()
+      //   .subscribe((classes) => {
+      //     this.websites = classes;
+      //     console.log(classes);
+      //   });
       // console.log(this.websites);
   }
 

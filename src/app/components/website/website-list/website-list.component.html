@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-tiffany navbar-fixed-top">
   <div class="container-fluid">
 
     <!--heading on the nav bar-->
@@ -10,16 +10,15 @@
     </p>
 
     <div class="navbar-brand pull-left">
-      <b class="white">Websites</b>
+      <b class="white">Your Class</b>
     </div>
 
     <!--tick mark-->
     <div class="navbar-text pull-right">
-      <a routerLink="/user/website/new" class="white">
+      <a (click) = addclass() class="white">
         <span class="glyphicon glyphicon-plus "></span>
       </a>
     </div>
-
   </div>
 </nav>
 
@@ -30,7 +29,7 @@
     <li class="list-group-item blue borderless">
 
       <a routerLink="/user/website/{{ website._id }}/page">
-        {{ website.name }}         (username: {{ website._user.username}} )
+        {{ website.name }}         (Professor: {{ website._user.username}} )
       </a>
 
       <a class="pull-right" routerLink="/user/website/{{ website._id }}">
@@ -40,7 +39,7 @@
   </ul>
 </div>
 
-<nav class="navbar navbar-default navbar-fixed-bottom">
+<nav class="navbar navbar-tiffany navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-text pull-right">
       <a routerLink="/profile" class="white">
