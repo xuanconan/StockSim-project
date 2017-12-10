@@ -26,7 +26,7 @@ export class WebsiteEditComponent implements OnInit {
   developerId: String;
   websites: Website[];
   description: String;
-  website: Website;
+  website: any;
   websitename: String;
 
   // inject route info in constructor
@@ -56,7 +56,9 @@ export class WebsiteEditComponent implements OnInit {
         alert ('Students cannot modify class information.');
       } else if (this.user.role === 'TA') {
         alert ('TA cannot modify class information.');
-      } else {
+      } else if ((this.user.role === 'PROFESSOR') && (this.user._id !== this.website._user)) {
+        alert ('Professors can only modify own class information.');
+      }else {
         console.log();
         if (!this.website.name) {
           alert('Please input class name');
@@ -144,6 +146,8 @@ export class WebsiteEditComponent implements OnInit {
         alert ('Student cannot delete classes!');
       } else if (this.user.role === 'TA') {
         alert ('TA cannot delete classes!');
+      } else if ((this.user.role === 'PROFESSOR') && (this.user._id !== this.website._user)) {
+        alert ('Professors can only delete own class.');
       } else {
         this.websiteService.deleteWebsite(this.userId, this.wid)
           .subscribe((websites: any) => {

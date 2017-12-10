@@ -1328,6 +1328,9 @@ var WebsiteEditComponent = (function () {
         else if (this.user.role === 'TA') {
             alert('TA cannot modify class information.');
         }
+        else if ((this.user.role === 'PROFESSOR') && (this.user._id !== this.website._user)) {
+            alert('Professors can only modify own class information.');
+        }
         else {
             console.log();
             if (!this.website.name) {
@@ -1415,6 +1418,9 @@ var WebsiteEditComponent = (function () {
         }
         else if (this.user.role === 'TA') {
             alert('TA cannot delete classes!');
+        }
+        else if ((this.user.role === 'PROFESSOR') && (this.user._id !== this.website._user)) {
+            alert('Professors can only delete own class.');
         }
         else {
             this.websiteService.deleteWebsite(this.userId, this.wid)
