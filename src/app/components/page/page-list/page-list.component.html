@@ -17,7 +17,7 @@
 
     <!--tick mark-->
     <div class="navbar-text pull-right">
-      <a routerLink="/user/website/{{wid}}/page/new" class="black" >
+      <a (click)= createPortfolio() class="black" >
         <button class="btn btn-primary">Create a portfolio</button>
       </a>
     </div>
@@ -26,17 +26,23 @@
 </nav>
 
 <div class="container-fluid padding"></div>
+<label class ='letter-tiffany paddingleft'>Welcome to StockSim, {{user.firstName}}! Role: {{user.role}}</label>
+
 <div *ngFor = "let page of pages" class="container-fluid ">
   <ul  class="list-group">
-    <li class="list-group-item blue borderless">
+    <li class="list-group-item blue ">
 
       <a routerLink="/user/website/{{ wid }}/page/{{page._id}}/widget" class="thick">
        <b> {{ page.name }} （ Portfolio manager: {{page.ownername}} ）</b>
       </a>
 
-      <a class="pull-right" routerLink="/user/website/{{ wid }}/page/{{page._id}}">
-        <span class="glyphicon glyphicon-cog"></span>
-      </a>
+      <!--<a class="pull-right" routerLink="/user/website/{{ wid }}/page/{{page._id}}">-->
+        <!--<span class="glyphicon glyphicon-cog"></span>-->
+      <!--</a>-->
+      <button class="pull-right btn-primary " routerLink="/user/website/{{ wid }}/page/{{page._id}}">
+        Edit portfolio
+      </button>
+
     </li>
   </ul>
 </div>
@@ -44,6 +50,10 @@
 
 <nav class="navbar navbar-tiffany navbar-fixed-bottom">
   <div class="container-fluid">
+    <b class="navbar-text pull-left white">
+      StockSim
+    </b>
+
     <p class="navbar-text pull-right">
       <a routerLink="/profile" class="blue">
         <span class="white glyphicon glyphicon-user"></span>

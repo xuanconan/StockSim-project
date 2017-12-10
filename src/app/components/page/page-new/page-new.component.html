@@ -17,7 +17,7 @@
 
     <!--tick mark-->
     <div class="navbar-text pull-right">
-      <a (click)="create(pagename, title)"
+      <a (click)="create(pagename, description)"
         class="black">
         <span class="glyphicon glyphicon-ok "></span>
       </a>
@@ -37,7 +37,7 @@
            placeholder="Portfolio Name"/>
 
     <label>Description</label>
-    <input [(ngModel)]="title"
+    <input [(ngModel)]="description"
            class="form-control"
            type="text"
            placeholder="Description"/>
@@ -49,6 +49,9 @@
 
 <nav class="navbar navbar-light2 navbar-fixed-bottom">
   <div class="container-fluid">
+    <b class="navbar-text pull-left ">
+      StockSim
+    </b>
     <p class="navbar-text pull-right">
       <a routerLink="/profile" class="blue">
         <span class="glyphicon glyphicon-user "></span>

@@ -54,6 +54,8 @@ export class WebsiteEditComponent implements OnInit {
     update() {
       if (this.user.role === 'STUDENT') {
         alert ('Students cannot modify class information.');
+      } else if (this.user.role === 'TA') {
+        alert ('TA cannot modify class information.');
       } else {
         console.log();
         if (!this.website.name) {
@@ -140,6 +142,8 @@ export class WebsiteEditComponent implements OnInit {
     deleteWebsite() {
       if (this.user.role === 'STUDENT') {
         alert ('Student cannot delete classes!');
+      } else if (this.user.role === 'TA') {
+        alert ('TA cannot delete classes!');
       } else {
         this.websiteService.deleteWebsite(this.userId, this.wid)
           .subscribe((websites: any) => {

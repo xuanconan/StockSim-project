@@ -46,19 +46,19 @@ export class PageEditComponent implements OnInit {
     this.userId = this.user['_id'];
   }
 
-  update(name, title) {
-    if ((this.user._id !== this.page.owner) || (this.user.role === 'STUDENT')) {
-      alert("Only admin can modify other's portfolio");
+  update() {
+    if ((this.user._id !== this.page.owner) || (this.user.role !== 'ADMIN')) {
+      alert("Only admin can modify other's portfolio.");
     } else {
-      if (!name) {
+      if (!this.page.name) {
         alert('Please input page name');
       } else {
 
         const newPage: Page = {
           _id: this.pid,
-          name: name,
+          name: this.page.name,
           websiteId: this.userId,
-          description: title,
+          description: this.page.description
         };
 
         this.pageService.updatePage(this.wid, this.pid, newPage)
@@ -76,7 +76,7 @@ export class PageEditComponent implements OnInit {
 
   deletePage(websiteId, pageId) {
     if ((this.user._id !== this.page.owner) || (this.user.role !== 'ADMIN')) {
-      alert("Only admin can modify other's portfolio");
+      alert("Only admin can modify other's portfolio.");
     } else {
       this.pageService.deletePage(websiteId, pageId)
         .subscribe((pages) => {

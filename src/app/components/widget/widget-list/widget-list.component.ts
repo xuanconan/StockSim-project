@@ -97,6 +97,11 @@ export class WidgetListComponent implements OnInit {
         this.widgets = data;
         console.log(this.widgets);
       });
+
+    this.userService.findUserById(this.userId).subscribe((user: User) => {
+      this.user = user;
+      console.log(this.user);
+    });
   }
 
 }

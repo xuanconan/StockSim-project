@@ -29,6 +29,9 @@
 
 
 <div class="container-fluid padding padding-b " >
+  <label class ='letter-tiffany paddingleft'>"The stock market is filled with individuals who know the price of everything,
+    but the value of nothing." - Phillip Fisher</label>
+
   <div class="widget-list" appSortable (newIndexes)="reorderWidgets($event)">
 
     <div *ngFor = "let widget of widgets | orderBy" >
@@ -100,13 +103,9 @@
 <nav class="navbar navbar-light2 navbar-fixed-bottom">
   <div class="container-fluid">
 
-    <div class="navbar-text pull-left">
-      <span class="glyphicon glyphicon-play black"></span>
-    </div>
-
-    <div class="navbar-text pull-left">
-      <span class="glyphicon glyphicon-eye-open black"></span>
-    </div>
+    <b class="navbar-text pull-left">
+      StockSim
+    </b>
 
     <div class="navbar-text pull-right">
       <a routerLink="/profile" class="blue">

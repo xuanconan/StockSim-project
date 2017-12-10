@@ -23,7 +23,10 @@
 </nav>
 
 
-<div class="padding"></div>
+<div class=" container-fluid padding"></div>
+
+<label class ='letter-tiffany paddingleft'>Welcome to StockSim, {{user.firstName}}! Role: {{user.role}}</label>
+
 <div *ngFor = "let website of websites" class="container-fluid ">
   <ul  class="list-group">
     <li class="list-group-item blue ">
@@ -42,6 +45,9 @@
 
 <nav class="navbar navbar-tiffany navbar-fixed-bottom">
   <div class="container-fluid">
+    <b class="navbar-text pull-left white">
+      StockSim
+    </b>
     <p class="navbar-text pull-right">
       <a routerLink="/profile" class="white">
         <span class="glyphicon glyphicon-user"></span>

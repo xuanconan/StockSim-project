@@ -39,10 +39,11 @@
            required
            #passwordvalid="ngModel"/>
 
-      Pick your role:
+      <b> Pick your role: </b>
       <input [(ngModel)]="role" type="radio" name = "role" value="ADMIN"  required class="form-control">Admin
       <input [(ngModel)]="role" type="radio" name = "role" value="PROFESSOR" required class="form-control">Professor
       <input [(ngModel)]="role" type="radio" name = "role" value="STUDENT" required class="form-control">Student
+      <input [(ngModel)]="role" type="radio" name = "role" value="TA" required class="form-control">TA
 
 
     <button class="btn btn-primary btn-block"

@@ -35,10 +35,12 @@ export class WebsiteListComponent implements OnInit {
     private router: Router) { }
 
   addclass() {
-    if (this.user.role !== 'STUDENT') {
-      this.router.navigate(['user', 'website', 'new']);
-    } else {
+    if (this.user.role === 'STUDENT') {
       alert('Student cannot create classes');
+    } else if (this.user.role === 'TA') {
+      alert('TA cannot create classes');
+    } else {
+      this.router.navigate(['user', 'website', 'new']);
     }
   }
 

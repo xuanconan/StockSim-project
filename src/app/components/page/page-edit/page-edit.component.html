@@ -32,14 +32,14 @@
 
   <b>Name</b>
 
-    <input [(ngModel)]="name"
+    <input [(ngModel)]="this.page.name"
            class="form-control"
            type="text"
            placeholder="page name">
 
-  <b>Tile</b>
+  <b>Description</b>
 
-    <input [(ngModel)]="title"
+    <input [(ngModel)]="this.page.description"
            class="form-control"
            type="text"
            placeholder="page title">
@@ -55,6 +55,9 @@
 
 <nav class="navbar navbar-light2 navbar-fixed-bottom">
   <div class="container-fluid">
+    <b class="navbar-text pull-left">
+      StockSim
+    </b>
     <p class="navbar-text pull-right">
       <a
         routerLink="/profile" class="blue">

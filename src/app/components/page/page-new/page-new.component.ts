@@ -45,7 +45,7 @@ export class PageNewComponent implements OnInit {
     this.userId = this.user['_id'];
   }
 
-  create(name, title) {
+  create(name, description) {
     if (!name) {
       alert('Please input page name');
     } else {
@@ -53,7 +53,7 @@ export class PageNewComponent implements OnInit {
         _id: this.websiteService.newId(),
         name: name,
         websiteId: this.wid,
-        description: title,
+        description: description,
         owner: this.user._id,
         ownername: this.user.username
       };

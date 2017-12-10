@@ -17,7 +17,7 @@ var UserSchema = mongoose.Schema ({
     id:    String,
     token: String
   },
-  role: {type: String, enum: ['ADMIN', 'PROFESSOR', 'STUDENT']},
+  role: {type: String, enum: ['ADMIN', 'PROFESSOR', 'STUDENT', 'TA']},
   class: String,
   classname: String
 }, {collection: 'user'});

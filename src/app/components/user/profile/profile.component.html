@@ -55,8 +55,9 @@
 
       <div class="col-sm-4">
 
+        <!--<label class = 'blue'>Welcome to StockSim, {{user.firstName}} !</label>-->
 
-        <label class = 'blue'>Role: {{user.role}}</label>
+        <label class ='letter-tiffany'>Welcome to StockSim, {{user.firstName}}! Role: {{user.role}}</label>
 
           <form #f="ngForm">
               <div class="form-group ">
@@ -119,6 +120,9 @@
 <!-- Footer -->
 <nav class="navbar navbar-tiffany navbar-fixed-bottom">
   <div class="container-fluid">
+    <b class="navbar-text pull-left white">
+      StockSim
+    </b>
     <p class="navbar-text pull-right">
       <a routerLink="/profile" class="white">
         <span class="glyphicon glyphicon-user"></span>

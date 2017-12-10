@@ -36,7 +36,16 @@ export class PageListComponent implements OnInit {
     private websiteService: WebsiteService,
     private pageService: PageService,
     private route: ActivatedRoute,
-    private sharedService: SharedService) { }
+    private sharedService: SharedService,
+    private router: Router) { }
+
+  createPortfolio() {
+    if (this.user.role === 'TA') {
+      alert('TA cannot create portfolios.');
+    } else {
+      this.router.navigate(['user', 'website', this.wid, 'page', 'new' ]);
+    }
+  }
 
   getUser() {
     // this.user = JSON.parse(localStorage.getItem("user"));

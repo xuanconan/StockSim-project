@@ -57,16 +57,18 @@
 
     <div class="col-sm-4 hidden-xs">
       <div class="padding"></div>
+      <label class ='letter-tiffany '>Welcome to StockSim, {{user.firstName}}! Role: {{user.role}}</label>
+
       <ul *ngFor = "let website of websites"  class="list-group ">
-        <li class="list-group-item blue borderless">
+        <li class="list-group-item blue borderless ">
 
           <!--<a routerLink="/profile/{{ userId }}/website/{{ wid }}/page">-->
-          {{ website.name }}         (Professor: {{ website._user.username}} )
+          <b>  {{ website.name }}         (Professor: {{ website._user.username}} )</b>
           <!--</a>-->
 
-          <a class="pull-right" >
-            <span class="glyphicon glyphicon-cog"></span>
-          </a>
+          <!--<a class="pull-right" >-->
+            <!--<span class="glyphicon glyphicon-cog"></span>-->
+          <!--</a>-->
         </li>
       </ul>
     </div>
@@ -74,7 +76,7 @@
     <div class="col-sm-8 padding">
       <div class="container-fluid">
 
-        <b class ='blue'>My class ID: {{this.user.classname}}</b>
+        <b class ='blue'>My class: {{this.user.classname}}</b>
         <br/>
         <br/>
 
@@ -133,6 +135,9 @@
 
 <nav class="navbar navbar-tiffany navbar-fixed-bottom">
   <div class="container-fluid">
+    <b class="navbar-text pull-left white">
+      StockSim
+    </b>
     <div class="navbar-text pull-right">
       <a routerLink="/profile" class="white">
         <span class="glyphicon glyphicon-user "></span>
