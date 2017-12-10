@@ -74,7 +74,12 @@
     <div class="col-sm-8 padding">
       <div class="container-fluid">
 
-          <b class ='blue'>Class Name</b>
+        <b class ='blue'>My class ID: {{this.user.classname}}</b>
+        <br/>
+        <br/>
+
+
+        <b class ='blue'>Class Name</b>
 
         <input [(ngModel)]="this.website.name"
                 class="form-control"
@@ -97,6 +102,7 @@
         <!--</div>-->
 
         <!--<textarea class="form-control" placeholder="Description" rows="6"></textarea>-->
+
         <a (click)=goToMyPortfolio()
            class="btn btn-primary btn-block" >
           Go to my portfolio
@@ -115,7 +121,7 @@
 
         <a (click)="deleteWebsite()"
           class="btn btn-danger btn-block" >
-          Delete
+          Delete (Admin & Professors only)
         </a>
 
 

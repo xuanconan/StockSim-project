@@ -44,8 +44,15 @@ export class WebsiteEditComponent implements OnInit {
       this.userId = this.user['_id'];
     }
 
+    // findClassName(classID) {
+    //   this.websiteService.findWebsiteById(this.userId, classID)
+    //     .subscribe((website) => {
+    //       this.websitename = website.name;
+    //     });
+    // }
+
     update() {
-      if (this.user.role === 'Student') {
+      if (this.user.role === 'STUDENT') {
         alert ('Students cannot modify class information.');
       } else {
         console.log();
@@ -60,17 +67,15 @@ export class WebsiteEditComponent implements OnInit {
           };
           this.websiteService.updateWebsite(this.wid, newWebsite)
             .subscribe((status) => {
-              this.router.navigate(['user', 'website']);
               console.log(status);
+              this.router.navigate(['user', 'website']);
             });
-        }null
+        }
       }
     }
 
     joinClass() {
-     if (this.user.class !== null) {
-       alert('You are currently enrolled in an investment class. You can only enroll one each semester.');
-     } else {
+     if (!this.user.class)  {
        const updatedUser = {
          _id: this.userId,
          username: this.user.username,
@@ -78,7 +83,8 @@ export class WebsiteEditComponent implements OnInit {
          firstName: this.user.firstName,
          lastName: this.user.lastName,
          email: this.user.email,
-         class: this.wid
+         class: this.wid,
+         classname: this.website.name
        };
 
        console.log(updatedUser);
@@ -88,13 +94,16 @@ export class WebsiteEditComponent implements OnInit {
          this.user = newuser;
          console.log(this.user);
          alert('Welcome to class "' + this.website.name + '"');
+         window.location.reload(false); // reload page
        });
-     }
+     } else {
+        alert('You are currently enrolled in an investment class. You can only enroll one each semester.');
+      }
     }
 
     dropClass() {
-      if (this.user.class === '') {
-        alert ('You are currently not enrolled in any class.');
+      if ((this.user.class === '') || (this.user.class !== this.wid)) {
+        alert ('You are currently not enrolled in this class.');
       } else {
         const updatedUser = {
           _id: this.userId,
@@ -103,7 +112,8 @@ export class WebsiteEditComponent implements OnInit {
           firstName: this.user.firstName,
           lastName: this.user.lastName,
           email: this.user.email,
-          class: ''
+          class: null,
+          classname: null
         };
 
         console.log(updatedUser);

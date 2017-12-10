@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
   title: String;
   disabledFlag: boolean;
   error: any;
-  role: String
+  role: String;
 
   constructor(private userService: UserService,
               private router: Router,
@@ -53,7 +53,8 @@ export class RegisterComponent implements OnInit {
               firstName: '',
               lastName: '',
               role: this.role,
-              class: ''
+              class: null,
+              classname: null
             };
             console.log(newUser);
             // this.userService.createUser(newUser).subscribe((auser) => {
