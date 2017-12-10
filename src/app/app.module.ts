@@ -38,6 +38,9 @@ import {SharedService} from './services/shared.service.client';
 import {AuthenticationService} from './services/authentication.service.client';
 import {SortableDirective} from './components/widget/widget-list/sortable.directive';
 import { OrderByPipe } from './components/widget/widget-list/order-by-pipe.pipe';
+import { GoogleFinanceComponent } from './components/api/google-finance/google-finance.component';
+import { GoogleHistoricalComponent } from './components/api/google-finance/google-historical/google-historical.component';
+import {GoogleFinanceServiceClient} from './services/googleFinance.service.client';
 
 
 @NgModule({
@@ -64,7 +67,9 @@ import { OrderByPipe } from './components/widget/widget-list/order-by-pipe.pipe'
     WidgetHtmlComponent,
     WidgetTextComponent,
     SortableDirective,
-    OrderByPipe
+    OrderByPipe,
+    GoogleFinanceComponent,
+    GoogleHistoricalComponent
   ],
   imports: [
     BrowserModule, routing, FormsModule, HttpModule, QuillEditorModule
@@ -79,7 +84,8 @@ import { OrderByPipe } from './components/widget/widget-list/order-by-pipe.pipe'
     TestService,
     FlickrService,
     SharedService,
-    AuthenticationService
+    AuthenticationService,
+    GoogleFinanceServiceClient
   ],
   bootstrap: [AppComponent]
 })

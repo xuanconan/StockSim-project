@@ -16,6 +16,8 @@ import {TestComponent} from './components/test/test.component';
 import {ModuleWithProviders} from '@angular/core';
 import {FlickrImageSearchComponent} from './components/widget/widget-edit/widget-image/flickr-image-search/flickr-image-search.component';
 import {AuthenticationService} from './services/authentication.service.client';
+import {GoogleFinanceComponent} from './components/api/google-finance/google-finance.component';
+import {GoogleHistoricalComponent} from './components/api/google-finance/google-historical/google-historical.component';
 // config route default constants
 const appRoutes: Routes = [
   {path: '', component : HomeComponent},
@@ -23,7 +25,7 @@ const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'widget', component: WidgetListComponent},
-  {path: 'profile/:userId', component: ProfileComponent},
+  // {path: 'profile/:userId', component: ProfileComponent},
   // go to profile if canActivate
   {path: 'profile', component: ProfileComponent, canActivate: [AuthenticationService]},
   {path: 'user/website', component: WebsiteListComponent, canActivate: [AuthenticationService]},
@@ -36,6 +38,9 @@ const appRoutes: Routes = [
   {path: 'user/website/:wid/page/:pid/widget/new', component: WidgetChooserComponent, canActivate: [AuthenticationService]},
   {path: 'user/website/:wid/page/:pid/widget/:wgid', component: WidgetEditComponent, canActivate: [AuthenticationService]},
   {path: 'user/website/:wid/page/:pid/widget/:wgid/flickr', component: FlickrImageSearchComponent, canActivate: [AuthenticationService]},
+
+  {path: 'api/google/news', component: GoogleFinanceComponent},
+  {path: 'api/google/historicals', component: GoogleHistoricalComponent},
 ];
 
 // use appRoutes to config router module and export it as an constant variable that

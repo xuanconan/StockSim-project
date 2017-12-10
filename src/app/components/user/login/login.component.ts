@@ -51,19 +51,6 @@ export class LoginComponent implements OnInit {
           alert('Invalid username or password');
         }
       );
-
-    // calling and subscribe dynamic result from the http function located in user.service.client
-    // this.userService.findUserByCredentials(this.username, this.password)
-    //   .subscribe((user: User) => {
-    //     if (user) {
-    //       // alert(user._id);
-    //       this.router.navigate(['/profile/', user._id]);
-    //     } else {
-    //       this.errorFlag = true;
-    //       this.errorMsg = 'Error';
-    //       alert('wrong username or password');
-    //     }
-    // });
   }
 
 
