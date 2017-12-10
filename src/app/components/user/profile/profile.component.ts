@@ -8,6 +8,7 @@ import { NgForm } from '@angular/forms';
 import {environment} from '../../../../environments/environment';
 import { SharedService } from '../../../services/shared.service.client';
 import {CanActivate} from '@angular/router';
+import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-profile',
@@ -25,13 +26,20 @@ export class ProfileComponent implements OnInit {
   firstName: String;
   lastName: String;
   class: String;
-
+  youtubeUrl: SafeResourceUrl;
   // inject route info in constructor
   constructor(
           private userService: UserService,
           private activatedRoute: ActivatedRoute,
           private sharedService: SharedService,
-          private router: Router) { }
+          private router: Router,
+          public sanitizer: DomSanitizer) { }
+
+  updateVideoUrl() {
+    // const aurl = 'https://www.youtube.com/embed/qdA32j7_U6U';
+    return this.youtubeUrl = this.sanitizer
+      .bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/Ga3maNZ0x0w?autoplay=1&cc_load_policy=1&controls=0');
+  }
 
   getUser() {
     this.user = this.sharedService.user;

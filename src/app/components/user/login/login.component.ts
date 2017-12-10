@@ -39,7 +39,8 @@ export class LoginComponent implements OnInit {
 
   updateVideoUrl() {
     // const aurl = 'https://www.youtube.com/embed/qdA32j7_U6U';
-    return this.youtubeUrl = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/Ga3maNZ0x0w');
+    return this.youtubeUrl = this.sanitizer
+      .bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/Ga3maNZ0x0w?autoplay=1&cc_load_policy=1&controls=0');
   }
 
   // api function for login
