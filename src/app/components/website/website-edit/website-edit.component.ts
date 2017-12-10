@@ -122,7 +122,7 @@ export class WebsiteEditComponent implements OnInit {
           // console.log(status);
           this.user = newuser;
           console.log(this.user);
-          alert('You have dropped class' + this.website.name);
+          alert('You have dropped class "' + this.website.name + '"');
           this.router.navigate(['user', 'website']);
         });
       }

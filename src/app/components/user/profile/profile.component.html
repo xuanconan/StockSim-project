@@ -31,60 +31,87 @@
 <!--<form id="updateForm" (ngSubmit) = "update()" #f="ngForm">-->
   <div class="container padding">
 
-    <label class = 'blue'>Role: {{user.role}}</label>
+    <div class="row">
 
-    <form #f="ngForm">
-        <div class="form-group ">
-          <label class = 'blue'>Username</label>
-          <input [(ngModel)] = "username"
-                 name="username"
-                 type="email" class="form-control"
-                 placeholder="alice"
-                 required>
-        </div>
+      <div class="col-sm-8 hidden-xs">
 
+        <h1>World Finance</h1>
 
-        <div class="form-group">
-          <label class = 'blue'>Email address</label>
-          <input [(ngModel)] = "email"
-                 name="email"
-                 type="email" class="form-control"
-                 placeholder="a@unicorn.com"
-                 required>
-        </div>
+        <!--<div class="padding"></div>-->
+        <!--<ul *ngFor = "let website of websites"  class="list-group ">-->
+        <!--<li class="list-group-item blue borderless">-->
 
+        <!--&lt;!&ndash;<a routerLink="/profile/{{ userId }}/website/{{ wid }}/page">&ndash;&gt;-->
+        <!--{{ website.name }}-->
+        <!--&lt;!&ndash;</a>&ndash;&gt;-->
 
-        <div class="form-group">
-          <label class = 'blue'>First Name </label>
-          <input [(ngModel)] = "firstName"
-                 name="firstName"
-                 type="text"
-                 class="form-control"
-                 placeholder = "firstName"
-                 required>
-        </div>
+        <!--<a class="pull-right" >-->
+        <!--<span class="glyphicon glyphicon-cog"></span>-->
+        <!--</a>-->
+        <!--</li>-->
+        <!--</ul>-->
+
+      </div>
+
+      <div class="col-sm-4">
 
 
+        <label class = 'blue'>Role: {{user.role}}</label>
 
-        <div class="form-group">
-          <label class = 'blue'>Last Name</label>
-          <input [(ngModel)] = "lastName"
-                 name="lastName"
-                 type="text"
-                 class="form-control"
-                 placeholder = "lastName"
-                 required>
-        </div>
-    </form>
+          <form #f="ngForm">
+              <div class="form-group ">
+                <label class = 'blue'>Username</label>
+                <input [(ngModel)] = "username"
+                       name="username"
+                       type="email" class="form-control"
+                       placeholder="alice"
+                       required>
+              </div>
 
-    <a class="btn btn-primary btn-block"
-       [routerLink]="['/user', 'website']">Class list</a>
 
-    <a class="btn btn-danger btn-block "
-       (click)="logout()" >Logout</a>
+              <div class="form-group">
+                <label class = 'blue'>Email address</label>
+                <input [(ngModel)] = "email"
+                       name="email"
+                       type="email" class="form-control"
+                       placeholder="a@unicorn.com"
+                       required>
+              </div>
 
-    <a (click)="deleteUser()"
-      class="btn btn-danger btn-block " routerLink="/login" >Delete User</a>
+
+              <div class="form-group">
+                <label class = 'blue'>First Name </label>
+                <input [(ngModel)] = "firstName"
+                       name="firstName"
+                       type="text"
+                       class="form-control"
+                       placeholder = "firstName"
+                       required>
+              </div>
+
+
+
+              <div class="form-group">
+                <label class = 'blue'>Last Name</label>
+                <input [(ngModel)] = "lastName"
+                       name="lastName"
+                       type="text"
+                       class="form-control"
+                       placeholder = "lastName"
+                       required>
+              </div>
+          </form>
+
+          <a class="btn btn-primary btn-block"
+             [routerLink]="['/user', 'website']">Class list</a>
+
+          <a class="btn btn-danger btn-block "
+             (click)="logout()" >Logout</a>
+
+          <a (click)="deleteUser()"
+            class="btn btn-danger btn-block " routerLink="/login" >Delete User</a>
+      </div>
+    </div>
 
   </div>
 <!--</form>-->
