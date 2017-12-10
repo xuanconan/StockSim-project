@@ -37,6 +37,7 @@ export class WidgetListComponent implements OnInit {
   width: String;
   baseUrl: String;
   url: String;
+  page: any;
   imageFileStream: String;
   // testwidth: String;
 
@@ -85,6 +86,11 @@ export class WidgetListComponent implements OnInit {
       this.wid = params['wid'];
       this.pid = params['pid'];
     });
+
+    this.pageService.findPageById(this.wid, this.pid)
+      .subscribe((page) => {
+        this.page = page;
+      });
 
     this.widgetService.findAllWidgetsForPageId(this.pid)
       .subscribe((data: any) => {

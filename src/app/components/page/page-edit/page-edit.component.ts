@@ -25,8 +25,8 @@ export class PageEditComponent implements OnInit {
   userId: String;
   title: String;
   user: any;
-  pages: Page[];
-  page: Page;
+  pages: [{}];
+  page: any;
   developerId: String;
   websites: Website[];
   description: String;
@@ -47,22 +47,26 @@ export class PageEditComponent implements OnInit {
   }
 
   update(name, title) {
-    if (!name) {
-      alert ('Please input page name');
+    if ((this.user._id !== this.page.owner) || (this.user.role === 'STUDENT')) {
+      alert("Only admin can modify other's portfolio");
     } else {
+      if (!name) {
+        alert('Please input page name');
+      } else {
 
-      const newPage: Page = {
-        _id: this.pid,
-        name: name,
-        websiteId: this.userId,
-        description: title,
-      };
+        const newPage: Page = {
+          _id: this.pid,
+          name: name,
+          websiteId: this.userId,
+          description: title,
+        };
 
-      this.pageService.updatePage(this.wid, this.pid, newPage)
-        .subscribe((pages) => {
-          // this.pages = pages;
-          this.router.navigate(['user', 'website', this.wid, 'page']);
-        });
+        this.pageService.updatePage(this.wid, this.pid, newPage)
+          .subscribe((pages) => {
+            // this.pages = pages;
+            this.router.navigate(['user', 'website', this.wid, 'page']);
+          });
+      }
     }
   }
 
@@ -71,10 +75,14 @@ export class PageEditComponent implements OnInit {
   // }
 
   deletePage(websiteId, pageId) {
-    this.pageService.deletePage(websiteId, pageId)
-      .subscribe((pages) => {
-        this.pages = pages;
-      });
+    if ((this.user._id !== this.page.owner) || (this.user.role !== 'ADMIN')) {
+      alert("Only admin can modify other's portfolio");
+    } else {
+      this.pageService.deletePage(websiteId, pageId)
+        .subscribe((pages) => {
+          this.pages = pages;
+        });
+    }
   }
 
   // notify the changes of the route

@@ -49,11 +49,13 @@ export class PageNewComponent implements OnInit {
     if (!name) {
       alert('Please input page name');
     } else {
-      const newPage: Page = {
+      const newPage = {
         _id: this.websiteService.newId(),
         name: name,
         websiteId: this.wid,
         description: title,
+        owner: this.user._id,
+        ownername: this.user.username
       };
 
       this.pageService.createPage(this.wid, newPage).subscribe((pages) => {

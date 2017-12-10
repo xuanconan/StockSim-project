@@ -1,24 +1,24 @@
 
-<nav class="navbar navbar-light2 navbar-fixed-top">
+<nav class="navbar navbar-tiffany navbar-fixed-top">
   <div class="container-fluid">
 
     <!--heading on the nav bar-->
     <div class="navbar-text pull-left">
       <a routerLink="/user/website" class="black">
-        <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="white glyphicon glyphicon-chevron-left"></span>
       </a>
     </div>
 
     <div class="navbar-brand pull-left">
 
-        <b class = grey>Pages</b>
+        <b class = white>Class {{this.website.name}} portfolio dashboard</b>
 
     </div>
 
     <!--tick mark-->
     <div class="navbar-text pull-right">
-      <a routerLink="/user/website/{{wid}}/page/new" class="black">
-        <span class="glyphicon glyphicon-plus "></span>
+      <a routerLink="/user/website/{{wid}}/page/new" class="black" >
+        <button class="btn btn-primary">Create a portfolio</button>
       </a>
     </div>
 
@@ -30,8 +30,8 @@
   <ul  class="list-group">
     <li class="list-group-item blue borderless">
 
-      <a routerLink="/user/website/{{ wid }}/page/{{page._id}}/widget">
-        {{ page.name }}（ website name: {{ page._website.name}} ）
+      <a routerLink="/user/website/{{ wid }}/page/{{page._id}}/widget" class="thick">
+       <b> {{ page.name }} （ Portfolio manager: {{page.ownername}} ）</b>
       </a>
 
       <a class="pull-right" routerLink="/user/website/{{ wid }}/page/{{page._id}}">
@@ -42,11 +42,11 @@
 </div>
 
 
-<nav class="navbar navbar-light2 navbar-fixed-bottom">
+<nav class="navbar navbar-tiffany navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-text pull-right">
       <a routerLink="/profile" class="blue">
-        <span class="glyphicon glyphicon-user"></span>
+        <span class="white glyphicon glyphicon-user"></span>
       </a>
     </p>
   </div>

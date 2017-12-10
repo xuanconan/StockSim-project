@@ -63,12 +63,12 @@ export class WebsiteEditComponent implements OnInit {
               this.router.navigate(['user', 'website']);
               console.log(status);
             });
-        }
+        }null
       }
     }
 
     joinClass() {
-     if (this.user.class !== '') {
+     if (this.user.class !== null) {
        alert('You are currently enrolled in an investment class. You can only enroll one each semester.');
      } else {
        const updatedUser = {
@@ -88,7 +88,6 @@ export class WebsiteEditComponent implements OnInit {
          this.user = newuser;
          console.log(this.user);
          alert('Welcome to class "' + this.website.name + '"');
-         this.router.navigate(['user', 'website']);
        });
      }
     }

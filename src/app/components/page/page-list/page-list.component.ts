@@ -28,6 +28,7 @@ export class PageListComponent implements OnInit {
   pages: [{}];
   pid: String;
   description: String;
+  website: any;
 
   // inject route info in constructor
   constructor(
@@ -62,14 +63,21 @@ export class PageListComponent implements OnInit {
           console.log(websites);
         });
 
+    this.websiteService.findWebsiteById(this.userId, this.wid)
+      .subscribe((website) => {
+        this.website = website;
+      });
+
       this.pageService.findPagesByWebsiteId(this.wid)
         .subscribe((data: any) => {
           this.pages = data;
           console.log(data);
         });
-      // this.pages = this.pageService.findPageByWebsiteId(this.wid);
 
-
-
+    this.userService.findUserById(this.userId).subscribe((user: User) => {
+      this.user = user;
+      console.log(this.user);
+    });
+         // this.pages = this.pageService.findPageByWebsiteId(this.wid);
   }
 }
