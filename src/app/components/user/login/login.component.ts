@@ -6,6 +6,7 @@ import {NgForm} from '@angular/forms';
 import {Response} from '@angular/http';
 import { SharedService} from '../../../services/shared.service.client';
 import {environment} from '../../../../environments/environment';
+import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 
 // below is an angular component
 @Component({
@@ -20,17 +21,26 @@ export class LoginComponent implements OnInit {
   @ViewChild('f') loginForm: NgForm;
   username: String;
   password: String;
-  title: string;
+  title: String;
   disabledFlag: boolean;
   errorFlag: boolean;
   errorMsg = 'Invalid user name or password！';
   baseUrl = environment.baseUrl;
+  youtubeUrl: SafeResourceUrl;
+  url: String;
 
 
   // privately declared variable
   constructor(private userService: UserService,
               private router: Router,
-              private sharedService: SharedService) { }
+              private sharedService: SharedService,
+              public sanitizer: DomSanitizer) { }
+
+
+  updateVideoUrl() {
+    // const aurl = 'https://www.youtube.com/embed/qdA32j7_U6U';
+    return this.youtubeUrl = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/Ga3maNZ0x0w');
+  }
 
   // api function for login
   login() {

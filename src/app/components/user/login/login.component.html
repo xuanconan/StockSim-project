@@ -1,5 +1,4 @@
-
-<nav class="navbar navbar-tiffany navbar-fixed-top">
+<nav class="navbar navbar-tiffany navbar-fixed-top" xmlns="http://www.w3.org/1999/html">
   <div class="container-fluid">
 
     <div class="navbar-brand pull-left">
@@ -15,7 +14,15 @@
 
     <div class="col-sm-8 hidden-xs">
 
-      <h1>World Finance</h1>
+      <h1 class="blue">World Finance</h1>
+
+        <b class="blue">Bloomberg Live News</b>
+        <div class="videoWrapper">
+          <iframe  class="e2e-iframe-trusted-src" width="560" height="315"
+                   [src] = updateVideoUrl() frameborder="0" allowfullscreen>
+          </iframe>
+          <br/>
+        </div>
 
       <!--<div class="padding"></div>-->
       <!--<ul *ngFor = "let website of websites"  class="list-group ">-->

@@ -59,7 +59,7 @@ export class WebsiteEditComponent implements OnInit {
       } else {
         console.log();
         if (!this.website.name) {
-          alert('Please input webiste name');
+          alert('Please input class name');
         } else {
           const newWebsite: Website = {
             _id: this.wid,

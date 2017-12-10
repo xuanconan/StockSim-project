@@ -51,7 +51,7 @@ export class PageEditComponent implements OnInit {
       alert("Only admin can modify other's portfolio.");
     } else {
       if (!this.page.name) {
-        alert('Please input page name');
+        alert('Please input portfolio name.');
       } else {
 
         const newPage: Page = {

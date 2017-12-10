@@ -44,7 +44,7 @@ export class WebsiteNewComponent implements OnInit {
     this.websitename = this.createForm.value.websitename;
     this.description = this.createForm.value.description;
     if (this.websitename === "") {
-      alert('Please input website name');
+      alert('Please input class name');
     } else {
       const newWebsite: Website = {
         _id: this.websiteService.newId(),

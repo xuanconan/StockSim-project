@@ -418,7 +418,7 @@ var PageEditComponent = (function () {
         }
         else {
             if (!this.page.name) {
-                alert('Please input page name');
+                alert('Please input portfolio name.');
             }
             else {
                 var newPage = {
@@ -690,7 +690,7 @@ var PageNewComponent = (function () {
     PageNewComponent.prototype.create = function (name, description) {
         var _this = this;
         if (!name) {
-            alert('Please input page name');
+            alert('Please input portfolio name');
         }
         else {
             var newPage = {
@@ -856,7 +856,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/user/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<nav class=\"navbar navbar-tiffany navbar-fixed-top\">\n  <div class=\"container-fluid\">\n\n    <div class=\"navbar-brand pull-left\">\n      <b class=\"white\">StockSim</b>\n    </div>\n\n  </div>\n</nav>\n\n<div class=\"container padding\">\n\n  <div class=\"row\">\n\n    <div class=\"col-sm-8 hidden-xs\">\n\n      <h1>World Finance</h1>\n\n      <!--<div class=\"padding\"></div>-->\n      <!--<ul *ngFor = \"let website of websites\"  class=\"list-group \">-->\n        <!--<li class=\"list-group-item blue borderless\">-->\n\n          <!--&lt;!&ndash;<a routerLink=\"/profile/{{ userId }}/website/{{ wid }}/page\">&ndash;&gt;-->\n          <!--{{ website.name }}-->\n          <!--&lt;!&ndash;</a>&ndash;&gt;-->\n\n          <!--<a class=\"pull-right\" >-->\n            <!--<span class=\"glyphicon glyphicon-cog\"></span>-->\n          <!--</a>-->\n        <!--</li>-->\n      <!--</ul>-->\n\n    </div>\n\n    <div class=\"col-sm-4\">\n      <div class=\"container-fluid\">\n        <form (ngSubmit) = \"login()\" #f=\"ngForm\">\n          <input ngModel\n                 placeholder=\"username\"\n                 name=\"username\"\n                 class=\"form-control\"\n                 type=\"text\"\n                 required\n                 #username = \"ngModel\"/>\n\n          <input ngModel\n                 placeholder=\"password\"\n                 name=\"password\"\n                 class=\"form-control\"\n                 type=\"password\"\n                 required\n                 #password=\"ngModel\"/>\n\n          <button class=\"btn btn-primary btn-block form-control\"\n                  type=\"submit\"\n                  [disabled]=\"!f.valid\"\n          >Login</button>\n          <!--(click)=\"login()\"-->\n\n          <button class=\"btn btn-success btn-block form-control\"\n                  routerLink=\"/register\">Register</button>\n\n          <a  href=\"https://webdev-conan-xuan.herokuapp.com/facebook/login\" class=\"btn btn-primary btn-block\">\n            <!--<a  href=\"http://localhost:9000/facebook/login\" class=\"btn btn-primary btn-block\">-->\n            <!--<button class=\"btn btn-primary btn-block\" [routerLink]=\"['/login']\" type=\"button\">-->\n            <span class=\"fa fa-facebook\"></span>\n            Facebook Login\n          </a>\n        </form>\n\n\n\n      </div>\n    </div>\n  </div>\n\n\n\n</div>\n\n<nav class=\"navbar navbar-tiffany navbar-fixed-bottom\">\n  <div class=\"container-fluid\">\n    <b class=\"navbar-text pull-right white\">\n        Join and start your trading simulation now!\n    </b>\n  </div>\n</nav>\n"
+module.exports = "<nav class=\"navbar navbar-tiffany navbar-fixed-top\" xmlns=\"http://www.w3.org/1999/html\">\n  <div class=\"container-fluid\">\n\n    <div class=\"navbar-brand pull-left\">\n      <b class=\"white\">StockSim</b>\n    </div>\n\n  </div>\n</nav>\n\n<div class=\"container padding\">\n\n  <div class=\"row\">\n\n    <div class=\"col-sm-8 hidden-xs\">\n\n      <h1 class=\"blue\">World Finance</h1>\n\n        <b class=\"blue\">Bloomberg Live News</b>\n        <div class=\"videoWrapper\">\n          <iframe  class=\"e2e-iframe-trusted-src\" width=\"560\" height=\"315\"\n                   [src] = updateVideoUrl() frameborder=\"0\" allowfullscreen>\n          </iframe>\n          <br/>\n        </div>\n\n      <!--<div class=\"padding\"></div>-->\n      <!--<ul *ngFor = \"let website of websites\"  class=\"list-group \">-->\n        <!--<li class=\"list-group-item blue borderless\">-->\n\n          <!--&lt;!&ndash;<a routerLink=\"/profile/{{ userId }}/website/{{ wid }}/page\">&ndash;&gt;-->\n          <!--{{ website.name }}-->\n          <!--&lt;!&ndash;</a>&ndash;&gt;-->\n\n          <!--<a class=\"pull-right\" >-->\n            <!--<span class=\"glyphicon glyphicon-cog\"></span>-->\n          <!--</a>-->\n        <!--</li>-->\n      <!--</ul>-->\n\n    </div>\n\n    <div class=\"col-sm-4\">\n      <div class=\"container-fluid\">\n        <form (ngSubmit) = \"login()\" #f=\"ngForm\">\n          <input ngModel\n                 placeholder=\"username\"\n                 name=\"username\"\n                 class=\"form-control\"\n                 type=\"text\"\n                 required\n                 #username = \"ngModel\"/>\n\n          <input ngModel\n                 placeholder=\"password\"\n                 name=\"password\"\n                 class=\"form-control\"\n                 type=\"password\"\n                 required\n                 #password=\"ngModel\"/>\n\n          <button class=\"btn btn-primary btn-block form-control\"\n                  type=\"submit\"\n                  [disabled]=\"!f.valid\"\n          >Login</button>\n          <!--(click)=\"login()\"-->\n\n          <button class=\"btn btn-success btn-block form-control\"\n                  routerLink=\"/register\">Register</button>\n\n          <a  href=\"https://webdev-conan-xuan.herokuapp.com/facebook/login\" class=\"btn btn-primary btn-block\">\n            <!--<a  href=\"http://localhost:9000/facebook/login\" class=\"btn btn-primary btn-block\">-->\n            <!--<button class=\"btn btn-primary btn-block\" [routerLink]=\"['/login']\" type=\"button\">-->\n            <span class=\"fa fa-facebook\"></span>\n            Facebook Login\n          </a>\n        </form>\n\n\n\n      </div>\n    </div>\n  </div>\n\n\n\n</div>\n\n<nav class=\"navbar navbar-tiffany navbar-fixed-bottom\">\n  <div class=\"container-fluid\">\n    <b class=\"navbar-text pull-right white\">\n        Join and start your trading simulation now!\n    </b>\n  </div>\n</nav>\n"
 
 /***/ }),
 
@@ -871,6 +871,7 @@ module.exports = "\n<nav class=\"navbar navbar-tiffany navbar-fixed-top\">\n  <d
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_shared_service_client__ = __webpack_require__("../../../../../src/app/services/shared.service.client.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_platform_browser__ = __webpack_require__("../../../platform-browser/@angular/platform-browser.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -886,17 +887,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 // below is an angular component
 var LoginComponent = (function () {
     // privately declared variable
-    function LoginComponent(userService, router, sharedService) {
+    function LoginComponent(userService, router, sharedService, sanitizer) {
         this.userService = userService;
         this.router = router;
         this.sharedService = sharedService;
+        this.sanitizer = sanitizer;
         this.hello = 'Hello from the component';
         this.errorMsg = 'Invalid user name or password！';
         this.baseUrl = __WEBPACK_IMPORTED_MODULE_5__environments_environment__["a" /* environment */].baseUrl;
     }
+    LoginComponent.prototype.updateVideoUrl = function () {
+        // const aurl = 'https://www.youtube.com/embed/qdA32j7_U6U';
+        return this.youtubeUrl = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/Ga3maNZ0x0w');
+    };
     // api function for login
     LoginComponent.prototype.login = function () {
         var _this = this;
@@ -943,10 +950,10 @@ LoginComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/components/user/login/login.component.html"),
         styles: [__webpack_require__("../../../../../src/app/components/user/login/login.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_user_service_client__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_user_service_client__["a" /* UserService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__services_shared_service_client__["a" /* SharedService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_shared_service_client__["a" /* SharedService */]) === "function" && _d || Object])
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_user_service_client__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_user_service_client__["a" /* UserService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__services_shared_service_client__["a" /* SharedService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_shared_service_client__["a" /* SharedService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_6__angular_platform_browser__["b" /* DomSanitizer */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__angular_platform_browser__["b" /* DomSanitizer */]) === "function" && _e || Object])
 ], LoginComponent);
 
-var _a, _b, _c, _d;
+var _a, _b, _c, _d, _e;
 //# sourceMappingURL=login.component.js.map
 
 /***/ }),
@@ -1315,7 +1322,7 @@ var WebsiteEditComponent = (function () {
         else {
             console.log();
             if (!this.website.name) {
-                alert('Please input webiste name');
+                alert('Please input class name');
             }
             else {
                 var newWebsite = {
@@ -1636,7 +1643,7 @@ var WebsiteNewComponent = (function () {
         this.websitename = this.createForm.value.websitename;
         this.description = this.createForm.value.description;
         if (this.websitename === "") {
-            alert('Please input website name');
+            alert('Please input class name');
         }
         else {
             var newWebsite = {

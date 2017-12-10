@@ -47,7 +47,7 @@ export class PageNewComponent implements OnInit {
 
   create(name, description) {
     if (!name) {
-      alert('Please input page name');
+      alert('Please input portfolio name');
     } else {
       const newPage = {
         _id: this.websiteService.newId(),
