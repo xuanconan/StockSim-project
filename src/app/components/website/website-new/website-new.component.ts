@@ -42,6 +42,7 @@ export class WebsiteNewComponent implements OnInit {
   create() {
 
     this.websitename = this.createForm.value.websitename;
+    this.description = this.createForm.value.description;
     if (this.websitename === "") {
       alert('Please input website name');
     } else {
@@ -49,7 +50,7 @@ export class WebsiteNewComponent implements OnInit {
         _id: this.websiteService.newId(),
         name: this.websitename,
         developerId: this.userId,
-        description: '',
+        description: this.description
       };
 
       this.websiteService.createWebsite(this.userId, newWebsite)
@@ -74,10 +75,16 @@ export class WebsiteNewComponent implements OnInit {
 
     this.userId = this.user['_id'];
 
-    this.websiteService.findWebsitesByUser(this.userId)
-      .subscribe((websites) => {
-        this.websites = websites;
+    this.websiteService.findAllClasses()
+      .subscribe((classes) => {
+        this.websites = classes;
+        console.log(classes);
       });
+
+    // this.websiteService.findWebsitesByUser(this.userId)
+    //   .subscribe((websites) => {
+    //     this.websites = websites;
+    //   });
   }
 
 }

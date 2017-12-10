@@ -41,6 +41,8 @@ export class WebsiteListComponent implements OnInit {
     }
   }
 
+
+
   getUser() {
     // this.user = JSON.parse(localStorage.getItem("user"));
     this.user = this.sharedService.user;
@@ -56,18 +58,18 @@ export class WebsiteListComponent implements OnInit {
 
       this.userId = this.user['_id'];
 
-      this.websiteService.findWebsitesByUser(this.userId)
-      .subscribe((websites) => {
-        this.websites = websites;
-        console.log(websites);
-      });
+      // this.websiteService.findWebsitesByUser(this.userId)
+      // .subscribe((websites) => {
+      //   this.websites = websites;
+      //   console.log(websites);
+      // });
 
-      // this.websiteService.findAllClasses()
-      //   .subscribe((classes) => {
-      //     this.websites = classes;
-      //     console.log(classes);
-      //   });
-      // console.log(this.websites);
+      this.websiteService.findAllClasses()
+        .subscribe((classes) => {
+          this.websites = classes;
+          console.log(classes);
+        });
+      console.log(this.websites);
   }
 
 

@@ -1,7 +1,7 @@
 
 <!--Top navbar -->
 <div class="container-fluid">
-  <nav class="navbar navbar-default navbar-fixed-top">
+  <nav class="navbar navbar-tiffany navbar-fixed-top">
 
     <div class="row">
       <div class="col-sm-1">
@@ -15,7 +15,7 @@
       <div class="col-sm-3 hidden-xs">
         <div class="navbar-brand pull-left">
           <!--<a href="../page/page-list.html" class="white">-->
-          <b class="white">Websites</b>
+          <b class="white">Class list</b>
           <!--</a>-->
         </div>
         <div  class="navbar-text pull-right white">
@@ -28,7 +28,7 @@
         <!--heading on the nav bar-->
         <div class="navbar-brand pull-left">
           <div class="thick white">
-            <b>New Website</b>
+            <b>New Class</b>
           </div>
         </div>
         <!--tick mark-->
@@ -54,7 +54,7 @@
         <li class="list-group-item blue borderless">
 
           <!--<a routerLink="/profile/{{ userId }}/website/{{ wid }}/page">-->
-          {{ website.name }}
+          {{ website.name }}   (Professor: {{ website._user.username}} )
           <!--</a>-->
 
           <a class="pull-right" >
@@ -70,24 +70,27 @@
       <form (ngSubmit) = "create()" #f="ngForm">
         <div class="container-fluid">
 
-            <b>Name</b>
+            <b class="blue">Name</b>
 
           <input ngModel
-                 placeholder="Website name"
+                 placeholder="Class name"
                  name="websitename"
                  class="form-control"
                  type="text"
                  required
                  #websitename = "ngModel"/>
 
-            <b>Description</b>
+            <b class="blue">Description</b>
 
-          <textarea class="form-control" placeholder="Description" rows="6"></textarea>
 
-          <!--<button class="btn btn-primary btn-block"-->
-                  <!--type = "submit"-->
-                  <!--routerLink="/profile/{{ userId }}/website"-->
-                  <!--[disabled]="!f.valid"> test </button>-->
+
+          <textarea ngModel
+                    class="form-control"
+                    type="text"
+                    placeholder='Description'
+                    rows="6"
+                    name="description"
+                    #description = "ngModel"></textarea>
 
         </div>
       </form>
@@ -96,7 +99,7 @@
 </div>
 
 
-<nav class="navbar navbar-default navbar-fixed-bottom">
+<nav class="navbar navbar-tiffany navbar-fixed-bottom">
   <div class="container-fluid">
     <div class="navbar-text pull-right">
       <a routerLink="/profile" class="white">

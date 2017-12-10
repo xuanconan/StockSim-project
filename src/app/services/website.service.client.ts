@@ -25,7 +25,7 @@ export class WebsiteService {
   // The new website's developerId is set to the userId parameter
 
   findAllClasses() {
-    const url = this.baseUrl + '/api/user/' + 'allClass';
+    const url = this.baseUrl + '/api/allClasses';
     return this.http.get(url).map((response: Response) => {
       return response.json();
     });

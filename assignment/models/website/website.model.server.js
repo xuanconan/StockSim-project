@@ -10,6 +10,14 @@ WebsiteModel.findAllWebsitesForUser =findAllWebsitesForUser;
 WebsiteModel.findWebsiteById = findWebsiteById;
 WebsiteModel.updateWebsite = updateWebsite;
 WebsiteModel.deleteWebsite = deleteWebsite;
+WebsiteModel.findAllClasses = findAllClasses;
+
+function findAllClasses() {
+  return WebsiteModel.find({})
+    .populate('_user','username')
+    .exec();;
+}
+
 
 function createWebsite(website) {
   var newWebsite = null;
@@ -51,7 +59,8 @@ function updateWebsite(websiteId, newWebsite) {
   var website = newWebsite;
   return WebsiteModel.update({_id: websiteId}, {
     $set: {
-      name: website.name
+      name: website.name,
+      description: website.description
     }
   });
 }

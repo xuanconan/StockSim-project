@@ -4,6 +4,7 @@ module.exports = function (app) {
   app.post("/api/user/:userId/website", createWebsite);
   app.delete("/api/user/:userId/website/:websiteId", deleteWebsite);
   app.put("/api/user/:userId/website/:websiteId", updateWebsite);
+  app.get("/api/allClasses", getAllClasses);
 
 
   var websiteModel = require('../models/website/website.model.server');
@@ -23,6 +24,13 @@ module.exports = function (app) {
             res.json(websites);
       });
     });
+  }
+
+  function getAllClasses (req, res) {
+    return websiteModel.findAllClasses()
+      .then(function(classes) {
+        res.json(classes);
+      });
   }
 
   function findWebsitesByUser(req, res) {

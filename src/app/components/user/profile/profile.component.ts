@@ -24,6 +24,7 @@ export class ProfileComponent implements OnInit {
   email: String;
   firstName: String;
   lastName: String;
+  class: String;
 
   // inject route info in constructor
   constructor(
@@ -39,6 +40,7 @@ export class ProfileComponent implements OnInit {
     this.lastName = this.user['lastName'];
     this.email = this.user['email'];
     this.userId = this.user['_id'];
+    this.class = this.user.class;
   }
 
   // issue a logout request to the server. On successful logout, set the currentUser to null.
@@ -63,7 +65,8 @@ export class ProfileComponent implements OnInit {
       password: this.user.password,
       firstName: this.firstName,
       lastName: this.lastName,
-      email: this.email
+      email: this.email,
+      class: this.class
     };
 
     console.log(updatedUser);

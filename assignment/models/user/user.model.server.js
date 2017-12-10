@@ -36,6 +36,7 @@ function updateUser(userId, user) {
       username: auser.username,
       firstName : auser.firstName,
       lastName : auser.lastName,
+      class: auser.class,
       email: auser.email}});
 }
 

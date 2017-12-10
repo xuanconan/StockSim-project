@@ -10,7 +10,7 @@
     </p>
 
     <div class="navbar-brand pull-left">
-      <b class="white">Your Class</b>
+      <b class="white">Class list</b>
     </div>
 
     <!--tick mark-->
@@ -26,15 +26,16 @@
 <div class="padding"></div>
 <div *ngFor = "let website of websites" class="container-fluid ">
   <ul  class="list-group">
-    <li class="list-group-item blue borderless">
+    <li class="list-group-item blue ">
 
-      <a routerLink="/user/website/{{ website._id }}/page">
+      <b >
         {{ website.name }}         (Professor: {{ website._user.username}} )
-      </a>
+      </b>
 
-      <a class="pull-right" routerLink="/user/website/{{ website._id }}">
-        <span class="glyphicon glyphicon-cog"></span>
-      </a>
+      <button class="pull-right btn-primary " routerLink="/user/website/{{ website._id }}">
+        Go to my class
+      </button>
+
     </li>
   </ul>
 </div>

@@ -17,7 +17,8 @@ var UserSchema = mongoose.Schema ({
     id:    String,
     token: String
   },
-  role: {type: String, enum: ['ADMIN', 'PROFESSOR', 'STUDENT']}
+  role: {type: String, enum: ['ADMIN', 'PROFESSOR', 'STUDENT']},
+  class: String
 }, {collection: 'user'});
 
 module.exports = UserSchema;
