@@ -83,9 +83,14 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .navbar-tiffany {
-  background-color: #0ABAB5;
+  background-color: #2E2E2E;
   border-color: #0ABAB5;
 }
+
+/*.navbar-tiffany {*/
+  /*background-color: #0ABAB5;*/
+  /*border-color: #0ABAB5;*/
+/*}*/
 
 /*.letter-tiffany{*/
   /*color: #0ABAB5;*/
