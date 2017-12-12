@@ -72,6 +72,6 @@ function findWebsiteById (websiteId) {
 function findAllWebsitesForUser(userId) {
   return WebsiteModel
     .find({_user: userId})
-    .populate('_user','username')
+    .populate('_user','role')
     .exec();
 }

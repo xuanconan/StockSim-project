@@ -29,11 +29,11 @@
 
 
 <!--<form id="updateForm" (ngSubmit) = "update()" #f="ngForm">-->
-  <div class="container padding">
+  <div class="container padding ">
 
     <div class="row">
 
-      <div class="col-sm-8 hidden-xs">
+      <div class="col-sm-8 hidden-xs padding-b">
 
         <h1>World Finance</h1>
         <b class="blue">Bloomberg Live News</b>
@@ -43,6 +43,7 @@
           </iframe>
           <br/>
         </div>
+        <br/>
 
         <!--<div class="padding"></div>-->
         <!--<ul *ngFor = "let website of websites"  class="list-group ">-->
@@ -64,7 +65,12 @@
 
         <!--<label class = 'blue'>Welcome to StockSim, {{user.firstName}} !</label>-->
 
-        <label class ='letter-tiffany padding'>Welcome to StockSim, {{user.firstName}}! Role: {{user.role}}</label>
+        <label class ='letter-tiffany '>Welcome to StockSim, {{user.firstName}}! Role: {{user.role}}</label>
+        <br/>
+        <b class ='letter-tiffany'>My class: {{this.user.classname}}</b>
+        <br/>
+        <b class ='letter-tiffany'>My competition: {{this.user.competitionName}}</b>
+        <br/>
 
           <form #f="ngForm">
               <div class="form-group ">

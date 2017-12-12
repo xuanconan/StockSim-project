@@ -38,6 +38,8 @@ function updateUser(userId, user) {
       lastName : auser.lastName,
       class: auser.class,
       classname: auser.classname,
+      competition: auser.competition,
+      competitionName: auser.competitionName,
       email: auser.email}});
 }
 

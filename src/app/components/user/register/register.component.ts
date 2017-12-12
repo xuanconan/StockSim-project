@@ -54,7 +54,9 @@ export class RegisterComponent implements OnInit {
               lastName: '',
               role: this.role,
               class: null,
-              classname: null
+              classname: null,
+              competition: null,
+              competitionName: null
             };
             console.log(newUser);
             // this.userService.createUser(newUser).subscribe((auser) => {

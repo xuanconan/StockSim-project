@@ -28,6 +28,7 @@ export class WebsiteEditComponent implements OnInit {
   description: String;
   website: any;
   websitename: String;
+  updatedUser: any;
 
   // inject route info in constructor
   constructor(
@@ -58,6 +59,8 @@ export class WebsiteEditComponent implements OnInit {
         alert ('TA cannot modify class information.');
       } else if ((this.user.role === 'PROFESSOR') && (this.user._id !== this.website._user)) {
         alert ('Professors can only modify own class information.');
+      }else if ((this.user.role === 'ORGANIZER') && (this.user._id !== this.website._user)) {
+        alert ('Organizer can only modify own class information.');
       }else {
         console.log();
         if (!this.website.name) {
@@ -79,21 +82,40 @@ export class WebsiteEditComponent implements OnInit {
     }
 
     joinClass() {
-     if (!this.user.class)  {
-       const updatedUser = {
-         _id: this.userId,
-         username: this.user.username,
-         password: this.user.password,
-         firstName: this.user.firstName,
-         lastName: this.user.lastName,
-         email: this.user.email,
-         class: this.wid,
-         classname: this.website.name
-       };
+      console.log(this.user);
+     if ((!this.user.class) || (!this.user.competition))  {
 
-       console.log(updatedUser);
+       if ((this.website.competition === 0)) {
+         this.updatedUser = {
+           _id: this.userId,
+           username: this.user.username,
+           password: this.user.password,
+           firstName: this.user.firstName,
+           lastName: this.user.lastName,
+           email: this.user.email,
+           class: this.wid,
+           classname: this.website.name,
+           competition: this.user.competition,
+           competitionName: this.user.competitionName
+         };
+       } else if ((this.website.competition === 1)) {
+         this.updatedUser = {
+           _id: this.userId,
+           username: this.user.username,
+           password: this.user.password,
+           firstName: this.user.firstName,
+           lastName: this.user.lastName,
+           email: this.user.email,
+           class: this.user.class,
+           classname: this.user.classname,
+           competition: this.wid,
+           competitionName: this.website.name
+         };
+       }
 
-       this.userService.updateUser(this.userId, updatedUser).subscribe((newuser) => {
+       console.log(this.updatedUser);
+
+       this.userService.updateUser(this.userId, this.updatedUser).subscribe((newuser) => {
          // console.log(status);
          this.user = newuser;
          console.log(this.user);
@@ -106,27 +128,43 @@ export class WebsiteEditComponent implements OnInit {
     }
 
     dropClass() {
-      if ((this.user.class === '') || (this.user.class !== this.wid)) {
-        alert ('You are currently not enrolled in this class.');
+      if ((this.user.class === '') || ((this.user.class !== this.wid) && (this.user.competition !== this.wid))) {
+        alert ('You are currently not enrolled in this class or competition.');
       } else {
-        const updatedUser = {
-          _id: this.userId,
-          username: this.user.username,
-          password: this.user.password,
-          firstName: this.user.firstName,
-          lastName: this.user.lastName,
-          email: this.user.email,
-          class: null,
-          classname: null
-        };
+        if (this.website.competition === 0) {
+          this.updatedUser = {
+            _id: this.userId,
+            username: this.user.username,
+            password: this.user.password,
+            firstName: this.user.firstName,
+            lastName: this.user.lastName,
+            email: this.user.email,
+            class: null,
+            classname: null,
+            competition: this.user.competition,
+            competitionName: this.user.competitionName
+          };
+        } else {
+          this.updatedUser = {
+            _id: this.userId,
+            username: this.user.username,
+            password: this.user.password,
+            firstName: this.user.firstName,
+            lastName: this.user.lastName,
+            email: this.user.email,
+            class: this.user.class,
+            classname: this.user.classname,
+            competition: null,
+            competitionName: null
+          };
+        }
+        console.log(this.updatedUser);
 
-        console.log(updatedUser);
-
-        this.userService.updateUser(this.userId, updatedUser).subscribe((newuser) => {
+        this.userService.updateUser(this.userId, this.updatedUser).subscribe((newuser) => {
           // console.log(status);
           this.user = newuser;
           console.log(this.user);
-          alert('You have dropped class "' + this.website.name + '"');
+          alert('You have dropped class/competition "' + this.website.name + '"');
           this.router.navigate(['user', 'website']);
         });
       }
@@ -134,10 +172,13 @@ export class WebsiteEditComponent implements OnInit {
 
 
     goToMyPortfolio() {
-      if ( (this.user.role !== 'STUDENT') || (this.user.class === this.website._id)) {
+      if ( (this.user.role === 'ORGANIZER') && (this.website.competition === 0) ) {
+        alert ('Competition organizers cannot check portfolios in normal classes.');
+      } else if ((this.user.role === 'STUDENT') && ((this.user.class !== this.website._id) &&
+          (this.user.competition !== this.website._id))) {
+        alert ('Student may only check portfolios of its own class or competition.');
+      } else  {
         this.router.navigate(['user', 'website', this.wid, 'page']);
-      } else {
-        alert ('Student may only check portfolios of its own class.');
       }
     }
 
@@ -148,6 +189,8 @@ export class WebsiteEditComponent implements OnInit {
         alert ('TA cannot delete classes!');
       } else if ((this.user.role === 'PROFESSOR') && (this.user._id !== this.website._user)) {
         alert ('Professors can only delete own class.');
+      } else if ((this.user.role === 'ORGANIZER') && (this.user._id !== this.website._user)) {
+        alert('Competition organizer can only delete own competitions.');
       } else {
         this.websiteService.deleteWebsite(this.userId, this.wid)
           .subscribe((websites: any) => {

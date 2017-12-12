@@ -25,6 +25,7 @@ export class WebsiteNewComponent implements OnInit {
   websitename: String;
   websites: Website[];
   description: String;
+  newWebsite: any;
 
   // inject route info in constructor
   constructor(
@@ -46,19 +47,29 @@ export class WebsiteNewComponent implements OnInit {
     if (this.websitename === "") {
       alert('Please input class name');
     } else {
-      const newWebsite: Website = {
-        _id: this.websiteService.newId(),
-        name: this.websitename,
-        developerId: this.userId,
-        description: this.description
-      };
-
-      this.websiteService.createWebsite(this.userId, newWebsite)
+      if (this.user.role !== 'ORGANIZER') {
+        this.newWebsite = {
+          _id: this.websiteService.newId(),
+          name: this.websitename,
+          developerId: this.userId,
+          description: this.description,
+          competition: 0
+        };
+      } else {
+        this.newWebsite = {
+          _id: this.websiteService.newId(),
+          name: this.websitename + ' (Trading Competition)',
+          developerId: this.userId,
+          description: this.description,
+          competition: 1
+        };
+      }
+      this.websiteService.createWebsite(this.userId, this.newWebsite)
         .subscribe((websites) => {
           // this.websites = websites;
           this.router.navigate(['user', 'website']);
         });
-      console.log(newWebsite);
+      console.log(this.newWebsite);
     }
   }
 

@@ -25,6 +25,7 @@ export class WebsiteListComponent implements OnInit {
   description: String;
   pid: String;
   mywebsite: String;
+  role: String;
 
   // inject route info in constructor
   constructor(
@@ -72,10 +73,12 @@ export class WebsiteListComponent implements OnInit {
           this.websites = classes;
           console.log(classes);
         });
+
       this.userService.findUserById(this.userId).subscribe((user: User) => {
         this.user = user;
         console.log(this.user);
       });
+
       console.log(this.websites);
   }
 

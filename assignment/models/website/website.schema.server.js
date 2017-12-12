@@ -6,7 +6,8 @@ var websiteSchema = mongoose.Schema({
   description: String,
   pages:[{type: mongoose.Schema.Types.ObjectId, ref:'Page'}],
   dateCreated : {type: Date, default : Date.now},
-  class: String
+  class: String,
+  competition: Number
   //overwrite the collection name we want to use
 }, {collection: 'website'});
 module.exports = websiteSchema;

@@ -856,7 +856,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/user/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-tiffany navbar-fixed-top\" xmlns=\"http://www.w3.org/1999/html\">\n  <div class=\"container-fluid\">\n\n    <div class=\"navbar-brand pull-left\">\n      <b class=\"white\">StockSim</b>\n    </div>\n\n  </div>\n</nav>\n\n<div class=\"container padding\">\n\n  <div class=\"row\">\n\n    <div class=\"col-sm-8 hidden-xs\">\n\n      <h1 class=\"blue\">World Finance</h1>\n\n        <b class=\"blue\">Bloomberg Live News</b>\n        <div class=\"videoWrapper\">\n          <iframe  class=\"e2e-iframe-trusted-src\" width=\"560\" height=\"315\"\n                   src = 'https://www.youtube.com/embed/Ga3maNZ0x0w?autoplay=1&cc_load_policy=1&controls=0' frameborder=\"0\" allowfullscreen>\n          </iframe>\n          <br/>\n        </div>\n\n      <!--<div class=\"padding\"></div>-->\n      <!--<ul *ngFor = \"let website of websites\"  class=\"list-group \">-->\n        <!--<li class=\"list-group-item blue borderless\">-->\n\n          <!--&lt;!&ndash;<a routerLink=\"/profile/{{ userId }}/website/{{ wid }}/page\">&ndash;&gt;-->\n          <!--{{ website.name }}-->\n          <!--&lt;!&ndash;</a>&ndash;&gt;-->\n\n          <!--<a class=\"pull-right\" >-->\n            <!--<span class=\"glyphicon glyphicon-cog\"></span>-->\n          <!--</a>-->\n        <!--</li>-->\n      <!--</ul>-->\n\n    </div>\n\n    <div class=\"col-sm-4\">\n      <div class=\"container-fluid padding\">\n        <form (ngSubmit) = \"login()\" #f=\"ngForm\">\n          <input ngModel\n                 placeholder=\"username\"\n                 name=\"username\"\n                 class=\"form-control\"\n                 type=\"text\"\n                 required\n                 #username = \"ngModel\"/>\n\n          <input ngModel\n                 placeholder=\"password\"\n                 name=\"password\"\n                 class=\"form-control\"\n                 type=\"password\"\n                 required\n                 #password=\"ngModel\"/>\n\n          <button class=\"btn btn-primary btn-block form-control\"\n                  type=\"submit\"\n                  [disabled]=\"!f.valid\"\n          >Login</button>\n          <!--(click)=\"login()\"-->\n\n          <button class=\"btn btn-success btn-block form-control\"\n                  routerLink=\"/register\">Register</button>\n\n          <a  href=\"https://webdev-conan-xuan.herokuapp.com/facebook/login\" class=\"btn btn-primary btn-block\">\n            <!--<a  href=\"http://localhost:9000/facebook/login\" class=\"btn btn-primary btn-block\">-->\n            <!--<button class=\"btn btn-primary btn-block\" [routerLink]=\"['/login']\" type=\"button\">-->\n            <span class=\"fa fa-facebook\"></span>\n            Facebook Login\n          </a>\n        </form>\n\n\n\n      </div>\n    </div>\n  </div>\n\n\n\n</div>\n\n<nav class=\"navbar navbar-tiffany navbar-fixed-bottom\">\n  <div class=\"container-fluid\">\n    <b class=\"navbar-text pull-right white\">\n        Join and start your trading simulation now!\n    </b>\n  </div>\n</nav>\n"
+module.exports = "<nav class=\"navbar navbar-tiffany navbar-fixed-top\" xmlns=\"http://www.w3.org/1999/html\">\n  <div class=\"container-fluid\">\n\n    <div class=\"navbar-brand pull-left\">\n      <b class=\"white\">StockSim</b>\n    </div>\n\n  </div>\n</nav>\n\n<div class=\"container padding\">\n\n  <div class=\"row\">\n\n    <div class=\"col-sm-8 hidden-xs\">\n\n      <h1 class=\"blue\">World Finance</h1>\n\n        <b class=\"blue\">Bloomberg Live News</b>\n        <div class=\"videoWrapper\">\n          <iframe  class=\"e2e-iframe-trusted-src\" width=\"560\" height=\"315\"\n                   src = 'https://www.youtube.com/embed/Ga3maNZ0x0w?autoplay=1&cc_load_policy=1&controls=0' frameborder=\"0\" allowfullscreen>\n          </iframe>\n          <br/>\n          <br/>\n        </div>\n\n      <!--<div class=\"padding\"></div>-->\n      <!--<ul *ngFor = \"let website of websites\"  class=\"list-group \">-->\n        <!--<li class=\"list-group-item blue borderless\">-->\n\n          <!--&lt;!&ndash;<a routerLink=\"/profile/{{ userId }}/website/{{ wid }}/page\">&ndash;&gt;-->\n          <!--{{ website.name }}-->\n          <!--&lt;!&ndash;</a>&ndash;&gt;-->\n\n          <!--<a class=\"pull-right\" >-->\n            <!--<span class=\"glyphicon glyphicon-cog\"></span>-->\n          <!--</a>-->\n        <!--</li>-->\n      <!--</ul>-->\n\n    </div>\n\n    <div class=\"col-sm-4\">\n      <div class=\"container-fluid padding\">\n        <form (ngSubmit) = \"login()\" #f=\"ngForm\">\n          <input ngModel\n                 placeholder=\"username\"\n                 name=\"username\"\n                 class=\"form-control\"\n                 type=\"text\"\n                 required\n                 #username = \"ngModel\"/>\n\n          <input ngModel\n                 placeholder=\"password\"\n                 name=\"password\"\n                 class=\"form-control\"\n                 type=\"password\"\n                 required\n                 #password=\"ngModel\"/>\n\n          <button class=\"btn btn-primary btn-block form-control\"\n                  type=\"submit\"\n                  [disabled]=\"!f.valid\"\n          >Login</button>\n          <!--(click)=\"login()\"-->\n\n          <button class=\"btn btn-success btn-block form-control\"\n                  routerLink=\"/register\">Register</button>\n\n          <a  href=\"https://webdev-conan-xuan.herokuapp.com/facebook/login\" class=\"btn btn-primary btn-block\">\n            <!--<a  href=\"http://localhost:9000/facebook/login\" class=\"btn btn-primary btn-block\">-->\n            <!--<button class=\"btn btn-primary btn-block\" [routerLink]=\"['/login']\" type=\"button\">-->\n            <span class=\"fa fa-facebook\"></span>\n            Facebook Login\n          </a>\n        </form>\n\n\n\n      </div>\n    </div>\n  </div>\n\n\n\n</div>\n\n<nav class=\"navbar navbar-tiffany navbar-fixed-bottom\">\n  <div class=\"container-fluid\">\n    <b class=\"navbar-text pull-right white\">\n        Join and start your trading simulation now!\n    </b>\n  </div>\n</nav>\n"
 
 /***/ }),
 
@@ -980,7 +980,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/user/profile/profile.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n\n<!--<input value = \"{{user.username}}\"/>-->\n<!--<br/>-->\n\n<!--<input value = \"{{user.firstName}}\"/>-->\n\n\n<nav class=\"navbar navbar-tiffany navbar-fixed-top\">\n  <div class=\"container-fluid\">\n\n    <!--heading on the nav bar-->\n    <div class=\"navbar-brand pull-left\">\n      <!--<a class=\"thick white nounderline \" href=\"../page/page-list.html\">-->\n      <b class=\"white\">Profile</b>\n      <!--</a>-->\n    </div>\n\n    <div class=\"navbar-text pull-right\">\n      <a (click)= \"update ()\" class=\"white \">\n        <span class=\"glyphicon glyphicon-ok \"></span>\n      </a>\n    </div>\n\n    <!--tick mark-->\n\n  </div>\n</nav>\n\n\n<!--<form id=\"updateForm\" (ngSubmit) = \"update()\" #f=\"ngForm\">-->\n  <div class=\"container padding\">\n\n    <div class=\"row\">\n\n      <div class=\"col-sm-8 hidden-xs\">\n\n        <h1>World Finance</h1>\n        <b class=\"blue\">Bloomberg Live News</b>\n        <div class=\"videoWrapper\">\n          <iframe  class=\"e2e-iframe-trusted-src\" width=\"560\" height=\"315\"\n                   src = 'https://www.youtube.com/embed/Ga3maNZ0x0w?autoplay=1&cc_load_policy=1&controls=0' frameborder=\"0\" allowfullscreen>\n          </iframe>\n          <br/>\n        </div>\n\n        <!--<div class=\"padding\"></div>-->\n        <!--<ul *ngFor = \"let website of websites\"  class=\"list-group \">-->\n        <!--<li class=\"list-group-item blue borderless\">-->\n\n        <!--&lt;!&ndash;<a routerLink=\"/profile/{{ userId }}/website/{{ wid }}/page\">&ndash;&gt;-->\n        <!--{{ website.name }}-->\n        <!--&lt;!&ndash;</a>&ndash;&gt;-->\n\n        <!--<a class=\"pull-right\" >-->\n        <!--<span class=\"glyphicon glyphicon-cog\"></span>-->\n        <!--</a>-->\n        <!--</li>-->\n        <!--</ul>-->\n\n      </div>\n\n      <div class=\"col-sm-4\">\n\n        <!--<label class = 'blue'>Welcome to StockSim, {{user.firstName}} !</label>-->\n\n        <label class ='letter-tiffany padding'>Welcome to StockSim, {{user.firstName}}! Role: {{user.role}}</label>\n\n          <form #f=\"ngForm\">\n              <div class=\"form-group \">\n                <label class = 'blue'>Username</label>\n                <input [(ngModel)] = \"username\"\n                       name=\"username\"\n                       type=\"email\" class=\"form-control\"\n                       placeholder=\"alice\"\n                       required>\n              </div>\n\n\n              <div class=\"form-group\">\n                <label class = 'blue'>Email address</label>\n                <input [(ngModel)] = \"email\"\n                       name=\"email\"\n                       type=\"email\" class=\"form-control\"\n                       placeholder=\"a@unicorn.com\"\n                       required>\n              </div>\n\n\n              <div class=\"form-group\">\n                <label class = 'blue'>First Name </label>\n                <input [(ngModel)] = \"firstName\"\n                       name=\"firstName\"\n                       type=\"text\"\n                       class=\"form-control\"\n                       placeholder = \"firstName\"\n                       required>\n              </div>\n\n\n\n              <div class=\"form-group\">\n                <label class = 'blue'>Last Name</label>\n                <input [(ngModel)] = \"lastName\"\n                       name=\"lastName\"\n                       type=\"text\"\n                       class=\"form-control\"\n                       placeholder = \"lastName\"\n                       required>\n              </div>\n          </form>\n\n          <a class=\"btn btn-primary btn-block\"\n             [routerLink]=\"['/user', 'website']\">Class list</a>\n\n          <a class=\"btn btn-danger btn-block \"\n             (click)=\"logout()\" >Logout</a>\n\n          <a (click)=\"deleteUser()\"\n            class=\"btn btn-danger btn-block \" routerLink=\"/login\" >Delete User</a>\n      </div>\n    </div>\n\n  </div>\n<!--</form>-->\n\n<!-- Footer -->\n<nav class=\"navbar navbar-tiffany navbar-fixed-bottom\">\n  <div class=\"container-fluid\">\n    <b class=\"navbar-text pull-left white\">\n      StockSim\n    </b>\n    <p class=\"navbar-text pull-right\">\n      <a routerLink=\"/profile\" class=\"white\">\n        <span class=\"glyphicon glyphicon-user\"></span>\n      </a>\n    </p>\n\n  </div>\n</nav>\n"
+module.exports = "\n\n<!--<input value = \"{{user.username}}\"/>-->\n<!--<br/>-->\n\n<!--<input value = \"{{user.firstName}}\"/>-->\n\n\n<nav class=\"navbar navbar-tiffany navbar-fixed-top\">\n  <div class=\"container-fluid\">\n\n    <!--heading on the nav bar-->\n    <div class=\"navbar-brand pull-left\">\n      <!--<a class=\"thick white nounderline \" href=\"../page/page-list.html\">-->\n      <b class=\"white\">Profile</b>\n      <!--</a>-->\n    </div>\n\n    <div class=\"navbar-text pull-right\">\n      <a (click)= \"update ()\" class=\"white \">\n        <span class=\"glyphicon glyphicon-ok \"></span>\n      </a>\n    </div>\n\n    <!--tick mark-->\n\n  </div>\n</nav>\n\n\n<!--<form id=\"updateForm\" (ngSubmit) = \"update()\" #f=\"ngForm\">-->\n  <div class=\"container padding\">\n\n    <div class=\"row\">\n\n      <div class=\"col-sm-8 hidden-xs\">\n\n        <h1>World Finance</h1>\n        <b class=\"blue\">Bloomberg Live News</b>\n        <div class=\"videoWrapper\">\n          <iframe  class=\"e2e-iframe-trusted-src\" width=\"560\" height=\"315\"\n                   src = 'https://www.youtube.com/embed/Ga3maNZ0x0w?autoplay=1&cc_load_policy=1&controls=0' frameborder=\"0\" allowfullscreen>\n          </iframe>\n          <br/>\n        </div>\n\n        <!--<div class=\"padding\"></div>-->\n        <!--<ul *ngFor = \"let website of websites\"  class=\"list-group \">-->\n        <!--<li class=\"list-group-item blue borderless\">-->\n\n        <!--&lt;!&ndash;<a routerLink=\"/profile/{{ userId }}/website/{{ wid }}/page\">&ndash;&gt;-->\n        <!--{{ website.name }}-->\n        <!--&lt;!&ndash;</a>&ndash;&gt;-->\n\n        <!--<a class=\"pull-right\" >-->\n        <!--<span class=\"glyphicon glyphicon-cog\"></span>-->\n        <!--</a>-->\n        <!--</li>-->\n        <!--</ul>-->\n\n      </div>\n\n      <div class=\"col-sm-4\">\n\n        <!--<label class = 'blue'>Welcome to StockSim, {{user.firstName}} !</label>-->\n\n        <label class ='letter-tiffany '>Welcome to StockSim, {{user.firstName}}! Role: {{user.role}}</label>\n        <br/>\n        <b class ='letter-tiffany'>My class: {{this.user.classname}}</b>\n        <br/>\n        <b class ='letter-tiffany'>My competition: {{this.user.competitionName}}</b>\n        <br/>\n\n          <form #f=\"ngForm\">\n              <div class=\"form-group \">\n                <label class = 'blue'>Username</label>\n                <input [(ngModel)] = \"username\"\n                       name=\"username\"\n                       type=\"email\" class=\"form-control\"\n                       placeholder=\"alice\"\n                       required>\n              </div>\n\n\n              <div class=\"form-group\">\n                <label class = 'blue'>Email address</label>\n                <input [(ngModel)] = \"email\"\n                       name=\"email\"\n                       type=\"email\" class=\"form-control\"\n                       placeholder=\"a@unicorn.com\"\n                       required>\n              </div>\n\n\n              <div class=\"form-group\">\n                <label class = 'blue'>First Name </label>\n                <input [(ngModel)] = \"firstName\"\n                       name=\"firstName\"\n                       type=\"text\"\n                       class=\"form-control\"\n                       placeholder = \"firstName\"\n                       required>\n              </div>\n\n\n\n              <div class=\"form-group\">\n                <label class = 'blue'>Last Name</label>\n                <input [(ngModel)] = \"lastName\"\n                       name=\"lastName\"\n                       type=\"text\"\n                       class=\"form-control\"\n                       placeholder = \"lastName\"\n                       required>\n              </div>\n          </form>\n\n          <a class=\"btn btn-primary btn-block\"\n             [routerLink]=\"['/user', 'website']\">Class list</a>\n\n          <a class=\"btn btn-danger btn-block \"\n             (click)=\"logout()\" >Logout</a>\n\n          <a (click)=\"deleteUser()\"\n            class=\"btn btn-danger btn-block \" routerLink=\"/login\" >Delete User</a>\n      </div>\n    </div>\n\n  </div>\n<!--</form>-->\n\n<!-- Footer -->\n<nav class=\"navbar navbar-tiffany navbar-fixed-bottom\">\n  <div class=\"container-fluid\">\n    <b class=\"navbar-text pull-left white\">\n      StockSim\n    </b>\n    <p class=\"navbar-text pull-right\">\n      <a routerLink=\"/profile\" class=\"white\">\n        <span class=\"glyphicon glyphicon-user\"></span>\n      </a>\n    </p>\n\n  </div>\n</nav>\n"
 
 /***/ }),
 
@@ -1133,7 +1133,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/user/register/register.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-tiffany navbar-fixed-top\">\n  <div class=\"container-fluid\">\n\n    <!--heading on the nav bar-->\n    <div class=\"navbar-brand pull-left\">\n      <!--<a class=\"thick white nounderline \" href=\"../page/page-list.html\">-->\n      <b class=\"white\">Register</b>\n      <!--</a>-->\n    </div>\n\n  </div>\n</nav>\n\n\n<div class=\"container padding\">\n\n  <form (ngSubmit) = \"register()\" #f=\"ngForm\">\n    <input ngModel\n           placeholder=\"username\"\n           name=\"username\"\n           class=\"form-control\"\n           type=\"text\"\n           required\n           #username = \"ngModel\"/>\n\n    <input ngModel\n           placeholder=\"password\"\n           name=\"password\"\n           class=\"form-control\"\n           type=\"password\"\n           required\n           #password=\"ngModel\"/>\n\n    <input ngModel\n           placeholder=\"verify password\"\n           name=\"passwordvalid\"\n           class=\"form-control\"\n           type=\"password\"\n           required\n           #passwordvalid=\"ngModel\"/>\n\n      <b> Pick your role: </b>\n      <input [(ngModel)]=\"role\" type=\"radio\" name = \"role\" value=\"ADMIN\"  required class=\"form-control\">Admin\n      <input [(ngModel)]=\"role\" type=\"radio\" name = \"role\" value=\"PROFESSOR\" required class=\"form-control\">Professor\n      <input [(ngModel)]=\"role\" type=\"radio\" name = \"role\" value=\"STUDENT\" required class=\"form-control\">Student\n      <input [(ngModel)]=\"role\" type=\"radio\" name = \"role\" value=\"TA\" required class=\"form-control\">TA\n\n\n    <button class=\"btn btn-primary btn-block\"\n            type = \"submit\"\n            [disabled]=\"!f.valid\">Register</button>\n\n    <button class=\"btn btn-danger btn-block\" routerLink=\"/login\">Cancel</button>\n\n  </form>\n\n</div>\n"
+module.exports = "<nav class=\"navbar navbar-tiffany navbar-fixed-top\">\n  <div class=\"container-fluid\">\n\n    <!--heading on the nav bar-->\n    <div class=\"navbar-brand pull-left\">\n      <!--<a class=\"thick white nounderline \" href=\"../page/page-list.html\">-->\n      <b class=\"white\">Register</b>\n      <!--</a>-->\n    </div>\n\n  </div>\n</nav>\n\n\n<div class=\"container padding\">\n\n  <form (ngSubmit) = \"register()\" #f=\"ngForm\">\n    <input ngModel\n           placeholder=\"username\"\n           name=\"username\"\n           class=\"form-control\"\n           type=\"text\"\n           required\n           #username = \"ngModel\"/>\n\n    <input ngModel\n           placeholder=\"password\"\n           name=\"password\"\n           class=\"form-control\"\n           type=\"password\"\n           required\n           #password=\"ngModel\"/>\n\n    <input ngModel\n           placeholder=\"verify password\"\n           name=\"passwordvalid\"\n           class=\"form-control\"\n           type=\"password\"\n           required\n           #passwordvalid=\"ngModel\"/>\n\n      <b> Pick your role: </b>\n      <input [(ngModel)]=\"role\" type=\"radio\" name = \"role\" value=\"ADMIN\"  required class=\"form-control\">Admin\n      <input [(ngModel)]=\"role\" type=\"radio\" name = \"role\" value=\"PROFESSOR\" required class=\"form-control\">Professor\n      <input [(ngModel)]=\"role\" type=\"radio\" name = \"role\" value=\"STUDENT\" required class=\"form-control\">Student\n      <input [(ngModel)]=\"role\" type=\"radio\" name = \"role\" value=\"TA\" required class=\"form-control\">TA\n      <input [(ngModel)]=\"role\" type=\"radio\" name = \"role\" value=\"ORGANIZER\" required class=\"form-control\">Competition Organizer\n\n\n    <button class=\"btn btn-primary btn-block\"\n            type = \"submit\"\n            [disabled]=\"!f.valid\">Register</button>\n\n    <button class=\"btn btn-danger btn-block\" routerLink=\"/login\">Cancel</button>\n\n  </form>\n\n</div>\n"
 
 /***/ }),
 
@@ -1196,7 +1196,9 @@ var RegisterComponent = (function () {
                         lastName: '',
                         role: _this.role,
                         class: null,
-                        classname: null
+                        classname: null,
+                        competition: null,
+                        competitionName: null
                     };
                     console.log(newUser);
                     // this.userService.createUser(newUser).subscribe((auser) => {
@@ -1267,7 +1269,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/website/website-edit/website-edit.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<!--Top navbar -->\n<div class=\"container-fluid\">\n  <nav class=\"navbar navbar-tiffany navbar-fixed-top\">\n\n    <!--<div class=\"navbar-text pull-left\">-->\n    <!--<span class=\"glyphicon glyphicon-chevron-left white pull-left\"></span>-->\n    <!--</div>-->\n\n    <div class=\"row\">\n      <div class=\"col-sm-1\">\n        <div class=\"navbar-text pull-left\">\n          <a routerLink=\"/user/website\" class=\"white\">\n            <span class=\"glyphicon glyphicon-chevron-left\"></span>\n          </a>\n        </div>\n      </div>\n\n      <div class=\"col-sm-3 hidden-xs\">\n\n        <div class=\"navbar-brand pull-left\">\n          <!--<a href=\"website-new.html\" class=\"white\">-->\n          <b class=\"white\">Class list</b>\n          <!--</a>-->\n        </div>\n\n        <div class=\"navbar-text pull-right\">\n          <span class=\"glyphicon glyphicon-plus white \"></span>\n        </div>\n        <!--</p>-->\n\n      </div>\n\n      <div class=\"col-sm-8\">\n\n        <!--heading on the nav bar-->\n        <div class=\"navbar-brand pull-left\">\n          <div class=\"thick white\">\n            <b>Class Information</b>\n          </div>\n        </div>\n        <!--tick mark-->\n        <div class=\"navbar-text pull-right\">\n          <a (click)=\"update()\" class=\"white\">\n            <span class=\"glyphicon glyphicon-ok \"></span>\n          </a>\n        </div>\n\n      </div>\n\n    </div>\n  </nav>\n</div>\n\n<div class=\"container-fluid\">\n  <div class=\"row\">\n\n    <div class=\"col-sm-4 hidden-xs\">\n      <div class=\"padding\"></div>\n      <label class ='letter-tiffany '>Welcome to StockSim, {{user.firstName}}! Role: {{user.role}}</label>\n\n      <ul *ngFor = \"let website of websites\"  class=\"list-group \">\n        <li class=\"list-group-item blue borderless \">\n\n          <!--<a routerLink=\"/profile/{{ userId }}/website/{{ wid }}/page\">-->\n          <b>  {{ website.name }}         (Professor: {{ website._user.username}} )</b>\n          <!--</a>-->\n\n          <!--<a class=\"pull-right\" >-->\n            <!--<span class=\"glyphicon glyphicon-cog\"></span>-->\n          <!--</a>-->\n        </li>\n      </ul>\n    </div>\n\n    <div class=\"col-sm-8 padding\">\n      <div class=\"container-fluid\">\n\n        <b class ='blue'>My class: {{this.user.classname}}</b>\n        <br/>\n        <br/>\n\n\n        <b class ='blue'>Class Name</b>\n\n        <input [(ngModel)]=\"this.website.name\"\n                class=\"form-control\"\n                type=\"text\"\n                placeholder='name'>\n\n        <b class ='blue'>Class Description</b>\n\n\n        <textarea [(ngModel)]=\"this.website.description\"\n                  class=\"form-control\"\n                   type=\"text\"\n                   placeholder='description'\n                   rows=\"6\"></textarea>\n\n          <!--<b class ='blue'>Class Description</b>-->\n\n        <!--<div class=\"form-group\">-->\n          <!--<quill-editor [(ngModel)]=\"website.description\" name=\"text\"></quill-editor>-->\n        <!--</div>-->\n\n        <!--<textarea class=\"form-control\" placeholder=\"Description\" rows=\"6\"></textarea>-->\n\n        <a (click)=goToMyPortfolio()\n           class=\"btn btn-primary btn-block\" >\n          Go to my portfolio\n        </a>\n\n        <a (click)=\"joinClass()\"\n           class=\"btn btn-success btn-block\" >\n          Join Class\n        </a>\n\n        <a (click)=\"dropClass()\"\n           class=\"btn btn-warning btn-block\" >\n          Drop Class\n        </a>\n\n\n        <a (click)=\"deleteWebsite()\"\n          class=\"btn btn-danger btn-block\" >\n          Delete (Admin & Professors only)\n        </a>\n\n\n      </div>\n    </div>\n  </div>\n\n</div>\n\n<nav class=\"navbar navbar-tiffany navbar-fixed-bottom\">\n  <div class=\"container-fluid\">\n    <b class=\"navbar-text pull-left white\">\n      StockSim\n    </b>\n    <div class=\"navbar-text pull-right\">\n      <a routerLink=\"/profile\" class=\"white\">\n        <span class=\"glyphicon glyphicon-user \"></span>\n      </a>\n    </div>\n  </div>\n</nav>\n"
+module.exports = "\n<!--Top navbar -->\n<div class=\"container-fluid\">\n  <nav class=\"navbar navbar-tiffany navbar-fixed-top\">\n\n    <!--<div class=\"navbar-text pull-left\">-->\n    <!--<span class=\"glyphicon glyphicon-chevron-left white pull-left\"></span>-->\n    <!--</div>-->\n\n    <div class=\"row\">\n      <div class=\"col-sm-1\">\n        <div class=\"navbar-text pull-left\">\n          <a routerLink=\"/user/website\" class=\"white\">\n            <span class=\"glyphicon glyphicon-chevron-left\"></span>\n          </a>\n        </div>\n      </div>\n\n      <div class=\"col-sm-3 hidden-xs\">\n\n        <div class=\"navbar-brand pull-left\">\n          <!--<a href=\"website-new.html\" class=\"white\">-->\n          <b class=\"white\">Class list</b>\n          <!--</a>-->\n        </div>\n\n        <div class=\"navbar-text pull-right\">\n          <span class=\"glyphicon glyphicon-plus white \"></span>\n        </div>\n        <!--</p>-->\n\n      </div>\n\n      <div class=\"col-sm-8\">\n\n        <!--heading on the nav bar-->\n        <div class=\"navbar-brand pull-left\">\n          <div class=\"thick white\">\n            <b>Class Information</b>\n          </div>\n        </div>\n        <!--tick mark-->\n        <div class=\"navbar-text pull-right\">\n          <a (click)=\"update()\" class=\"white\">\n            <span class=\"glyphicon glyphicon-ok \"></span>\n          </a>\n        </div>\n\n      </div>\n\n    </div>\n  </nav>\n</div>\n\n<div class=\"container-fluid\">\n  <div class=\"row\">\n\n    <div class=\"col-sm-4 hidden-xs\">\n      <div class=\"padding\"></div>\n      <label class ='letter-tiffany '>Welcome to StockSim, {{user.firstName}}! Role: {{user.role}}</label>\n\n      <ul *ngFor = \"let website of websites\"  class=\"list-group \">\n        <li class=\"list-group-item blue borderless \">\n\n          <!--<a routerLink=\"/profile/{{ userId }}/website/{{ wid }}/page\">-->\n          <b>  {{ website.name }}         (Professor: {{ website._user.username}} )</b>\n          <!--</a>-->\n\n          <!--<a class=\"pull-right\" >-->\n            <!--<span class=\"glyphicon glyphicon-cog\"></span>-->\n          <!--</a>-->\n        </li>\n      </ul>\n    </div>\n\n    <div class=\"col-sm-8 padding\">\n      <div class=\"container-fluid\">\n\n        <b class ='blue'>My class: {{this.user.classname}}</b>\n        <br/>\n        <b class ='blue'>My competition: {{this.user.competitionName}}</b>\n        <br/>\n\n\n        <b class ='blue'>Class Name</b>\n\n        <input [(ngModel)]=\"this.website.name\"\n                class=\"form-control\"\n                type=\"text\"\n                placeholder='name'>\n\n        <b class ='blue'>Class Description</b>\n\n\n        <textarea [(ngModel)]=\"this.website.description\"\n                  class=\"form-control\"\n                   type=\"text\"\n                   placeholder='description'\n                   rows=\"6\"></textarea>\n\n          <!--<b class ='blue'>Class Description</b>-->\n\n        <!--<div class=\"form-group\">-->\n          <!--<quill-editor [(ngModel)]=\"website.description\" name=\"text\"></quill-editor>-->\n        <!--</div>-->\n\n        <!--<textarea class=\"form-control\" placeholder=\"Description\" rows=\"6\"></textarea>-->\n\n        <a (click)=goToMyPortfolio()\n           class=\"btn btn-primary btn-block\" >\n          Go to my portfolio\n        </a>\n\n        <a (click)=\"joinClass()\"\n           class=\"btn btn-success btn-block\" >\n          Join Class\n        </a>\n\n        <a (click)=\"dropClass()\"\n           class=\"btn btn-warning btn-block\" >\n          Drop Class\n        </a>\n\n\n        <a (click)=\"deleteWebsite()\"\n          class=\"btn btn-danger btn-block\" >\n          Delete (Admin & Professors only)\n        </a>\n\n\n      </div>\n    </div>\n  </div>\n\n</div>\n\n<nav class=\"navbar navbar-tiffany navbar-fixed-bottom\">\n  <div class=\"container-fluid\">\n    <b class=\"navbar-text pull-left white\">\n      StockSim\n    </b>\n    <div class=\"navbar-text pull-right\">\n      <a routerLink=\"/profile\" class=\"white\">\n        <span class=\"glyphicon glyphicon-user \"></span>\n      </a>\n    </div>\n  </div>\n</nav>\n"
 
 /***/ }),
 
@@ -1331,6 +1333,9 @@ var WebsiteEditComponent = (function () {
         else if ((this.user.role === 'PROFESSOR') && (this.user._id !== this.website._user)) {
             alert('Professors can only modify own class information.');
         }
+        else if ((this.user.role === 'ORGANIZER') && (this.user._id !== this.website._user)) {
+            alert('Organizer can only modify own class information.');
+        }
         else {
             console.log();
             if (!this.website.name) {
@@ -1353,19 +1358,38 @@ var WebsiteEditComponent = (function () {
     };
     WebsiteEditComponent.prototype.joinClass = function () {
         var _this = this;
-        if (!this.user.class) {
-            var updatedUser = {
-                _id: this.userId,
-                username: this.user.username,
-                password: this.user.password,
-                firstName: this.user.firstName,
-                lastName: this.user.lastName,
-                email: this.user.email,
-                class: this.wid,
-                classname: this.website.name
-            };
-            console.log(updatedUser);
-            this.userService.updateUser(this.userId, updatedUser).subscribe(function (newuser) {
+        console.log(this.user);
+        if ((!this.user.class) || (!this.user.competition)) {
+            if ((this.website.competition === 0)) {
+                this.updatedUser = {
+                    _id: this.userId,
+                    username: this.user.username,
+                    password: this.user.password,
+                    firstName: this.user.firstName,
+                    lastName: this.user.lastName,
+                    email: this.user.email,
+                    class: this.wid,
+                    classname: this.website.name,
+                    competition: this.user.competition,
+                    competitionName: this.user.competitionName
+                };
+            }
+            else if ((this.website.competition === 1)) {
+                this.updatedUser = {
+                    _id: this.userId,
+                    username: this.user.username,
+                    password: this.user.password,
+                    firstName: this.user.firstName,
+                    lastName: this.user.lastName,
+                    email: this.user.email,
+                    class: this.user.class,
+                    classname: this.user.classname,
+                    competition: this.wid,
+                    competitionName: this.website.name
+                };
+            }
+            console.log(this.updatedUser);
+            this.userService.updateUser(this.userId, this.updatedUser).subscribe(function (newuser) {
                 // console.log(status);
                 _this.user = newuser;
                 console.log(_this.user);
@@ -1379,36 +1403,58 @@ var WebsiteEditComponent = (function () {
     };
     WebsiteEditComponent.prototype.dropClass = function () {
         var _this = this;
-        if ((this.user.class === '') || (this.user.class !== this.wid)) {
-            alert('You are currently not enrolled in this class.');
+        if ((this.user.class === '') || ((this.user.class !== this.wid) && (this.user.competition !== this.wid))) {
+            alert('You are currently not enrolled in this class or competition.');
         }
         else {
-            var updatedUser = {
-                _id: this.userId,
-                username: this.user.username,
-                password: this.user.password,
-                firstName: this.user.firstName,
-                lastName: this.user.lastName,
-                email: this.user.email,
-                class: null,
-                classname: null
-            };
-            console.log(updatedUser);
-            this.userService.updateUser(this.userId, updatedUser).subscribe(function (newuser) {
+            if (this.website.competition === 0) {
+                this.updatedUser = {
+                    _id: this.userId,
+                    username: this.user.username,
+                    password: this.user.password,
+                    firstName: this.user.firstName,
+                    lastName: this.user.lastName,
+                    email: this.user.email,
+                    class: null,
+                    classname: null,
+                    competition: this.user.competition,
+                    competitionName: this.user.competitionName
+                };
+            }
+            else {
+                this.updatedUser = {
+                    _id: this.userId,
+                    username: this.user.username,
+                    password: this.user.password,
+                    firstName: this.user.firstName,
+                    lastName: this.user.lastName,
+                    email: this.user.email,
+                    class: this.user.class,
+                    classname: this.user.classname,
+                    competition: null,
+                    competitionName: null
+                };
+            }
+            console.log(this.updatedUser);
+            this.userService.updateUser(this.userId, this.updatedUser).subscribe(function (newuser) {
                 // console.log(status);
                 _this.user = newuser;
                 console.log(_this.user);
-                alert('You have dropped class "' + _this.website.name + '"');
+                alert('You have dropped class/competition "' + _this.website.name + '"');
                 _this.router.navigate(['user', 'website']);
             });
         }
     };
     WebsiteEditComponent.prototype.goToMyPortfolio = function () {
-        if ((this.user.role !== 'STUDENT') || (this.user.class === this.website._id)) {
-            this.router.navigate(['user', 'website', this.wid, 'page']);
+        if ((this.user.role === 'ORGANIZER') && (this.website.competition === 0)) {
+            alert('Competition organizers cannot check portfolios in normal classes.');
+        }
+        else if ((this.user.role === 'STUDENT') && ((this.user.class !== this.website._id) &&
+            (this.user.competition !== this.website._id))) {
+            alert('Student may only check portfolios of its own class or competition.');
         }
         else {
-            alert('Student may only check portfolios of its own class.');
+            this.router.navigate(['user', 'website', this.wid, 'page']);
         }
     };
     WebsiteEditComponent.prototype.deleteWebsite = function () {
@@ -1421,6 +1467,9 @@ var WebsiteEditComponent = (function () {
         }
         else if ((this.user.role === 'PROFESSOR') && (this.user._id !== this.website._user)) {
             alert('Professors can only delete own class.');
+        }
+        else if ((this.user.role === 'ORGANIZER') && (this.user._id !== this.website._user)) {
+            alert('Competition organizer can only delete own competitions.');
         }
         else {
             this.websiteService.deleteWebsite(this.userId, this.wid)
@@ -1498,7 +1547,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/website/website-list/website-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<nav class=\"navbar navbar-tiffany navbar-fixed-top\">\n  <div class=\"container-fluid\">\n\n    <!--heading on the nav bar-->\n    <p class=\"navbar-text pull-left\">\n      <a routerLink=\"/profile\" class=\"white\">\n        <span class=\"glyphicon glyphicon-chevron-left \"></span>\n      </a>\n    </p>\n\n    <div class=\"navbar-brand pull-left\">\n      <b class=\"white\">Class list</b>\n    </div>\n\n    <!--tick mark-->\n    <div class=\"navbar-brand pull-right\">\n      <a (click) = addclass() class=\"white \">\n        <b>Add class</b>\n        <!--<span class=\"glyphicon glyphicon-plus \"></span>-->\n      </a>\n    </div>\n  </div>\n</nav>\n\n\n<div class=\" container-fluid padding\"></div>\n\n<label class ='letter-tiffany paddingleft'>Welcome to StockSim, {{user.firstName}}! Role: {{user.role}}</label>\n\n<div *ngFor = \"let website of websites\" class=\"container-fluid \">\n  <ul  class=\"list-group\">\n    <li class=\"list-group-item blue \">\n\n      <b >\n        {{ website.name }}         (Professor: {{ website._user.username}} )\n      </b>\n\n      <button class=\"pull-right btn-primary \" routerLink=\"/user/website/{{ website._id }}\">\n        Go to my class\n      </button>\n\n    </li>\n  </ul>\n</div>\n\n<nav class=\"navbar navbar-tiffany navbar-fixed-bottom\">\n  <div class=\"container-fluid\">\n    <b class=\"navbar-text pull-left white\">\n      StockSim\n    </b>\n    <p class=\"navbar-text pull-right\">\n      <a routerLink=\"/profile\" class=\"white\">\n        <span class=\"glyphicon glyphicon-user\"></span>\n      </a>\n    </p>\n  </div>\n</nav>\n\n"
+module.exports = "\n<nav class=\"navbar navbar-tiffany navbar-fixed-top\">\n  <div class=\"container-fluid\">\n\n    <!--heading on the nav bar-->\n    <p class=\"navbar-text pull-left\">\n      <a routerLink=\"/profile\" class=\"white\">\n        <span class=\"glyphicon glyphicon-chevron-left \"></span>\n      </a>\n    </p>\n\n    <div class=\"navbar-brand pull-left\">\n      <b class=\"white\">Class list</b>\n    </div>\n\n    <!--tick mark-->\n    <div class=\"navbar-brand pull-right\">\n      <a (click) = addclass() class=\"white \">\n        <b>Add class</b>\n        <!--<span class=\"glyphicon glyphicon-plus \"></span>-->\n      </a>\n    </div>\n  </div>\n</nav>\n\n\n<div class=\" container-fluid padding\"></div>\n\n<label class ='letter-tiffany paddingleft'>Welcome to StockSim, {{user.firstName}}! Role: {{user.role}}</label>\n\n<div *ngFor = \"let website of websites\" class=\"container-fluid \">\n  <ul  class=\"list-group\">\n    <li class=\"list-group-item blue \">\n\n      <b >\n        {{ website.name }}         (Class owner: {{ website._user.username}})\n      </b>\n\n      <button class=\"pull-right btn-primary \" routerLink=\"/user/website/{{ website._id }}\">\n        Go to my class\n      </button>\n\n    </li>\n  </ul>\n</div>\n\n<nav class=\"navbar navbar-tiffany navbar-fixed-bottom\">\n  <div class=\"container-fluid\">\n    <b class=\"navbar-text pull-left white\">\n      StockSim\n    </b>\n    <p class=\"navbar-text pull-right\">\n      <a routerLink=\"/profile\" class=\"white\">\n        <span class=\"glyphicon glyphicon-user\"></span>\n      </a>\n    </p>\n  </div>\n</nav>\n\n"
 
 /***/ }),
 
@@ -1661,18 +1710,30 @@ var WebsiteNewComponent = (function () {
             alert('Please input class name');
         }
         else {
-            var newWebsite = {
-                _id: this.websiteService.newId(),
-                name: this.websitename,
-                developerId: this.userId,
-                description: this.description
-            };
-            this.websiteService.createWebsite(this.userId, newWebsite)
+            if (this.user.role !== 'ORGANIZER') {
+                this.newWebsite = {
+                    _id: this.websiteService.newId(),
+                    name: this.websitename,
+                    developerId: this.userId,
+                    description: this.description,
+                    competition: 0
+                };
+            }
+            else {
+                this.newWebsite = {
+                    _id: this.websiteService.newId(),
+                    name: this.websitename + ' (Trading Competition)',
+                    developerId: this.userId,
+                    description: this.description,
+                    competition: 1
+                };
+            }
+            this.websiteService.createWebsite(this.userId, this.newWebsite)
                 .subscribe(function (websites) {
                 // this.websites = websites;
                 _this.router.navigate(['user', 'website']);
             });
-            console.log(newWebsite);
+            console.log(this.newWebsite);
         }
     };
     // notify the changes of the route
