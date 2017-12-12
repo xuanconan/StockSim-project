@@ -206,7 +206,7 @@ button:focus{
 .header--bg{
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 82%, 0% 100%);
   clip-path: polygon(0 0, 100% 0, 100% 82%, 0% 100%);
-  background: url("./../../assets/images/header-bg.jpg") no-repeat;
+  background: url("./../../assets/images/nasdaq2.jpg") no-repeat;
   height: 800px;
   position: relative;
   background-size: cover;
@@ -221,7 +221,7 @@ button:focus{
   right: 0;
   top: 0;
   bottom: 0;
-  background-color: rgba(5, 180, 249, .9);
+  background-color: rgba(46, 46, 46, .8);
   z-index: -1;
 }
 

@@ -24,7 +24,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  padding-left:20px;
+  padding-left:0;
   width: 100%;
   height: 100%;
 }
@@ -68,6 +68,19 @@ h1, h2, h3, h4, h5, h6{
   padding-top: 70px
 }
 
+.padding50{
+  padding-top: 50px
+}
+
+.padding40{
+  padding-top: 40px
+}
+
+.padding30{
+  padding-top: 30px
+}
+
+
 .borderless{
   border: none;
 }
@@ -91,6 +104,9 @@ h1, h2, h3, h4, h5, h6{
   background-color: #2E2E2E;
 }
 
+.superheader {
+  font-size: 500%;
+}
 /*.navbar-tiffany {*/
   /*background-color: #0ABAB5;*/
   /*border-color: #0ABAB5;*/
@@ -99,3 +115,8 @@ h1, h2, h3, h4, h5, h6{
 /*.letter-tiffany{*/
   /*color: #0ABAB5;*/
 /*}*/
+.gi-1x{font-size: 1.2em;}
+.gi-2x{font-size: 2em;}
+.gi-3x{font-size: 3em;}
+.gi-4x{font-size: 4em;}
+.gi-5x{font-size: 5em;}
