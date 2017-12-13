@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Stock} from '../../../../models/stock.model.client';
 import {SharedService} from '../../../../services/shared.service.client';
 import {GoogleFinanceServiceClient} from '../../../../services/googleFinance.service.client';
+import {PageService} from '../../../../services/page.service.client';
 
 @Component({
   selector: 'app-google-stock-list',
@@ -18,13 +19,21 @@ export class GoogleStockListComponent implements OnInit {
   wid;
   pid;
   time;
+  page: any;
 
   constructor(private widgetService: WidgetService,
               private activatedRoute: ActivatedRoute,
               private router: Router,
               private sharedService: SharedService,
-              private googleFinanceSerice: GoogleFinanceServiceClient) { }
-
+              private googleFinanceSerice: GoogleFinanceServiceClient,
+              private pageService: PageService) { }
+  gotoBuy() {
+    if (!((this.user._id === this.page.owner) || (this.user.role === 'ADMIN'))) {
+      alert('Only portfolio owner and Admin can modify stocks.');
+    } else {
+      this.router.navigate(['user' + '/website/' + this.wid + '/page/' + this.pid + '/widget/google/list/buy']);
+    }
+  }
   ngOnInit() {
     this.time = new Date().toLocaleString('en-US', {timeZone: 'America/New_York'}).slice(0, 10);
     this.activatedRoute.params.subscribe((params: any) => {
@@ -56,5 +65,20 @@ export class GoogleStockListComponent implements OnInit {
         }
         this.stocks = stocks;
       });
+
+    this.activatedRoute.params.subscribe((params: any) => {
+      // this.user = this.userService.findUserById(this.userId);
+      this.wid = params['wid'];
+      this.pid = params['pid'];
+    });
+
+    this.pageService.findPageById(this.wid, this.pid)
+      .subscribe((page) => {
+        this.page = page;
+      });
+
+    this.user = this.sharedService.user;
+
+    this.userId = this.user['_id'];
   }
 }
