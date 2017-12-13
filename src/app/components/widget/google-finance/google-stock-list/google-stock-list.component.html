@@ -54,6 +54,10 @@
 <!--Content-->
 <div class="container container-fluid content website-content padding50 padding-b">
   <h1>Stock list</h1>
+  <label class ='letter-tiffany paddingleft'>"The stock market is filled with individuals who know the price of everything,
+    but the value of nothing." - Phillip Fisher</label>
+
+
   <div >
     <ul *ngFor="let stock of stocks">
       <div class="widget-toolbar">
@@ -84,7 +88,86 @@
       </li>
     </ul>
   </div>
+
+
+  <div class="container-fluid padding padding-b " >
+
+
+    <div class="widget-list">
+
+      <div *ngFor = "let widget of widgets " >
+
+        <div [ngSwitch] = "widget.type" >
+
+          <div class="jga-widget ">
+
+            <div class="jpa-toolbar">
+              <div>
+                <span class="glyphicon glyphicon-menu-hamburger black pull-right"></span>
+                <a class="blue" routerLink="/user/website/{{ wid }}/page/{{pid}}/widget/{{widget._id}}" >
+                  <span class="glyphicon glyphicon-cog  pull-right"></span>
+                </a>
+              </div>
+            </div>
+
+            <!--<div *ngSwitchCase="'HEADING'" class="padding-b">-->
+              <!--<div [ngSwitch]="widget.size">-->
+                <!--<h1 *ngSwitchCase="1">{{widget.text}}</h1>-->
+                <!--<h2 *ngSwitchCase="2">{{widget.text}}</h2>-->
+                <!--<h3 *ngSwitchCase="3">{{widget.text}}</h3>-->
+                <!--<h4 *ngSwitchCase="4">{{widget.text}}</h4>-->
+                <!--<h5 *ngSwitchCase="5">{{widget.text}}</h5>-->
+                <!--<h6 *ngSwitchCase="6">{{widget.text}}</h6>-->
+              <!--</div>-->
+            <!--</div>-->
+
+            <!--<div *ngSwitchCase = "'IMAGE'" class="padding-b">-->
+              <!--Image url: "{{widget.url}}"-->
+              <!--<br/>-->
+              <!--<img class="img-responsive" [src] = updateImageUrl(widget.url) [style.width] =  "widget.width" />-->
+              <!--<br/>-->
+            <!--</div>-->
+
+            <div *ngSwitchCase = "'HTML'" [innerHTML]="widget.text" class="black"> </div>
+            <!--<a href="{{widget.url}}" class> <div>{{widget.text}}</div> </a>-->
+
+            <!--<div *ngSwitchCase="'INPUT'" class="padding-b" >-->
+              <!--Text Input Name: {{widget.name}}-->
+              <!--<div *ngIf="widget.formatted">-->
+                <!--<quill-editor [(ngModel)]="widget.text" name="text"></quill-editor>-->
+              <!--</div>-->
+              <!--<input *ngIf="!widget.formatted && (!widget.rows || widget.rows===1)"-->
+                     <!--placeholder="{{widget.placeholder}}" class="form-control"/>-->
+
+              <!--<textarea *ngIf="!widget.formatted && (widget.rows > 1)"-->
+                        <!--rows="{{widget.rows}}" placeholder="{{widget.placeholder}}"-->
+                        <!--class="form-control">{{widget.text}}</textarea>-->
+            <!--</div>-->
+
+            <!--<div *ngSwitchCase = "'YOUTUBE'" class="padding-b">-->
+              <!--Video Name: {{widget.name}}-->
+              <!--<div class="videoWrapper">-->
+                <!--<iframe  class="e2e-iframe-trusted-src" width="560" height="315"-->
+                         <!--[src] = updateVideoUrl(widget.url) frameborder="0" allowfullscreen></iframe>-->
+                <!--<br/>-->
+              <!--</div>-->
+            <!--</div>-->
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <button class='butten btn-primary white'>
+    <a (click) = "createWidget('')">
+      <b class='white'>Comment</b>
+    </a>
+  </button>
 </div>
+
 
 <!--Bottom Bar-->
 <nav class="navbar navbar-tiffany navbar-fixed-bottom">

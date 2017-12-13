@@ -15,11 +15,26 @@ export class GoogleStockListComponent implements OnInit {
 
   stocks: Stock[];
   user;
+  widgets: [{}];
   userId: String;
   wid;
   pid;
   time;
   page: any;
+  widget: any;
+  comment = {
+    name: '',
+    _id: this.widgetService.newId(),
+    type: 'HTML',
+    pageId: this.pid,
+    size: 0,
+    text: '',
+    width: '100%',
+    url: '',
+    placeholder: '',
+    rows: 0,
+    fomatted: false
+  };
 
   constructor(private widgetService: WidgetService,
               private activatedRoute: ActivatedRoute,
@@ -34,6 +49,24 @@ export class GoogleStockListComponent implements OnInit {
       this.router.navigate(['user' + '/website/' + this.wid + '/page/' + this.pid + '/widget/google/list/buy']);
     }
   }
+
+  createWidget() {
+    this.widget = this.comment;
+    this.widget.text = 'User ' +  this.user.username + ' said: ' + this.comment.text;
+    this.widgetService.createWidget(this.pid, this.widget)
+      .subscribe(
+        (newWidget: any) => {
+          this.widget = newWidget;
+          this.wid = newWidget._id;
+          this.router.navigate(['user' + '/website/' + this.wid + '/page/' + this.pid + '/widget/' + this.wid]);
+        },
+        (error: any) => console.log(error)
+      );
+  }
+
+
+
+
   ngOnInit() {
     this.time = new Date().toLocaleString('en-US', {timeZone: 'America/New_York'}).slice(0, 10);
     this.activatedRoute.params.subscribe((params: any) => {
@@ -80,5 +113,11 @@ export class GoogleStockListComponent implements OnInit {
     this.user = this.sharedService.user;
 
     this.userId = this.user['_id'];
+
+    this.widgetService.findAllWidgetsForPageId(this.pid)
+      .subscribe((data: any) => {
+        this.widgets = data;
+        console.log(this.widgets);
+      });
   }
 }

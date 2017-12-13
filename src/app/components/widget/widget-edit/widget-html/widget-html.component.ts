@@ -75,22 +75,9 @@ export class WidgetHtmlComponent implements OnInit {
     } else {
       this.widget.text = this.widgettext;
       this.widget.name = this.widgetname;
-      // const newWidget = {
-      //   name: this.widgetname,
-      //   _id: this.wgid,
-      //   widgetType: this.widget.widgetType,
-      //   pageId: this.pid,
-      //   size: 0,
-      //   text: this.widgettext,
-      //   width: '',
-      //   url: '',
-      //   placeholder: '',
-      //   rows: 0,
-      //   formatted: false
-      // };
       this.widgetService.updateWidget(this.pid, this.wgid, this.widget)
         .subscribe(
-          (data: any) => this.router.navigate(['/user', 'website', this.wid, 'page', this.pid, 'widget']),
+          (data: any) => this.router.navigate(['user' + '/website/' + this.wid + '/page/' + this.pid + '/widget/google/list']),
           (error: any) => console.log(error)
         );
     }
@@ -99,7 +86,7 @@ export class WidgetHtmlComponent implements OnInit {
   deleteWidget(pageId, widgetId) {
     this.widgetService.deleteWidget(pageId, widgetId)
       .subscribe((widgets) => {
-        this.router.navigate(['user' + '/website/' + this.wid + '/page/' + this.pid + '/widget/']);
+        this.router.navigate(['user' + '/website/' + this.wid + '/page/' + this.pid + '/widget/google/list']);
       });
   }
 
