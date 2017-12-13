@@ -1,0 +1,58 @@
+<nav class="navbar navbar-tiffany navbar-fixed-top">
+  <div class="container-fluid">
+
+    <!--heading on the nav bar-->
+    <div class="navbar-brand pull-left">
+      <!--<a class="thick white nounderline " href="../page/page-list.html">-->
+      <b class="white">Register</b>
+      <!--</a>-->
+    </div>
+
+  </div>
+</nav>
+
+
+<div class="container padding">
+
+  <form (ngSubmit) = "register()" #f="ngForm">
+    <input ngModel
+           placeholder="username"
+           name="username"
+           class="form-control"
+           type="text"
+           required
+           #username = "ngModel"/>
+
+    <input ngModel
+           placeholder="password"
+           name="password"
+           class="form-control"
+           type="password"
+           required
+           #password="ngModel"/>
+
+    <input ngModel
+           placeholder="verify password"
+           name="passwordvalid"
+           class="form-control"
+           type="password"
+           required
+           #passwordvalid="ngModel"/>
+
+      <b> Pick your role: </b>
+      <input [(ngModel)]="role" type="radio" name = "role" value="ADMIN"  required class="form-control">Admin
+      <input [(ngModel)]="role" type="radio" name = "role" value="PROFESSOR" required class="form-control">Professor
+      <input [(ngModel)]="role" type="radio" name = "role" value="STUDENT" required class="form-control">Student
+      <input [(ngModel)]="role" type="radio" name = "role" value="TA" required class="form-control">TA
+      <input [(ngModel)]="role" type="radio" name = "role" value="ORGANIZER" required class="form-control">Competition Organizer
+
+
+    <button class="btn btn-primary btn-block"
+            type = "submit"
+            [disabled]="!f.valid">Register</button>
+
+    <button class="btn btn-danger btn-block" routerLink="/login">Cancel</button>
+
+  </form>
+
+</div>

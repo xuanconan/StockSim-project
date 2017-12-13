@@ -1,0 +1,58 @@
+<nav class="navbar navbar-light2 navbar-fixed-top">
+  <div class="container-fluid">
+
+    <!--heading on the nav bar-->
+    <div class="navbar-text pull-left">
+      <a routerLink="/user/website/{{wid}}/page/{{pid}}/widget" class="black">
+        <span class="glyphicon glyphicon-chevron-left "></span>
+      </a>
+    </div>
+
+    <div class="navbar-brand pull-left">
+      <div class="thick grey">
+        <b>Widget Edit</b>
+      </div>
+    </div>
+
+    <!--tick mark-->
+    <div class="navbar-text pull-right">
+      <a (click)="updateWidget()" class="black">
+        <span class="glyphicon glyphicon-ok "></span>
+      </a>
+    </div>
+
+  </div>
+</nav>
+
+
+<div class="container-fluid padding">
+  <div *ngIf="flag"
+       class="alert alert-danger">
+    {{error}}
+  </div>
+
+
+  <div class="form-group">
+    <form>
+      <label for="widgetText">Name</label>
+      <input [(ngModel)] = "widgetname"
+             name = "widgetText"
+             placeholder="name"
+             type="text"
+             id="widgetText"
+             class="form-control"/>
+    </form>
+  </div>
+
+  <div class="form-group">
+    <quill-editor [(ngModel)]="widgettext" name="text"></quill-editor>
+  </div>
+
+
+  <br/>
+
+  <a class="btn btn-danger btn-block"
+     (click)="deleteWidget(this.pid, this.wgid)">Delete</a>
+
+</div>
+

@@ -1,0 +1,98 @@
+
+<nav class="navbar navbar-light2 navbar-fixed-top">
+  <div class="container-fluid">
+
+    <!--heading on the nav bar-->
+    <div class="navbar-text pull-left">
+      <a routerLink="/user/website/{{wid}}/page/{{pid}}/widget" class="black">
+        <span class="glyphicon glyphicon-chevron-left "></span>
+      </a>
+    </div>
+
+    <div class="navbar-brand pull-left">
+      <div class="thick grey">
+        <b>Widget Edit</b>
+      </div>
+    </div>
+
+    <!--tick mark-->
+    <div class="navbar-text pull-right">
+      <a (click)="updateImage() " class="black">
+        <span class="glyphicon glyphicon-ok"></span>
+      </a>
+    </div>
+
+  </div>
+</nav>
+
+
+
+<div class="container-fluid padding">
+
+    Name
+    <input [(ngModel)]="widget.name"
+           class="form-control"
+           type="text"
+           placeholder="Name"/>
+
+    Text
+    <input [(ngModel)]="widget.text"
+           class="form-control"
+           type="text"
+           placeholder="text"/>
+
+    URL
+    <input [(ngModel)]="widget.url"
+           class="form-control"
+           type="text"
+           placeholder="url">
+
+    Width%
+    <input [(ngModel)]="widget.width"
+           class="form-control"
+           type="text"
+           placeholder="100"/>
+
+    Upload
+    <form ngNoForm action="{{baseUrl}}/api/upload" method="post" enctype="multipart/form-data">
+      <input  name="myFile"   type="file" class="form-control"/>
+      <input  name="widgetId" value="{{wgid}}"   style="display: none"/>
+      <input  name="websiteId" value="{{wid}}"   style="display: none"/>
+      <input  name="pageId" value="{{pid}}"   style="display: none"/>
+      <input  name="userId" value="{{userId}}"   style="display: none"/>
+      <button type="submit" class="btn btn-primary btn-block ">Upload Image</button>
+      <br/>
+    </form>
+
+
+
+  <a class="btn btn-danger btn-block"
+     (click)="deleteWidget(this.pid, this.wgid)">Delete</a>
+  <br/>
+
+  <a class="btn btn-success btn-block"
+     routerLink="/user/website/{{wid}}/page/{{pid}}/widget/{{wgid}}/flickr">Search</a>
+
+
+  <br/>
+  <div class="padding-b">
+    <b class="blue">Page preview</b>
+      <img [attr.src]= updateImageUrl(widget.url)  [style.width] =  "widget.width" />
+    <br/>
+    <br/>
+  </div>
+
+</div>
+
+
+
+<nav class="navbar navbar-light2 navbar-fixed-bottom">
+  <div class="container-fluid">
+    <div class="navbar-text pull-right">
+      <!--<a href="../user/profile.view.client.html">-->
+      <span class="glyphicon glyphicon-user blue"></span>
+      <!--</a>-->
+    </div>
+  </div>
+</nav>
+

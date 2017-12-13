@@ -1,0 +1,99 @@
+
+<nav class="navbar navbar-tiffany navbar-fixed-top">
+  <div class="container-fluid">
+
+    <!--heading on the nav bar-->
+    <p class="navbar-text pull-left">
+      <a routerLink="/user/website/{{wid}}/page" class="white">
+        <span class="glyphicon glyphicon-chevron-left "></span>
+      </a>
+    </p>
+
+    <div class="navbar-brand pull-left">
+      <b class="white">My Stocks</b>
+    </div>
+
+    <!--tick mark-->
+    <div class="navbar-brand pull-right">
+      <a routerLink="./buy" class="white ">
+        <b>Buy New</b>
+        <!--<span class="glyphicon glyphicon-plus "></span>-->
+      </a>
+    </div>
+  </div>
+</nav>
+<!--Navigation Bar-->
+<!--<div class="nav-bar padding">-->
+  <!--<div class="container-fluid nav-container">-->
+    <!--<div class="row nav-row">-->
+      <!--<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 nav-full">-->
+        <!--<div class="row">-->
+          <!--<div class="nav-left-left pull-left">-->
+            <!--<a routerLink="/user/website/{{wid}}/page">-->
+              <!--<button class="glyphicon glyphicon-chevron-left nav-back pull-left website-nav-btn">-->
+              <!--</button>-->
+            <!--</a>-->
+          <!--</div>-->
+          <!--<div class="nav-left-center col-xs-10">-->
+            <!--<p class="nav-p">Websites</p>-->
+          <!--</div>-->
+          <!--<div class="nav-left-right nav-ok pull-right" >-->
+            <!--<a routerLink="./buy">-->
+              <!--<button class="glyphicon glyphicon-plus nav-plus pull-right website-nav-btn" >-->
+              <!--</button>-->
+            <!--</a>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+
+<!--Content-->
+<div class="container container-fluid content website-content padding50 padding-b">
+  <h1>Stock list</h1>
+  <div >
+    <ul *ngFor="let stock of stocks">
+      <div class="widget-toolbar">
+        <a routerLink="{{stock['_id']}}/edit" >
+          <button class="widget-toolbar-btn glyphicon glyphicon-cog"></button>
+        </a>
+        <button class="widget-toolbar-btn glyphicon glyphicon-align-justify"></button>
+      </div>
+      <li class="result-row">
+        <p>
+          Stock name: {{stock['name']}}
+        </p>
+        <p>
+          Number: {{stock['number']}}
+        </p>
+        <p>
+          Price: {{stock['price']}}
+        </p>
+        <p>
+          Current price: {{stock['currentPrice']}}
+        </p>
+        <p>
+          Profit: {{(stock['currentPrice'] - stock['price']) * stock['number']}}
+        </p>
+        <p>
+          Date: {{stock['date']}}
+        </p>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!--Bottom Bar-->
+<nav class="navbar navbar-tiffany navbar-fixed-bottom">
+  <div class="container-fluid">
+    <b class="navbar-text pull-left white">
+      StockSim
+    </b>
+    <p class="navbar-text pull-right">
+      <a routerLink="/profile" class="white">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+    </p>
+  </div>
+</nav>

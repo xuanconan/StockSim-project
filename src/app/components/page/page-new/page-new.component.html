@@ -1,0 +1,62 @@
+
+<nav class="navbar navbar-light2 navbar-fixed-top">
+  <div class="container-fluid">
+
+    <!--heading on the nav bar-->
+    <div class="navbar-text pull-left">
+      <a routerLink="/user/website/{{wid}}/page" class="black">
+        <span class="glyphicon glyphicon-chevron-left "></span>
+      </a>
+    </div>
+
+    <div class="navbar-brand pull-left">
+      <div class="black">
+        <b>New Portfolio</b>
+      </div>
+    </div>
+
+    <!--tick mark-->
+    <div class="navbar-text pull-right">
+      <a (click)="create(pagename, description)"
+        class="black">
+        <span class="glyphicon glyphicon-ok "></span>
+      </a>
+    </div>
+
+  </div>
+</nav>
+
+
+
+<div class="container-fluid padding" >
+
+    <label>Portfolio Name</label>
+    <input [(ngModel)]="pagename"
+           class="form-control"
+           type="text"
+           placeholder="Portfolio Name"/>
+
+    <label>Description</label>
+    <input [(ngModel)]="description"
+           class="form-control"
+           type="text"
+           placeholder="Description"/>
+
+
+</div>
+
+
+
+<nav class="navbar navbar-light2 navbar-fixed-bottom">
+  <div class="container-fluid">
+    <b class="navbar-text pull-left ">
+      StockSim
+    </b>
+    <p class="navbar-text pull-right">
+      <a routerLink="/profile" class="blue">
+        <span class="glyphicon glyphicon-user "></span>
+      </a>
+    </p>
+  </div>
+</nav>
+

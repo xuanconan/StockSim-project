@@ -1,0 +1,68 @@
+
+<nav class="navbar navbar-light2 navbar-fixed-top">
+  <div class="container-fluid">
+
+    <!--heading on the nav bar-->
+    <div class="navbar-text pull-left">
+      <a routerLink="/user/website/{{wid}}/page/{{pid}}/widget/" class="black">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+    </div>
+
+    <div class="navbar-brand pull-left">
+      <div class="thick grey">
+        <b>Choose Widget</b>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <ul class="list-group padding ">
+
+    <li class="list-group-item blue nounderline borderless">
+      <a (click) = "createWidget('HEADING')">
+         Header
+      </a>
+    </li>
+
+    <li class="list-group-item blue nounderline borderless">
+      <a (click) = "createWidget('IMAGE')">
+         Image
+      </a>
+    </li>
+
+    <li class="list-group-item blue nounderline borderless">
+      <a (click) = "createWidget('YOUTUBE')">
+         YouTube
+      </a>
+    </li>
+
+    <li class="list-group-item blue nounderline borderless">
+      <a (click) = "createWidget('HTML')">
+        Html
+      </a>
+    </li>
+
+    <li class="list-group-item blue nounderline borderless">
+      <a (click) = "createWidget('INPUT')">
+        Text Input
+      </a>
+    </li>
+
+  </ul>
+</div>
+
+
+
+<nav class="navbar navbar-light2 navbar-fixed-bottom">
+  <div class="container-fluid">
+    <div class="navbar-text pull-right">
+      <!--<a href="profile.view.client.html">-->
+      <span class="glyphicon glyphicon-user blue"></span>
+      <!--</a>-->
+    </div>
+  </div>
+</nav>
+
