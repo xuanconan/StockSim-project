@@ -9,10 +9,10 @@ module.exports = function (app) {
   var FacebookStrategy = require('passport-facebook').Strategy;
 
   var facebookConfig = {
-    clientID     : '1539275026193788',
-    clientSecret : '98c2926e0b0a8a375978377e9fe550b9',
+    clientID     : '131117947670689',
+    clientSecret : 'e3944ada59232e0a5a4d60403b8713d3',
     // callbackURL  : 'http://localhost:9000/auth/facebook/callback'
-    callbackURL  : 'https://webdev-conan-xuan.herokuapp.com/auth/facebook/callback'
+    callbackURL  : 'https://stocksim-5610.herokuapp.com/auth/facebook/callback'
     // callbackURL  : process.env.FACEBOOK_CALLBACK_URL
   };
   var bcrypt = require('bcrypt-nodejs');
@@ -41,8 +41,8 @@ module.exports = function (app) {
     passport.authenticate('facebook', {
       // successRedirect: 'http://localhost:4200/profile',
       // failureRedirect: 'http://localhost:4200/login'
-      successRedirect: 'https://webdev-conan-xuan.herokuapp.com/profile',
-      failureRedirect: 'https://webdev-conan-xuan.herokuapp.com/login'
+      successRedirect: 'https://stocksim-5610.herokuapp.com/profile',
+      failureRedirect: 'https://stocksim-5610.herokuapp.com/login'
     }));
 
   // Create a Web service that uses passport.authenticate() to delegate authentication to facebook
@@ -78,7 +78,9 @@ module.exports = function (app) {
               },
               role: 'STUDENT',
               class: null,
-              classname: null
+              classname: null,
+              competition: null,
+              competitionName: null
             };
             return userModel.createUser(newFacebookUser);
           }
