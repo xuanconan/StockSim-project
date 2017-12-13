@@ -1,0 +1,88 @@
+
+<!--Navigation Bar-->
+
+<nav class="navbar navbar-tiffany navbar-fixed-top">
+  <div class="container-fluid">
+
+    <!--heading on the nav bar-->
+    <p class="navbar-text pull-left">
+      <a routerLink="/login" class="white">
+        <span class="glyphicon glyphicon-chevron-left "></span>
+      </a>
+    </p>
+
+    <div class="navbar-brand pull-left">
+      <b class="white">News</b>
+    </div>
+
+  </div>
+</nav>
+
+
+<div class="container padding40 padding-b">
+
+  <div class="row">
+
+    <div class="col-sm-8 hidden-sm padding-b">
+
+      <!--<h2 >World Finance</h2>-->
+
+      <h3>    Bloomberg Live News</h3>
+      <div class="videoWrapper">
+        <iframe  class="e2e-iframe-trusted-src" width="560" height="315"
+                 src = 'https://www.youtube.com/embed/Ga3maNZ0x0w?autoplay=1&cc_load_policy=1&controls=0' frameborder="0" allowfullscreen>
+        </iframe>
+        <br/>
+        <br/>
+      </div>
+      <br/>
+    </div>
+<!--Content-->
+    <div class="col-sm-4">
+
+    <div class="container  content website-content  padding-b">
+  <h2>Search Company News</h2>
+    <input #companyName
+    placeholder="stock symbol">
+    <button (click)="searchCompany(companyName.value)">
+      search
+    </button>
+        <div >
+          <ul *ngFor="let companynew of companyNews">
+            <li class="result-row">
+              <p>
+                News title: {{companynew['title']}}
+              </p>
+              <p>
+                News summary: {{companynew['summary']}}
+              </p>
+              <p>
+                News description: {{companynew['description']}}
+              </p>
+              <p>
+                News date: {{companynew['date']}}
+              </p>
+              <div>
+                News link: <a href="{{companynew['link']}}">{{companynew['link']}}</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!--Bottom Bar-->
+<nav class="navbar navbar-tiffany navbar-fixed-bottom">
+  <div class="container-fluid">
+    <b class="navbar-text pull-left white">
+      StockSim
+    </b>
+    <p class="navbar-text pull-right">
+      <a routerLink="/profile" class="white">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+    </p>
+  </div>
+</nav>
+

@@ -1,0 +1,156 @@
+
+
+<!--<input value = "{{user.username}}"/>-->
+<!--<br/>-->
+
+<!--<input value = "{{user.firstName}}"/>-->
+
+
+<nav class="navbar navbar-tiffany navbar-fixed-top">
+  <div class="container-fluid">
+
+    <!--heading on the nav bar-->
+    <div class="navbar-brand pull-left">
+      <!--<a class="thick white nounderline " href="../page/page-list.html">-->
+      <b class="white">Profile</b>
+      <!--</a>-->
+    </div>
+
+    <div class="navbar-text pull-right">
+      <a (click)= "update ()" class="white ">
+        <span class="glyphicon glyphicon-ok "></span>
+      </a>
+    </div>
+
+    <!--tick mark-->
+
+  </div>
+</nav>
+
+
+<!--<form id="updateForm" (ngSubmit) = "update()" #f="ngForm">-->
+  <div class="container padding40 ">
+
+    <div class="row">
+
+      <div class="col-sm-8 hidden-xs padding-b">
+
+        <h3 >World Finance: Bloomberg Live News</h3>
+
+        <div class="videoWrapper">
+          <iframe  class="e2e-iframe-trusted-src" width="560" height="315"
+                   src = 'https://www.youtube.com/embed/Ga3maNZ0x0w?autoplay=1&cc_load_policy=1&controls=0' frameborder="0" allowfullscreen>
+          </iframe>
+          <br/>
+        </div>
+        <br/>
+
+        <a routerLink="/news">
+          <h3>Search Stock News</h3>
+          <!--<span class="glyphicon glyphicon-plus "></span>-->
+        </a>
+        <br/>
+        <br/>
+
+        <!--<div class="padding"></div>-->
+        <!--<ul *ngFor = "let website of websites"  class="list-group ">-->
+        <!--<li class="list-group-item blue borderless">-->
+
+        <!--&lt;!&ndash;<a routerLink="/profile/{{ userId }}/website/{{ wid }}/page">&ndash;&gt;-->
+        <!--{{ website.name }}-->
+        <!--&lt;!&ndash;</a>&ndash;&gt;-->
+
+        <!--<a class="pull-right" >-->
+        <!--<span class="glyphicon glyphicon-cog"></span>-->
+        <!--</a>-->
+        <!--</li>-->
+        <!--</ul>-->
+
+      </div>
+
+      <div class="col-sm-4  padding40 padding-b">
+
+        <!--<label class = 'blue'>Welcome to StockSim, {{user.firstName}} !</label>-->
+
+        <b class ='letter-tiffany '>Welcome to StockSim, &nbsp;{{user.firstName}}!&nbsp; Role: {{user.role}}</b>
+        <br/>
+        <b class ='letter-tiffany'>My class:&nbsp; {{this.user.classname}}</b>
+        <br/>
+        <b class ='letter-tiffany'>My competition:&nbsp; {{this.user.competitionName}}</b>
+        <br/>
+
+          <form #f="ngForm">
+              <div class="form-group ">
+                <label class = 'blue'>Username</label>
+                <input [(ngModel)] = "username"
+                       name="username"
+                       type="email" class="form-control"
+                       placeholder="alice"
+                       required>
+              </div>
+
+
+              <div class="form-group">
+                <label class = 'blue'>Email address</label>
+                <input [(ngModel)] = "email"
+                       name="email"
+                       type="email" class="form-control"
+                       placeholder="a@unicorn.com"
+                       required>
+              </div>
+
+
+              <div class="form-group">
+                <label class = 'blue'>First Name </label>
+                <input [(ngModel)] = "firstName"
+                       name="firstName"
+                       type="text"
+                       class="form-control"
+                       placeholder = "firstName"
+                       required>
+              </div>
+
+
+
+              <div class="form-group">
+                <label class = 'blue'>Last Name</label>
+                <input [(ngModel)] = "lastName"
+                       name="lastName"
+                       type="text"
+                       class="form-control"
+                       placeholder = "lastName"
+                       required>
+              </div>
+          </form>
+
+          <a class="btn btn-primary btn-block"
+             [routerLink]="['/user', 'website']">Class list</a>
+
+          <a class="btn btn-danger btn-block "
+             (click)="logout()" >Logout</a>
+
+          <a (click)="deleteUser()"
+            class="btn btn-danger btn-block " routerLink="/login" >Delete User</a>
+
+          <a class="btn btn-info btn-block " (click)=gotoAdmin() >Admin</a>
+          <br/>
+      </div>
+    </div>
+
+  </div>
+<!--</form>-->
+
+<!-- Footer -->
+<nav class="navbar navbar-tiffany navbar-fixed-bottom">
+  <div class="container-fluid">
+    <b class="navbar-text pull-left white">
+      StockSim
+    </b>
+    <p class="navbar-text pull-right">
+      <a routerLink="/profile" class="white">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+    </p>
+
+  </div>
+</nav>

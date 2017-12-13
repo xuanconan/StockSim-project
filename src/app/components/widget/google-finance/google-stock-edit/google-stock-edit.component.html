@@ -1,0 +1,119 @@
+<nav class="navbar navbar-tiffany navbar-fixed-top">
+  <div class="container-fluid">
+
+    <!--heading on the nav bar-->
+    <div class="navbar-text pull-left">
+      <a routerLink="/user/website/{{wid}}/page/{{pid}}/widget/google/list" class="white">
+        <span class="glyphicon glyphicon-chevron-left "></span>
+      </a>
+    </div>
+
+    <div class="navbar-brand pull-left">
+      <div class="thick white">
+        <b>Stock Edit</b>
+      </div>
+    </div>
+
+    <!--tick mark-->
+    <!--<div class="navbar-text pull-right">-->
+      <!--<a class="white">-->
+        <!--<span class="glyphicon glyphicon-ok "></span>-->
+      <!--</a>-->
+    <!--</div>-->
+
+  </div>
+</nav>
+
+
+
+<div class="container-fluid padding padding-b">
+  <b>Current holding</b>
+  <div class="result-row">
+    <p>
+      Stock symbol: {{stock['name']}}
+    </p>
+    <p>
+      Shares: {{stock['number']}}
+    </p>
+    <p>
+      Price: {{stock['price']}}
+    </p>
+    <p>
+      Date: {{stock['date']}}
+    </p>
+  </div>
+  <button
+    class="btn btn-primary"
+    (click)="searchCompanyHistoricals()">
+    Search current price
+  </button>
+  <br/>
+  <br/>
+
+  <div >
+    <ul *ngFor="let companyHistorical of companyHistoricals2">
+      <li class="result-row">
+        <p>
+          Date: {{companyHistorical['date']}}
+        </p>
+        <p>
+          Open: {{companyHistorical['open']}}
+        </p>
+        <p>
+          High: {{companyHistorical['high']}}
+        </p>
+        <p>
+          Low: {{companyHistorical['low']}}
+        </p>
+        <p>
+          Close: {{companyHistorical['close']}}
+        </p>
+      </li>
+    </ul>
+  </div>
+
+  <button
+    class="btn btn-primary"
+    (click)="sellStock(number.value)">
+  Sell
+  </button>
+  <input #number>
+  <label>Shares</label>
+
+  <br/>
+  <br/>
+  <button
+    class="btn btn-primary"
+    (click)="buyStock2(number2.value)">
+    Buy
+  </button>
+  <input #number2>
+  <label>Shares</label>
+
+
+
+
+</div>
+
+<nav class="navbar navbar-tiffany navbar-fixed-bottom">
+  <div class="container-fluid">
+    <b class="navbar-text pull-left white">
+      StockSim
+    </b>
+    <div class="navbar-text pull-right">
+      <a routerLink="/profile" class="white">
+        <span class="glyphicon glyphicon-user "></span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!--<nav class="navbar navbar-light2 navbar-fixed-bottom">-->
+  <!--<div class="container-fluid">-->
+    <!--<div class="navbar-text pull-right">-->
+      <!--&lt;!&ndash;<a href="../user/profile.view.client.html">&ndash;&gt;-->
+      <!--<span class="glyphicon glyphicon-user blue"></span>-->
+      <!--&lt;!&ndash;</a>&ndash;&gt;-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</nav>-->
