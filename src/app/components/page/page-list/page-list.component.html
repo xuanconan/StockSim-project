@@ -1,0 +1,66 @@
+
+<nav class="navbar navbar-tiffany navbar-fixed-top">
+  <div class="container-fluid">
+
+    <!--heading on the nav bar-->
+    <div class="navbar-text pull-left">
+      <a routerLink="/user/website" class="black">
+        <span class="white glyphicon glyphicon-chevron-left"></span>
+      </a>
+    </div>
+
+    <div class="navbar-brand pull-left">
+
+        <b class = white>Class {{this.website.name}} portfolio dashboard</b>
+
+    </div>
+
+    <!--tick mark-->
+    <div class="navbar-brand pull-right ">
+      <a (click)= createPortfolio() class="white " >
+        <b>Create</b>
+        <!--<span class="glyphicon glyphicon-plus "></span>-->
+        <!--<button class="btn btn-primary">Create a portfolio</button>-->
+      </a>
+    </div>
+
+  </div>
+</nav>
+
+<div class="container-fluid padding"></div>
+<label class ='letter-tiffany paddingleft'>Welcome to StockSim, {{user.firstName}}! Role: {{user.role}}</label>
+
+<div *ngFor = "let page of pages" class="container-fluid ">
+  <ul  class="list-group">
+    <li class="list-group-item blue ">
+
+      <a routerLink="/user/website/{{ wid }}/page/{{page._id}}/widget" class="thick">
+       <b> {{ page.name }} （ Portfolio manager: {{page.ownername}} ）</b>
+      </a>
+
+      <!--<a class="pull-right" routerLink="/user/website/{{ wid }}/page/{{page._id}}">-->
+        <!--<span class="glyphicon glyphicon-cog"></span>-->
+      <!--</a>-->
+      <button class="pull-right btn-primary " routerLink="/user/website/{{ wid }}/page/{{page._id}}">
+        Edit portfolio
+      </button>
+
+    </li>
+  </ul>
+</div>
+
+
+<nav class="navbar navbar-tiffany navbar-fixed-bottom">
+  <div class="container-fluid">
+    <b class="navbar-text pull-left white">
+      StockSim
+    </b>
+
+    <p class="navbar-text pull-right">
+      <a routerLink="/profile" class="blue">
+        <span class="white glyphicon glyphicon-user"></span>
+      </a>
+    </p>
+  </div>
+</nav>
+

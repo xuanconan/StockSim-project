@@ -1,0 +1,148 @@
+
+<!--Top navbar -->
+<div class="container-fluid">
+  <nav class="navbar navbar-tiffany navbar-fixed-top">
+
+    <!--<div class="navbar-text pull-left">-->
+    <!--<span class="glyphicon glyphicon-chevron-left white pull-left"></span>-->
+    <!--</div>-->
+
+    <div class="row">
+      <div class="col-sm-1">
+        <div class="navbar-text pull-left">
+          <a routerLink="/user/website" class="white">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-sm-3 hidden-xs">
+
+        <div class="navbar-brand pull-left">
+          <!--<a href="website-new.html" class="white">-->
+          <b class="white">Class list</b>
+          <!--</a>-->
+        </div>
+
+        <div class="navbar-text pull-right">
+          <span class="glyphicon glyphicon-plus white "></span>
+        </div>
+        <!--</p>-->
+
+      </div>
+
+      <div class="col-sm-8">
+
+        <!--heading on the nav bar-->
+        <div class="navbar-brand pull-left">
+          <div class="thick white">
+            <b>Class Information</b>
+          </div>
+        </div>
+        <!--tick mark-->
+        <div class="navbar-text pull-right">
+          <a (click)="update()" class="white">
+            <span class="glyphicon glyphicon-ok "></span>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </nav>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-sm-4 hidden-xs">
+      <div class="padding"></div>
+      <label class ='letter-tiffany '>Welcome to StockSim, {{user.firstName}}! Role: {{user.role}}</label>
+
+      <ul *ngFor = "let website of websites"  class="list-group ">
+        <li class="list-group-item blue borderless ">
+
+          <!--<a routerLink="/profile/{{ userId }}/website/{{ wid }}/page">-->
+          <b>  {{ website.name }}         (Professor: {{ website._user.username}} )</b>
+          <!--</a>-->
+
+          <!--<a class="pull-right" >-->
+            <!--<span class="glyphicon glyphicon-cog"></span>-->
+          <!--</a>-->
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-sm-8 padding">
+      <div class="container-fluid">
+
+        <b class ='blue'>My class: {{this.user.classname}}</b>
+        <br/>
+        <b class ='blue'>My competition: {{this.user.competitionName}}</b>
+        <br/>
+
+
+        <b class ='blue'>Class Name</b>
+
+        <input [(ngModel)]="this.website.name"
+                class="form-control"
+                type="text"
+                placeholder='name'>
+
+        <b class ='blue'>Class Description</b>
+
+
+        <textarea [(ngModel)]="this.website.description"
+                  class="form-control"
+                   type="text"
+                   placeholder='description'
+                   rows="6"></textarea>
+
+          <!--<b class ='blue'>Class Description</b>-->
+
+        <!--<div class="form-group">-->
+          <!--<quill-editor [(ngModel)]="website.description" name="text"></quill-editor>-->
+        <!--</div>-->
+
+        <!--<textarea class="form-control" placeholder="Description" rows="6"></textarea>-->
+
+        <a (click)=goToMyPortfolio()
+           class="btn btn-primary btn-block" >
+          Go to my portfolio
+        </a>
+
+        <a (click)="joinClass()"
+           class="btn btn-success btn-block" >
+          Join Class
+        </a>
+
+        <a (click)="dropClass()"
+           class="btn btn-warning btn-block" >
+          Drop Class
+        </a>
+
+
+        <a (click)="deleteWebsite()"
+          class="btn btn-danger btn-block" >
+          Delete (Admin & Professors only)
+        </a>
+
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<nav class="navbar navbar-tiffany navbar-fixed-bottom">
+  <div class="container-fluid">
+    <b class="navbar-text pull-left white">
+      StockSim
+    </b>
+    <div class="navbar-text pull-right">
+      <a routerLink="/profile" class="white">
+        <span class="glyphicon glyphicon-user "></span>
+      </a>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,74 @@
+<!--Navigation Bar-->
+<div class="nav-bar">
+  <div class="container-fluid nav-container">
+    <div class="row nav-row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 nav-full">
+        <div class="row">
+          <div class="nav-left-left pull-left">
+            <a routerLink="/user/website/{{wid}}/page/{{pid}}/widget/google/list">
+              <button class="glyphicon glyphicon-chevron-left nav-back pull-left website-nav-btn">
+              </button>
+            </a>
+          </div>
+          <div class="nav-left-center col-xs-10">
+            <p class="nav-p">Websites</p>
+          </div>
+          <div class="nav-left-right nav-ok pull-right" >
+            <a routerLink="new">
+              <button class="glyphicon glyphicon-plus nav-plus pull-right website-nav-btn" >
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Content-->
+<div class="content website-content">
+  <h1>Buy stock</h1>
+  <label>Company Name</label>
+  <input #companyName>
+  <label>Number</label>
+  <input #number>
+  <button
+    class="btn btn-primary"
+    (click)="searchCompanyHistoricals(companyName.value)">
+    search
+  </button>
+  <button
+    class="btn btn-primary"
+    (click)="buyStock(companyName.value, number.value)">
+    buy
+  </button>
+  <div >
+    <ul *ngFor="let companyHistorical of companyHistoricals">
+      <li class="result-row">
+        <p>
+          Date: {{companyHistorical['date']}}
+        </p>
+        <p>
+          Open: {{companyHistorical['open']}}
+        </p>
+        <p>
+          High: {{companyHistorical['high']}}
+        </p>
+        <p>
+          Low: {{companyHistorical['low']}}
+        </p>
+        <p>
+          Close: {{companyHistorical['close']}}
+        </p>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!--Bottom Bar-->
+<div class="bottom">
+  <a routerLink="/profile/{{userId}}">
+    <button class="nav-btn glyphicon glyphicon-user pull-right"></button>
+  </a>
+</div>
+

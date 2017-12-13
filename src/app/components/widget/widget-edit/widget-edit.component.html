@@ -1,0 +1,91 @@
+
+<!--<nav class="navbar navbar-light2 navbar-fixed-top">-->
+  <!--<div class="container-fluid">-->
+
+    <!--&lt;!&ndash;heading on the nav bar&ndash;&gt;-->
+    <!--<div class="navbar-text pull-left">-->
+      <!--<a routerLink="/profile/{{userId}}/website/{{wid}}/page/{{pid}}/widget" class="black">-->
+        <!--<span class="glyphicon glyphicon-chevron-left "></span>-->
+      <!--</a>-->
+    <!--</div>-->
+
+    <!--<div class="navbar-brand pull-left">-->
+      <!--<div class="thick grey">-->
+        <!--<b>Widget Edit</b>-->
+      <!--</div>-->
+    <!--</div>-->
+
+    <!--&lt;!&ndash;tick mark&ndash;&gt;-->
+    <!--<div class="navbar-text pull-right">-->
+      <!--<a routerLink="/profile/{{userId}}/website/{{wid}}/page/{{pid}}/widget" class="black">-->
+        <!--<span class="glyphicon glyphicon-ok"></span>-->
+      <!--</a>-->
+    <!--</div>-->
+
+  <!--</div>-->
+<!--</nav>-->
+
+
+<div class="container-fluid ">
+
+  <!--<div [ngSwitch] = "widget.widgetType">-->
+
+    <!--<div *ngSwitchCase = "'HEADING'">-->
+      <!--{{widget.text}}-->
+      <app-widget-header *ngIf="widget.type ==='HEADING'"></app-widget-header>
+    <!--</div>-->
+
+    <!--<div *ngSwitchCase = "'IMAGE'">-->
+      <!--{{widget.size}}-->
+      <app-widget-image *ngIf="widget.type ==='IMAGE'"></app-widget-image>
+    <!--</div>-->
+
+    <!--<div *ngSwitchCase = "'HTML'">-->
+      <app-widget-html *ngIf="widget.type ==='HTML'"></app-widget-html>
+    <!--</div>-->
+
+    <!--<div *ngSwitchCase = "'YOUTUBE'">-->
+      <!--{{widget.url}}-->
+      <app-widget-youtube *ngIf="widget.type ==='YOUTUBE'"></app-widget-youtube>
+    <!--</div>-->
+
+      <app-widget-text *ngIf="widget.type ==='INPUT'"></app-widget-text>
+
+  <!--</div>-->
+</div>
+
+<!--<div [ngSwitch]="widget.type">-->
+
+  <!--<div *ngSwitchCase='HEADING'>-->
+    <!--<app-widget-header></app-widget-header>-->
+  <!--</div>-->
+
+  <!--<div *ngSwitchCase='IMAGE'>-->
+    <!--<app-widget-image></app-widget-image>-->
+  <!--</div>-->
+
+  <!--<div *ngSwitchCase='YOUTUBE'>-->
+    <!--<app-widget-youtube></app-widget-youtube>-->
+  <!--</div>-->
+
+  <!--<div *ngSwitchCase='HTML'>-->
+    <!--<app-widget-html></app-widget-html>-->
+  <!--</div>-->
+
+  <!--<div *ngSwitchCase='TEXT'>-->
+    <!--<app-widget-text></app-widget-text>-->
+  <!--</div>-->
+
+
+<!--</div>-->
+
+
+<!--<nav class="navbar navbar-light2 navbar-fixed-bottom">-->
+  <!--<div class="container-fluid">-->
+    <!--<div class="navbar-text pull-right">-->
+      <!--&lt;!&ndash;<a href="../user/profile.view.client.html">&ndash;&gt;-->
+      <!--<span class="glyphicon glyphicon-user blue"></span>-->
+      <!--&lt;!&ndash;</a>&ndash;&gt;-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</nav>-->
