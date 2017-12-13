@@ -5,7 +5,8 @@ var StockSchema = mongoose.Schema({
   name: String,
   number: Number,
   price: Number,
-  date: String
+  date: String,
+  pid: String
 });
 
 module.exports = StockSchema;

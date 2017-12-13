@@ -32,13 +32,15 @@ export class GoogleStockListComponent implements OnInit {
       this.wid = params['wid'];
       this.pid = params['pid'];
     });
+    console.log('pid');
+    console.log(this.pid);
     this.user = this.sharedService.user;
     console.log(this.user);
     this.userId = this.user['_id'];
-    this.googleFinanceSerice.findAllstocksForUser(this.userId)
+    this.googleFinanceSerice.findAllstocksForPort(this.pid)
       .subscribe((stocks) => {
         for (const stock of stocks) {
-          console.log(this.time);
+          console.log(stock);
           this.googleFinanceSerice.searchCompanyHistoricals(stock['name'], this.time, this.time)
             .subscribe((companyHistoricals) => {
               if (companyHistoricals === null || companyHistoricals.length === 0) {

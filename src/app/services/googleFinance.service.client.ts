@@ -35,18 +35,37 @@ export class GoogleFinanceServiceClient {
       });
   }
 
-  findAllstocksForUser(userId) {
-    const url = this.baseUrl + '/api/stock/' + userId;
+  // findAllstocksForUser(userId) {
+  //   const url = this.baseUrl + '/api/stock/' + userId;
+  //   return this.http.get(url)
+  //     .map((response: Response) => {
+  //       return response.json();
+  //     });
+  // }
+
+  findAllstocksForPort(pid) {
+    const url = this.baseUrl + '/api/port/' + pid;
     return this.http.get(url)
       .map((response: Response) => {
         return response.json();
       });
   }
 
-  findStockForUserandCompany(userId, companyName) {
-    console.log(userId);
+  // findStockForUserandCompany(userId, companyName) {
+  //   console.log(userId);
+  //   console.log(companyName);
+  //   const url = this.baseUrl + '/api/stock/find/stock?userId=' + userId + '&companyName=' + companyName;
+  //   // const url = this.baseUrl + '/api/stock/find';
+  //   return this.http.get(url)
+  //     .map((response: Response) => {
+  //       return response.json();
+  //     });
+  // }
+
+  findStockForPortandCompany(pid, companyName) {
+    console.log(pid);
     console.log(companyName);
-    const url = this.baseUrl + '/api/stock/find/stock?userId=' + userId + '&companyName=' + companyName;
+    const url = this.baseUrl + '/api/stock/find/pc?pid=' + pid + '&companyName=' + companyName;
     // const url = this.baseUrl + '/api/stock/find';
     return this.http.get(url)
       .map((response: Response) => {

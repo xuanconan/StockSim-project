@@ -77,7 +77,7 @@ export class GoogleStockEditComponent implements OnInit {
       return;
     }
     number = parseInt(number, 10);
-    this.googleFinanceService.findStockForUserandCompany(this.userId, this.companyName)
+    this.googleFinanceService.findStockForPortandCompany(this.pid, this.companyName)
       .subscribe((findstock) => {
         if (findstock === null) {
           alert('the stock not existed');
@@ -130,14 +130,63 @@ export class GoogleStockEditComponent implements OnInit {
       });
   }
 
-  buyStock(number) {
+  // buyStock(number) {
+  //   const time = this.time;
+  //   const companyName = this.companyName;
+  //   if (companyName.length === 0 || time.length === 0 || number.length === 0) {
+  //     alert('missing info');
+  //     return;
+  //   }
+  //   this.googleFinanceService.findStockForUserandCompany(this.userId, companyName)
+  //     .subscribe((findstock) => {
+  //       console.log('findstock');
+  //       console.log(findstock);
+  //       this.googleFinanceService.searchCompanyHistoricals(companyName, time, time)
+  //         .subscribe((companyHistoricals) => {
+  //           this.companyHistoricals = companyHistoricals;
+  //           if (this.companyHistoricals === null || this.companyHistoricals.length === 0) {
+  //             alert('the stock not existed');
+  //           }else {
+  //             const stock = this.companyHistoricals[0];
+  //             const newStock = {
+  //               userId: this.userId,
+  //               name: stock['symbol'],
+  //               number: parseInt(number, 10),
+  //               price: parseFloat((stock['open']).toString()),
+  //               date: stock['date']
+  //             };
+  //             if (findstock === null) {
+  //               console.log('null');
+  //               this.googleFinanceService.addStock(newStock)
+  //                 .subscribe((getStock) => {
+  //                   this.stock = getStock;
+  //                   console.log('successful');
+  //                   console.log(getStock);
+  //                 });
+  //             } else {
+  //               console.log('notnull');
+  //               const newPrice = newStock['price'];
+  //               const newNumber = newStock['number'];
+  //               const newDate = newStock['date'];
+  //               console.log(newPrice);
+  //               console.log(newNumber);
+  //               console.log(newDate);
+  //               this.updateStockNumberPriceDate(findstock, companyName, newNumber, newPrice, newDate);
+  //             }
+  //           }
+  //         });
+  //
+  //     });
+  // }
+
+  buyStock2(companyName, number) {
     const time = this.time;
-    const companyName = this.companyName;
+
     if (companyName.length === 0 || time.length === 0 || number.length === 0) {
       alert('missing info');
       return;
     }
-    this.googleFinanceService.findStockForUserandCompany(this.userId, companyName)
+    this.googleFinanceService.findStockForPortandCompany(this.pid, companyName)
       .subscribe((findstock) => {
         console.log('findstock');
         console.log(findstock);
@@ -150,6 +199,7 @@ export class GoogleStockEditComponent implements OnInit {
               const stock = this.companyHistoricals[0];
               const newStock = {
                 userId: this.userId,
+                pid: this.pid,
                 name: stock['symbol'],
                 number: parseInt(number, 10),
                 price: parseFloat((stock['open']).toString()),
@@ -189,6 +239,7 @@ export class GoogleStockEditComponent implements OnInit {
     console.log(newNumber);
     const newStock = {
       userId: this.userId,
+      pid: this.pid,
       name: companyName,
       number: newNumber,
       price: newPrice,

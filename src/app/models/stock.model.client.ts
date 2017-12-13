@@ -5,6 +5,7 @@ export class Stock {
   price: Number;
   currentPrice: Number;
   date: String;
+  pid: String;
 
 
   constructor(userId: String, name: String, number: Number, price: Number, date: String) {

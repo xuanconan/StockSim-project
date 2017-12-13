@@ -11,7 +11,9 @@ module.exports = function (app) {
   app.get('/api/search/historicals/:companyname/time', searchCompanyHistorical);
   app.post('/api/add/stock', addStock);
   app.get('/api/stock/:userId', findAllStocksForUser);
+  app.get('/api/port/:pid', findAllstocksForPort);
   app.get('/api/stock/find/stock', findStockForUserandCompany);
+  app.get('/api/stock/find/pc', findStockForPortandCompany);
   app.get('/api/stock/find/stockid/:stockid', findStockByStockId);
   app.put('/api/stock/update', updateStock);
   // app.get('/api/search/sth', searchSomeNews());
@@ -92,11 +94,30 @@ module.exports = function (app) {
       });
   }
 
+  function findAllstocksForPort(req, res) {
+    const pid = req.params['pid'];
+    stockModel
+      .findAllstocksForPort(pid)
+      .then(function (stocks) {
+        res.json(stocks);
+      });
+  }
+
   function findStockForUserandCompany(req, res) {
     const userId = req.query['userId'];
     const companyName = req.query['companyName'];
     stockModel
       .findStockForUserandCompany(userId, companyName)
+      .then(function (stock) {
+        res.json(stock);
+      });
+  }
+
+  function findStockForPortandCompany(req, res) {
+    const pid = req.query['pid'];
+    const companyName = req.query['companyName'];
+    stockModel
+      .findStockForPortandCompany(pid, companyName)
       .then(function (stock) {
         res.json(stock);
       });

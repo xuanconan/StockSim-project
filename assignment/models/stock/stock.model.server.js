@@ -5,7 +5,9 @@ var StockModel = mongoose.model("StockModel", StockSchema);
 
 StockModel.addStock = addStock;
 StockModel.findAllStocksForUser = findAllStocksForUser;
+StockModel.findAllstocksForPort = findAllstocksForPort;
 StockModel.findStockForUserandCompany = findStockForUserandCompany;
+StockModel.findStockForPortandCompany = findStockForPortandCompany;
 StockModel.findStockByStockId = findStockByStockId;
 StockModel.updateStock = updateStock;
 
@@ -22,9 +24,20 @@ function findAllStocksForUser(userId) {
     .find({userId: userId});
 }
 
+function findAllstocksForPort(pid) {
+  console.log(StockModel.find({pid: pid}));
+  return StockModel
+    .find({pid: pid});
+}
+
 function findStockForUserandCompany(userId, companyName) {
   return StockModel
     .findOne({userId: userId, name: companyName});
+}
+
+function findStockForPortandCompany(pid, companyName) {
+  return StockModel
+    .findOne({pid: pid, name: companyName});
 }
 
 function findStockByStockId(stockId) {
