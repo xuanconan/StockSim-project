@@ -48,7 +48,7 @@ const appRoutes: Routes = [
     component: GoogleStockEditComponent, canActivate: [AuthenticationService]},
   {path: 'user/website/:wid/page/:pid/widget/google/news', component: GoogleStockNewsComponent},
   {path: 'user/admin', component: AdminComponent, canActivate: [AuthenticationService]},
-
+  {path: 'news', component: GoogleStockNewsComponent},
 ];
 
 // use appRoutes to config router module and export it as an constant variable that

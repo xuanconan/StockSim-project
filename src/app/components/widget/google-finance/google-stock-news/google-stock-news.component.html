@@ -1,35 +1,62 @@
 
 <!--Navigation Bar-->
-<div class="nav-bar">
-  <div class="container-fluid nav-container">
-    <div class="row nav-row">
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 nav-full">
-        <div class="row">
-          <div class="nav-left-left pull-left">
-            <a routerLink="/profile/{{userId}}">
-              <button class="glyphicon glyphicon-chevron-left nav-back pull-left website-nav-btn">
-              </button>
-            </a>
-          </div>
-          <div class="nav-left-center col-xs-10">
-            <p class="nav-p">Websites</p>
-          </div>
-          <div class="nav-left-right nav-ok pull-right" >
-            <a routerLink="new">
-              <button class="glyphicon glyphicon-plus nav-plus pull-right website-nav-btn" >
-              </button>
-            </a>
-          </div>
-        </div>
-      </div>
+
+<nav class="navbar navbar-tiffany navbar-fixed-top">
+  <div class="container-fluid">
+
+    <!--heading on the nav bar-->
+    <p class="navbar-text pull-left">
+      <a routerLink="/login" class="white">
+        <span class="glyphicon glyphicon-chevron-left "></span>
+      </a>
+    </p>
+
+    <div class="navbar-brand pull-left">
+      <b class="white">News</b>
     </div>
+
+    <!--tick mark-->
+    <!--<div class="navbar-brand pull-right">-->
+      <!--<a (click)=gotoBuy()-->
+
+         <!--class="white ">-->
+        <!--<b>Buy New</b>-->
+        <!--&lt;!&ndash;<span class="glyphicon glyphicon-plus "></span>&ndash;&gt;-->
+      <!--</a>-->
+    <!--</div>-->
   </div>
-</div>
+</nav>
+<!--<div class="nav-bar">-->
+  <!--<div class="container-fluid nav-container">-->
+    <!--<div class="row nav-row">-->
+      <!--<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 nav-full">-->
+        <!--<div class="row">-->
+          <!--<div class="nav-left-left pull-left">-->
+            <!--<a routerLink="/login">-->
+              <!--<button class="glyphicon glyphicon-chevron-left nav-back pull-left website-nav-btn">-->
+              <!--</button>-->
+            <!--</a>-->
+          <!--</div>-->
+          <!--<div class="nav-left-center col-xs-10">-->
+            <!--<p class="nav-p">Websites</p>-->
+          <!--</div>-->
+          <!--<div class="nav-left-right nav-ok pull-right" >-->
+            <!--<a routerLink="new">-->
+              <!--<button class="glyphicon glyphicon-plus nav-plus pull-right website-nav-btn" >-->
+              <!--</button>-->
+            <!--</a>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
 
 <!--Content-->
-<div class="content website-content">
+<div class="container container-fluid content website-content padding padding-b">
   <h1>Search Company News</h1>
-  <input #companyName>
+  <input #companyName
+  placeholder="stock symbol">
   <button (click)="searchCompany(companyName.value)">
     search
   </button>
@@ -57,8 +84,16 @@
 </div>
 
 <!--Bottom Bar-->
-<div class="bottom">
-  <a routerLink="/profile">
-    <button class="nav-btn glyphicon glyphicon-user pull-right"></button>
-  </a>
-</div>
+<nav class="navbar navbar-tiffany navbar-fixed-bottom">
+  <div class="container-fluid">
+    <b class="navbar-text pull-left white">
+      StockSim
+    </b>
+    <p class="navbar-text pull-right">
+      <a routerLink="/profile" class="white">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+    </p>
+  </div>
+</nav>
+
