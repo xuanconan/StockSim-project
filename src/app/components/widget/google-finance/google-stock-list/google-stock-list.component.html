@@ -1,0 +1,68 @@
+<!--Navigation Bar-->
+<div class="nav-bar">
+  <div class="container-fluid nav-container">
+    <div class="row nav-row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 nav-full">
+        <div class="row">
+          <div class="nav-left-left pull-left">
+            <a routerLink="/user/website/{{wid}}/page">
+              <button class="glyphicon glyphicon-chevron-left nav-back pull-left website-nav-btn">
+              </button>
+            </a>
+          </div>
+          <div class="nav-left-center col-xs-10">
+            <p class="nav-p">Websites</p>
+          </div>
+          <div class="nav-left-right nav-ok pull-right" >
+            <a routerLink="./buy">
+              <button class="glyphicon glyphicon-plus nav-plus pull-right website-nav-btn" >
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Content-->
+<div class="content website-content">
+  <h1>Stock list</h1>
+  <div >
+    <ul *ngFor="let stock of stocks">
+      <div class="widget-toolbar">
+        <a routerLink="{{stock['_id']}}/edit" >
+          <button class="widget-toolbar-btn glyphicon glyphicon-cog"></button>
+        </a>
+        <button class="widget-toolbar-btn glyphicon glyphicon-align-justify"></button>
+      </div>
+      <li class="result-row">
+        <p>
+          Stock name: {{stock['name']}}
+        </p>
+        <p>
+          Number: {{stock['number']}}
+        </p>
+        <p>
+          Price: {{stock['price']}}
+        </p>
+        <p>
+          Current price: {{stock['currentPrice']}}
+        </p>
+        <p>
+          Profit: {{(stock['currentPrice'] - stock['price']) * stock['number']}}
+        </p>
+        <p>
+          Date: {{stock['date']}}
+        </p>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!--Bottom Bar-->
+<div class="bottom">
+  <a routerLink="/profile/{{userId}}">
+    <button class="nav-btn glyphicon glyphicon-user pull-right"></button>
+  </a>
+</div>

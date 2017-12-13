@@ -16,6 +16,10 @@ import {TestComponent} from './components/test/test.component';
 import {ModuleWithProviders} from '@angular/core';
 import {FlickrImageSearchComponent} from './components/widget/widget-edit/widget-image/flickr-image-search/flickr-image-search.component';
 import {AuthenticationService} from './services/authentication.service.client';
+import {GoogleStockBuyComponent} from './components/widget/google-finance/google-stock-buy/google-stock-buy.component';
+import {GoogleStockListComponent} from './components/widget/google-finance/google-stock-list/google-stock-list.component';
+import {GoogleStockEditComponent} from './components/widget/google-finance/google-stock-edit/google-stock-edit.component';
+import {GoogleStockNewsComponent} from './components/widget/google-finance/google-stock-news/google-stock-news.component';
 // config route default constants
 const appRoutes: Routes = [
   {path: '', component : HomeComponent},
@@ -36,6 +40,11 @@ const appRoutes: Routes = [
   {path: 'user/website/:wid/page/:pid/widget/new', component: WidgetChooserComponent, canActivate: [AuthenticationService]},
   {path: 'user/website/:wid/page/:pid/widget/:wgid', component: WidgetEditComponent, canActivate: [AuthenticationService]},
   {path: 'user/website/:wid/page/:pid/widget/:wgid/flickr', component: FlickrImageSearchComponent, canActivate: [AuthenticationService]},
+  {path: 'user/website/:wid/page/:pid/widget/google/list/buy', component: GoogleStockBuyComponent, canActivate: [AuthenticationService]},
+  {path: 'user/website/:wid/page/:pid/widget/google/list', component: GoogleStockListComponent, canActivate: [AuthenticationService]},
+  {path: 'user/website/:wid/page/:pid/widget/google/list/:stockid/edit',
+    component: GoogleStockEditComponent, canActivate: [AuthenticationService]},
+  {path: 'user/website/:wid/page/:pid/widget/google/news', component: GoogleStockNewsComponent},
 ];
 
 // use appRoutes to config router module and export it as an constant variable that

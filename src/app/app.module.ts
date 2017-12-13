@@ -38,7 +38,11 @@ import {SharedService} from './services/shared.service.client';
 import {AuthenticationService} from './services/authentication.service.client';
 import {SortableDirective} from './components/widget/widget-list/sortable.directive';
 import { OrderByPipe } from './components/widget/widget-list/order-by-pipe.pipe';
-
+import { GoogleStockBuyComponent } from './components/widget/google-finance/google-stock-buy/google-stock-buy.component';
+import { GoogleStockEditComponent } from './components/widget/google-finance/google-stock-edit/google-stock-edit.component';
+import { GoogleStockListComponent } from './components/widget/google-finance/google-stock-list/google-stock-list.component';
+import {GoogleFinanceServiceClient} from './services/googleFinance.service.client';
+import { GoogleStockNewsComponent } from './components/widget/google-finance/google-stock-news/google-stock-news.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +68,11 @@ import { OrderByPipe } from './components/widget/widget-list/order-by-pipe.pipe'
     WidgetHtmlComponent,
     WidgetTextComponent,
     SortableDirective,
-    OrderByPipe
+    OrderByPipe,
+    GoogleStockBuyComponent,
+    GoogleStockEditComponent,
+    GoogleStockListComponent,
+    GoogleStockNewsComponent
   ],
   imports: [
     BrowserModule, routing, FormsModule, HttpModule, QuillEditorModule
@@ -79,7 +87,8 @@ import { OrderByPipe } from './components/widget/widget-list/order-by-pipe.pipe'
     TestService,
     FlickrService,
     SharedService,
-    AuthenticationService
+    AuthenticationService,
+    GoogleFinanceServiceClient
   ],
   bootstrap: [AppComponent]
 })
