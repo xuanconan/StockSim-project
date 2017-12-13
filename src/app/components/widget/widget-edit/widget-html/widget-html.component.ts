@@ -71,7 +71,7 @@ export class WidgetHtmlComponent implements OnInit {
 
   updateWidget() {
     if (!this.widgetname) {
-      alert('Please input widget name');
+      alert('Please input comment title');
     } else {
       this.widget.text = this.widgettext;
       this.widget.name = this.widgetname;
