@@ -1,3 +1,4 @@
+
 <!--Navigation Bar-->
 <div class="nav-bar">
   <div class="container-fluid nav-container">
@@ -28,33 +29,28 @@
 <!--Content-->
 <div class="content website-content">
   <h1>Search Company News</h1>
-  <label>Company Name</label>
   <input #companyName>
-  <label>From</label>
-  <input #from>
-  <label>To</label>
-  <input #to>
-  <button (click)="searchCompanyHistoricals(companyName.value, from.value, to.value)">
+  <button (click)="searchCompany(companyName.value)">
     search
   </button>
   <div >
-    <ul *ngFor="let companyHistorical of companyHistoricals">
+    <ul *ngFor="let companynew of companyNews">
       <li class="result-row">
         <p>
-          Date: {{companyHistorical['date']}}
+          News title: {{companynew['title']}}
         </p>
         <p>
-          Open: {{companyHistorical['open']}}
+          News summary: {{companynew['summary']}}
         </p>
         <p>
-          High: {{companyHistorical['high']}}
+          News description: {{companynew['description']}}
         </p>
         <p>
-          Low: {{companyHistorical['low']}}
+          News date: {{companynew['date']}}
         </p>
-        <p>
-          Close: {{companyHistorical['close']}}
-        </p>
+        <div>
+          News link: <a href="{{companynew['link']}}">{{companynew['link']}}</a>
+        </div>
       </li>
     </ul>
   </div>
@@ -66,4 +62,3 @@
     <button class="nav-btn glyphicon glyphicon-user pull-right"></button>
   </a>
 </div>
-

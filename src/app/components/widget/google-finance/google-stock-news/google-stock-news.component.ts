@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {CompanyNewsModel} from '../../../../models/company_news.model.client';
 import {GoogleFinanceServiceClient} from '../../../../services/googleFinance.service.client';
-import {CompanyHistoricalModel} from '../../../../models/company_historical.model.client';
 
 @Component({
   selector: 'app-google-stock-news',
@@ -9,18 +9,24 @@ import {CompanyHistoricalModel} from '../../../../models/company_historical.mode
 })
 export class GoogleStockNewsComponent implements OnInit {
 
-  companyHistoricals: CompanyHistoricalModel[];
+  companyNews: CompanyNewsModel[];
 
   constructor(private googleFinanceService: GoogleFinanceServiceClient) { }
 
   ngOnInit() {
+    // this.googleFinanceService.searchSomeNews()
+    //   .subscribe((companyNews) => {
+    //     this.companyNews = companyNews;
+    //     console.log(companyNews);
+    //   });
   }
 
-  searchCompanyHistoricals(companyName, from, to) {
-    this.googleFinanceService.searchCompanyHistoricals(companyName, from, to)
-      .subscribe((companyHistoricals) => {
-        this.companyHistoricals = companyHistoricals;
-        console.log(companyHistoricals);
+  searchCompany(companyName) {
+    this.googleFinanceService.searchCompanyNews(companyName)
+      .subscribe((companyNews) => {
+        this.companyNews = companyNews;
+        console.log(companyNews);
       });
   }
+
 }

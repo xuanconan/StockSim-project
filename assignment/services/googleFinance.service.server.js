@@ -20,6 +20,7 @@ module.exports = function (app) {
 
   function searchCompanyNews(req, res) {
     var companyName = req.params['companyname'];
+    console.log(companyName);
     googleFinance.companyNews({
       symbol: companyName
     }).then(function (news) {
