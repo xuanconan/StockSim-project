@@ -1,0 +1,160 @@
+
+<nav class="navbar navbar-tiffany navbar-fixed-top">
+  <div class="container-fluid">
+
+    <!--heading on the nav bar-->
+    <p class="navbar-text pull-left">
+      <a routerLink="/user/website/{{wid}}/page" class="white">
+        <span class="glyphicon glyphicon-chevron-left "></span>
+      </a>
+    </p>
+
+    <div class="navbar-brand pull-left">
+      <b class="white">My Stocks</b>
+    </div>
+
+    <!--tick mark-->
+    <div class="navbar-brand pull-right">
+      <a (click)=gotoBuy()
+
+         class="white ">
+        <b>Buy New</b>
+        <!--<span class="glyphicon glyphicon-plus "></span>-->
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!--Content-->
+<div class="container container-fluid content website-content padding50 padding-b">
+
+  <label class ='letter-tiffany '>"The stock market is filled with individuals who know the price of everything,
+    but the value of nothing." - Phillip Fisher</label>
+  <br/>
+  <h3>All holdings</h3>
+  <br/>
+
+  <div class="container container-fluid">
+    <ul *ngFor="let stock of stocks">
+      <div class="jpa-toolbar">
+        <a routerLink="{{stock['_id']}}/edit" >
+          <a class="black glyphicon glyphicon-usd">BUY/SELL</a>
+        </a>
+        <!--<button class="widget-toolbar-btn glyphicon glyphicon-align-justify"></button>-->
+      </div>
+      <li class="result-row">
+        <p>
+          Stock symbol: {{stock['name']}} &nbsp; &nbsp; Shares: {{stock['number']}}
+        </p>
+        <!--<p>-->
+          <!--Number: {{stock['number']}}-->
+        <!--</p>-->
+        <p>
+          Price: {{stock['price']}} &nbsp; &nbsp; Current price: {{stock['currentPrice']}}
+        </p>
+        <!--<p>-->
+          <!--Current price: {{stock['currentPrice']}}-->
+        <!--</p>-->
+        <p>
+          Profit: {{(stock['currentPrice'] - stock['price']) * stock['number']}}
+        </p>
+        <p>
+          Date: {{stock['date']}}
+        </p>
+      </li>
+    </ul>
+  </div>
+
+
+  <div class="container-fluid padding padding-b " >
+
+
+    <div class="widget-list">
+
+      <div *ngFor = "let widget of widgets " >
+
+        <div [ngSwitch] = "widget.type" >
+
+          <div class="jga-widget ">
+
+            <div class="jpa-toolbar">
+              <div>
+                <span class="glyphicon glyphicon-menu-hamburger black pull-right"></span>
+                <a class="blue" routerLink="/user/website/{{ wid }}/page/{{pid}}/widget/{{widget._id}}" >
+                  <span class="glyphicon glyphicon-cog  pull-right"></span>
+                </a>
+              </div>
+            </div>
+
+            <!--<div *ngSwitchCase="'HEADING'" class="padding-b">-->
+              <!--<div [ngSwitch]="widget.size">-->
+                <!--<h1 *ngSwitchCase="1">{{widget.text}}</h1>-->
+                <!--<h2 *ngSwitchCase="2">{{widget.text}}</h2>-->
+                <!--<h3 *ngSwitchCase="3">{{widget.text}}</h3>-->
+                <!--<h4 *ngSwitchCase="4">{{widget.text}}</h4>-->
+                <!--<h5 *ngSwitchCase="5">{{widget.text}}</h5>-->
+                <!--<h6 *ngSwitchCase="6">{{widget.text}}</h6>-->
+              <!--</div>-->
+            <!--</div>-->
+
+            <!--<div *ngSwitchCase = "'IMAGE'" class="padding-b">-->
+              <!--Image url: "{{widget.url}}"-->
+              <!--<br/>-->
+              <!--<img class="img-responsive" [src] = updateImageUrl(widget.url) [style.width] =  "widget.width" />-->
+              <!--<br/>-->
+            <!--</div>-->
+
+            <div *ngSwitchCase = "'HTML'" [innerHTML]="widget.text" class="black"> </div>
+            <!--<a href="{{widget.url}}" class> <div>{{widget.text}}</div> </a>-->
+
+            <!--<div *ngSwitchCase="'INPUT'" class="padding-b" >-->
+              <!--Text Input Name: {{widget.name}}-->
+              <!--<div *ngIf="widget.formatted">-->
+                <!--<quill-editor [(ngModel)]="widget.text" name="text"></quill-editor>-->
+              <!--</div>-->
+              <!--<input *ngIf="!widget.formatted && (!widget.rows || widget.rows===1)"-->
+                     <!--placeholder="{{widget.placeholder}}" class="form-control"/>-->
+
+              <!--<textarea *ngIf="!widget.formatted && (widget.rows > 1)"-->
+                        <!--rows="{{widget.rows}}" placeholder="{{widget.placeholder}}"-->
+                        <!--class="form-control">{{widget.text}}</textarea>-->
+            <!--</div>-->
+
+            <!--<div *ngSwitchCase = "'YOUTUBE'" class="padding-b">-->
+              <!--Video Name: {{widget.name}}-->
+              <!--<div class="videoWrapper">-->
+                <!--<iframe  class="e2e-iframe-trusted-src" width="560" height="315"-->
+                         <!--[src] = updateVideoUrl(widget.url) frameborder="0" allowfullscreen></iframe>-->
+                <!--<br/>-->
+              <!--</div>-->
+            <!--</div>-->
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <button class='butten btn-primary white'>
+    <a (click) = "createWidget('')">
+      <b class='white'>Comment</b>
+    </a>
+  </button>
+</div>
+
+
+<!--Bottom Bar-->
+<nav class="navbar navbar-tiffany navbar-fixed-bottom">
+  <div class="container-fluid">
+    <b class="navbar-text pull-left white">
+      StockSim
+    </b>
+    <p class="navbar-text pull-right">
+      <a routerLink="/profile" class="white">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+    </p>
+  </div>
+</nav>
