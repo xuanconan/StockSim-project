@@ -297,7 +297,6 @@ export class GoogleStockEditComponent implements OnInit {
               }
             }
           });
-
       });
   }
 
