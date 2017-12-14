@@ -71,13 +71,13 @@ var mongoose = require('mongoose'); // import it
 //
 require("./assignment/app") (app);
 
-app.get("/", function(){
-  console.log("Hello from Root Context Handler");
-} );
+// app.get("/", function(){
+//   console.log("Hello from Root Context Handler");
+// } );
 
 
-var serverSide = require("./server/test-mongodb/app");
-serverSide(app);
+// var serverSide = require("./server/test-mongodb/app");
+// serverSide(app);
 
 // listen to certain param from somewhere and respond by sendting this message
 // app.get("/", function(req, res) {
