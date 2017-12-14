@@ -68,16 +68,16 @@ var mongoose = require('mongoose'); // import it
 // in hello.js
 // var hello = require("./hello.js");
 // hello (app);
-// //
-// require("./assignment/app") (app);
-
-// app.get("/", function(){
-//   console.log("Hello from Root Context Handler");
-// } );
-
 //
-// var serverSide = require("./server/test-mongodb/app");
-// serverSide(app);
+require("./assignment/app") (app);
+
+app.get("/", function(){
+  console.log("Hello from Root Context Handler");
+} );
+
+
+var serverSide = require("./server/test-mongodb/app");
+serverSide(app);
 
 // listen to certain param from somewhere and respond by sendting this message
 // app.get("/", function(req, res) {
