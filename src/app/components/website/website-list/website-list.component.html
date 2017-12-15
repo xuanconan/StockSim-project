@@ -27,7 +27,11 @@
 <div class=" container-fluid padding"></div>
 
 <label class ='letter-tiffany paddingleft'>Welcome to StockSim, {{user.firstName}}! Role: {{user.role}}</label>
-
+<br/>
+<label class ='letter-tiffany paddingleft'>My class:&nbsp; {{this.user.classname}}</label>
+<br/>
+<label class ='letter-tiffany paddingleft'>My competition:&nbsp; {{this.user.competitionName}}</label>
+<br/>
 <div *ngFor = "let website of websites" class="container-fluid ">
   <ul  class="list-group">
     <li class="list-group-item blue ">

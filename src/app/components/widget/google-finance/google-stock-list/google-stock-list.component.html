@@ -27,9 +27,9 @@
 
 <!--Content-->
 <div class="container container-fluid content website-content padding50 padding-b">
-
-  <label class ='letter-tiffany '>"The stock market is filled with individuals who know the price of everything,
-    but the value of nothing." - Phillip Fisher</label>
+  <br/>
+  <b class ='letter-tiffany '>"The stock market is filled with individuals who know the price of everything,
+    but the value of nothing." - Phillip Fisher</b>
   <br/>
   <h3>All holdings</h3>
   <br/>
@@ -43,24 +43,27 @@
         <!--<button class="widget-toolbar-btn glyphicon glyphicon-align-justify"></button>-->
       </div>
       <li class="result-row">
-        <p>
-          Stock symbol: {{stock['name']}} &nbsp; &nbsp; Shares: {{stock['number']}}
-        </p>
+        <b>
+          Stock symbol: {{stock['name']}} &nbsp; &nbsp; &nbsp; &nbsp; Shares: {{stock['number']}}
+        <!--</p>-->
         <!--<p>-->
           <!--Number: {{stock['number']}}-->
         <!--</p>-->
-        <p>
-          Price: {{stock['price']}} &nbsp; &nbsp; Current price: {{stock['currentPrice']}}
-        </p>
+        <!--<p>-->
+          &nbsp; &nbsp; &nbsp; &nbsp;  Purchase price: {{stock['price']}} &nbsp; &nbsp; Current price: {{stock['currentPrice']}}
+        <!--</p>-->
         <!--<p>-->
           <!--Current price: {{stock['currentPrice']}}-->
         <!--</p>-->
-        <p>
-          Profit: {{(stock['currentPrice'] - stock['price']) * stock['number']}}
-        </p>
-        <p>
-          Date: {{stock['date']}}
-        </p>
+        <!--<p>-->
+          &nbsp; &nbsp; &nbsp; &nbsp; Profit: {{(stock['currentPrice'] - stock['price']) * stock['number'] | number: '1.2-2'}}
+        <!--</p>-->
+        <!--<p>-->
+          &nbsp; &nbsp; &nbsp; &nbsp;
+          Date: {{stock['date'].substring(0,10)}}
+        </b>
+        <br/>
+        <br/>
       </li>
     </ul>
   </div>
@@ -104,7 +107,7 @@
               <!--<br/>-->
             <!--</div>-->
 
-            <div *ngSwitchCase = "'HTML'" [innerHTML]="widget.text" class="black"> </div>
+            <div *ngSwitchCase = "'HTML'" [innerHTML]="widget.text" class="black pull-right"> </div>
             <!--<a href="{{widget.url}}" class> <div>{{widget.text}}</div> </a>-->
 
             <!--<div *ngSwitchCase="'INPUT'" class="padding-b" >-->
@@ -137,9 +140,9 @@
     </div>
   </div>
 
-  <button class='butten btn-primary white'>
+  <button class='butten btn-primary white pull-right'>
     <a (click) = "createWidget('')">
-      <b class='white'>Comment</b>
+      <b class='white '>Comment</b>
     </a>
   </button>
 </div>

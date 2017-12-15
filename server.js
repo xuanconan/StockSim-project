@@ -76,8 +76,8 @@ require("./assignment/app") (app);
 // } );
 
 
-// var serverSide = require("./server/test-mongodb/app");
-// serverSide(app);
+var serverSide = require("./server/test-mongodb/app");
+serverSide(app);
 
 // listen to certain param from somewhere and respond by sendting this message
 // app.get("/", function(req, res) {

@@ -65,11 +65,13 @@
     (click)="buyStock2(companyName.value, number.value)">
     buy
   </button>
+  <br/>
+  <br/>
   <div >
     <ul *ngFor="let companyHistorical of companyHistoricals">
-      <li class="result-row">
+      <div class="result-row">
         <p>
-          Date: {{companyHistorical['date']}}
+          Date: {{companyHistorical['date'].substring(0,19)}}
         </p>
         <p>
           Open: {{companyHistorical['open']}}
@@ -83,7 +85,7 @@
         <p>
           Close: {{companyHistorical['close']}}
         </p>
-      </li>
+      </div>
     </ul>
   </div>
 </div>
