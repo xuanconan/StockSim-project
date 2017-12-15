@@ -38,30 +38,30 @@
       <br/>
     </div>
 <!--Content-->
-    <div class="col-sm-4">
+    <div class="col-sm-4 container container-fluid">
 
-    <div class="container  content website-content  padding-b">
-  <h2>Search Company News</h2>
+    <div class="container container-fluid content website-content  padding-b">
+     <h2>Search Company News</h2>
     <input #companyName
     placeholder="stock symbol">
     <button (click)="searchCompany(companyName.value)">
-      search
+      <span class="glyphicon glyphicon-search"></span>
     </button>
-        <div >
+        <div class="container container-fluid">
           <ul *ngFor="let companynew of companyNews">
-            <li class="result-row">
-              <p>
+            <li class=" container container-fluid">
+              <div>
                 News title: {{companynew['title']}}
-              </p>
-              <p>
+              </div>
+              <div>
                 News summary: {{companynew['summary']}}
-              </p>
-              <p>
+              </div>
+              <div>
                 News description: {{companynew['description']}}
-              </p>
-              <p>
+              </div>
+              <div>
                 News date: {{companynew['date']}}
-              </p>
+              </div>
               <div>
                 News link: <a href="{{companynew['link']}}">{{companynew['link']}}</a>
               </div>

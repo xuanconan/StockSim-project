@@ -1,5 +1,7 @@
 //require mongoose and connect to database
 var mongoose = require('mongoose');
+var googleFinance = require('google-finance');
+
 
 // var connectionString = 'mongodb://localhost/cs5610';
 
