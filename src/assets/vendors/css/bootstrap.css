@@ -3,7 +3,7 @@
  * Copyright 2011-2015 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+/*! normalize.css3 v3.0.3 | MIT License | github.com/necolas/normalize.css3 */
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
@@ -6789,7 +6789,7 @@ h1, h2, h3, h4, h5, h6{
 .borderless{
   border: none;
 }
-/*# sourceMappingURL=bootstrap.css.map */
+/*# sourceMappingURL=bootstrap.css3.map */
 
 .col-sm-26{
    width:26.1%;

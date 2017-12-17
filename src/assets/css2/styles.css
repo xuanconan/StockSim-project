@@ -99,21 +99,21 @@ h1, h2, h3, h4, h5, h6{
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
-  src: url(./../../assets/fonts/Roboto-Regular.ttf);
+  src: url(../fonts2/Roboto-Regular.ttf);
 }
 
 @font-face {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 700;
-  src: url(./../../assets/fonts/Roboto-Bold.ttf);
+  src: url(../fonts2/Roboto-Bold.ttf);
 }
 
 @font-face {
   font-family: 'Roboto-Light';
   font-style: normal;
   font-weight: 300;
-  src: url(./../../assets/fonts/Roboto-Light.ttf);
+  src: url(../fonts2/Roboto-Light.ttf);
 }
 
 @font-face {

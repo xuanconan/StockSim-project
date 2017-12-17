@@ -1,57 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
 
-<!--<div class="container">-->
+  <title>Dujia Guo's Personal Website </title>
 
-  <!--<h1>-->
-    <!--Angular 4 MEAN stack app-->
-  <!--</h1>-->
-
-
-  <!--<h3>-->
-    <!--App works-->
-  <!--</h3>-->
-
-
-
-  <!--<h4>-->
-    <!--<a href="test">Test MongoDB</a>-->
-  <!--</h4>-->
+  <!-- Bootstrap core CSS -->
+  <link href="../../../assets/css/bootstrap.css" rel="stylesheet">
 
 
-  <!--<h3 >-->
-    <!--<a routerLink="./login">Login</a>-->
-  <!--</h3>-->
+  <!-- Custom styles for this template -->
+  <link href="../../../assets/css/main.css" rel="stylesheet">
 
-<!--</div>-->
-<div class = 'container-fluid'>
-<div class="main-wrapper">
-  <header class="header header--bg">
-    <div class="container">
-      <nav class="navbar">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-          <ul class="nav navbar-nav pull-right">
-            <li><a href="./login">LOGIN</a></li>
-            <li><a href="./register">REGISTER</a></li>
-            <li><a href="./login">GUEST</a></li>
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+  <![endif]-->
+</head>
 
-          </ul>
-        </div>
-      </nav>
-      <div class="header__content text-center">
-        <h1 class="header superheader white">StockSim</h1>
-        <h4 class="white thick">Trading Simulation Platform for Finance Education</h4>
-        <a class="button button--hover" href="./news" >NEWS</a>
-        <a class="button button--margin-left button--hover" (click)=goLogin() >Trading</a>
+<body>
 
+<!-- Static navbar -->
+<div class="navbar navbar-inverse navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand">DUJIA GUO</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="about.html">About</a></li>
+        <li><a href="work.html">Projects</a></li>
+        <li><a href="work.html">Video</a></li>
+
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+<!-- +++++ Welcome Section +++++ -->
+<div id="ww">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 centered">
+        <img src="../../../assets/img/mypic.png" alt="">
+        <h1>About Me</h1>
+        <p>Hello everybody. I'm Dujia, a computer science student at Northeastern University. Love coding,
+          building websites and aspiring to become a software developer. Enjoy playing badminton, travelling and
+          visiting museums in my spare time.  </p>
+
+      </div><!-- /col-lg-8 -->
+    </div><!-- /row -->
+  </div> <!-- /container -->
+</div><!-- /ww -->
+
+
+<!-- +++++ Information Section +++++ -->
+
+<div class="container pt">
+  <div class="row mt centered">
+    <div class="col-lg-4">
+      <span class="glyphicon glyphicon-book"></span>
+      <p>Pursuing a computer science masters degree, expecting to graduate by May 2019. </p>
+    </div>
+
+    <div class="col-lg-4">
+      <span class="glyphicon glyphicon-fire"></span>
+      <p>Have a passion for programming and building websites. </p>
+    </div>
+
+    <div class="col-lg-4">
+      <span class="glyphicon glyphicon-globe"></span>
+      <p>Located in Boston, MA. </p>
+    </div>
+  </div><!-- /row -->
+
+  <!--		<div class="row mt">
+              <div class="col-lg-6">
+                  <h4>THE THINKING</h4>
+                  <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
+              </div>&lt;!&ndash; /colg-lg-6 &ndash;&gt;
+              -->
+  <div class="col-lg-12">
+    <h4>SKILLS</h4>
+    Mongodb
+    <div class="progress">
+      <div class="progress-bar progress-bar-theme" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+        <span class="sr-only">60% Complete</span>
       </div>
     </div>
-  </header>
+
+    Angular
+    <div class="progress">
+      <div class="progress-bar progress-bar-theme" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+        <span class="sr-only">80% Complete</span>
+      </div>
+    </div>
+
+    HTML + CSS
+    <div class="progress">
+      <div class="progress-bar progress-bar-theme" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+        <span class="sr-only">95% Complete</span>
+      </div>
+    </div>
+
+  </div><!-- /col-lg-6 -->
+</div><!-- /row -->
+
+
+
+<!-- +++++ Projects Section +++++ -->
+
+<div class="container pt">
+  <div class="row mt">
+    <div class="col-lg-6 col-lg-offset-3 centered">
+      <h3>My Projects</h3>
+      <hr>
+      <p>Previous projects in Web Development. Please click to see github code. </p>
+    </div>
+  </div>
+  <div class="row mt">
+    <div class="col-lg-6">
+      <a class="zoom green" href="work01.html"><img class="img-responsive" src="../../../assets/img/portfolio/port07.png" alt="" width="50%" height="50%"/></a>
+      <p>Stock Sim</p>
+    </div>
+    <div class="col-lg-6">
+      <a class="zoom green" href="work01.html"><img class="img-responsive" src="../../../assets/img/angular.jpeg" alt="" width="50%" height="50%" /></a>
+      <p>AppBuilder</p>
+    </div>
+    <!--			<div class="col-lg-4">
+                    <a class="zoom green" href="work01.html"><img class="img-responsive" src="assets/img/portfolio/port03.jpg" alt="" /></a>
+                    <p>DEMO Video</p>
+                </div>-->
+  </div><!-- /row -->
+  <br>
+
+  <div class="row mt">
+    <div class="col-lg-6 col-lg-offset-3 centered">
+      <h3>Demo Video</h3>
+      <hr>
+      <p>Demo video for the stock sim project </p>
+      <iframe  class="e2e-iframe-trusted-src" width="560" height="315"
+               src = "https://www.youtube.com/embed/SkmhNMEGg_U" allowfullscreen></iframe>
+    </div>
+  </div>
+</div><!-- /container -->
+
+
+
+
+<!-- +++++ Footer Section +++++ -->
+
+<div id="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        <h4>My Email</h4>
+        <p>
+          dujia.guo2015@gmail.com
+        </p>
+      </div><!-- /col-lg-4 -->
+
+      <div class="col-lg-4">
+        <h4>My Links</h4>
+        <p>
+          <a href="#">LinkedIn</a><br/>
+          <a href="#">Github</a>
+        </p>
+      </div><!-- /col-lg-4 -->
+
+
+    </div>
+
+  </div>
 </div>
-</div>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="assets/js/bootstrap.min.js"></script>
+</body>
+</html>
